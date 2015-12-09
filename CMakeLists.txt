@@ -1,8 +1,6 @@
 project(kdepim-apps-lib)
 cmake_minimum_required(VERSION 2.8.12)
 
-if(${CMAKE_SOURCE_DIR} STREQUAL ${kdepim-apps-lib_SOURCE_DIR})
-# ECM setup
 find_package(ECM 5.16.0 CONFIG REQUIRED)
 set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH})
 set(LIBRARY_NAMELINK)
@@ -51,16 +49,11 @@ find_package(KF5CoreAddons ${KF5_VERSION} CONFIG REQUIRED)
 find_package(KF5DBusAddons ${KF5_VERSION} CONFIG REQUIRED)
 find_package(KF5WidgetsAddons ${KF5_VERSION} CONFIG REQUIRED)
 
-
-endif()
-
 add_subdirectory(composereditor-ng)
 add_subdirectory(libfollowupreminder)
 add_subdirectory(libkdepimdbusinterfaces)
 add_subdirectory(libsendlater)
 add_subdirectory(kaddressbookgrantlee)
-if(${CMAKE_SOURCE_DIR} STREQUAL ${kdepim-apps-lib_SOURCE_DIR})
 feature_summary(WHAT ALL FATAL_ON_MISSING_REQUIRED_PACKAGES)
-endif()
 
 install( FILES kdepim-apps-lib.categories DESTINATION ${KDE_INSTALL_CONFDIR} )
