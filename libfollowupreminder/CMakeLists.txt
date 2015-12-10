@@ -1,8 +1,4 @@
-cmake_minimum_required(VERSION 2.8.12)
-
 project(followupreminder)
-
-if(${CMAKE_SOURCE_DIR} STREQUAL ${kdepim-apps-lib_SOURCE_DIR})
 
 ecm_setup_version(${KDEPIM_LIB_VERSION} VARIABLE_PREFIX FOLLOWUPREMINDER
                         VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/followupreminder_version.h"
@@ -36,15 +32,6 @@ install(FILES
    ${CMAKE_CURRENT_BINARY_DIR}/followupreminder_version.h
   DESTINATION ${KDE_INSTALL_INCLUDEDIR_KF5} COMPONENT Devel
 )
-
-
-else()
-ecm_setup_version(${KDEPIM_LIB_VERSION} VARIABLE_PREFIX FOLLOWUPREMINDER
-                        VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/followupreminder_version.h"
-                        PACKAGE_VERSION_FILE "${CMAKE_CURRENT_BINARY_DIR}/KF5FollowupReminderConfigVersion.cmake"
-                        SOVERSION 5
-)
-endif()
 
 add_subdirectory(src)
 
