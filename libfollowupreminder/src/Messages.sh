@@ -1,2 +1,2 @@
 #! /bin/sh
-$XGETTEXT `find . -name '*.h' -o -name '*.cpp' | grep -v '/autotests/'` -o $podir/libfollowupreminder
+$XGETTEXT `find . -name '*.h' -o -name '*.cpp' | grep -v '/autotests/'` -o $podir/libfollowupreminder.pot
