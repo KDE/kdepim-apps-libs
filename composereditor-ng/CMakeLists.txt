@@ -1,6 +1,6 @@
 project(composereditorng)
 
-ecm_setup_version(${KDEPIM_LIB_VERSION} VARIABLE_PREFIX COMPOSEREDITORNG
+ecm_setup_version(${KDEPIM_APPS_LIB_VERSION} VARIABLE_PREFIX COMPOSEREDITORNG
                         VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/composereditorng_version.h"
                         PACKAGE_VERSION_FILE "${CMAKE_CURRENT_BINARY_DIR}/KF5ComposerEditorNGConfigVersion.cmake"
                         SOVERSION 5

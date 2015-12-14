@@ -1,5 +1,5 @@
 project(sendlater)
-ecm_setup_version(${KDEPIM_LIB_VERSION} VARIABLE_PREFIX SENDLATER
+ecm_setup_version(${KDEPIM_APPS_LIB_VERSION} VARIABLE_PREFIX SENDLATER
                         VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/sendlater_version.h"
                         PACKAGE_VERSION_FILE "${CMAKE_CURRENT_BINARY_DIR}/KF5SendLaterConfigVersion.cmake"
                         SOVERSION 5

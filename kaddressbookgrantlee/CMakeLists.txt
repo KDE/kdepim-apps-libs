@@ -1,5 +1,5 @@
 project(kaddressbookgrantlee)
-ecm_setup_version(${KDEPIM_LIB_VERSION} VARIABLE_PREFIX KADDRESSBOOKGRANTLEE
+ecm_setup_version(${KDEPIM_APPS_LIB_VERSION} VARIABLE_PREFIX KADDRESSBOOKGRANTLEE
                         VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/kaddressbookgrantlee_version.h"
                         PACKAGE_VERSION_FILE "${CMAKE_CURRENT_BINARY_DIR}/KF5KaddressbookGrantleeConfigVersion.cmake"
                         SOVERSION 5
