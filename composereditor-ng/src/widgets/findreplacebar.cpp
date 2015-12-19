@@ -44,12 +44,13 @@ class FindReplaceBarPrivate
 public:
     FindReplaceBarPrivate(FindReplaceBar *qq, KWebView *view)
         : q(qq),
-          search(0),
-          caseSensitiveAct(0),
-          highlightAll(0),
-          findPreviousButton(0),
-          findNextButton(0),
-          optionsMenu(0),
+          search(Q_NULLPTR),
+          caseSensitiveAct(Q_NULLPTR),
+          highlightAll(Q_NULLPTR),
+          findInSelection(Q_NULLPTR),
+          findPreviousButton(Q_NULLPTR),
+          findNextButton(Q_NULLPTR),
+          optionsMenu(Q_NULLPTR),
           webView(view)
     {
 
@@ -61,6 +62,7 @@ public:
     void _k_slotSearchText(bool backward = false, bool isAutoSearch = true);
     void _k_slotFindNext();
     void _k_slotFindPrevious();
+    void _k_slotFindInSelectionFirst(bool findSelectionFirst);
 
     void clearSelections();
     void setFoundMatch(bool match);
@@ -75,6 +77,7 @@ public:
     QLineEdit *search;
     QAction *caseSensitiveAct;
     QAction *highlightAll;
+    QAction *findInSelection;
 
     QPushButton *findPreviousButton;
     QPushButton *findNextButton;
@@ -149,6 +152,21 @@ void FindReplaceBarPrivate::_k_slotCaseSensitivityChanged(bool sensitivity)
     setFoundMatch(found);
 }
 
+void FindReplaceBarPrivate::_k_slotFindInSelectionFirst(bool findSelectionFirst)
+{
+    QWebPage::FindFlags searchOptions = QWebPage::FindWrapsAroundDocument;
+    if (findSelectionFirst) {
+        searchOptions |= QWebPage::FindBeginsInSelection;
+        webView->findText(QString(), QWebPage::HighlightAllOccurrences); //Clear an existing highligh
+    }
+    if (highlightAll->isChecked()) {
+        searchOptions |= QWebPage::HighlightAllOccurrences;
+    }
+    const bool found = webView->findText(lastSearchStr, searchOptions);
+    setFoundMatch(found);
+}
+
+
 void FindReplaceBarPrivate::_k_slotAutoSearch(const QString &str)
 {
     const bool isNotEmpty = (!str.isEmpty());
@@ -178,6 +196,9 @@ void FindReplaceBarPrivate::searchText(bool backward, bool isAutoSearch)
     }
     if (highlightAll->isChecked()) {
         searchOptions |= QWebPage::HighlightAllOccurrences;
+    }
+    if (findInSelection->isChecked()) {
+        searchOptions |= QWebPage::FindBeginsInSelection;
     }
 
     const QString searchWord(search->text());
@@ -263,6 +284,10 @@ FindReplaceBar::FindReplaceBar(KWebView *parent)
     d->highlightAll = d->optionsMenu->addAction(i18n("Highlight all matches"));
     d->highlightAll->setCheckable(true);
     connect(d->highlightAll, SIGNAL(toggled(bool)), this, SLOT(_k_slotHighlightAllChanged(bool)));
+
+    d->findInSelection = d->optionsMenu->addAction(i18n("Search In Selection First"));
+    d->findInSelection->setCheckable(true);
+    connect(d->findInSelection, SIGNAL(toggled(bool)), this, SLOT(_k_slotFindInSelectionFirst(bool)));
 
     optionsBtn->setMenu(d->optionsMenu);
     lay->addWidget(optionsBtn);

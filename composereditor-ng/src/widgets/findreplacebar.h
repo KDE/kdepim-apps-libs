@@ -50,6 +50,7 @@ private:
     Q_PRIVATE_SLOT(d, void _k_slotSearchText())
     Q_PRIVATE_SLOT(d, void _k_slotFindNext())
     Q_PRIVATE_SLOT(d, void _k_slotFindPrevious())
+    Q_PRIVATE_SLOT(d, void _k_slotFindInSelectionFirst(bool))
 };
 }
 
