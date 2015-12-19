@@ -162,7 +162,7 @@ QString GrantleeContactGroupFormatter::toHtml(HtmlForm form) const
     QVariantList members;
     const int numberOfData(group.dataCount());
     members.reserve(numberOfData);
-    for (uint i = 0; i < numberOfData; ++i) {
+    for (int i = 0; i < numberOfData; ++i) {
         members << memberHash(group.data(i));
     }
 
