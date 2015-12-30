@@ -64,7 +64,6 @@ ecm_generate_pri_file(BASE_NAME KdepimDBusInterfaces
 )
 
 
-if(${CMAKE_SOURCE_DIR} STREQUAL ${kdepim-apps-lib_SOURCE_DIR})
 install(FILES
     ${kdepimdbusinterfaces_Camelcase_HEADERS}
     DESTINATION ${KDE_INSTALL_INCLUDEDIR_KF5}/KdepimDBusInterfaces
@@ -82,5 +81,4 @@ install(FILES
     ${PRI_FILENAME}
     DESTINATION ${ECM_MKSPECS_INSTALL_DIR})
 
-endif()
 

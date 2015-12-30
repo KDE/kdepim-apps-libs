@@ -62,7 +62,7 @@ ecm_generate_pri_file(BASE_NAME SendLater
     DEPS "AkonadiCore" FILENAME_VAR PRI_FILENAME INCLUDE_INSTALL_DIR ${KDE_INSTALL_INCLUDEDIR_KF5}/SendLater
 )
 
-if(${CMAKE_SOURCE_DIR} STREQUAL ${kdepim-apps-lib_SOURCE_DIR})
+
 install(FILES
     ${SendLater_Camelcase_HEADERS}
     DESTINATION ${KDE_INSTALL_INCLUDEDIR_KF5}/SendLater
@@ -80,4 +80,3 @@ install(FILES
     ${PRI_FILENAME}
     DESTINATION ${ECM_MKSPECS_INSTALL_DIR})
 
-endif()

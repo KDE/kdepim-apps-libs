@@ -84,7 +84,7 @@ ecm_generate_pri_file(BASE_NAME ComposerEditorNG
     DEPS "" FILENAME_VAR PRI_FILENAME INCLUDE_INSTALL_DIR ${KDE_INSTALL_INCLUDEDIR_KF5}/ComposerEditorNG
 )
 
-if(${CMAKE_SOURCE_DIR} STREQUAL ${kdepim-apps-lib_SOURCE_DIR})
+
 install(FILES
     ${composereditorng_CamelCase_HEADERS}
     DESTINATION ${KDE_INSTALL_INCLUDEDIR_KF5}/ComposerEditorNG
@@ -102,8 +102,6 @@ install(FILES
     ${PRI_FILENAME}
     DESTINATION ${ECM_MKSPECS_INSTALL_DIR})
 
-
-endif()
 
 
 install( FILES data/composereditorinitialhtml DESTINATION  ${KDE_INSTALL_DATADIR}/composereditor )

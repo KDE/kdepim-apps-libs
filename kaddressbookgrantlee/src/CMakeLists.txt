@@ -93,7 +93,6 @@ ecm_generate_pri_file(BASE_NAME KaddressbookGrantlee
 )
 
 
-if(${CMAKE_SOURCE_DIR} STREQUAL ${kdepim-apps-lib_SOURCE_DIR})
 install(FILES
     ${KaddressbookGrantlee_CamelCasewidgets_HEADERS}
     ${KaddressbookGrantlee_CamelCaseformatter_HEADERS}
@@ -116,7 +115,6 @@ install(FILES
     ${PRI_FILENAME}
     DESTINATION ${ECM_MKSPECS_INSTALL_DIR})
 
-endif()
 
 if (BUILD_TESTING)
    add_subdirectory(printing/autotests)
