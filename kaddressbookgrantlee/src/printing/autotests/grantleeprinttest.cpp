@@ -111,22 +111,6 @@ void GrantleePrintTest::shouldDisplayContactInfo_data()
     QTest::newRow("spouse") << QStringLiteral("spouse") << QStringLiteral("foo-spousesname");
     QTest::newRow("givenname") << QStringLiteral("givenName") << QStringLiteral("foo-givenname");
     QTest::newRow("additionalname") << QStringLiteral("additionalName") << QStringLiteral("foo-additionalname");
-#if 0
-    QString realName() const;
-    QString formattedName() const;
-    QStringList emails() const;
-    QString webPage() const;
-    QString preferredEmail() const;
-    QString birthday() const;
-    QVariant addresses() const;
-    QVariant phones() const;
-    QString addressBookName() const;
-    QVariant instantManging() const;
-    QVariant geo() const;
-    QString photo() const;
-    QString logo() const;
-    QVariant crypto() const;
-#endif
 }
 
 void GrantleePrintTest::shouldDisplayContactInfo()
