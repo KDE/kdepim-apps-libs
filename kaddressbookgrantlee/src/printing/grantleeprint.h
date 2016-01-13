@@ -19,8 +19,8 @@
 #define GRANTLEEPRINT_H
 
 #include "kaddressbook_grantlee_export.h"
+#include <PimCommon/GenericGrantleeFormatter>
 #include <QObject>
-#include <grantlee/templateloader.h>
 #include <KContacts/Addressee>
 
 namespace Grantlee
@@ -30,7 +30,7 @@ class Engine;
 
 namespace KAddressBookGrantlee
 {
-class KADDRESSBOOK_GRANTLEE_EXPORT GrantleePrint : public QObject
+class KADDRESSBOOK_GRANTLEE_EXPORT GrantleePrint : public PimCommon::GenericGrantleeFormatter
 {
     Q_OBJECT
 public:
@@ -39,16 +39,6 @@ public:
     ~GrantleePrint();
 
     QString contactsToHtml(const KContacts::Addressee::List &contacts);
-    void setContent(const QString &content);
-
-    void changeGrantleePath(const QString &path);
-
-    void refreshTemplate();
-private:
-    QString mErrorMessage;
-    Grantlee::Engine *mEngine;
-    QSharedPointer<Grantlee::FileSystemTemplateLoader> mTemplateLoader;
-    Grantlee::Template mSelfcontainedTemplate;
 };
 }
 #endif // GRANTLEEPRINT_H

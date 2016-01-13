@@ -48,6 +48,7 @@ PRIVATE
   KF5::IconThemes
   KF5::Libkleo
   KF5::I18n
+  KF5::PimCommon
 )
 
 set_target_properties(KF5KaddressbookGrantlee PROPERTIES

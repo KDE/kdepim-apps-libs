@@ -18,6 +18,7 @@
 #include "grantleeprint.h"
 #include "contactgrantleeprintobject.h"
 
+
 #include "formatter/grantleecontactutils.h"
 
 #include <grantlee/context.h>
@@ -27,56 +28,23 @@
 using namespace KAddressBookGrantlee;
 
 GrantleePrint::GrantleePrint(QObject *parent)
-    : QObject(parent)
+    : PimCommon::GenericGrantleeFormatter(parent)
 {
-    mEngine = new Grantlee::Engine;
 }
 
 GrantleePrint::GrantleePrint(const QString &themePath, QObject *parent)
-    : QObject(parent)
+    : PimCommon::GenericGrantleeFormatter(QStringLiteral("theme.html"), themePath, parent)
 {
-    mEngine = new Grantlee::Engine;
-    mTemplateLoader = QSharedPointer<Grantlee::FileSystemTemplateLoader>(new Grantlee::FileSystemTemplateLoader);
-
-    changeGrantleePath(themePath);
 }
 
 GrantleePrint::~GrantleePrint()
 {
-    delete mEngine;
-}
-
-void GrantleePrint::refreshTemplate()
-{
-    mSelfcontainedTemplate = mEngine->loadByName(QStringLiteral("theme.html"));
-    if (mSelfcontainedTemplate->error()) {
-        mErrorMessage += mSelfcontainedTemplate->errorString() + QLatin1String("<br>");
-    }
-}
-
-void GrantleePrint::changeGrantleePath(const QString &path)
-{
-    if (!mTemplateLoader) {
-        mTemplateLoader = QSharedPointer<Grantlee::FileSystemTemplateLoader>(new Grantlee::FileSystemTemplateLoader);
-    }
-    mTemplateLoader->setTemplateDirs(QStringList() << path);
-    mEngine->addTemplateLoader(mTemplateLoader);
-
-    refreshTemplate();
-}
-
-void GrantleePrint::setContent(const QString &content)
-{
-    mSelfcontainedTemplate = mEngine->newTemplate(content, QStringLiteral("content"));
-    if (mSelfcontainedTemplate->error()) {
-        mErrorMessage = mSelfcontainedTemplate->errorString() + QLatin1String("<br>");
-    }
 }
 
 QString GrantleePrint::contactsToHtml(const KContacts::Addressee::List &contacts)
 {
-    if (!mErrorMessage.isEmpty()) {
-        return mErrorMessage;
+    if (!errorMessage().isEmpty()) {
+        return errorMessage();
     }
 
     if (contacts.isEmpty()) {
@@ -115,10 +83,9 @@ QString GrantleePrint::contactsToHtml(const KContacts::Addressee::List &contacts
     grantleeContactUtil.insertVariableToQVariantHash(contactI18n, QStringLiteral("titlei18n"));
     grantleeContactUtil.insertVariableToQVariantHash(contactI18n, QStringLiteral("nextcontacti18n"));
     mapping.insert(QStringLiteral("contacti18n"), contactI18n);
+    mapping.insert(QStringLiteral("contacts"), contactsList);
 
-    Grantlee::Context context(mapping);
-    context.insert(QStringLiteral("contacts"), contactsList);
-    const QString content = mSelfcontainedTemplate->render(&context);
+    const QString content = render(mapping);
     qDeleteAll(lst);
     return content;
 }
