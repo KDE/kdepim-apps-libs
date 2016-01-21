@@ -18,7 +18,6 @@
 #include "grantleeprint.h"
 #include "contactgrantleeprintobject.h"
 
-
 #include "formatter/grantleecontactutils.h"
 
 #include <grantlee/context.h>

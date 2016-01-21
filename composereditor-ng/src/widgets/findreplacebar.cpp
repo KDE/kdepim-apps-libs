@@ -166,7 +166,6 @@ void FindReplaceBarPrivate::_k_slotFindInSelectionFirst(bool findSelectionFirst)
     setFoundMatch(found);
 }
 
-
 void FindReplaceBarPrivate::_k_slotAutoSearch(const QString &str)
 {
     const bool isNotEmpty = (!str.isEmpty());
