@@ -37,10 +37,15 @@ ContactGrantleePrintObject::ContactGrantleePrintObject(const KContacts::Addresse
     : QObject(parent),
       mAddress(address)
 {
-    Q_FOREACH (const KContacts::Address &addr, address.addresses()) {
+    const auto addresses = address.addresses();
+    mListAddress.reserve(addresses.size());
+    Q_FOREACH (const KContacts::Address &addr, addresses) {
         mListAddress << new ContactGrantleePrintAddressObject(addr);
     }
-    Q_FOREACH (const KContacts::PhoneNumber &phone, address.phoneNumbers()) {
+
+    const auto phoneNumbers = address.phoneNumbers();
+    mListPhones.reserve(phoneNumbers.size());
+    Q_FOREACH (const KContacts::PhoneNumber &phone, phoneNumbers) {
         mListPhones << new ContactGrantleePrintPhoneObject(phone);
     }
     const QStringList customs = mAddress.customs();
