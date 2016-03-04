@@ -23,7 +23,6 @@
 
 #include <kactioncollection.h>
 #include <kstandardaction.h>
-#include <KLocalizedString>
 #include "composereditorng_debug.h"
 #include <QApplication>
 #include <QSplitter>

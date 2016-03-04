@@ -30,7 +30,6 @@
 #include <QWebElement>
 #include <QVBoxLayout>
 #include <QCheckBox>
-#include <KConfigGroup>
 #include <QDialogButtonBox>
 #include <QPushButton>
 

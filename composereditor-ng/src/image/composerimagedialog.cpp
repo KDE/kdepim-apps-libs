@@ -32,7 +32,6 @@
 #include <QHBoxLayout>
 #include <QLabel>
 #include <QWebElement>
-#include <KConfigGroup>
 #include <QDialogButtonBox>
 #include <QPushButton>
 

@@ -22,9 +22,7 @@
 #include "contactgrantleeprintgeoobject.h"
 #include "contactgrantleeprintcryptoobject.h"
 
-#include <KContacts/Address>
 #include <KContacts/PhoneNumber>
-#include <KContacts/Lang>
 
 #include <QBuffer>
 #include <QVariant>

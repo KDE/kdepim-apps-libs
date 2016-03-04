@@ -33,7 +33,6 @@
 #include "kdepimdbusinterface_debug.h"
 #include <ktoolinvocation.h>
 #include <QUrl>
-#include <QObject>
 #include <QDesktopServices>
 
 bool UriHandler::process(const QString &uri, const Akonadi::Item &item)

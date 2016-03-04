@@ -28,7 +28,6 @@
 
 #include <QVBoxLayout>
 #include <QWebElement>
-#include <KConfigGroup>
 #include <QDialogButtonBox>
 #include <QPushButton>
 

@@ -30,7 +30,6 @@
 #include <QWebElement>
 #include <QLabel>
 #include <QSpinBox>
-#include <KConfigGroup>
 #include <QDialogButtonBox>
 #include <QPushButton>
 

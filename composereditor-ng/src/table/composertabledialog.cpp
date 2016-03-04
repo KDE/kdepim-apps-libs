@@ -25,9 +25,7 @@
 #include <KLocalizedString>
 #include <KSeparator>
 
-#include <QWebElement>
 #include <QVBoxLayout>
-#include <KConfigGroup>
 #include <QDialogButtonBox>
 #include <QPushButton>
 

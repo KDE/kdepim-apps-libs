@@ -23,13 +23,13 @@
 #include "grantleetheme/grantleetheme.h"
 #include "grantleecontactutils.h"
 
+#include <KContacts/Addressee>
 #include <grantlee/context.h>
 #include <grantlee/engine.h>
 #include <grantlee/templateloader.h>
 
 #include <AkonadiCore/Item>
 
-#include <KContacts/Addressee>
 
 #include <KColorScheme>
 
@@ -41,7 +41,6 @@
 #include <akonadi/contact/improtocols.h>
 
 #include <QSet>
-#include <QTextDocument>
 #include <QLocale>
 #include <QRegularExpression>
 

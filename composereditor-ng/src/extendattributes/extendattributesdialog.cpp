@@ -30,7 +30,6 @@
 #include <QVBoxLayout>
 #include <QLabel>
 #include <QTabWidget>
-#include <KConfigGroup>
 #include <QDialogButtonBox>
 
 namespace ComposerEditorNG

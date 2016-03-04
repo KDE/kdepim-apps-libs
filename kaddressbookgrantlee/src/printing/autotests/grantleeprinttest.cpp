@@ -18,7 +18,6 @@
 #include "grantleeprinttest.h"
 #include "printing/grantleeprint.h"
 #include <qtest.h>
-#include <KContacts/Addressee>
 
 GrantleePrintTest::GrantleePrintTest(QObject *parent)
     : QObject(parent)

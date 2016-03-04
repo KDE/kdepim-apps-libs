@@ -38,7 +38,6 @@
 #include <Sonnet/Dialog>
 #include <sonnet/backgroundchecker.h>
 
-#include <KToolInvocation>
 #include <KLocalizedString>
 #include <KToggleAction>
 #include <QAction>
@@ -53,7 +52,6 @@
 #include <KStandardShortcut>
 
 #include <PimCommon/KPimPrintPreviewDialog>
-#include <QDBusInterface>
 #include <QDBusConnectionInterface>
 #include <QWebFrame>
 #include <QWebElement>

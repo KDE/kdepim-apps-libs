@@ -30,8 +30,6 @@
 #include <AkonadiCore/Item>
 #include <Akonadi/Contact/ContactGroupExpandJob>
 
-#include <KContacts/Addressee>
-#include <KContacts/ContactGroup>
 
 #include <KColorScheme>
 
