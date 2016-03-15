@@ -1,6 +1,7 @@
 add_definitions(-DTRANSLATION_DOMAIN=\"libcomposereditorwebengine\")
 
 set(libcomposereditor_webengine_SRCS
+    composerwebengine.cpp
 )
 
 ecm_qt_declare_logging_category(libcomposereditor_webengine_SRCS HEADER composereditorwebengine_debug.h IDENTIFIER COMPOSEREDITORNG_LOG CATEGORY_NAME log_composereditorwebengine)
@@ -12,7 +13,14 @@ add_library(KF5::ComposerEditorWebEngine ALIAS KF5ComposerEditorWebEngine)
 
 target_link_libraries(KF5ComposerEditorWebEngine
  PRIVATE
-   KF5::PimTextEdit KF5::SonnetCore KF5::PimCommon KF5::KIOWidgets KF5::XmlGui KF5::Completion
+   KF5::PimTextEdit
+   KF5::SonnetCore
+   KF5::PimCommon
+   KF5::KIOWidgets
+   KF5::XmlGui
+   KF5::Completion
+   Qt5::WebEngine
+   Qt5::WebEngineWidgets
 )
 
 target_include_directories(KF5ComposerEditorWebEngine INTERFACE "$<INSTALL_INTERFACE:${KDE_INSTALL_INCLUDEDIR_KF5}/ComposerEditorWebEngine/;${KDE_INSTALL_INCLUDEDIR_KF5}/composereditorwebengine>")
@@ -64,6 +72,6 @@ install(FILES
 
 
 
-#install( FILES data/composereditorinitialhtml DESTINATION  ${KDE_INSTALL_DATADIR}/composereditor )
+install( FILES data/composereditorinitialhtml DESTINATION  ${KDE_INSTALL_DATADIR}/composereditorwebengine )
 
 

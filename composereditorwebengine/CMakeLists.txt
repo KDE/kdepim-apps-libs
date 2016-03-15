@@ -33,6 +33,8 @@ install(FILES
   DESTINATION ${KDE_INSTALL_INCLUDEDIR_KF5} COMPONENT Devel
 )
 
-add_subdirectory(tests)
 add_subdirectory(src)
-add_subdirectory(autotests)
+if (BUILD_TESTING)
+   #add_subdirectory(autotests)
+   #add_subdirectory(tests)
+endif()
