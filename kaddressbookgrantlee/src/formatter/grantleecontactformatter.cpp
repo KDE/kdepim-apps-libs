@@ -331,15 +331,17 @@ QString GrantleeContactFormatter::toHtml(HtmlForm form) const
     contactObject.insert(QStringLiteral("imAddresses"), imAddresses);
 
     // Homepage
-    if (rawContact.url().url().isValid()) {
-        QString url = rawContact.url().url().url();
+    QVariantList websites;
+    Q_FOREACH (const KContacts::ResourceLocatorUrl &resourceLocator, rawContact.extraUrlList()) {
+        QString url = resourceLocator.url().url();
         if (!url.startsWith(QStringLiteral("http://")) &&
                 !url.startsWith(QStringLiteral("https://"))) {
             url = QStringLiteral("http://") + url;
         }
-
-        url = KStringHandler::tagUrls(url);
-        contactObject.insert(QStringLiteral("website"), url);
+        websites.append(KStringHandler::tagUrls(url));
+    }
+    if (!websites.isEmpty()) {
+        contactObject.insert(QStringLiteral("websites"), websites);
         grantleeContactUtil.insertVariableToQVariantHash(contactObject, QStringLiteral("websitei18n"));
     }
 
