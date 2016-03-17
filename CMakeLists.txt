@@ -61,7 +61,7 @@ endif()
 
 add_subdirectory(composereditor-ng)
 if (QTWEBENGINE_EXPERIMENTAL_OPTION)
-    #add_subdirectory(composereditorwebengine)
+    add_subdirectory(composereditorwebengine)
 endif()
 add_subdirectory(libfollowupreminder)
 add_subdirectory(libkdepimdbusinterfaces)

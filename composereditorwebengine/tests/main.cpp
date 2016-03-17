@@ -28,17 +28,11 @@
 
 int main(int argc, char **argv)
 {
-    const QByteArray ba = QByteArray("composerhtmleditor");
-    const QString name = i18n("KDE HTML Editor");
-    KAboutData aboutData(ba, ba, name, ba, name);
     QApplication app(argc, argv);
     QCommandLineParser parser;
-    KAboutData::setApplicationData(aboutData);
     parser.addVersionOption();
     parser.addHelpOption();
-    aboutData.setupCommandLine(&parser);
     parser.process(app);
-    aboutData.processCommandLine(&parser);
     ComposerHtmlEditor *mw = new ComposerHtmlEditor();
     mw->show();
     app.exec();

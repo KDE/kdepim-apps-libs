@@ -20,6 +20,8 @@
 
 #include "composerwebengine.h"
 
+#include <kpimtextedit/emoticontexteditaction.h>
+
 //#include <QWebHitTestResult>
 
 class KToggleAction;
@@ -90,7 +92,7 @@ public:
     void _k_slotInsertAnchor();
     void _k_slotOpenLink();
 
-    QAction *getAction(QWebPage::WebAction action) const;
+    QAction *getAction(QWebEnginePage::WebAction action) const;
     QVariant evaluateJavascript(const QString &command);
     void execCommand(const QString &cmd);
     void execCommand(const QString &cmd, const QString &arg);

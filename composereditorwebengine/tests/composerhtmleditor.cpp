@@ -18,12 +18,12 @@
 
 */
 #include "composerhtmleditor.h"
-#include "widgets/domtreewidget.h"
-#include "composerview.h"
+//#include "widgets/domtreewidget.h"
+//#include "composerview.h"
 
 #include <kactioncollection.h>
 #include <kstandardaction.h>
-#include "composereditorng_debug.h"
+//#include "composereditorng_debug.h"
 #include <QApplication>
 #include <QSplitter>
 
@@ -32,6 +32,7 @@ ComposerHtmlEditor::ComposerHtmlEditor()
 {
     QSplitter *w = new QSplitter;
 
+#if 0
     editor = new ComposerEditorNG::ComposerEditor(this);
     ComposerEditorNG::DomTreeWidget *domWidget = new ComposerEditorNG::DomTreeWidget(editor->view(), this);
     w->addWidget(domWidget);
@@ -46,6 +47,7 @@ ComposerHtmlEditor::ComposerHtmlEditor()
     editor->createToolBar(lst);
     setupActions();
     setupGUI();
+#endif
 }
 
 ComposerHtmlEditor::~ComposerHtmlEditor()

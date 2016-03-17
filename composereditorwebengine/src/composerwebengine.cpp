@@ -20,6 +20,8 @@
 
 #include "composerwebengine.h"
 #include "private/composerwebengine_p.h"
+#include <kpimtextedit/emoticontexteditaction.h>
+#include "kpimtextedit/texttospeech.h"
 #include <QStandardPaths>
 #include <QFile>
 #include <QFileInfo>
@@ -208,6 +210,7 @@ void ComposerWebEngine::addCreatedActionsToActionCollection(KActionCollection *a
 
 void ComposerWebEngine::contextMenuEvent(QContextMenuEvent *event)
 {
+#if 0
     d->hideImageResizeWidget();
     d->contextMenuResult = page()->mainFrame()->hitTestContent(event->pos());
 
@@ -287,6 +290,7 @@ void ComposerWebEngine::contextMenuEvent(QContextMenuEvent *event)
     addExtraAction(menu);
     menu->exec(event->globalPos());
     delete menu;
+#endif
 }
 
 void ComposerWebEngine::addExtraAction(QMenu *menu)
@@ -304,6 +308,7 @@ void ComposerWebEngine::setActionsEnabled(bool enabled)
 
 void ComposerWebEngine::mousePressEvent(QMouseEvent *event)
 {
+#if 0
     if (event->button() == Qt::LeftButton) {
         d->contextMenuResult = page()->mainFrame()->hitTestContent(event->pos());
         const bool imageSelected = !d->contextMenuResult.imageUrl().isEmpty();
@@ -313,23 +318,25 @@ void ComposerWebEngine::mousePressEvent(QMouseEvent *event)
     } else {
         d->hideImageResizeWidget();
     }
-    KWebView::mousePressEvent(event);
+   // KWebView::mousePressEvent(event);
+#endif
 }
 
 void ComposerWebEngine::keyPressEvent(QKeyEvent *event)
 {
     d->hideImageResizeWidget();
-    KWebView::keyPressEvent(event);
+    //KWebView::keyPressEvent(event);
 }
 
 void ComposerWebEngine::wheelEvent(QWheelEvent *event)
 {
     d->hideImageResizeWidget();
-    KWebView::wheelEvent(event);
+    //KWebView::wheelEvent(event);
 }
 
 void ComposerWebEngine::mouseDoubleClickEvent(QMouseEvent *event)
 {
+#if 0
     if (event->button() == Qt::LeftButton) {
         d->contextMenuResult = page()->mainFrame()->hitTestContent(event->pos());
         const bool imageSelected = !d->contextMenuResult.imageUrl().isEmpty();
@@ -340,7 +347,8 @@ void ComposerWebEngine::mouseDoubleClickEvent(QMouseEvent *event)
     } else {
         d->hideImageResizeWidget();
     }
-    KWebView::mouseDoubleClickEvent(event);
+    //KWebView::mouseDoubleClickEvent(event);
+#endif
 }
 
 void ComposerWebEngine::setHtmlContent(const QString &html)

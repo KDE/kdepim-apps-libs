@@ -19,6 +19,7 @@
 */
 
 #include "composerwebengine_p.h"
+#if 0
 #include "utils/composereditorutils_p.h"
 #include "link/composerlinkdialog.h"
 #include "link/composeranchordialog.h"
@@ -29,7 +30,7 @@
 #include "pagecolor/pagecolorbackgrounddialog.h"
 #include "helper/listhelper_p.h"
 #include "globalsetting_composereditorng.h"
-
+#endif
 #include <kpimtextedit/emoticontexteditaction.h>
 #include <kpimtextedit/inserthtmldialog.h>
 #include <kpimtextedit/selectspecialchardialog.h>
@@ -44,7 +45,8 @@
 #include <KSelectAction>
 #include <QColorDialog>
 #include <KMessageBox>
-#include "composereditorng_debug.h"
+#include <QApplication>
+//#include "composereditor_debug.h"
 #include <KFontAction>
 #include <KRun>
 #include <QUrl>
@@ -53,8 +55,8 @@
 
 #include <PimCommon/KPimPrintPreviewDialog>
 #include <QDBusConnectionInterface>
-#include <QWebFrame>
-#include <QWebElement>
+//#include <QWebFrame>
+//#include <QWebElement>
 #include <QPointer>
 #include <QPrinter>
 #include <QPrintDialog>
@@ -114,125 +116,125 @@ ComposerEditorWebEnginePrivate::ComposerEditorWebEnginePrivate(ComposerEditorWeb
 
 #define FOLLOW_CHECK(a1, a2) a1->setChecked(getAction(a2)->isChecked())
 
-void ComposerEditorWebEnginePrivate::createAction(ComposerEditorWebEngine::ComposerWebEngineAction type)
+void ComposerEditorWebEnginePrivate::createAction(ComposerWebEngine::ComposerWebEngineAction type)
 {
     switch (type) {
-    case ComposerEditorWebEngine::Bold: {
+    case ComposerWebEngine::Bold: {
         if (!action_text_bold) {
             action_text_bold = new KToggleAction(QIcon::fromTheme(QStringLiteral("format-text-bold")), i18nc("@action boldify selected text", "&Bold"), q);
             QFont bold;
             bold.setBold(true);
             action_text_bold->setFont(bold);
             action_text_bold->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_B));
-            FORWARD_ACTION(action_text_bold, QWebPage::ToggleBold);
+            //FORWARD_ACTION(action_text_bold, QWebPage::ToggleBold);
             htmlEditorActionList.append(action_text_bold);
         }
         break;
     }
-    case ComposerEditorWebEngine::Italic: {
+    case ComposerWebEngine::Italic: {
         if (!action_text_italic) {
             action_text_italic = new KToggleAction(QIcon::fromTheme(QStringLiteral("format-text-italic")), i18nc("@action italicize selected text", "&Italic"), q);
             QFont italic;
             italic.setItalic(true);
             action_text_italic->setFont(italic);
             action_text_italic->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_I));
-            FORWARD_ACTION(action_text_italic, QWebPage::ToggleItalic);
+            //FORWARD_ACTION(action_text_italic, QWebPage::ToggleItalic);
             htmlEditorActionList.append(action_text_italic);
         }
         break;
     }
-    case ComposerEditorWebEngine::Underline: {
+    case ComposerWebEngine::Underline: {
         if (!action_text_underline) {
             action_text_underline = new KToggleAction(QIcon::fromTheme(QStringLiteral("format-text-underline")), i18nc("@action underline selected text", "&Underline"), q);
             QFont underline;
             underline.setUnderline(true);
             action_text_underline->setFont(underline);
             action_text_underline->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_U));
-            FORWARD_ACTION(action_text_underline, QWebPage::ToggleUnderline);
+            //FORWARD_ACTION(action_text_underline, QWebPage::ToggleUnderline);
             htmlEditorActionList.append(action_text_underline);
         }
         break;
     }
-    case ComposerEditorWebEngine::StrikeOut: {
+    case ComposerWebEngine::StrikeOut: {
         if (!action_text_strikeout) {
             action_text_strikeout = new KToggleAction(QIcon::fromTheme(QStringLiteral("format-text-strikethrough")), i18nc("@action", "&Strike Out"), q);
             action_text_strikeout->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_L));
-            FORWARD_ACTION(action_text_strikeout, QWebPage::ToggleStrikethrough);
+            //FORWARD_ACTION(action_text_strikeout, QWebPage::ToggleStrikethrough);
             htmlEditorActionList.append(action_text_strikeout);
         }
         break;
     }
-    case ComposerEditorWebEngine::AlignLeft: {
+    case ComposerWebEngine::AlignLeft: {
         if (!action_align_left) {
             action_align_left = new KToggleAction(QIcon::fromTheme(QStringLiteral("format-justify-left")), i18nc("@action", "Align &Left"), q);
             action_align_left->setIconText(i18nc("@label left justify", "Left"));
             htmlEditorActionList.append((action_align_left));
-            FORWARD_ACTION(action_align_left, QWebPage::AlignLeft);
+            //FORWARD_ACTION(action_align_left, QWebPage::AlignLeft);
         }
         break;
     }
-    case ComposerEditorWebEngine::AlignCenter: {
+    case ComposerWebEngine::AlignCenter: {
         if (!action_align_center) {
             action_align_center = new KToggleAction(QIcon::fromTheme(QStringLiteral("format-justify-center")), i18nc("@action", "Align &Center"), q);
             action_align_center->setIconText(i18nc("@label center justify", "Center"));
             htmlEditorActionList.append((action_align_center));
-            FORWARD_ACTION(action_align_center, QWebPage::AlignCenter);
+            //FORWARD_ACTION(action_align_center, QWebPage::AlignCenter);
         }
         break;
     }
-    case ComposerEditorWebEngine::AlignRight: {
+    case ComposerWebEngine::AlignRight: {
         if (!action_align_right) {
             action_align_right = new KToggleAction(QIcon::fromTheme(QStringLiteral("format-justify-right")), i18nc("@action", "Align &Right"), q);
             action_align_right->setIconText(i18nc("@label right justify", "Right"));
             htmlEditorActionList.append((action_align_right));
-            FORWARD_ACTION(action_align_right, QWebPage::AlignRight);
+            //FORWARD_ACTION(action_align_right, QWebPage::AlignRight);
         }
         break;
     }
-    case ComposerEditorWebEngine::AlignJustify: {
+    case ComposerWebEngine::AlignJustify: {
         if (!action_align_justify) {
             action_align_justify = new KToggleAction(QIcon::fromTheme(QStringLiteral("format-justify-fill")), i18nc("@action", "&Justify"), q);
             action_align_justify->setIconText(i18nc("@label justify fill", "Justify"));
             htmlEditorActionList.append((action_align_justify));
-            FORWARD_ACTION(action_align_justify, QWebPage::AlignJustified);
+            //FORWARD_ACTION(action_align_justify, QWebPage::AlignJustified);
         }
         break;
     }
-    case ComposerEditorWebEngine::DirectionLtr: {
+    case ComposerWebEngine::DirectionLtr: {
         if (!action_direction_ltr) {
             action_direction_ltr = new KToggleAction(QIcon::fromTheme(QStringLiteral("format-text-direction-ltr")), i18nc("@action", "Left-to-Right"), q);
             action_direction_ltr->setIconText(i18nc("@label left-to-right", "Left-to-Right"));
             htmlEditorActionList.append(action_direction_ltr);
-            FORWARD_ACTION(action_direction_ltr, QWebPage::SetTextDirectionLeftToRight);
+            //FORWARD_ACTION(action_direction_ltr, QWebPage::SetTextDirectionLeftToRight);
         }
         break;
     }
-    case ComposerEditorWebEngine::DirectionRtl: {
+    case ComposerWebEngine::DirectionRtl: {
         if (!action_direction_rtl) {
             action_direction_rtl = new KToggleAction(QIcon::fromTheme(QStringLiteral("format-text-direction-rtl")), i18nc("@action", "Right-to-Left"), q);
             action_direction_rtl->setIconText(i18nc("@label right-to-left", "Right-to-Left"));
             htmlEditorActionList.append(action_direction_rtl);
-            FORWARD_ACTION(action_direction_rtl, QWebPage::SetTextDirectionRightToLeft);
+            //FORWARD_ACTION(action_direction_rtl, QWebPage::SetTextDirectionRightToLeft);
         }
         break;
     }
-    case ComposerEditorWebEngine::SubScript: {
+    case ComposerWebEngine::SubScript: {
         if (!action_text_subscript) {
             action_text_subscript = new KToggleAction(QIcon::fromTheme(QStringLiteral("format-text-subscript")), i18nc("@action", "Subscript"), q);
             htmlEditorActionList.append((action_text_subscript));
-            FORWARD_ACTION(action_text_subscript, QWebPage::ToggleSubscript);
+            //FORWARD_ACTION(action_text_subscript, QWebPage::ToggleSubscript);
         }
         break;
     }
-    case ComposerEditorWebEngine::SuperScript: {
+    case ComposerWebEngine::SuperScript: {
         if (!action_text_superscript) {
             action_text_superscript = new KToggleAction(QIcon::fromTheme(QStringLiteral("format-text-superscript")), i18nc("@action", "Superscript"), q);
             htmlEditorActionList.append((action_text_superscript));
-            FORWARD_ACTION(action_text_superscript, QWebPage::ToggleSuperscript);
+            //FORWARD_ACTION(action_text_superscript, QWebPage::ToggleSuperscript);
         }
         break;
     }
-    case ComposerEditorWebEngine::HorizontalRule: {
+    case ComposerWebEngine::HorizontalRule: {
         if (!action_insert_horizontal_rule) {
             action_insert_horizontal_rule = new QAction(QIcon::fromTheme(QStringLiteral("insert-horizontal-rule")), i18nc("@action", "Insert Rule Line"), q);
             htmlEditorActionList.append((action_insert_horizontal_rule));
@@ -240,39 +242,39 @@ void ComposerEditorWebEnginePrivate::createAction(ComposerEditorWebEngine::Compo
         }
         break;
     }
-    case ComposerEditorWebEngine::ListIndent: {
+    case ComposerWebEngine::ListIndent: {
         if (!action_list_indent) {
             action_list_indent = new QAction(QIcon::fromTheme(QStringLiteral("format-indent-more")), i18nc("@action", "Increase Indent"), q);
             htmlEditorActionList.append((action_list_indent));
-            FORWARD_ACTION(action_list_indent, QWebPage::Indent);
+            //FORWARD_ACTION(action_list_indent, QWebPage::Indent);
         }
         break;
     }
-    case ComposerEditorWebEngine::ListDedent: {
+    case ComposerWebEngine::ListDedent: {
         if (!action_list_dedent) {
             action_list_dedent = new QAction(QIcon::fromTheme(QStringLiteral("format-indent-less")), i18nc("@action", "Decrease Indent"), q);
             htmlEditorActionList.append(action_list_dedent);
-            FORWARD_ACTION(action_list_dedent, QWebPage::Outdent);
+            //FORWARD_ACTION(action_list_dedent, QWebPage::Outdent);
         }
         break;
     }
-    case ComposerEditorWebEngine::OrderedList: {
+    case ComposerWebEngine::OrderedList: {
         if (!action_ordered_list) {
             action_ordered_list = new KToggleAction(QIcon::fromTheme(QStringLiteral("format-list-ordered")), i18n("Ordered Style"), q);
             htmlEditorActionList.append(action_ordered_list);
-            FORWARD_ACTION(action_ordered_list, QWebPage::InsertOrderedList);
+            ////FORWARD_ACTION(action_ordered_list, QWebPage::InsertOrderedList);
         }
         break;
     }
-    case ComposerEditorWebEngine::UnorderedList: {
+    case ComposerWebEngine::UnorderedList: {
         if (!action_unordered_list) {
             action_unordered_list = new KToggleAction(QIcon::fromTheme(QStringLiteral("format-list-unordered")), i18n("Unordered List"), q);
             htmlEditorActionList.append(action_unordered_list);
-            FORWARD_ACTION(action_unordered_list, QWebPage::InsertUnorderedList);
+            //FORWARD_ACTION(action_unordered_list, QWebPage::InsertUnorderedList);
         }
         break;
     }
-    case ComposerEditorWebEngine::FormatType: {
+    case ComposerWebEngine::FormatType: {
         if (!action_format_type) {
             action_format_type = new KSelectAction(QIcon::fromTheme(QStringLiteral("format-list-unordered")), i18nc("@title:menu", "List Style"), q);
             QAction *act = action_format_type->addAction(i18n("Paragraph"));
@@ -301,7 +303,7 @@ void ComposerEditorWebEnginePrivate::createAction(ComposerEditorWebEngine::Compo
         }
         break;
     }
-    case ComposerEditorWebEngine::FontSize: {
+    case ComposerWebEngine::FontSize: {
         if (!action_font_size) {
             action_font_size = new KSelectAction(i18nc("@action", "Font &Size"), q);
             htmlEditorActionList.append(action_font_size);
@@ -319,7 +321,7 @@ void ComposerEditorWebEnginePrivate::createAction(ComposerEditorWebEngine::Compo
         }
         break;
     }
-    case ComposerEditorWebEngine::FontFamily: {
+    case ComposerWebEngine::FontFamily: {
         if (!action_font_family) {
             action_font_family = new KFontAction(i18nc("@action", "&Font"), q);
             htmlEditorActionList.append((action_font_family));
@@ -327,7 +329,7 @@ void ComposerEditorWebEnginePrivate::createAction(ComposerEditorWebEngine::Compo
         }
         break;
     }
-    case ComposerEditorWebEngine::Emoticon: {
+    case ComposerWebEngine::Emoticon: {
         if (!action_add_emoticon) {
             action_add_emoticon = new KPIMTextEdit::EmoticonTextEditAction(q);
             q->connect(action_add_emoticon, SIGNAL(emoticonActivated(QString)),
@@ -335,21 +337,21 @@ void ComposerEditorWebEnginePrivate::createAction(ComposerEditorWebEngine::Compo
         }
         break;
     }
-    case ComposerEditorWebEngine::InsertImage: {
+    case ComposerWebEngine::InsertImage: {
         if (!action_insert_image) {
             action_insert_image = new QAction(QIcon::fromTheme(QStringLiteral("insert-image")), i18n("Add Image"), q);
             q->connect(action_insert_image, SIGNAL(triggered(bool)), SLOT(_k_slotAddImage()));
         }
         break;
     }
-    case ComposerEditorWebEngine::InsertHtml: {
+    case ComposerWebEngine::InsertHtml: {
         if (!action_insert_html) {
             action_insert_html = new QAction(i18n("Insert HTML"), q);
             q->connect(action_insert_html, SIGNAL(triggered(bool)), SLOT(_k_slotInsertHtml()));
         }
         break;
     }
-    case ComposerEditorWebEngine::InsertTable: {
+    case ComposerWebEngine::InsertTable: {
         if (!action_insert_table) {
             action_insert_table = new QAction(QIcon::fromTheme(QStringLiteral("insert-table")), i18n("Table..."), q);
             htmlEditorActionList.append(action_insert_table);
@@ -357,7 +359,7 @@ void ComposerEditorWebEnginePrivate::createAction(ComposerEditorWebEngine::Compo
         }
         break;
     }
-    case ComposerEditorWebEngine::InsertLink: {
+    case ComposerWebEngine::InsertLink: {
         if (!action_insert_link) {
             action_insert_link = new QAction(QIcon::fromTheme(QStringLiteral("insert-link")), i18nc("@action", "Link"), q);
             htmlEditorActionList.append(action_insert_link);
@@ -365,7 +367,7 @@ void ComposerEditorWebEnginePrivate::createAction(ComposerEditorWebEngine::Compo
         }
         break;
     }
-    case ComposerEditorWebEngine::TextForegroundColor: {
+    case ComposerWebEngine::TextForegroundColor: {
         if (!action_text_foreground_color) {
             action_text_foreground_color = new QAction(QIcon::fromTheme(QStringLiteral("format-stroke-color")), i18nc("@action", "Text &Color..."), q);
             action_text_foreground_color->setIconText(i18nc("@label stroke color", "Color"));
@@ -374,7 +376,7 @@ void ComposerEditorWebEnginePrivate::createAction(ComposerEditorWebEngine::Compo
         }
         break;
     }
-    case ComposerEditorWebEngine::TextBackgroundColor: {
+    case ComposerWebEngine::TextBackgroundColor: {
         if (!action_text_background_color) {
             action_text_background_color = new QAction(QIcon::fromTheme(QStringLiteral("format-fill-color")), i18nc("@action", "Text &Highlight..."), q);
             htmlEditorActionList.append((action_text_background_color));
@@ -382,14 +384,14 @@ void ComposerEditorWebEnginePrivate::createAction(ComposerEditorWebEngine::Compo
         }
         break;
     }
-    case ComposerEditorWebEngine::FormatReset: {
+    case ComposerWebEngine::FormatReset: {
         if (!action_format_reset) {
             action_format_reset = new QAction(QIcon::fromTheme(QStringLiteral("draw-eraser")), i18n("Reset Font Settings"), q);
-            FORWARD_ACTION(action_format_reset, QWebPage::RemoveFormat);
+            //FORWARD_ACTION(action_format_reset, QWebPage::RemoveFormat);
         }
         break;
     }
-    case ComposerEditorWebEngine::SpellCheck: {
+    case ComposerWebEngine::SpellCheck: {
         if (!action_spell_check) {
             action_spell_check = new QAction(QIcon::fromTheme(QStringLiteral("tools-check-spelling")), i18n("Check Spelling..."), q);
             htmlEditorActionList.append(action_spell_check);
@@ -397,7 +399,7 @@ void ComposerEditorWebEnginePrivate::createAction(ComposerEditorWebEngine::Compo
         }
         break;
     }
-    case ComposerEditorWebEngine::PageColor: {
+    case ComposerWebEngine::PageColor: {
         if (!action_page_color) {
             action_page_color = new QAction(i18n("Page Color and Background..."), q);
             htmlEditorActionList.append(action_page_color);
@@ -405,7 +407,7 @@ void ComposerEditorWebEnginePrivate::createAction(ComposerEditorWebEngine::Compo
         }
         break;
     }
-    case ComposerEditorWebEngine::BlockQuote: {
+    case ComposerWebEngine::BlockQuote: {
         if (!action_block_quote) {
             action_block_quote = new QAction(QIcon::fromTheme(QStringLiteral("format-text-blockquote")), i18n("Blockquote"), q);
             htmlEditorActionList.append(action_block_quote);
@@ -413,7 +415,7 @@ void ComposerEditorWebEnginePrivate::createAction(ComposerEditorWebEngine::Compo
         }
         break;
     }
-    case ComposerEditorWebEngine::Find: {
+    case ComposerWebEngine::Find: {
         if (!action_find) {
             action_find = new QAction(QIcon::fromTheme(QStringLiteral("edit-find")), i18n("&Find..."), q);
             action_find->setShortcut(KStandardShortcut::find().first());
@@ -422,7 +424,7 @@ void ComposerEditorWebEnginePrivate::createAction(ComposerEditorWebEngine::Compo
         }
         break;
     }
-    case ComposerEditorWebEngine::Replace: {
+    case ComposerWebEngine::Replace: {
         if (!action_replace) {
             action_replace = new QAction(QIcon::fromTheme(QStringLiteral("edit-replace")), i18n("&Replace..."), q);
             htmlEditorActionList.append(action_replace);
@@ -431,7 +433,7 @@ void ComposerEditorWebEnginePrivate::createAction(ComposerEditorWebEngine::Compo
         }
         break;
     }
-    case ComposerEditorWebEngine::SaveAs: {
+    case ComposerWebEngine::SaveAs: {
         if (!action_save_as) {
             action_save_as = new QAction(QIcon::fromTheme(QStringLiteral("file_save_as")), i18n("Save &As..."), q);
             htmlEditorActionList.append(action_save_as);
@@ -440,7 +442,7 @@ void ComposerEditorWebEnginePrivate::createAction(ComposerEditorWebEngine::Compo
         }
         break;
     }
-    case ComposerEditorWebEngine::Print: {
+    case ComposerWebEngine::Print: {
         if (!action_print) {
             action_print = new QAction(QIcon::fromTheme(QStringLiteral("file_print")), i18n("&Print..."), q);
             htmlEditorActionList.append(action_print);
@@ -449,7 +451,7 @@ void ComposerEditorWebEnginePrivate::createAction(ComposerEditorWebEngine::Compo
         }
         break;
     }
-    case ComposerEditorWebEngine::PrintPreview: {
+    case ComposerWebEngine::PrintPreview: {
         if (!action_print_preview) {
             action_print_preview = new QAction(QIcon::fromTheme(QStringLiteral("file_print_preview")), i18n("Print Previe&w"), q);
             htmlEditorActionList.append(action_print_preview);
@@ -457,7 +459,7 @@ void ComposerEditorWebEnginePrivate::createAction(ComposerEditorWebEngine::Compo
         }
         break;
     }
-    case ComposerEditorWebEngine::PasteWithoutFormatting: {
+    case ComposerWebEngine::PasteWithoutFormatting: {
         if (!action_paste_withoutformatting) {
             action_paste_withoutformatting = new QAction(i18n("Paste Without Formatting"), q);
             htmlEditorActionList.append(action_paste_withoutformatting);
@@ -465,7 +467,7 @@ void ComposerEditorWebEnginePrivate::createAction(ComposerEditorWebEngine::Compo
         }
         break;
     }
-    case ComposerEditorWebEngine::InsertSpecialChar: {
+    case ComposerWebEngine::InsertSpecialChar: {
         if (!action_insert_specialchar) {
             action_insert_specialchar = new QAction(i18n("Insert Special Char..."), q);
             htmlEditorActionList.append(action_insert_specialchar);
@@ -473,7 +475,7 @@ void ComposerEditorWebEnginePrivate::createAction(ComposerEditorWebEngine::Compo
         }
         break;
     }
-    case ComposerEditorWebEngine::InsertAnchor: {
+    case ComposerWebEngine::InsertAnchor: {
         if (!action_insert_anchor) {
             action_insert_anchor = new QAction(i18n("Insert Anchor..."), q);
             htmlEditorActionList.append(action_insert_anchor);
@@ -481,10 +483,10 @@ void ComposerEditorWebEnginePrivate::createAction(ComposerEditorWebEngine::Compo
         }
         break;
     }
-    case ComposerEditorWebEngine::Separator:
+    case ComposerWebEngine::Separator:
         //nothing
         break;
-    case ComposerEditorWebEngine::LastType:
+    case ComposerWebEngine::LastType:
         //nothing
         break;
     }
@@ -518,18 +520,19 @@ void ComposerEditorWebEnginePrivate::connectActionGroup()
 
 bool ComposerEditorWebEnginePrivate::checkSpellingEnabled()
 {
-    return ComposerEditorWebEngine::GlobalSettingsBase::autoSpellChecking();
+    //return ComposerWebEngine::GlobalSettingsBase::autoSpellChecking();
+    return false;
 }
 
 void ComposerEditorWebEnginePrivate::_k_changeAutoSpellChecking(bool checked)
 {
-    ComposerEditorWebEngine::GlobalSettingsBase::setAutoSpellChecking(checked);
+    //ComposerWebEngine::GlobalSettingsBase::setAutoSpellChecking(checked);
 }
 
-QAction *ComposerEditorWebEnginePrivate::getAction(QWebPage::WebAction action) const
+QAction *ComposerEditorWebEnginePrivate::getAction(QWebEnginePage::WebAction action) const
 {
     if (action >= 0 && action <= 66) {
-        return q->page()->action(static_cast<QWebPage::WebAction>(action));
+        return q->page()->action(static_cast<QWebEnginePage::WebAction>(action));
     } else {
         return 0;
     }
@@ -543,13 +546,15 @@ void ComposerEditorWebEnginePrivate::hideImageResizeWidget()
 
 void ComposerEditorWebEnginePrivate::showImageResizeWidget()
 {
+#if 0
     if (!imageResizeWidget) {
         imageResizeWidget = new ComposerImageResizeWidget(contextMenuResult.element(), q);
         imageResizeWidget->move(contextMenuResult.element().geometry().topLeft());
         imageResizeWidget->show();
     }
+#endif
 }
-
+#if 0
 static QVariant execJScript(QWebElement element, const QString &script)
 {
     if (element.isNull()) {
@@ -557,6 +562,7 @@ static QVariant execJScript(QWebElement element, const QString &script)
     }
     return element.evaluateJavaScript(script);
 }
+#endif
 
 void ComposerEditorWebEnginePrivate::_k_setFormatType(QAction *act)
 {
@@ -620,16 +626,21 @@ void ComposerEditorWebEnginePrivate::_k_slotInsertHtml()
 
 void ComposerEditorWebEnginePrivate::_k_setTextBackgroundColor()
 {
-    QColor newColor = ComposerEditorWebEngine::Utils::convertRgbToQColor(evaluateJavascript(QStringLiteral("getTextBackgroundColor()")).toString());
+#if 0
+    QColor newColor = ComposerWebEngine::Utils::convertRgbToQColor(evaluateJavascript(QStringLiteral("getTextBackgroundColor()")).toString());
     newColor = QColorDialog::getColor(newColor, q);
     if (newColor.isValid()) {
         execCommand(QStringLiteral("hiliteColor"), newColor.name());
     }
+#endif
 }
 
 QVariant ComposerEditorWebEnginePrivate::evaluateJavascript(const QString &command)
 {
+#if 0
     return q->page()->mainFrame()->evaluateJavaScript(command);
+#endif
+    return QVariant();
 }
 
 void ComposerEditorWebEnginePrivate::_k_slotDeleteText()
@@ -639,36 +650,44 @@ void ComposerEditorWebEnginePrivate::_k_slotDeleteText()
 
 void ComposerEditorWebEnginePrivate::_k_setTextForegroundColor()
 {
-    QColor newColor = ComposerEditorWebEngine::Utils::convertRgbToQColor(evaluateJavascript(QStringLiteral("getTextForegroundColor()")).toString());
+#if 0
+    QColor newColor = ComposerWebEngine::Utils::convertRgbToQColor(evaluateJavascript(QStringLiteral("getTextForegroundColor()")).toString());
     newColor = QColorDialog::getColor(newColor, q);
     if (newColor.isValid()) {
         execCommand(QStringLiteral("foreColor"), newColor.name());
     }
+#endif
 }
 
 void ComposerEditorWebEnginePrivate::_k_slotAddImage()
 {
+#if 0
     QPointer<ComposerImageDialog> dlg = new ComposerImageDialog(q);
     if (dlg->exec() == QDialog::Accepted) {
         execCommand(QStringLiteral("insertHTML"), dlg->html());
     }
     delete dlg;
+#endif
 }
 
 void ComposerEditorWebEnginePrivate::_k_slotEditImage()
 {
+#if 0
     showImageResizeWidget();
     ComposerImageDialog dlg(contextMenuResult.element(), q);
     dlg.exec();
+#endif
 }
 
 void ComposerEditorWebEnginePrivate::_k_slotInsertTable()
 {
+#if 0
     QPointer<ComposerTableDialog> dlg = new ComposerTableDialog(q);
     if (dlg->exec() == QDialog::Accepted) {
         execCommand(QStringLiteral("insertHTML"), dlg->html());
     }
     delete dlg;
+#endif
 }
 
 void ComposerEditorWebEnginePrivate::_k_slotInsertHorizontalRule()
@@ -678,8 +697,9 @@ void ComposerEditorWebEnginePrivate::_k_slotInsertHorizontalRule()
 
 void ComposerEditorWebEnginePrivate::_k_insertLink()
 {
+#if 0
     const QString selectedText = q->selectedText();
-    QPointer<ComposerEditorWebEngine::ComposerLinkDialog> dlg = new ComposerEditorWebEngine::ComposerLinkDialog(selectedText, q);
+    QPointer<ComposerWebEngine::ComposerLinkDialog> dlg = new ComposerWebEngine::ComposerLinkDialog(selectedText, q);
     if (dlg->exec() == QDialog::Accepted) {
         const QString html(dlg->html());
         if (!html.isEmpty()) {
@@ -687,20 +707,25 @@ void ComposerEditorWebEnginePrivate::_k_insertLink()
         }
     }
     delete dlg;
+#endif
 }
 
 void ComposerEditorWebEnginePrivate::_k_slotEditLink()
 {
-    ComposerEditorWebEngine::ComposerLinkDialog dlg(contextMenuResult.linkElement(), q);
+    #if 0
+    ComposerWebEngine::ComposerLinkDialog dlg(contextMenuResult.linkElement(), q);
     dlg.exec();
+#endif
 }
 
 void ComposerEditorWebEnginePrivate::_k_slotOpenLink()
 {
+    #if 0
     const QString href = contextMenuResult.linkElement().attribute(QStringLiteral("href"));
     if (!href.isEmpty()) {
         new KRun(QUrl(href), 0);
     }
+#endif
 }
 
 void ComposerEditorWebEnginePrivate::_k_setFontSize(int fontSize)
@@ -715,6 +740,8 @@ void ComposerEditorWebEnginePrivate::_k_setFontFamily(const QString &family)
 
 void ComposerEditorWebEnginePrivate::_k_slotSpellCheck()
 {
+#if 0
+#if 0
     QString text(execJScript(contextMenuResult.element(), QStringLiteral("this.value")).toString());
     if (contextMenuResult.isContentSelected()) {
         spellTextSelectionStart = qMax(0, execJScript(contextMenuResult.element(), QStringLiteral("this.selectionStart")).toInt());
@@ -724,6 +751,7 @@ void ComposerEditorWebEnginePrivate::_k_slotSpellCheck()
         spellTextSelectionStart = 0;
         spellTextSelectionEnd = 0;
     }
+#endif
 
     if (text.isEmpty()) {
         return;
@@ -741,6 +769,7 @@ void ComposerEditorWebEnginePrivate::_k_slotSpellCheck()
     }
     spellDialog->setBuffer(text);
     spellDialog->show();
+#endif
 }
 
 void ComposerEditorWebEnginePrivate::_k_spellCheckerCorrected(const QString &original, int pos, const QString &replacement)
@@ -761,7 +790,8 @@ void ComposerEditorWebEnginePrivate::_k_spellCheckerCorrected(const QString &ori
     script += QStringLiteral(")");
 
     //qCDebug(COMPOSEREDITORNG_LOG) << "**** script:" << script;
-    execJScript(contextMenuResult.element(), script);
+
+    //execJScript(contextMenuResult.element(), script);
 }
 
 void ComposerEditorWebEnginePrivate::_k_spellCheckerMisspelling(const QString &text, int pos)
@@ -772,7 +802,7 @@ void ComposerEditorWebEnginePrivate::_k_spellCheckerMisspelling(const QString &t
     selectionScript += QLatin1Char(',');
     selectionScript += QString::number(pos + text.length() + spellTextSelectionStart);
     selectionScript += QLatin1Char(')');
-    execJScript(contextMenuResult.element(), selectionScript);
+    //execJScript(contextMenuResult.element(), selectionScript);
 }
 
 void ComposerEditorWebEnginePrivate::_k_slotSpellCheckDone(const QString &)
@@ -785,7 +815,7 @@ void ComposerEditorWebEnginePrivate::_k_slotSpellCheckDone(const QString &)
         script += QLatin1Char(',');
         script += QString::number(spellTextSelectionEnd);
         script += QLatin1Char(')');
-        execJScript(contextMenuResult.element(), script);
+        //execJScript(contextMenuResult.element(), script);
     }
 }
 
@@ -814,10 +844,12 @@ void ComposerEditorWebEnginePrivate::_k_slotSaveAs()
     bool success = file.open(QIODevice::WriteOnly);
     if (success) {
         // FIXME: here we always use UTF-8 encoding
+#if 0
         const QString content = q->page()->mainFrame()->toHtml();
         QByteArray data = content.toUtf8();
         const qint64 c = file.write(data);
         success = (c >= data.length());
+#endif
     }
 }
 
@@ -827,7 +859,7 @@ void ComposerEditorWebEnginePrivate::_k_slotPrint()
     QPointer<QPrintDialog> dlg(new QPrintDialog(&printer));
 
     if (dlg->exec() == QDialog::Accepted) {
-        q->print(&printer);
+        //q->print(&printer);
     }
     delete dlg;
 }
@@ -836,23 +868,26 @@ void ComposerEditorWebEnginePrivate::_k_slotPrintPreview()
 {
     PimCommon::KPimPrintPreviewDialog previewdlg(q);
     q->connect(&previewdlg, &QPrintPreviewDialog::paintRequested, q, [this](QPrinter * printer) {
-        q->print(printer);
+        //q->print(printer);
     });
     previewdlg.exec();
 }
 
 void ComposerEditorWebEnginePrivate::_k_slotChangePageColorAndBackground()
 {
+    #if 0
     const QWebElement element = q->page()->mainFrame()->findFirstElement(QStringLiteral("body"));
     if (!element.isNull()) {
         QPointer<PageColorBackgroundDialog> dlg = new PageColorBackgroundDialog(element, q);
         dlg->exec();
         delete dlg;
     }
+#endif
 }
 
 void ComposerEditorWebEnginePrivate::_k_slotEditList()
 {
+#if 0
     QWebElement listElement = ListHelper::listElement(contextMenuResult.element());
     if (!listElement.isNull()) {
         QPointer<ComposerListDialog> dlg = new ComposerListDialog(listElement, q);
@@ -861,39 +896,40 @@ void ComposerEditorWebEnginePrivate::_k_slotEditList()
         }
         delete dlg;
     }
+#endif
 }
 
 void ComposerEditorWebEnginePrivate::_k_slotAdjustActions()
 {
     if (action_text_bold) {
-        FOLLOW_CHECK(action_text_bold, QWebPage::ToggleBold);
+        //FOLLOW_CHECK(action_text_bold, QWebPage::ToggleBold);
     }
     if (action_text_italic) {
-        FOLLOW_CHECK(action_text_italic, QWebPage::ToggleItalic);
+        //FOLLOW_CHECK(action_text_italic, QWebPage::ToggleItalic);
     }
     if (action_text_strikeout) {
-        FOLLOW_CHECK(action_text_strikeout, QWebPage::ToggleStrikethrough);
+        //FOLLOW_CHECK(action_text_strikeout, QWebPage::ToggleStrikethrough);
     }
     if (action_text_underline) {
-        FOLLOW_CHECK(action_text_underline, QWebPage::ToggleUnderline);
+        //FOLLOW_CHECK(action_text_underline, QWebPage::ToggleUnderline);
     }
     if (action_text_subscript) {
-        FOLLOW_CHECK(action_text_subscript, QWebPage::ToggleSubscript);
+        //FOLLOW_CHECK(action_text_subscript, QWebPage::ToggleSubscript);
     }
     if (action_text_superscript) {
-        FOLLOW_CHECK(action_text_superscript, QWebPage::ToggleSuperscript);
+        //FOLLOW_CHECK(action_text_superscript, QWebPage::ToggleSuperscript);
     }
     if (action_ordered_list) {
-        FOLLOW_CHECK(action_ordered_list, QWebPage::InsertOrderedList);
+        //FOLLOW_CHECK(action_ordered_list, QWebPage::InsertOrderedList);
     }
     if (action_unordered_list) {
-        FOLLOW_CHECK(action_unordered_list, QWebPage::InsertUnorderedList);
+        //FOLLOW_CHECK(action_unordered_list, QWebPage::InsertUnorderedList);
     }
     if (action_direction_ltr) {
-        FOLLOW_CHECK(action_direction_ltr, QWebPage::SetTextDirectionLeftToRight);
+        //FOLLOW_CHECK(action_direction_ltr, QWebPage::SetTextDirectionLeftToRight);
     }
     if (action_direction_rtl) {
-        FOLLOW_CHECK(action_direction_rtl, QWebPage::SetTextDirectionRightToLeft);
+        //FOLLOW_CHECK(action_direction_rtl, QWebPage::SetTextDirectionRightToLeft);
     }
 
     const QString alignment = evaluateJavascript(QStringLiteral("getAlignment()")).toString();
@@ -925,33 +961,43 @@ void ComposerEditorWebEnginePrivate::_k_slotAdjustActions()
 
 void ComposerEditorWebEnginePrivate::execCommand(const QString &cmd)
 {
+    #if 0
     QWebFrame *frame = q->page()->mainFrame();
     const QString js = QStringLiteral("document.execCommand(\"%1\", false, null)").arg(cmd);
     frame->evaluateJavaScript(js);
+#endif
 }
 
 void ComposerEditorWebEnginePrivate::execCommand(const QString &cmd, const QString &arg)
 {
+    #if 0
     QWebFrame *frame = q->page()->mainFrame();
     const QString js = QStringLiteral("document.execCommand(\"%1\", false, \"%2\")").arg(cmd, arg);
     frame->evaluateJavaScript(js);
+#endif
 }
 
 bool ComposerEditorWebEnginePrivate::queryCommandState(const QString &cmd)
 {
+    #if 0
     QWebFrame *frame = q->page()->mainFrame();
     QString js = QStringLiteral("document.queryCommandState(\"%1\", false, null)").arg(cmd);
     const QVariant result = frame->evaluateJavaScript(js);
     return result.toString().simplified().toLower() == QStringLiteral("true");
+#else
+    return false;
+#endif
 }
 
 void ComposerEditorWebEnginePrivate::_k_slotSpeakText()
 {
+    #if 0
     QString text = q->selectedText();
     if (text.isEmpty()) {
         text = q->page()->mainFrame()->toPlainText();
     }
     KPIMTextEdit::TextToSpeech::self()->say(text);
+#endif
 }
 
 void ComposerEditorWebEnginePrivate::_k_slotPasteWithoutFormatting()
@@ -979,16 +1025,19 @@ void ComposerEditorWebEnginePrivate::_k_slotInsertSpecialChar()
 
 void ComposerEditorWebEnginePrivate::_k_slotInsertAnchor()
 {
+    #if 0
     QPointer<ComposerAnchorDialog> dlg = new ComposerAnchorDialog(q);
     if (dlg->exec() == QDialog::Accepted) {
         execCommand(QStringLiteral("insertHTML"), dlg->html());
     }
     delete dlg;
+#endif
 }
 
 QMap<QString, QString> ComposerEditorWebEnginePrivate::localImages() const
 {
     QMap<QString, QString> lst;
+    #if 0
     QWebElementCollection images = q->page()->mainFrame()->findAllElements(QStringLiteral("img"));
     Q_FOREACH (const QWebElement &elm, images) {
         if (elm.attribute(QStringLiteral("src")).startsWith(QStringLiteral("file://"))) {
@@ -996,6 +1045,7 @@ QMap<QString, QString> ComposerEditorWebEnginePrivate::localImages() const
             lst.insert(url.fileName(), url.path());
         }
     }
+#endif
     return lst;
 }
 

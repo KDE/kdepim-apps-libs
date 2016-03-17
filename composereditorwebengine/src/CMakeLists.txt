@@ -22,6 +22,7 @@ target_link_libraries(KF5ComposerEditorWebEngine
    KF5::Completion
    Qt5::WebEngine
    Qt5::WebEngineWidgets
+   Qt5::PrintSupport
 )
 
 target_include_directories(KF5ComposerEditorWebEngine INTERFACE "$<INSTALL_INTERFACE:${KDE_INSTALL_INCLUDEDIR_KF5}/ComposerEditorWebEngine/;${KDE_INSTALL_INCLUDEDIR_KF5}/composereditorwebengine>")

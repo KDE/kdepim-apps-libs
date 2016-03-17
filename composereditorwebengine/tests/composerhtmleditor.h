@@ -22,7 +22,7 @@
 #define COMPOSERHTMLEDITOR_H
 
 #include <kxmlguiwindow.h>
-#include "composereditor-ng/composereditor.h"
+//#include "composereditor-ng/composereditor.h"
 
 class ComposerHtmlEditor : public KXmlGuiWindow
 {
@@ -34,7 +34,7 @@ public:
 
 private:
     void setupActions();
-    ComposerEditorNG::ComposerEditor *editor;
+    //ComposerEditorNG::ComposerEditor *editor;
 };
 
 #endif
