@@ -37,3 +37,8 @@ QString ContactGrantleePrintPhoneObject::number() const
 {
     return mPhoneNumber.number();
 }
+
+bool ContactGrantleePrintPhoneObject::preferred() const
+{
+    return (mPhoneNumber.type() & KContacts::PhoneNumber::Pref);
+}

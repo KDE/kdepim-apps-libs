@@ -26,6 +26,7 @@ class ContactGrantleePrintPhoneObject : public QObject
     Q_OBJECT
     Q_PROPERTY(QString type READ type)
     Q_PROPERTY(QString number READ number)
+    Q_PROPERTY(bool preferred READ preferred)
 
 public:
     explicit ContactGrantleePrintPhoneObject(const KContacts::PhoneNumber &phone, QObject *parent = Q_NULLPTR);
@@ -33,6 +34,7 @@ public:
 
     QString type() const;
     QString number() const;
+    bool preferred() const;
 private:
     KContacts::PhoneNumber mPhoneNumber;
 };
