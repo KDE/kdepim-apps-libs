@@ -18,27 +18,27 @@
 #include "contactgrantleeprintphoneobject.h"
 
 using namespace KAddressBookGrantlee;
-ContactGrantleePrintPhoneObject::ContactGrantleePrintPhoneObject(const KContacts::PhoneNumber &phone, QObject *parent)
+ContactGrantleePhoneObject::ContactGrantleePhoneObject(const KContacts::PhoneNumber &phone, QObject *parent)
     : QObject(parent),
       mPhoneNumber(phone)
 {
 }
 
-ContactGrantleePrintPhoneObject::~ContactGrantleePrintPhoneObject()
+ContactGrantleePhoneObject::~ContactGrantleePhoneObject()
 {
 }
 
-QString ContactGrantleePrintPhoneObject::type() const
+QString ContactGrantleePhoneObject::type() const
 {
     return mPhoneNumber.typeLabel();
 }
 
-QString ContactGrantleePrintPhoneObject::number() const
+QString ContactGrantleePhoneObject::number() const
 {
     return mPhoneNumber.number();
 }
 
-bool ContactGrantleePrintPhoneObject::preferred() const
+bool ContactGrantleePhoneObject::preferred() const
 {
     return (mPhoneNumber.type() & KContacts::PhoneNumber::Pref);
 }

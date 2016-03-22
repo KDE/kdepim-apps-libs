@@ -19,19 +19,19 @@
 
 using namespace KAddressBookGrantlee;
 
-ContactGrantleePrintGeoObject::ContactGrantleePrintGeoObject(const KContacts::Geo &geo, QObject *parent)
+ContactGrantleeGeoObject::ContactGrantleeGeoObject(const KContacts::Geo &geo, QObject *parent)
     : QObject(parent),
       mGeo(geo)
 {
 
 }
 
-ContactGrantleePrintGeoObject::~ContactGrantleePrintGeoObject()
+ContactGrantleeGeoObject::~ContactGrantleeGeoObject()
 {
 
 }
 
-float ContactGrantleePrintGeoObject::latitude() const
+float ContactGrantleeGeoObject::latitude() const
 {
     if (mGeo.isValid()) {
         return mGeo.latitude();
@@ -39,7 +39,7 @@ float ContactGrantleePrintGeoObject::latitude() const
     return -1;
 }
 
-float ContactGrantleePrintGeoObject::longitude() const
+float ContactGrantleeGeoObject::longitude() const
 {
     if (mGeo.isValid()) {
         return mGeo.longitude();
@@ -47,7 +47,7 @@ float ContactGrantleePrintGeoObject::longitude() const
     return -1;
 }
 
-QString ContactGrantleePrintGeoObject::toString() const
+QString ContactGrantleeGeoObject::toString() const
 {
     QString result;
     if (mGeo.isValid()) {
@@ -56,7 +56,7 @@ QString ContactGrantleePrintGeoObject::toString() const
     return result;
 }
 
-bool ContactGrantleePrintGeoObject::isValid() const
+bool ContactGrantleeGeoObject::isValid() const
 {
     return mGeo.isValid();
 }

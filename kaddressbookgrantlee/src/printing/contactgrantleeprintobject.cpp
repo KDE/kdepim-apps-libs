@@ -40,25 +40,25 @@ ContactGrantleePrintObject::ContactGrantleePrintObject(const KContacts::Addresse
     const auto addresses = address.addresses();
     mListAddress.reserve(addresses.size());
     Q_FOREACH (const KContacts::Address &addr, addresses) {
-        mListAddress << new ContactGrantleePrintAddressObject(addr);
+        mListAddress << new ContactGrantleeAddressObject(addr);
     }
 
     const auto webSites = address.extraUrlList();
     mListWebSite.reserve(webSites.size());
     Q_FOREACH (const KContacts::ResourceLocatorUrl &webSite, webSites) {
-        mListWebSite << new ContactGrantleePrintWebSite(webSite);
+        mListWebSite << new ContactGrantleeWebSite(webSite);
     }
 
     const auto phoneNumbers = address.phoneNumbers();
     mListPhones.reserve(phoneNumbers.size());
     Q_FOREACH (const KContacts::PhoneNumber &phone, phoneNumbers) {
-        mListPhones << new ContactGrantleePrintPhoneObject(phone);
+        mListPhones << new ContactGrantleePhoneObject(phone);
     }
 
     const auto emails = address.emailList();
     mListEmails.reserve(emails.size());
     Q_FOREACH (const KContacts::Email &email, emails) {
-        mListEmails << new ContactGrantleePrintEmail(mAddress, email);
+        mListEmails << new ContactGrantleeEmail(mAddress, email);
     }
 
 
@@ -70,12 +70,12 @@ ContactGrantleePrintObject::ContactGrantleePrintObject(const KContacts::Addresse
                 QString key = custom.left(pos);
                 key.remove(QStringLiteral("-All"));
                 const QString value = custom.mid(pos + 1);
-                mListIm << new ContactGrantleePrintImObject(key, value);
+                mListIm << new ContactGrantleeImObject(key, value);
             }
         }
     }
-    mGeoObject = new ContactGrantleePrintGeoObject(address.geo());
-    mCryptoObject = new ContactGrantleePrintCryptoObject(address);
+    mGeoObject = new ContactGrantleeGeoObject(address.geo());
+    mCryptoObject = new ContactGrantleeCryptoObject(address);
 }
 
 ContactGrantleePrintObject::~ContactGrantleePrintObject()

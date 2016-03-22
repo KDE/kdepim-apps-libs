@@ -20,15 +20,15 @@
 #include <QObject>
 namespace KAddressBookGrantlee
 {
-class ContactGrantleePrintImObject : public QObject
+class ContactGrantleeImObject : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(QString type READ type)
     Q_PROPERTY(QString address READ address)
 
 public:
-    explicit ContactGrantleePrintImObject(const QString &type, const QString &address, QObject *parent = Q_NULLPTR);
-    ~ContactGrantleePrintImObject();
+    explicit ContactGrantleeImObject(const QString &type, const QString &address, QObject *parent = Q_NULLPTR);
+    ~ContactGrantleeImObject();
 
     QString type() const;
     QString address() const;

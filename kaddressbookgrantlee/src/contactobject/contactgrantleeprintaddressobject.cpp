@@ -18,57 +18,57 @@
 #include "contactgrantleeprintaddressobject.h"
 
 using namespace KAddressBookGrantlee;
-ContactGrantleePrintAddressObject::ContactGrantleePrintAddressObject(const KContacts::Address &address, QObject *parent)
+ContactGrantleeAddressObject::ContactGrantleeAddressObject(const KContacts::Address &address, QObject *parent)
     : QObject(parent),
       mAddress(address)
 {
 }
 
-ContactGrantleePrintAddressObject::~ContactGrantleePrintAddressObject()
+ContactGrantleeAddressObject::~ContactGrantleeAddressObject()
 {
 }
 
-QString ContactGrantleePrintAddressObject::type() const
+QString ContactGrantleeAddressObject::type() const
 {
     return KContacts::Address::typeLabel(mAddress.type());
 }
 
-QString ContactGrantleePrintAddressObject::street() const
+QString ContactGrantleeAddressObject::street() const
 {
     return mAddress.street();
 }
 
-QString ContactGrantleePrintAddressObject::postOfficeBox() const
+QString ContactGrantleeAddressObject::postOfficeBox() const
 {
     return mAddress.postOfficeBox();
 }
 
-QString ContactGrantleePrintAddressObject::locality() const
+QString ContactGrantleeAddressObject::locality() const
 {
     return mAddress.locality();
 }
 
-QString ContactGrantleePrintAddressObject::region() const
+QString ContactGrantleeAddressObject::region() const
 {
     return mAddress.region();
 }
 
-QString ContactGrantleePrintAddressObject::postalCode() const
+QString ContactGrantleeAddressObject::postalCode() const
 {
     return mAddress.postalCode();
 }
 
-QString ContactGrantleePrintAddressObject::country() const
+QString ContactGrantleeAddressObject::country() const
 {
     return mAddress.country();
 }
 
-QString ContactGrantleePrintAddressObject::label() const
+QString ContactGrantleeAddressObject::label() const
 {
     return mAddress.label();
 }
 
-QString ContactGrantleePrintAddressObject::formattedAddress() const
+QString ContactGrantleeAddressObject::formattedAddress() const
 {
     return mAddress.formattedAddress().replace(QStringLiteral("\n"), QStringLiteral("<br>"));
 }

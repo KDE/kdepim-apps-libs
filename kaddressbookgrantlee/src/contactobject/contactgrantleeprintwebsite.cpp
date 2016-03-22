@@ -20,24 +20,24 @@
 
 using namespace KAddressBookGrantlee;
 
-ContactGrantleePrintWebSite::ContactGrantleePrintWebSite(const KContacts::ResourceLocatorUrl &resourceLocator, QObject *parent)
+ContactGrantleeWebSite::ContactGrantleeWebSite(const KContacts::ResourceLocatorUrl &resourceLocator, QObject *parent)
     : QObject(parent),
       mResourceLocator(resourceLocator)
 {
 
 }
 
-ContactGrantleePrintWebSite::~ContactGrantleePrintWebSite()
+ContactGrantleeWebSite::~ContactGrantleeWebSite()
 {
 
 }
 
-QString ContactGrantleePrintWebSite::url() const
+QString ContactGrantleeWebSite::url() const
 {
     return mResourceLocator.url().toDisplayString();
 }
 
-bool ContactGrantleePrintWebSite::preferred() const
+bool ContactGrantleeWebSite::preferred() const
 {
     const QStringList value = mResourceLocator.parameters().value(QStringLiteral("type"));
     //Validate PREF and pref

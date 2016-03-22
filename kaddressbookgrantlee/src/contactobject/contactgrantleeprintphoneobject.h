@@ -21,7 +21,7 @@
 #include <KContacts/PhoneNumber>
 namespace KAddressBookGrantlee
 {
-class ContactGrantleePrintPhoneObject : public QObject
+class ContactGrantleePhoneObject : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(QString type READ type)
@@ -29,8 +29,8 @@ class ContactGrantleePrintPhoneObject : public QObject
     Q_PROPERTY(bool preferred READ preferred)
 
 public:
-    explicit ContactGrantleePrintPhoneObject(const KContacts::PhoneNumber &phone, QObject *parent = Q_NULLPTR);
-    ~ContactGrantleePrintPhoneObject();
+    explicit ContactGrantleePhoneObject(const KContacts::PhoneNumber &phone, QObject *parent = Q_NULLPTR);
+    ~ContactGrantleePhoneObject();
 
     QString type() const;
     QString number() const;

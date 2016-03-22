@@ -22,12 +22,12 @@
 #include <QVariant>
 namespace KAddressBookGrantlee
 {
-class ContactGrantleePrintAddressObject;
-class ContactGrantleePrintPhoneObject;
-class ContactGrantleePrintImObject;
-class ContactGrantleePrintGeoObject;
-class ContactGrantleePrintCryptoObject;
-class ContactGrantleePrintWebSite;
+class ContactGrantleeAddressObject;
+class ContactGrantleePhoneObject;
+class ContactGrantleeImObject;
+class ContactGrantleeGeoObject;
+class ContactGrantleeCryptoObject;
+class ContactGrantleeWebSite;
 class ContactGrantleePrintObject : public QObject
 {
     Q_OBJECT
@@ -116,8 +116,8 @@ private:
     QList<QObject *> mListIm;
     QList<QObject *> mListWebSite;
     QList<QObject *> mListEmails;
-    ContactGrantleePrintGeoObject *mGeoObject;
-    ContactGrantleePrintCryptoObject *mCryptoObject;
+    ContactGrantleeGeoObject *mGeoObject;
+    ContactGrantleeCryptoObject *mCryptoObject;
     KContacts::Addressee mAddress;
 };
 }

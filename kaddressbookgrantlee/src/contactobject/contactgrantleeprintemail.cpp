@@ -18,7 +18,7 @@
 #include "contactgrantleeprintemail.h"
 using namespace KAddressBookGrantlee;
 
-ContactGrantleePrintEmail::ContactGrantleePrintEmail(const KContacts::Addressee &addressee, const KContacts::Email &email, QObject *parent)
+ContactGrantleeEmail::ContactGrantleeEmail(const KContacts::Addressee &addressee, const KContacts::Email &email, QObject *parent)
     : QObject(parent),
       mEmail(email),
       mAddressee(addressee)
@@ -26,25 +26,25 @@ ContactGrantleePrintEmail::ContactGrantleePrintEmail(const KContacts::Addressee 
 
 }
 
-ContactGrantleePrintEmail::~ContactGrantleePrintEmail()
+ContactGrantleeEmail::~ContactGrantleeEmail()
 {
 
 }
 
-QString ContactGrantleePrintEmail::email() const
+QString ContactGrantleeEmail::email() const
 {
     const QString email = mEmail.mail();
     return mAddressee.fullEmail(email);
 }
 
-bool ContactGrantleePrintEmail::preferred() const
+bool ContactGrantleeEmail::preferred() const
 {
     const QStringList value = mEmail.parameters().value(QStringLiteral("type"));
     //Validate PREF and pref
     return value.contains(QStringLiteral("pref"), Qt::CaseInsensitive);
 }
 
-QString ContactGrantleePrintEmail::emailFormatted() const
+QString ContactGrantleeEmail::emailFormatted() const
 {
     const QString email = mEmail.mail();
     const QString fullEmail = QString::fromLatin1(QUrl::toPercentEncoding(mAddressee.fullEmail(email)));

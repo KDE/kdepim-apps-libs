@@ -21,14 +21,14 @@
 #include <KContacts/Addressee>
 namespace KAddressBookGrantlee
 {
-class ContactGrantleePrintCryptoObject : public QObject
+class ContactGrantleeCryptoObject : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(QString signaturePreference READ signaturePreference)
     Q_PROPERTY(QString cryptoPreference READ cryptoPreference)
 public:
-    explicit ContactGrantleePrintCryptoObject(const KContacts::Addressee &address, QObject *parent = Q_NULLPTR);
-    ~ContactGrantleePrintCryptoObject();
+    explicit ContactGrantleeCryptoObject(const KContacts::Addressee &address, QObject *parent = Q_NULLPTR);
+    ~ContactGrantleeCryptoObject();
 
     QString signaturePreference() const;
     QString cryptoPreference() const;

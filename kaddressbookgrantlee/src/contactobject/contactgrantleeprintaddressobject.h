@@ -21,7 +21,7 @@
 #include <KContacts/Addressee>
 namespace KAddressBookGrantlee
 {
-class ContactGrantleePrintAddressObject : public QObject
+class ContactGrantleeAddressObject : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(QString type READ type)
@@ -35,8 +35,8 @@ class ContactGrantleePrintAddressObject : public QObject
     Q_PROPERTY(QString formattedAddress READ formattedAddress)
 
 public:
-    explicit ContactGrantleePrintAddressObject(const KContacts::Address &address, QObject *parent = Q_NULLPTR);
-    ~ContactGrantleePrintAddressObject();
+    explicit ContactGrantleeAddressObject(const KContacts::Address &address, QObject *parent = Q_NULLPTR);
+    ~ContactGrantleeAddressObject();
 
     QString type() const;
     QString street() const;

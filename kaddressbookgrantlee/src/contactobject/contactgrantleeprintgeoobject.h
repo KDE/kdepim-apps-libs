@@ -24,7 +24,7 @@
 namespace KAddressBookGrantlee
 {
 
-class ContactGrantleePrintGeoObject : public QObject
+class ContactGrantleeGeoObject : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(float latitude READ latitude)
@@ -33,8 +33,8 @@ class ContactGrantleePrintGeoObject : public QObject
     Q_PROPERTY(bool isValid READ isValid)
 
 public:
-    explicit ContactGrantleePrintGeoObject(const KContacts::Geo &geo, QObject *parent = Q_NULLPTR);
-    ~ContactGrantleePrintGeoObject();
+    explicit ContactGrantleeGeoObject(const KContacts::Geo &geo, QObject *parent = Q_NULLPTR);
+    ~ContactGrantleeGeoObject();
 
     float latitude() const;
     float longitude() const;

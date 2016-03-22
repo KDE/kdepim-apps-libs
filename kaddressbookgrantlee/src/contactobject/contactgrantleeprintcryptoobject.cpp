@@ -24,23 +24,23 @@ inline QString loadCustom(const KContacts::Addressee &contact, const QString &ke
     return contact.custom(QStringLiteral("KADDRESSBOOK"), key);
 }
 
-ContactGrantleePrintCryptoObject::ContactGrantleePrintCryptoObject(const KContacts::Addressee &address, QObject *parent)
+ContactGrantleeCryptoObject::ContactGrantleeCryptoObject(const KContacts::Addressee &address, QObject *parent)
     : QObject(parent),
       mAddress(address)
 {
 }
 
-ContactGrantleePrintCryptoObject::~ContactGrantleePrintCryptoObject()
+ContactGrantleeCryptoObject::~ContactGrantleeCryptoObject()
 {
 
 }
 
-QString ContactGrantleePrintCryptoObject::signaturePreference() const
+QString ContactGrantleeCryptoObject::signaturePreference() const
 {
     return Kleo::signingPreferenceToLabel(Kleo::stringToSigningPreference(loadCustom(mAddress, QStringLiteral("CRYPTOSIGNPREF"))));
 }
 
-QString ContactGrantleePrintCryptoObject::cryptoPreference() const
+QString ContactGrantleeCryptoObject::cryptoPreference() const
 {
     return Kleo::encryptionPreferenceToLabel(Kleo::stringToEncryptionPreference(loadCustom(mAddress, QStringLiteral("CRYPTOENCRYPTPREF"))));
 }

@@ -22,14 +22,14 @@
 #include <KContacts/ResourceLocatorUrl>
 namespace KAddressBookGrantlee
 {
-class ContactGrantleePrintWebSite : public QObject
+class ContactGrantleeWebSite : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(QString url READ url)
     Q_PROPERTY(bool preferred READ preferred)
 public:
-    explicit ContactGrantleePrintWebSite(const KContacts::ResourceLocatorUrl &resourceLocator, QObject *parent = Q_NULLPTR);
-    ~ContactGrantleePrintWebSite();
+    explicit ContactGrantleeWebSite(const KContacts::ResourceLocatorUrl &resourceLocator, QObject *parent = Q_NULLPTR);
+    ~ContactGrantleeWebSite();
     QString url() const;
     bool preferred() const;
 private:

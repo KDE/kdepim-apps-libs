@@ -19,24 +19,24 @@
 #include "akonadi/contact/improtocols.h"
 
 using namespace KAddressBookGrantlee;
-ContactGrantleePrintImObject::ContactGrantleePrintImObject(const QString &type, const QString &address, QObject *parent)
+ContactGrantleeImObject::ContactGrantleeImObject(const QString &type, const QString &address, QObject *parent)
     : QObject(parent),
       mType(type),
       mAddress(address)
 {
 }
 
-ContactGrantleePrintImObject::~ContactGrantleePrintImObject()
+ContactGrantleeImObject::~ContactGrantleeImObject()
 {
 
 }
 
-QString ContactGrantleePrintImObject::type() const
+QString ContactGrantleeImObject::type() const
 {
     return IMProtocols::self()->name(mType);
 }
 
-QString ContactGrantleePrintImObject::address() const
+QString ContactGrantleeImObject::address() const
 {
     return mAddress;
 }
