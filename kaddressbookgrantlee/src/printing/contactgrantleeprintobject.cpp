@@ -22,6 +22,7 @@
 #include "contactgrantleeprintgeoobject.h"
 #include "contactgrantleeprintcryptoobject.h"
 #include "contactgrantleeprintwebsite.h"
+#include "contactgrantleeprintemail.h"
 
 #include <KContacts/PhoneNumber>
 
@@ -54,6 +55,12 @@ ContactGrantleePrintObject::ContactGrantleePrintObject(const KContacts::Addresse
         mListPhones << new ContactGrantleePrintPhoneObject(phone);
     }
 
+    const auto emails = address.emailList();
+    mListEmails.reserve(emails.size());
+    Q_FOREACH (const KContacts::Email &email, emails) {
+        mListEmails << new ContactGrantleePrintEmail(mAddress, email);
+    }
+
 
     const QStringList customs = mAddress.customs();
     if (!customs.empty()) {
@@ -78,6 +85,7 @@ ContactGrantleePrintObject::~ContactGrantleePrintObject()
     qDeleteAll(mListPhones);
     qDeleteAll(mListIm);
     qDeleteAll(mListWebSite);
+    qDeleteAll(mListEmails);
     delete mCryptoObject;
 }
 
@@ -205,6 +213,11 @@ QVariant ContactGrantleePrintObject::addresses() const
 QVariant ContactGrantleePrintObject::webSites() const
 {
     return QVariant::fromValue(mListWebSite);
+}
+
+QVariant ContactGrantleePrintObject::emailsList() const
+{
+    return QVariant::fromValue(mListEmails);
 }
 
 QVariant ContactGrantleePrintObject::phones() const
