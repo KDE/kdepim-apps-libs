@@ -1,4 +1,3 @@
-PROJECT( composerwebenginehtmleditor )
 
 set(composerhtmlSources
   main.cpp
