@@ -16,13 +16,13 @@
 */
 
 #include "contactgrantleeprintobject.h"
-#include "../contactobject/contactgrantleeprintaddressobject.h"
-#include "../contactobject/contactgrantleeprintphoneobject.h"
-#include "../contactobject/contactgrantleeprintimobject.h"
-#include "../contactobject/contactgrantleeprintgeoobject.h"
-#include "../contactobject/contactgrantleeprintcryptoobject.h"
-#include "../contactobject/contactgrantleeprintwebsite.h"
-#include "../contactobject/contactgrantleeprintemail.h"
+#include "../contactobject/contactgrantleeaddressobject.h"
+#include "../contactobject/contactgrantleephoneobject.h"
+#include "../contactobject/contactgrantleeimobject.h"
+#include "../contactobject/contactgrantleegeoobject.h"
+#include "../contactobject/contactgrantleecryptoobject.h"
+#include "../contactobject/contactgrantleewebsite.h"
+#include "../contactobject/contactgrantleeemail.h"
 
 #include <KContacts/PhoneNumber>
 

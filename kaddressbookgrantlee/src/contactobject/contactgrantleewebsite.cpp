@@ -15,41 +15,31 @@
   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-#include "contactgrantleeprintemail.h"
+#include "contactgrantleewebsite.h"
+#include <QUrl>
+
 using namespace KAddressBookGrantlee;
 
-ContactGrantleeEmail::ContactGrantleeEmail(const KContacts::Addressee &addressee, const KContacts::Email &email, QObject *parent)
+ContactGrantleeWebSite::ContactGrantleeWebSite(const KContacts::ResourceLocatorUrl &resourceLocator, QObject *parent)
     : QObject(parent),
-      mEmail(email),
-      mAddressee(addressee)
+      mResourceLocator(resourceLocator)
 {
 
 }
 
-ContactGrantleeEmail::~ContactGrantleeEmail()
+ContactGrantleeWebSite::~ContactGrantleeWebSite()
 {
 
 }
 
-QString ContactGrantleeEmail::email() const
+QString ContactGrantleeWebSite::url() const
 {
-    const QString email = mEmail.mail();
-    return mAddressee.fullEmail(email);
+    return mResourceLocator.url().toDisplayString();
 }
 
-bool ContactGrantleeEmail::preferred() const
+bool ContactGrantleeWebSite::preferred() const
 {
-    const QStringList value = mEmail.parameters().value(QStringLiteral("type"));
+    const QStringList value = mResourceLocator.parameters().value(QStringLiteral("type"));
     //Validate PREF and pref
     return value.contains(QStringLiteral("pref"), Qt::CaseInsensitive);
-}
-
-QString ContactGrantleeEmail::emailFormatted() const
-{
-    const QString email = mEmail.mail();
-    const QString fullEmail = QString::fromLatin1(QUrl::toPercentEncoding(mAddressee.fullEmail(email)));
-
-    const QString url = QStringLiteral("<a href=\"mailto:%1\">%2</a>")
-                        .arg(fullEmail, email);
-    return url;
 }

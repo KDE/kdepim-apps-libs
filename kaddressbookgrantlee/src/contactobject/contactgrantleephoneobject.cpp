@@ -15,7 +15,7 @@
   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-#include "contactgrantleeprintphoneobject.h"
+#include "contactgrantleephoneobject.h"
 
 using namespace KAddressBookGrantlee;
 ContactGrantleePhoneObject::ContactGrantleePhoneObject(const KContacts::PhoneNumber &phone, QObject *parent)

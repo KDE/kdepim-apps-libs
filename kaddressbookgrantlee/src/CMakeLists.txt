@@ -14,13 +14,13 @@ set(kaddressbook_grantlee_LIB_SRCS
 )
 
 set(kaddressbook_grantlee_object_LIB_SRCS
-   contactobject/contactgrantleeprintaddressobject.cpp
-   contactobject/contactgrantleeprintcryptoobject.cpp
-   contactobject/contactgrantleeprintgeoobject.cpp
-   contactobject/contactgrantleeprintimobject.cpp
-   contactobject/contactgrantleeprintphoneobject.cpp
-   contactobject/contactgrantleeprintwebsite.cpp
-   contactobject/contactgrantleeprintemail.cpp
+   contactobject/contactgrantleeaddressobject.cpp
+   contactobject/contactgrantleecryptoobject.cpp
+   contactobject/contactgrantleegeoobject.cpp
+   contactobject/contactgrantleeimobject.cpp
+   contactobject/contactgrantleephoneobject.cpp
+   contactobject/contactgrantleewebsite.cpp
+   contactobject/contactgrantleeemail.cpp
 )
 
 set(kaddressbook_grantlee_printing_LIB_SRCS

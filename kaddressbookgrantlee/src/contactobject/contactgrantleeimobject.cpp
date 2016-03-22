@@ -15,7 +15,7 @@
   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-#include "contactgrantleeprintimobject.h"
+#include "contactgrantleeimobject.h"
 #include "akonadi/contact/improtocols.h"
 
 using namespace KAddressBookGrantlee;
