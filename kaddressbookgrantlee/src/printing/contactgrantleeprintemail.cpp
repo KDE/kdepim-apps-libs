@@ -33,8 +33,8 @@ ContactGrantleePrintEmail::~ContactGrantleePrintEmail()
 
 QString ContactGrantleePrintEmail::email() const
 {
-    //TODO
-    return {};
+    const QString email = mEmail.mail();
+    return mAddressee.fullEmail(email);
 }
 
 QString ContactGrantleePrintEmail::emailFormatted() const
