@@ -21,6 +21,7 @@
 #include "contactgrantleeprintimobject.h"
 #include "contactgrantleeprintgeoobject.h"
 #include "contactgrantleeprintcryptoobject.h"
+#include "contactgrantleeprintwebsite.h"
 
 #include <KContacts/PhoneNumber>
 
@@ -41,11 +42,19 @@ ContactGrantleePrintObject::ContactGrantleePrintObject(const KContacts::Addresse
         mListAddress << new ContactGrantleePrintAddressObject(addr);
     }
 
+    const auto webSites = address.extraUrlList();
+    mListWebSite.reserve(webSites.size());
+    Q_FOREACH (const KContacts::ResourceLocatorUrl &webSite, webSites) {
+        mListWebSite << new ContactGrantleePrintWebSite(webSite);
+    }
+
     const auto phoneNumbers = address.phoneNumbers();
     mListPhones.reserve(phoneNumbers.size());
     Q_FOREACH (const KContacts::PhoneNumber &phone, phoneNumbers) {
         mListPhones << new ContactGrantleePrintPhoneObject(phone);
     }
+
+
     const QStringList customs = mAddress.customs();
     if (!customs.empty()) {
         Q_FOREACH (const QString &custom, customs) {
@@ -68,6 +77,7 @@ ContactGrantleePrintObject::~ContactGrantleePrintObject()
     qDeleteAll(mListAddress);
     qDeleteAll(mListPhones);
     qDeleteAll(mListIm);
+    qDeleteAll(mListWebSite);
     delete mCryptoObject;
 }
 
@@ -190,6 +200,11 @@ QString ContactGrantleePrintObject::department() const
 QVariant ContactGrantleePrintObject::addresses() const
 {
     return QVariant::fromValue(mListAddress);
+}
+
+QVariant ContactGrantleePrintObject::webSites() const
+{
+    return QVariant::fromValue(mListWebSite);
 }
 
 QVariant ContactGrantleePrintObject::phones() const

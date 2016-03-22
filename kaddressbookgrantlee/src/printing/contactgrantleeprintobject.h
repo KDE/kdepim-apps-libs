@@ -27,6 +27,7 @@ class ContactGrantleePrintPhoneObject;
 class ContactGrantleePrintImObject;
 class ContactGrantleePrintGeoObject;
 class ContactGrantleePrintCryptoObject;
+class ContactGrantleePrintWebSite;
 class ContactGrantleePrintObject : public QObject
 {
     Q_OBJECT
@@ -63,6 +64,7 @@ class ContactGrantleePrintObject : public QObject
     Q_PROPERTY(QString assistant READ assistant)
     Q_PROPERTY(QString spouse READ spouse)
     Q_PROPERTY(QString languages READ languages)
+    Q_PROPERTY(QVariant webSites READ webSites)
 
     //Add more functions
 public:
@@ -104,11 +106,13 @@ public:
     QString assistant() const;
     QString spouse() const;
     QString languages() const;
+    QVariant webSites() const;
 private:
     QString imgToDataUrl(const QImage &image) const;
     QList<QObject *> mListAddress;
     QList<QObject *> mListPhones;
     QList<QObject *> mListIm;
+    QList<QObject *> mListWebSite;
     ContactGrantleePrintGeoObject *mGeoObject;
     ContactGrantleePrintCryptoObject *mCryptoObject;
     KContacts::Addressee mAddress;
