@@ -21,7 +21,8 @@
 using namespace KAddressBookGrantlee;
 
 ContactGrantleePrintWebSite::ContactGrantleePrintWebSite(const KContacts::ResourceLocatorUrl &resourceLocator, QObject *parent)
-    : QObject(parent)
+    : QObject(parent),
+      mResourceLocator(resourceLocator)
 {
 
 }
@@ -38,6 +39,7 @@ QString ContactGrantleePrintWebSite::url() const
 
 bool ContactGrantleePrintWebSite::preferred() const
 {
-    //TODO
-    return false;
+    const QStringList value = mResourceLocator.parameters().value(QStringLiteral("type"));
+    //Validate PREF and pref
+    return value.contains(QStringLiteral("pref"), Qt::CaseInsensitive);
 }
