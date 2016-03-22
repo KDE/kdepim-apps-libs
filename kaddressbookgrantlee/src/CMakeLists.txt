@@ -13,22 +13,25 @@ set(kaddressbook_grantlee_LIB_SRCS
   formatter/grantleecontactutils.cpp
 )
 
+set(kaddressbook_grantlee_object_LIB_SRCS
+   contactobject/contactgrantleeprintaddressobject.cpp
+   contactobject/contactgrantleeprintcryptoobject.cpp
+   contactobject/contactgrantleeprintgeoobject.cpp
+   contactobject/contactgrantleeprintimobject.cpp
+   contactobject/contactgrantleeprintphoneobject.cpp
+   contactobject/contactgrantleeprintwebsite.cpp
+   contactobject/contactgrantleeprintemail.cpp
+)
+
 set(kaddressbook_grantlee_printing_LIB_SRCS
-   printing/contactgrantleeprintaddressobject.cpp
-   printing/contactgrantleeprintcryptoobject.cpp
-   printing/contactgrantleeprintgeoobject.cpp
-   printing/contactgrantleeprintimobject.cpp
    printing/contactgrantleeprintobject.cpp
-   printing/contactgrantleeprintphoneobject.cpp
-   printing/contactgrantleeprintwebsite.cpp
-   printing/contactgrantleeprintemail.cpp
    printing/grantleeprint.cpp
 )
 
 
 
 
-add_library(KF5KaddressbookGrantlee ${kaddressbook_grantlee_LIB_SRCS} ${kaddressbook_grantlee_printing_LIB_SRCS})
+add_library(KF5KaddressbookGrantlee ${kaddressbook_grantlee_LIB_SRCS} ${kaddressbook_grantlee_printing_LIB_SRCS} ${kaddressbook_grantlee_object_LIB_SRCS})
 generate_export_header(KF5KaddressbookGrantlee BASE_NAME kaddressbook_grantlee)
 
 add_library(KF5::KaddressbookGrantlee ALIAS KF5KaddressbookGrantlee)
