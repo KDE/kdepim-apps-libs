@@ -37,6 +37,13 @@ QString ContactGrantleePrintEmail::email() const
     return mAddressee.fullEmail(email);
 }
 
+bool ContactGrantleePrintEmail::preferred() const
+{
+    const QStringList value = mEmail.parameters().value(QStringLiteral("type"));
+    //Validate PREF and pref
+    return value.contains(QStringLiteral("pref"), Qt::CaseInsensitive);
+}
+
 QString ContactGrantleePrintEmail::emailFormatted() const
 {
     const QString email = mEmail.mail();
