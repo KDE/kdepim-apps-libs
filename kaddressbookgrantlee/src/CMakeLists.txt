@@ -21,6 +21,7 @@ set(kaddressbook_grantlee_printing_LIB_SRCS
    printing/contactgrantleeprintobject.cpp
    printing/contactgrantleeprintphoneobject.cpp
    printing/contactgrantleeprintwebsite.cpp
+   printing/contactgrantleeprintemail.cpp
    printing/grantleeprint.cpp
 )
 
