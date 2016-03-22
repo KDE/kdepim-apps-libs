@@ -26,6 +26,7 @@ class ContactGrantleePrintWebSite : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(QString url READ url)
+    Q_PROPERTY(bool preferred READ preferred)
 public:
     explicit ContactGrantleePrintWebSite(const KContacts::ResourceLocatorUrl &resourceLocator, QObject *parent = Q_NULLPTR);
     ~ContactGrantleePrintWebSite();
