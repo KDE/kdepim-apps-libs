@@ -32,22 +32,17 @@ ComposerHtmlEditor::ComposerHtmlEditor()
 {
     QSplitter *w = new QSplitter;
 
-#if 0
-    editor = new ComposerEditorNG::ComposerEditor(this);
-    ComposerEditorNG::DomTreeWidget *domWidget = new ComposerEditorNG::DomTreeWidget(editor->view(), this);
-    w->addWidget(domWidget);
-
-    w->addWidget(editor);
+    mEditor = new ComposerEditorWebEngine::ComposerWebEngine(this);
+    w->addWidget(mEditor);
     setCentralWidget(w);
+    mEditor->createAllActions();
+    mEditor->addCreatedActionsToActionCollection(actionCollection());
+    //QList<ComposerEditorNG::ComposerView::ComposerViewAction> lst;
+    //lst << ComposerEditorNG::ComposerView::Bold;
+    //mEditor->createToolBar(lst);
 
-    editor->createAllActions();
-    editor->addCreatedActionsToActionCollection(actionCollection());
-    QList<ComposerEditorNG::ComposerView::ComposerViewAction> lst;
-    lst << ComposerEditorNG::ComposerView::Bold;
-    editor->createToolBar(lst);
     setupActions();
     setupGUI();
-#endif
 }
 
 ComposerHtmlEditor::~ComposerHtmlEditor()
