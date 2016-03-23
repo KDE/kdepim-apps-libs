@@ -52,7 +52,7 @@ ComposerWebEngine::ComposerWebEngine(QWidget *parent)
     if (!file.open(QIODevice::ReadOnly)) {
         KMessageBox::error(this, i18n("Cannot open template file %1.", QFileInfo(file).absoluteFilePath()), i18n("composer editor"));
     } else {
-        setContent(file.readAll());    //, "application/xhtml+xml" );
+        setHtmlContent(QString::fromUtf8(file.readAll()));    //, "application/xhtml+xml" );
     }
 
     page()->runJavaScript(QStringLiteral("document.documentElement.contentEditable = true"));
