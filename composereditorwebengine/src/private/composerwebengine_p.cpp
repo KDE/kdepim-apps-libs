@@ -637,10 +637,10 @@ void ComposerEditorWebEnginePrivate::_k_setTextBackgroundColor()
 
 QVariant ComposerEditorWebEnginePrivate::evaluateJavascript(const QString &command)
 {
-#if 0
-    return q->page()->mainFrame()->evaluateJavaScript(command);
-#endif
+    qDebug()<<" QVariant ComposerEditorWebEnginePrivate::evaluateJavascript(const QString &command)"<<command;
+    q->page()->runJavaScript(command);
     return QVariant();
+    //TODO fix me return value.
 }
 
 void ComposerEditorWebEnginePrivate::_k_slotDeleteText()
@@ -961,20 +961,14 @@ void ComposerEditorWebEnginePrivate::_k_slotAdjustActions()
 
 void ComposerEditorWebEnginePrivate::execCommand(const QString &cmd)
 {
-    #if 0
-    QWebFrame *frame = q->page()->mainFrame();
     const QString js = QStringLiteral("document.execCommand(\"%1\", false, null)").arg(cmd);
-    frame->evaluateJavaScript(js);
-#endif
+    q->page()->runJavaScript(js);
 }
 
 void ComposerEditorWebEnginePrivate::execCommand(const QString &cmd, const QString &arg)
 {
-    #if 0
-    QWebFrame *frame = q->page()->mainFrame();
     const QString js = QStringLiteral("document.execCommand(\"%1\", false, \"%2\")").arg(cmd, arg);
-    frame->evaluateJavaScript(js);
-#endif
+    q->page()->runJavaScript(js);
 }
 
 bool ComposerEditorWebEnginePrivate::queryCommandState(const QString &cmd)
