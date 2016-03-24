@@ -40,13 +40,13 @@ install(TARGETS
     EXPORT KF5ComposerEditorWebEngineTargets ${KF5_INSTALL_TARGETS_DEFAULT_ARGS} ${LIBRARY_NAMELINK}
 )
 
-# ecm_generate_headers(composereditorwebengine_CamelCase_HEADERS
-#   HEADER_NAMES
-#   ComposerEditor
+ecm_generate_headers(composereditorwebengine_CamelCase_HEADERS
+  HEADER_NAMES
+  ComposerWebEngine
 #   ComposerView
-#   REQUIRED_HEADERS composereditorwebengine_HEADERS
-#   PREFIX ComposerEditorWebEngine
-# )
+  REQUIRED_HEADERS composereditorwebengine_HEADERS
+  PREFIX ComposerEditorWebEngine
+)
 
 
 ecm_generate_pri_file(BASE_NAME ComposerEditorWebEngine
