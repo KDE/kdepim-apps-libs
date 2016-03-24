@@ -24,7 +24,7 @@
 #include <QMouseEvent>
 #include <QPainter>
 
-namespace ComposerEditorNG
+namespace ComposerEditorWebEngine
 {
 
 static const int resizeSquareSize = 7;

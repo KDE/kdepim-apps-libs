@@ -26,7 +26,7 @@
 class QPaintEvent;
 class QMouseEvent;
 
-namespace ComposerEditorNG
+namespace ComposerEditorWebEngine
 {
 class ComposerImageResizeWidgetPrivate;
 class ComposerImageResizeWidget : public QWidget

@@ -8,7 +8,7 @@ set(libcomposereditor_webengine_SRCS
     link/composerlinkdialog.cpp
     utils/composereditorutils.cpp
     image/composerimagedialog.cpp
-    #image/composerimageresizetooltip.cpp
+    image/composerimageresizetooltip.cpp
     #image/composerimageresizewidget.cpp
     )
 

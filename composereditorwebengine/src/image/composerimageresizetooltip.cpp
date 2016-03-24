@@ -25,7 +25,7 @@
 #include <QHBoxLayout>
 #include <QLabel>
 
-namespace ComposerEditorNG
+namespace ComposerEditorWebEngine
 {
 
 class ComposerImageResizeToolTipPrivate

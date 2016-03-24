@@ -22,7 +22,7 @@
 
 #include <QWidget>
 
-namespace ComposerEditorNG
+namespace ComposerEditorWebEngine
 {
 class ComposerImageResizeToolTipPrivate;
 
