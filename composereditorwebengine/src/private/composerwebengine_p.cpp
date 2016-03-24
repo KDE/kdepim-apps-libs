@@ -55,6 +55,7 @@
 
 #include <PimCommon/KPimPrintPreviewDialog>
 #include <QDBusConnectionInterface>
+#include <link/composerlinkdialog.h>
 //#include <QWebFrame>
 //#include <QWebElement>
 #include <QPointer>
@@ -695,9 +696,8 @@ void ComposerEditorWebEnginePrivate::_k_slotInsertHorizontalRule()
 
 void ComposerEditorWebEnginePrivate::_k_insertLink()
 {
-#if 0
     const QString selectedText = q->selectedText();
-    QPointer<ComposerWebEngine::ComposerLinkDialog> dlg = new ComposerWebEngine::ComposerLinkDialog(selectedText, q);
+    QPointer<ComposerEditorWebEngine::ComposerLinkDialog> dlg = new ComposerEditorWebEngine::ComposerLinkDialog(selectedText, q);
     if (dlg->exec() == QDialog::Accepted) {
         const QString html(dlg->html());
         if (!html.isEmpty()) {
@@ -705,7 +705,6 @@ void ComposerEditorWebEnginePrivate::_k_insertLink()
         }
     }
     delete dlg;
-#endif
 }
 
 void ComposerEditorWebEnginePrivate::_k_slotEditLink()
