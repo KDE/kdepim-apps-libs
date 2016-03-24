@@ -19,13 +19,13 @@
 */
 
 #include "composerwebengine_p.h"
+#include "table/composertabledialog.h"
 #if 0
 #include "utils/composereditorutils_p.h"
 #include "link/composerlinkdialog.h"
 #include "link/composeranchordialog.h"
 #include "list/composerlistdialog.h"
 #include "image/composerimagedialog.h"
-#include "table/composertabledialog.h"
 #include "image/composerimageresizewidget.h"
 #include "pagecolor/pagecolorbackgrounddialog.h"
 #include "helper/listhelper_p.h"
@@ -681,13 +681,11 @@ void ComposerEditorWebEnginePrivate::_k_slotEditImage()
 
 void ComposerEditorWebEnginePrivate::_k_slotInsertTable()
 {
-#if 0
     QPointer<ComposerTableDialog> dlg = new ComposerTableDialog(q);
     if (dlg->exec() == QDialog::Accepted) {
         execCommand(QStringLiteral("insertHTML"), dlg->html());
     }
     delete dlg;
-#endif
 }
 
 void ComposerEditorWebEnginePrivate::_k_slotInsertHorizontalRule()

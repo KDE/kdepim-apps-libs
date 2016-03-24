@@ -3,6 +3,7 @@ add_definitions(-DTRANSLATION_DOMAIN=\"libcomposereditorwebengine\")
 set(libcomposereditor_webengine_SRCS
     composerwebengine.cpp
     private/composerwebengine_p.cpp
+    table/composertabledialog.cpp
     )
 
 ecm_qt_declare_logging_category(libcomposereditor_webengine_SRCS HEADER composereditorwebengine_debug.h IDENTIFIER COMPOSEREDITORWEBENGINE_LOG CATEGORY_NAME log_composereditorwebengine)
