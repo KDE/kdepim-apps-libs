@@ -53,15 +53,15 @@ find_package(KF5CoreAddons ${KF5_VERSION} CONFIG REQUIRED)
 find_package(KF5DBusAddons ${KF5_VERSION} CONFIG REQUIRED)
 find_package(KF5WidgetsAddons ${KF5_VERSION} CONFIG REQUIRED)
 
-option(QTWEBENGINE_EXPERIMENTAL_OPTION "Enable support for qtwebengine. False by default." FALSE)
+option(QTWEBENGINE_SUPPORT_OPTION "Enable support for qtwebengine. False by default." FALSE)
 
-if (QTWEBENGINE_EXPERIMENTAL_OPTION)
+if (QTWEBENGINE_SUPPORT_OPTION)
     set(QT_REQUIRED_MINIMUM_WEBENGINE_VERSION "5.6")
     find_package(Qt5 ${QT_REQUIRED_MINIMUM_WEBENGINE_VERSION} CONFIG REQUIRED WebEngine WebEngineWidgets)
 endif()
 
 add_subdirectory(composereditor-ng)
-if (QTWEBENGINE_EXPERIMENTAL_OPTION)
+if (QTWEBENGINE_SUPPORT_OPTION)
     add_subdirectory(composereditorwebengine)
 endif()
 add_subdirectory(libfollowupreminder)
