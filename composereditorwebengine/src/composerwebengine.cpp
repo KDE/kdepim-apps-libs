@@ -20,6 +20,7 @@
 
 #include "composerwebengine.h"
 #include "private/composerwebengine_p.h"
+#include "composereditorwebengine_debug.h"
 #include <kpimtextedit/emoticontexteditaction.h>
 #include "kpimtextedit/texttospeech.h"
 #include <QStandardPaths>
@@ -47,7 +48,7 @@ ComposerWebEngine::ComposerWebEngine(QWidget *parent)
       d(new ComposerEditorWebEngine::ComposerEditorWebEnginePrivate(this))
 {
     QFile file(initialHtml());
-    //qCDebug(COMPOSEREDITORNG_LOG) << file.fileName();
+    qCDebug(COMPOSEREDITORWEBENGINE_LOG) << file.fileName();
 
     if (!file.open(QIODevice::ReadOnly)) {
         KMessageBox::error(this, i18n("Cannot open template file %1.", QFileInfo(file).absoluteFilePath()), i18n("composer editor"));

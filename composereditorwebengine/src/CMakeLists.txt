@@ -5,7 +5,7 @@ set(libcomposereditor_webengine_SRCS
     private/composerwebengine_p.cpp
 )
 
-ecm_qt_declare_logging_category(libcomposereditor_webengine_SRCS HEADER composereditorwebengine_debug.h IDENTIFIER COMPOSEREDITORNG_LOG CATEGORY_NAME log_composereditorwebengine)
+ecm_qt_declare_logging_category(libcomposereditor_webengine_SRCS HEADER composereditorwebengine_debug.h IDENTIFIER COMPOSEREDITORWEBENGINE_LOG CATEGORY_NAME log_composereditorwebengine)
 
 
 add_library(KF5ComposerEditorWebEngine ${libcomposereditor_webengine_SRCS})
