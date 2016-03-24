@@ -4,6 +4,9 @@ set(libcomposereditor_webengine_SRCS
     composerwebengine.cpp
     private/composerwebengine_p.cpp
     table/composertabledialog.cpp
+    link/composeranchordialog.cpp
+    link/composerlinkdialog.cpp
+    utils/composereditorutils.cpp
     )
 
 ecm_qt_declare_logging_category(libcomposereditor_webengine_SRCS HEADER composereditorwebengine_debug.h IDENTIFIER COMPOSEREDITORWEBENGINE_LOG CATEGORY_NAME log_composereditorwebengine)
