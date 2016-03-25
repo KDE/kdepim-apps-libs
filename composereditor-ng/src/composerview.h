@@ -160,6 +160,7 @@ private:
     Q_PRIVATE_SLOT(d, void _k_slotEditList())
     Q_PRIVATE_SLOT(d, void _k_slotPasteWithoutFormatting())
     Q_PRIVATE_SLOT(d, void _k_slotInsertSpecialChar())
+    Q_PRIVATE_SLOT(d, void _k_slotInsertAnchor())
 };
 }
 
