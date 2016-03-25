@@ -25,7 +25,6 @@
 #include "link/composerlinkdialog.h"
 #include "link/composeranchordialog.h"
 #include "list/composerlistdialog.h"
-#include "image/composerimagedialog.h"
 #include "image/composerimageresizewidget.h"
 #include "pagecolor/pagecolorbackgrounddialog.h"
 #include "helper/listhelper_p.h"
@@ -977,13 +976,12 @@ bool ComposerEditorWebEnginePrivate::queryCommandState(const QString &cmd)
 
 void ComposerEditorWebEnginePrivate::_k_slotSpeakText()
 {
-    #if 0
     QString text = q->selectedText();
     if (text.isEmpty()) {
-        text = q->page()->mainFrame()->toPlainText();
+        q->page()->toHtml([](const QString &html) {
+            KPIMTextEdit::TextToSpeech::self()->say(html);
+        });
     }
-    KPIMTextEdit::TextToSpeech::self()->say(text);
-#endif
 }
 
 void ComposerEditorWebEnginePrivate::_k_slotPasteWithoutFormatting()
