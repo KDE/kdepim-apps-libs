@@ -55,6 +55,7 @@
 #include <PimCommon/KPimPrintPreviewDialog>
 #include <QDBusConnectionInterface>
 #include <image/composerimagedialog.h>
+#include <link/composeranchordialog.h>
 #include <link/composerlinkdialog.h>
 //#include <QWebFrame>
 //#include <QWebElement>
@@ -1009,13 +1010,11 @@ void ComposerEditorWebEnginePrivate::_k_slotInsertSpecialChar()
 
 void ComposerEditorWebEnginePrivate::_k_slotInsertAnchor()
 {
-    #if 0
-    QPointer<ComposerAnchorDialog> dlg = new ComposerAnchorDialog(q);
+    QPointer<ComposerEditorWebEngine::ComposerAnchorDialog> dlg = new ComposerEditorWebEngine::ComposerAnchorDialog(q);
     if (dlg->exec() == QDialog::Accepted) {
         execCommand(QStringLiteral("insertHTML"), dlg->html());
     }
     delete dlg;
-#endif
 }
 
 QMap<QString, QString> ComposerEditorWebEnginePrivate::localImages() const
