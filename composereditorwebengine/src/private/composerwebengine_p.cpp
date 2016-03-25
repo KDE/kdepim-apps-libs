@@ -20,8 +20,8 @@
 
 #include "composerwebengine_p.h"
 #include "table/composertabledialog.h"
-#if 0
 #include "utils/composereditorutils_p.h"
+#if 0
 #include "link/composerlinkdialog.h"
 #include "link/composeranchordialog.h"
 #include "list/composerlistdialog.h"
@@ -55,6 +55,7 @@
 
 #include <PimCommon/KPimPrintPreviewDialog>
 #include <QDBusConnectionInterface>
+#include <image/composerimagedialog.h>
 #include <link/composerlinkdialog.h>
 //#include <QWebFrame>
 //#include <QWebElement>
@@ -651,24 +652,20 @@ void ComposerEditorWebEnginePrivate::_k_slotDeleteText()
 
 void ComposerEditorWebEnginePrivate::_k_setTextForegroundColor()
 {
-#if 0
-    QColor newColor = ComposerWebEngine::Utils::convertRgbToQColor(evaluateJavascript(QStringLiteral("getTextForegroundColor()")).toString());
+    QColor newColor = ComposerEditorWebEngine::Utils::convertRgbToQColor(evaluateJavascript(QStringLiteral("getTextForegroundColor()")).toString());
     newColor = QColorDialog::getColor(newColor, q);
     if (newColor.isValid()) {
         execCommand(QStringLiteral("foreColor"), newColor.name());
     }
-#endif
 }
 
 void ComposerEditorWebEnginePrivate::_k_slotAddImage()
 {
-#if 0
-    QPointer<ComposerImageDialog> dlg = new ComposerImageDialog(q);
+    QPointer<ComposerEditorWebEngine::ComposerImageDialog> dlg = new ComposerEditorWebEngine::ComposerImageDialog(q);
     if (dlg->exec() == QDialog::Accepted) {
         execCommand(QStringLiteral("insertHTML"), dlg->html());
     }
     delete dlg;
-#endif
 }
 
 void ComposerEditorWebEnginePrivate::_k_slotEditImage()
@@ -682,7 +679,7 @@ void ComposerEditorWebEnginePrivate::_k_slotEditImage()
 
 void ComposerEditorWebEnginePrivate::_k_slotInsertTable()
 {
-    QPointer<ComposerTableDialog> dlg = new ComposerTableDialog(q);
+    QPointer<ComposerEditorWebEngine::ComposerTableDialog> dlg = new ComposerEditorWebEngine::ComposerTableDialog(q);
     if (dlg->exec() == QDialog::Accepted) {
         execCommand(QStringLiteral("insertHTML"), dlg->html());
     }

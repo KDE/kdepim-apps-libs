@@ -144,7 +144,7 @@ void ComposerLinkDialogPrivate::_k_slotOkClicked()
 
 QString ComposerLinkDialogPrivate::html() const
 {
-    const QUrl url = ComposerEditorNG::Utils::guessUrlFromString(linkLocation->text());
+    const QUrl url = ComposerEditorWebEngine::Utils::guessUrlFromString(linkLocation->text());
     if (url.isValid()) {
         const QString targetStr = target->itemData(target->currentIndex()).toString();
         QString html = QStringLiteral("<a ");

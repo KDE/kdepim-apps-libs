@@ -25,7 +25,7 @@
 #include <QString>
 #include <QUrl>
 
-namespace ComposerEditorNG
+namespace ComposerEditorWebEngine
 {
 
 namespace Utils

@@ -22,7 +22,7 @@
 
 #include <QFile>
 
-QColor ComposerEditorNG::Utils::convertRgbToQColor(QString rgb)
+QColor ComposerEditorWebEngine::Utils::convertRgbToQColor(QString rgb)
 {
     rgb.chop(1);
     rgb.remove(QStringLiteral("rgb("));
@@ -35,7 +35,7 @@ QColor ComposerEditorNG::Utils::convertRgbToQColor(QString rgb)
     return QColor();
 }
 
-QUrl ComposerEditorNG::Utils::guessUrlFromString(const QString &string)
+QUrl ComposerEditorWebEngine::Utils::guessUrlFromString(const QString &string)
 {
     const QString urlStr = string.trimmed();
     const QRegExp test(QStringLiteral("^[a-zA-Z]+\\:.*"));
