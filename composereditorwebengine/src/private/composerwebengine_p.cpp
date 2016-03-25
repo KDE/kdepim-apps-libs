@@ -628,13 +628,11 @@ void ComposerEditorWebEnginePrivate::_k_slotInsertHtml()
 
 void ComposerEditorWebEnginePrivate::_k_setTextBackgroundColor()
 {
-#if 0
-    QColor newColor = ComposerWebEngine::Utils::convertRgbToQColor(evaluateJavascript(QStringLiteral("getTextBackgroundColor()")).toString());
+    QColor newColor = ComposerEditorWebEngine::Utils::convertRgbToQColor(evaluateJavascript(QStringLiteral("getTextBackgroundColor()")).toString());
     newColor = QColorDialog::getColor(newColor, q);
     if (newColor.isValid()) {
         execCommand(QStringLiteral("hiliteColor"), newColor.name());
     }
-#endif
 }
 
 QVariant ComposerEditorWebEnginePrivate::evaluateJavascript(const QString &command)
