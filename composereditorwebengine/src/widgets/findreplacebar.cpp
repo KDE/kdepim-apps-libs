@@ -88,18 +88,15 @@ public:
 
 void FindReplaceBarPrivate::_k_slotHighlightAllChanged(bool highLight)
 {
-    bool found = false;
     if (highLight) {
-        QWebEnginePage::FindFlags searchOptions = QWebEnginePage::FindWrapsAroundDocument;
+        QWebEnginePage::FindFlags searchOptions;
         if (caseSensitiveAct->isChecked()) {
             searchOptions |= QWebEnginePage::FindCaseSensitively;
         }
-        found = webView->findText(lastSearchStr, searchOptions);
-    } else {
-        found = webView->findText(QString(), QWebPage::HighlightAllOccurrences);
+        webView->findText(QString(), searchOptions, [this](bool found) {
+            setFoundMatch(found);
+        });
     }
-    setFoundMatch(found);
-
 }
 
 void FindReplaceBarPrivate::_k_closeBar()
@@ -113,7 +110,7 @@ void FindReplaceBarPrivate::_k_closeBar()
 void FindReplaceBarPrivate::clearSelections()
 {
     setFoundMatch(false);
-    webView->findText(QString(), QWebPage::HighlightAllOccurrences);
+    webView->findText(QString());
 }
 
 void FindReplaceBarPrivate::setFoundMatch(bool match)
@@ -145,8 +142,9 @@ void FindReplaceBarPrivate::_k_slotCaseSensitivityChanged(bool sensitivity)
         searchOptions |= QWebEnginePage::FindCaseSensitively;
         webView->findText(QString()); //Clear an existing highligh
     }
-    const bool found = webView->findText(lastSearchStr, searchOptions);
-    setFoundMatch(found);
+    webView->findText(QString(), searchOptions, [this](bool found) {
+        setFoundMatch(found);
+    });
 }
 
 void FindReplaceBarPrivate::_k_slotAutoSearch(const QString &str)
@@ -182,13 +180,14 @@ void FindReplaceBarPrivate::searchText(bool backward, bool isAutoSearch)
         clearSelections();
     }
 
-    webView->findText(QString(), QWebPage::HighlightAllOccurrences); //Clear an existing highlight
+    webView->findText(QString()); //Clear an existing highlight
 
     lastSearchStr = searchWord;
-    const bool found = webView->findText(lastSearchStr, searchOptions);
+    webView->findText(QString(), searchOptions, [this](bool found) {
+        setFoundMatch(found);
+    });
 
-    setFoundMatch(found);
-    messageInfo(backward, isAutoSearch, found);
+    //FIXME messageInfo(backward, isAutoSearch, found);
 }
 
 void FindReplaceBarPrivate::messageInfo(bool backward, bool isAutoSearch, bool found)
