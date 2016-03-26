@@ -35,6 +35,7 @@
 #include <QEvent>
 #include <QKeyEvent>
 #include <QTimer>
+#include <QWebEngineView>
 
 namespace ComposerEditorWebEngine
 {
@@ -42,7 +43,7 @@ namespace ComposerEditorWebEngine
 class FindReplaceBarPrivate
 {
 public:
-    FindReplaceBarPrivate(FindReplaceBar *qq, KWebView *view)
+    FindReplaceBarPrivate(FindReplaceBar *qq, QWebEngineView *view)
         : q(qq),
           search(Q_NULLPTR),
           caseSensitiveAct(Q_NULLPTR),
@@ -82,18 +83,17 @@ public:
     QPushButton *findPreviousButton;
     QPushButton *findNextButton;
     QMenu *optionsMenu;
-    KWebView *webView;
+    QWebEngineView *webView;
 };
 
 void FindReplaceBarPrivate::_k_slotHighlightAllChanged(bool highLight)
 {
     bool found = false;
     if (highLight) {
-        QWebPage::FindFlags searchOptions = QWebPage::FindWrapsAroundDocument;
+        QWebEnginePage::FindFlags searchOptions = QWebEnginePage::FindWrapsAroundDocument;
         if (caseSensitiveAct->isChecked()) {
-            searchOptions |= QWebPage::FindCaseSensitively;
+            searchOptions |= QWebEnginePage::FindCaseSensitively;
         }
-        searchOptions |= QWebPage::HighlightAllOccurrences;
         found = webView->findText(lastSearchStr, searchOptions);
     } else {
         found = webView->findText(QString(), QWebPage::HighlightAllOccurrences);
@@ -140,27 +140,10 @@ void FindReplaceBarPrivate::setFoundMatch(bool match)
 
 void FindReplaceBarPrivate::_k_slotCaseSensitivityChanged(bool sensitivity)
 {
-    QWebPage::FindFlags searchOptions = QWebPage::FindWrapsAroundDocument;
+    QWebEnginePage::FindFlags searchOptions;
     if (sensitivity) {
-        searchOptions |= QWebPage::FindCaseSensitively;
-        webView->findText(QString(), QWebPage::HighlightAllOccurrences); //Clear an existing highligh
-    }
-    if (highlightAll->isChecked()) {
-        searchOptions |= QWebPage::HighlightAllOccurrences;
-    }
-    const bool found = webView->findText(lastSearchStr, searchOptions);
-    setFoundMatch(found);
-}
-
-void FindReplaceBarPrivate::_k_slotFindInSelectionFirst(bool findSelectionFirst)
-{
-    QWebPage::FindFlags searchOptions = QWebPage::FindWrapsAroundDocument;
-    if (findSelectionFirst) {
-        searchOptions |= QWebPage::FindBeginsInSelection;
-        webView->findText(QString(), QWebPage::HighlightAllOccurrences); //Clear an existing highligh
-    }
-    if (highlightAll->isChecked()) {
-        searchOptions |= QWebPage::HighlightAllOccurrences;
+        searchOptions |= QWebEnginePage::FindCaseSensitively;
+        webView->findText(QString()); //Clear an existing highligh
     }
     const bool found = webView->findText(lastSearchStr, searchOptions);
     setFoundMatch(found);
@@ -185,21 +168,14 @@ void FindReplaceBarPrivate::_k_slotSearchText(bool backward, bool isAutoSearch)
 
 void FindReplaceBarPrivate::searchText(bool backward, bool isAutoSearch)
 {
-    QWebPage::FindFlags searchOptions = QWebPage::FindWrapsAroundDocument;
+    QWebEnginePage::FindFlags searchOptions;
 
     if (backward) {
-        searchOptions |= QWebPage::FindBackward;
+        searchOptions |= QWebEnginePage::FindBackward;
     }
     if (caseSensitiveAct->isChecked()) {
-        searchOptions |= QWebPage::FindCaseSensitively;
+        searchOptions |= QWebEnginePage::FindCaseSensitively;
     }
-    if (highlightAll->isChecked()) {
-        searchOptions |= QWebPage::HighlightAllOccurrences;
-    }
-    if (findInSelection->isChecked()) {
-        searchOptions |= QWebPage::FindBeginsInSelection;
-    }
-
     const QString searchWord(search->text());
 
     if (!isAutoSearch && !lastSearchStr.contains(searchWord, Qt::CaseSensitive)) {
@@ -236,7 +212,7 @@ void FindReplaceBarPrivate::_k_slotFindPrevious()
     searchText(true, false);
 }
 
-FindReplaceBar::FindReplaceBar(KWebView *parent)
+FindReplaceBar::FindReplaceBar(QWebEngineView *parent)
     : QWidget(parent), d(new FindReplaceBarPrivate(this, parent))
 {
     QHBoxLayout *lay = new QHBoxLayout(this);
@@ -279,14 +255,6 @@ FindReplaceBar::FindReplaceBar(KWebView *parent)
     d->optionsMenu = new QMenu(optionsBtn);
     d->caseSensitiveAct = d->optionsMenu->addAction(i18n("Case sensitive"));
     d->caseSensitiveAct->setCheckable(true);
-
-    d->highlightAll = d->optionsMenu->addAction(i18n("Highlight all matches"));
-    d->highlightAll->setCheckable(true);
-    connect(d->highlightAll, SIGNAL(toggled(bool)), this, SLOT(_k_slotHighlightAllChanged(bool)));
-
-    d->findInSelection = d->optionsMenu->addAction(i18n("Search In Selection First"));
-    d->findInSelection->setCheckable(true);
-    connect(d->findInSelection, SIGNAL(toggled(bool)), this, SLOT(_k_slotFindInSelectionFirst(bool)));
 
     optionsBtn->setMenu(d->optionsMenu);
     lay->addWidget(optionsBtn);
