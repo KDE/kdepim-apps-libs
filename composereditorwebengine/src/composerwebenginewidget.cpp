@@ -19,6 +19,7 @@
 
 #include "composerwebenginewidget.h"
 #include "composerwebengine.h"
+#include "widgets/findreplacebar.h"
 
 #include <QVBoxLayout>
 
@@ -34,14 +35,19 @@ public:
 
     }
     void initialize();
+    FindReplaceBar *findReplace;
     ComposerWebEngine *webEngine;
     ComposerWebEngineWidget *q;
 };
 
 void ComposerWebEngineWidgetPrivate::initialize()
 {
-
-
+    QVBoxLayout *vbox = new QVBoxLayout(q);
+    webEngine = new ComposerWebEngine(q);
+    vbox->addWidget(webEngine);
+    findReplace = new FindReplaceBar(webEngine);
+    vbox->addWidget(findReplace);
+    //TODO add texttospeech ?
 }
 
 ComposerWebEngineWidget::ComposerWebEngineWidget(QWidget *parent)
