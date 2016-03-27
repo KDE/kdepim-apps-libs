@@ -11,6 +11,7 @@ set(libcomposereditor_webengine_SRCS
     image/composerimageresizetooltip.cpp
     #image/composerimageresizewidget.cpp
     widgets/findreplacebar.cpp
+    composerwebenginewidget.cpp
     )
 
 ecm_qt_declare_logging_category(libcomposereditor_webengine_SRCS HEADER composereditorwebengine_debug.h IDENTIFIER COMPOSEREDITORWEBENGINE_LOG CATEGORY_NAME log_composereditorwebengine)
