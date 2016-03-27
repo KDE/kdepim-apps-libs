@@ -52,7 +52,7 @@ install(TARGETS
 ecm_generate_headers(composereditorwebengine_CamelCase_HEADERS
     HEADER_NAMES
     ComposerWebEngine
-    #   ComposerView
+    ComposerWebEngineWidget
     REQUIRED_HEADERS composereditorwebengine_HEADERS
     PREFIX ComposerEditorWebEngine
     )
