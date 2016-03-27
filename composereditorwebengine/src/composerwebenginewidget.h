@@ -21,11 +21,12 @@
 #define COMPOSERWEBENGINEWIDGET_H
 
 #include <QWidget>
+#include "composereditorwebengine_export.h"
 
 namespace ComposerEditorWebEngine
 {
 class ComposerWebEngineWidgetPrivate;
-class ComposerWebEngineWidget : public QWidget
+class COMPOSEREDITORWEBENGINE_EXPORT ComposerWebEngineWidget : public QWidget
 {
     Q_OBJECT
 public:
