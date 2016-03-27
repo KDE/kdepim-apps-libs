@@ -18,21 +18,35 @@
 */
 
 #include "composerwebenginewidget.h"
+#include "composerwebengine.h"
+
+#include <QVBoxLayout>
 
 using namespace ComposerEditorWebEngine;
 
 class ComposerEditorWebEngine::ComposerWebEngineWidgetPrivate
 {
 public:
-    ComposerWebEngineWidgetPrivate()
+    ComposerWebEngineWidgetPrivate(ComposerWebEngineWidget *qq)
+        : webEngine(Q_NULLPTR),
+          q(qq)
     {
 
     }
+    void initialize();
+    ComposerWebEngine *webEngine;
+    ComposerWebEngineWidget *q;
 };
+
+void ComposerWebEngineWidgetPrivate::initialize()
+{
+
+
+}
 
 ComposerWebEngineWidget::ComposerWebEngineWidget(QWidget *parent)
     : QWidget(parent),
-      d(new ComposerEditorWebEngine::ComposerWebEngineWidgetPrivate)
+      d(new ComposerEditorWebEngine::ComposerWebEngineWidgetPrivate(this))
 {
 
 }
@@ -41,3 +55,4 @@ ComposerWebEngineWidget::~ComposerWebEngineWidget()
 {
     delete d;
 }
+
