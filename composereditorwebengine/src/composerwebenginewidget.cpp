@@ -44,8 +44,10 @@ void ComposerWebEngineWidgetPrivate::initialize()
 {
     QVBoxLayout *vbox = new QVBoxLayout(q);
     webEngine = new ComposerWebEngine(q);
+    webEngine->setObjectName(QStringLiteral("webengine"));
     vbox->addWidget(webEngine);
     findReplace = new FindReplaceBar(webEngine);
+    findReplace->setObjectName(QStringLiteral("findbar"));
     vbox->addWidget(findReplace);
     //TODO add texttospeech ?
 }
