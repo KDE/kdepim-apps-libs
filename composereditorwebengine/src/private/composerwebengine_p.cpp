@@ -22,8 +22,6 @@
 #include "table/composertabledialog.h"
 #include "utils/composereditorutils_p.h"
 #if 0
-#include "link/composerlinkdialog.h"
-#include "link/composeranchordialog.h"
 #include "list/composerlistdialog.h"
 #include "image/composerimageresizewidget.h"
 #include "pagecolor/pagecolorbackgrounddialog.h"
@@ -45,7 +43,7 @@
 #include <QColorDialog>
 #include <KMessageBox>
 #include <QApplication>
-//#include "composereditor_debug.h"
+#include "composereditorwebengine_debug.h"
 #include <KFontAction>
 #include <KRun>
 #include <QUrl>
@@ -57,8 +55,6 @@
 #include <image/composerimagedialog.h>
 #include <link/composeranchordialog.h>
 #include <link/composerlinkdialog.h>
-//#include <QWebFrame>
-//#include <QWebElement>
 #include <QPointer>
 #include <QPrinter>
 #include <QPrintDialog>
@@ -111,11 +107,6 @@ ComposerEditorWebEnginePrivate::ComposerEditorWebEnginePrivate(ComposerEditorWeb
       imageResizeWidget(Q_NULLPTR)
 {
 }
-
-#define FORWARD_ACTION(action1, action2) \
-    q->connect(action1, SIGNAL(triggered()), getAction(action2), SLOT(trigger()));\
-    q->connect(getAction(action2), SIGNAL(changed()), SLOT(_k_slotAdjustActions()));
-
 #define FOLLOW_CHECK(a1, a2) a1->setChecked(getAction(a2)->isChecked())
 
 void ComposerEditorWebEnginePrivate::createAction(ComposerWebEngine::ComposerWebEngineAction type)
@@ -128,7 +119,6 @@ void ComposerEditorWebEnginePrivate::createAction(ComposerWebEngine::ComposerWeb
             bold.setBold(true);
             action_text_bold->setFont(bold);
             action_text_bold->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_B));
-            //FORWARD_ACTION(action_text_bold, QWebPage::ToggleBold);
             htmlEditorActionList.append(action_text_bold);
             q->connect(action_text_bold, SIGNAL(triggered(bool)), SLOT(_k_slotBold(bool)));
         }
@@ -141,7 +131,7 @@ void ComposerEditorWebEnginePrivate::createAction(ComposerWebEngine::ComposerWeb
             italic.setItalic(true);
             action_text_italic->setFont(italic);
             action_text_italic->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_I));
-            //FORWARD_ACTION(action_text_italic, QWebPage::ToggleItalic);
+            q->connect(action_text_italic, SIGNAL(triggered(bool)), SLOT(_k_slotItalic(bool)));
             htmlEditorActionList.append(action_text_italic);
         }
         break;
@@ -153,7 +143,7 @@ void ComposerEditorWebEnginePrivate::createAction(ComposerWebEngine::ComposerWeb
             underline.setUnderline(true);
             action_text_underline->setFont(underline);
             action_text_underline->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_U));
-            //FORWARD_ACTION(action_text_underline, QWebPage::ToggleUnderline);
+            q->connect(action_text_underline, SIGNAL(triggered(bool)), SLOT(_k_slotUnderline(bool)));
             htmlEditorActionList.append(action_text_underline);
         }
         break;
@@ -162,7 +152,7 @@ void ComposerEditorWebEnginePrivate::createAction(ComposerWebEngine::ComposerWeb
         if (!action_text_strikeout) {
             action_text_strikeout = new KToggleAction(QIcon::fromTheme(QStringLiteral("format-text-strikethrough")), i18nc("@action", "&Strike Out"), q);
             action_text_strikeout->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_L));
-            //FORWARD_ACTION(action_text_strikeout, QWebPage::ToggleStrikethrough);
+            q->connect(action_text_strikeout, SIGNAL(triggered(bool)), SLOT(_k_slotStrikeout(bool)));
             htmlEditorActionList.append(action_text_strikeout);
         }
         break;
@@ -172,7 +162,7 @@ void ComposerEditorWebEnginePrivate::createAction(ComposerWebEngine::ComposerWeb
             action_align_left = new KToggleAction(QIcon::fromTheme(QStringLiteral("format-justify-left")), i18nc("@action", "Align &Left"), q);
             action_align_left->setIconText(i18nc("@label left justify", "Left"));
             htmlEditorActionList.append((action_align_left));
-            //FORWARD_ACTION(action_align_left, QWebPage::AlignLeft);
+            q->connect(action_align_left, SIGNAL(triggered(bool)), SLOT(_k_slotJustifyLeft(bool)));
         }
         break;
     }
@@ -233,7 +223,7 @@ void ComposerEditorWebEnginePrivate::createAction(ComposerWebEngine::ComposerWeb
         if (!action_text_superscript) {
             action_text_superscript = new KToggleAction(QIcon::fromTheme(QStringLiteral("format-text-superscript")), i18nc("@action", "Superscript"), q);
             htmlEditorActionList.append((action_text_superscript));
-            //FORWARD_ACTION(action_text_superscript, QWebPage::ToggleSuperscript);
+            q->connect(action_text_superscript, SIGNAL(triggered(bool)), SLOT(_k_slotSuperscript(bool)));
         }
         break;
     }
@@ -716,6 +706,31 @@ void ComposerEditorWebEnginePrivate::_k_slotOpenLink()
 void ComposerEditorWebEnginePrivate::_k_slotBold(bool b)
 {
     execCommand(QStringLiteral("bold"), b ? QStringLiteral("true") : QStringLiteral("false"));
+}
+
+void ComposerEditorWebEnginePrivate::_k_slotItalic(bool b)
+{
+    execCommand(QStringLiteral("italic"), b ? QStringLiteral("true") : QStringLiteral("false"));
+}
+
+void ComposerEditorWebEnginePrivate::_k_slotUnderline(bool b)
+{
+    execCommand(QStringLiteral("underline"), b ? QStringLiteral("true") : QStringLiteral("false"));
+}
+
+void ComposerEditorWebEnginePrivate::_k_slotStrikeout(bool b)
+{
+    execCommand(QStringLiteral("strikeThrough"), b ? QStringLiteral("true") : QStringLiteral("false"));
+}
+
+void ComposerEditorWebEnginePrivate::_k_slotSuperscript(bool b)
+{
+    execCommand(QStringLiteral("superscript"), b ? QStringLiteral("true") : QStringLiteral("false"));
+}
+
+void ComposerEditorWebEnginePrivate::_k_slotJustifyLeft(bool b)
+{
+    execCommand(QStringLiteral("justifyLeft"), b ? QStringLiteral("true") : QStringLiteral("false"));
 }
 
 void ComposerEditorWebEnginePrivate::_k_setFontSize(int fontSize)

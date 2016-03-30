@@ -92,6 +92,11 @@ public:
     void _k_slotInsertAnchor();
     void _k_slotOpenLink();
     void _k_slotBold(bool);
+    void _k_slotItalic(bool);
+    void _k_slotUnderline(bool);
+    void _k_slotStrikeout(bool);
+    void _k_slotSuperscript(bool b);
+    void _k_slotJustifyLeft(bool b);
 
     QAction *getAction(QWebEnginePage::WebAction action) const;
     QVariant evaluateJavascript(const QString &command);

@@ -17,6 +17,11 @@ set(libcomposereditor_webengine_SRCS
 ecm_qt_declare_logging_category(libcomposereditor_webengine_SRCS HEADER composereditorwebengine_debug.h IDENTIFIER COMPOSEREDITORWEBENGINE_LOG CATEGORY_NAME log_composereditorwebengine)
 
 
+kconfig_add_kcfg_files(libcomposereditor_webengine_SRCS
+   globalsetting_composereditorwebengine.kcfgc 
+)
+
+
 add_library(KF5ComposerEditorWebEngine ${libcomposereditor_webengine_SRCS})
 generate_export_header(KF5ComposerEditorWebEngine BASE_NAME composereditorwebengine)
 add_library(KF5::ComposerEditorWebEngine ALIAS KF5ComposerEditorWebEngine)
