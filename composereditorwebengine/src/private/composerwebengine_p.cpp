@@ -556,15 +556,6 @@ void ComposerEditorWebEnginePrivate::showImageResizeWidget()
     }
 #endif
 }
-#if 0
-static QVariant execJScript(QWebElement element, const QString &script)
-{
-    if (element.isNull()) {
-        return QVariant();
-    }
-    return element.evaluateJavaScript(script);
-}
-#endif
 
 void ComposerEditorWebEnginePrivate::_k_setFormatType(QAction *act)
 {
