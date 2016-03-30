@@ -130,6 +130,7 @@ void ComposerEditorWebEnginePrivate::createAction(ComposerWebEngine::ComposerWeb
             action_text_bold->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_B));
             //FORWARD_ACTION(action_text_bold, QWebPage::ToggleBold);
             htmlEditorActionList.append(action_text_bold);
+            q->connect(action_text_bold, SIGNAL(triggered(bool)), SLOT(_k_slotBold(bool)));
         }
         break;
     }
@@ -677,7 +678,8 @@ void ComposerEditorWebEnginePrivate::_k_slotInsertTable()
 
 void ComposerEditorWebEnginePrivate::_k_slotInsertHorizontalRule()
 {
-    execCommand(QStringLiteral("insertHTML"), QStringLiteral("<hr>"));
+
+    execCommand(QStringLiteral("insertHorizontalRule"));
 }
 
 void ComposerEditorWebEnginePrivate::_k_insertLink()
@@ -709,6 +711,11 @@ void ComposerEditorWebEnginePrivate::_k_slotOpenLink()
         new KRun(QUrl(href), 0);
     }
 #endif
+}
+
+void ComposerEditorWebEnginePrivate::_k_slotBold(bool b)
+{
+    execCommand(QStringLiteral("bold"), b ? QStringLiteral("true") : QStringLiteral("false"));
 }
 
 void ComposerEditorWebEnginePrivate::_k_setFontSize(int fontSize)

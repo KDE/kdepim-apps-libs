@@ -157,6 +157,7 @@ private:
     Q_PRIVATE_SLOT(d, void _k_slotPasteWithoutFormatting())
     Q_PRIVATE_SLOT(d, void _k_slotInsertSpecialChar())
     Q_PRIVATE_SLOT(d, void _k_slotInsertAnchor())
+    Q_PRIVATE_SLOT(d, void _k_slotBold(bool))
 };
 }
 #endif // COMPOSERWEBENGINE_H

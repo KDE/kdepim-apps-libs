@@ -91,6 +91,7 @@ public:
     void _k_slotInsertSpecialChar();
     void _k_slotInsertAnchor();
     void _k_slotOpenLink();
+    void _k_slotBold(bool);
 
     QAction *getAction(QWebEnginePage::WebAction action) const;
     QVariant evaluateJavascript(const QString &command);
