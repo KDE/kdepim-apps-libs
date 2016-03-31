@@ -103,6 +103,8 @@ public:
     void _k_slotSubscript(bool b);
     void _k_slotListIndent();
     void _k_slotListDedent();
+    void _k_slotOrderedList(bool b);
+    void _k_slotUnOrderedList(bool b);
 
     QAction *getAction(QWebEnginePage::WebAction action) const;
     QVariant evaluateJavascript(const QString &command);

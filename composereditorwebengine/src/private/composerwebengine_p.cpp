@@ -249,8 +249,6 @@ void ComposerEditorWebEnginePrivate::createAction(ComposerWebEngine::ComposerWeb
             action_list_dedent = new QAction(QIcon::fromTheme(QStringLiteral("format-indent-less")), i18nc("@action", "Decrease Indent"), q);
             htmlEditorActionList.append(action_list_dedent);
             q->connect(action_list_dedent, SIGNAL(triggered(bool)), SLOT(_k_slotListDedent()));
-
-            //FORWARD_ACTION(action_list_dedent, QWebPage::Outdent);
         }
         break;
     }
@@ -258,7 +256,7 @@ void ComposerEditorWebEnginePrivate::createAction(ComposerWebEngine::ComposerWeb
         if (!action_ordered_list) {
             action_ordered_list = new KToggleAction(QIcon::fromTheme(QStringLiteral("format-list-ordered")), i18n("Ordered Style"), q);
             htmlEditorActionList.append(action_ordered_list);
-            ////FORWARD_ACTION(action_ordered_list, QWebPage::InsertOrderedList);
+            q->connect(action_ordered_list, SIGNAL(triggered(bool)), SLOT(_k_slotOrderedList(bool)));
         }
         break;
     }
@@ -266,6 +264,8 @@ void ComposerEditorWebEnginePrivate::createAction(ComposerWebEngine::ComposerWeb
         if (!action_unordered_list) {
             action_unordered_list = new KToggleAction(QIcon::fromTheme(QStringLiteral("format-list-unordered")), i18n("Unordered List"), q);
             htmlEditorActionList.append(action_unordered_list);
+            q->connect(action_unordered_list, SIGNAL(triggered(bool)), SLOT(_k_slotUnOrderedList(bool)));
+
             //FORWARD_ACTION(action_unordered_list, QWebPage::InsertUnorderedList);
         }
         break;
@@ -767,6 +767,16 @@ void ComposerEditorWebEnginePrivate::_k_slotListIndent()
 void ComposerEditorWebEnginePrivate::_k_slotListDedent()
 {
     execCommand(QStringLiteral("outdent"));
+}
+
+void ComposerEditorWebEnginePrivate::_k_slotOrderedList(bool b)
+{
+    execCommand(QStringLiteral("insertOrderedList"), convertBooleanToString(b));
+}
+
+void ComposerEditorWebEnginePrivate::_k_slotUnOrderedList(bool b)
+{
+    execCommand(QStringLiteral("insertUnorderedList"), convertBooleanToString(b));
 }
 
 void ComposerEditorWebEnginePrivate::_k_setFontSize(int fontSize)
