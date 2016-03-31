@@ -21,13 +21,14 @@
 #include "composerwebengine_p.h"
 #include "table/composertabledialog.h"
 #include "utils/composereditorutils_p.h"
+#include "globalsetting_composereditorwebengine.h"
 #if 0
 #include "list/composerlistdialog.h"
 #include "image/composerimageresizewidget.h"
 #include "pagecolor/pagecolorbackgrounddialog.h"
 #include "helper/listhelper_p.h"
-#include "globalsetting_composereditorng.h"
 #endif
+
 #include <kpimtextedit/emoticontexteditaction.h>
 #include <kpimtextedit/inserthtmldialog.h>
 #include <kpimtextedit/selectspecialchardialog.h>
@@ -515,13 +516,12 @@ void ComposerEditorWebEnginePrivate::connectActionGroup()
 
 bool ComposerEditorWebEnginePrivate::checkSpellingEnabled()
 {
-    //return ComposerWebEngine::GlobalSettingsBase::autoSpellChecking();
-    return false;
+    return ComposerEditorWebEngine::GlobalSettingsBase::autoSpellChecking();
 }
 
 void ComposerEditorWebEnginePrivate::_k_changeAutoSpellChecking(bool checked)
 {
-    //ComposerWebEngine::GlobalSettingsBase::setAutoSpellChecking(checked);
+    ComposerEditorWebEngine::GlobalSettingsBase::setAutoSpellChecking(checked);
 }
 
 QAction *ComposerEditorWebEnginePrivate::getAction(QWebEnginePage::WebAction action) const
