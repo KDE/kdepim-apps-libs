@@ -69,8 +69,8 @@ void ComposerWebEngineWidgetPrivate::initialize()
     findReplace = new FindReplaceBar(webEngine);
     findReplace->setObjectName(QStringLiteral("findbar"));
     vbox->addWidget(findReplace);
+    q->connect(webEngine, &ComposerWebEngine::showFindBar, findReplace, &FindReplaceBar::showAndFocus);
 #if 0
-    q->connect(view, &ComposerView::showFindBar, findReplaceBar, &FindReplaceBar::showAndFocus);
     q->connect(view, &ComposerView::openLink, q, &ComposerEditor::openLink);
     q->connect(view->page(), &QWebPage::contentsChanged, q, &ComposerEditor::textChanged);
 #endif
@@ -139,32 +139,32 @@ bool ComposerWebEngineWidget::enableRichText() const
 
 bool ComposerWebEngineWidget::isModified() const
 {
-    return false; //FIXME d->webEngine->page()->isModified();
+    return true; //FIXME d->webEngine->page()->isModified();
 }
 
 void ComposerWebEngineWidget::paste()
 {
-    //TODO d->webEngine->page()->triggerAction(QWebPage::Paste);
+    d->webEngine->page()->triggerAction(QWebEnginePage::Paste);
 }
 
 void ComposerWebEngineWidget::cut()
 {
-    //TODO d->webEngine->page()->triggerAction(QWebPage::Cut);
+    d->webEngine->page()->triggerAction(QWebEnginePage::Cut);
 }
 
 void ComposerWebEngineWidget::copy()
 {
-    //TODO d->webEngine->page()->triggerAction(QWebPage::Copy);
+    d->webEngine->page()->triggerAction(QWebEnginePage::Copy);
 }
 
 void ComposerWebEngineWidget::undo()
 {
-    //TODO d->webEngine->page()->triggerAction(QWebPage::Undo);
+    d->webEngine->page()->triggerAction(QWebEnginePage::Undo);
 }
 
 void ComposerWebEngineWidget::redo()
 {
-    //TODO d->webEngine->page()->triggerAction(QWebPage::Redo);
+    d->webEngine->page()->triggerAction(QWebEnginePage::Redo);
 }
 
 QAction *ComposerWebEngineWidget::action(ComposerWebEngine::ComposerWebEngineAction action) const
@@ -179,7 +179,7 @@ ComposerWebEngine *ComposerWebEngineWidget::view() const
 
 void ComposerWebEngineWidget::setHtmlContent(const QString &html)
 {
-    //TODO d->webEngine->setHtmlContent(html);
+    d->webEngine->setHtmlContent(html);
 }
 
 QString ComposerWebEngineWidget::htmlContent() const
