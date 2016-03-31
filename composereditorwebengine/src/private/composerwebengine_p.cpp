@@ -190,7 +190,6 @@ void ComposerEditorWebEnginePrivate::createAction(ComposerWebEngine::ComposerWeb
             action_align_justify->setIconText(i18nc("@label justify fill", "Justify"));
             htmlEditorActionList.append((action_align_justify));
             q->connect(action_align_justify, SIGNAL(triggered(bool)), SLOT(_k_slotJustifyFull(bool)));
-            //FORWARD_ACTION(action_align_justify, QWebPage::AlignJustified);
         }
         break;
     }
@@ -216,7 +215,7 @@ void ComposerEditorWebEnginePrivate::createAction(ComposerWebEngine::ComposerWeb
         if (!action_text_subscript) {
             action_text_subscript = new KToggleAction(QIcon::fromTheme(QStringLiteral("format-text-subscript")), i18nc("@action", "Subscript"), q);
             htmlEditorActionList.append((action_text_subscript));
-            //FORWARD_ACTION(action_text_subscript, QWebPage::ToggleSubscript);
+            q->connect(action_text_subscript, SIGNAL(triggered(bool)), SLOT(_k_slotSubscript(bool)));
         }
         break;
     }
@@ -240,7 +239,7 @@ void ComposerEditorWebEnginePrivate::createAction(ComposerWebEngine::ComposerWeb
         if (!action_list_indent) {
             action_list_indent = new QAction(QIcon::fromTheme(QStringLiteral("format-indent-more")), i18nc("@action", "Increase Indent"), q);
             htmlEditorActionList.append((action_list_indent));
-            //FORWARD_ACTION(action_list_indent, QWebPage::Indent);
+            q->connect(action_list_indent, SIGNAL(triggered(bool)), SLOT(_k_slotListIndent()));
         }
         break;
     }
@@ -248,6 +247,8 @@ void ComposerEditorWebEnginePrivate::createAction(ComposerWebEngine::ComposerWeb
         if (!action_list_dedent) {
             action_list_dedent = new QAction(QIcon::fromTheme(QStringLiteral("format-indent-less")), i18nc("@action", "Decrease Indent"), q);
             htmlEditorActionList.append(action_list_dedent);
+            q->connect(action_list_dedent, SIGNAL(triggered(bool)), SLOT(_k_slotListDedent()));
+
             //FORWARD_ACTION(action_list_dedent, QWebPage::Outdent);
         }
         break;
@@ -669,7 +670,6 @@ void ComposerEditorWebEnginePrivate::_k_slotInsertTable()
 
 void ComposerEditorWebEnginePrivate::_k_slotInsertHorizontalRule()
 {
-
     execCommand(QStringLiteral("insertHorizontalRule"));
 }
 
@@ -704,49 +704,69 @@ void ComposerEditorWebEnginePrivate::_k_slotOpenLink()
 #endif
 }
 
+inline QString convertBooleanToString(bool b)
+{
+    return b ? QStringLiteral("true") : QStringLiteral("false");
+}
+
 void ComposerEditorWebEnginePrivate::_k_slotBold(bool b)
 {
-    execCommand(QStringLiteral("bold"), b ? QStringLiteral("true") : QStringLiteral("false"));
+    execCommand(QStringLiteral("bold"), convertBooleanToString(b));
 }
 
 void ComposerEditorWebEnginePrivate::_k_slotItalic(bool b)
 {
-    execCommand(QStringLiteral("italic"), b ? QStringLiteral("true") : QStringLiteral("false"));
+    execCommand(QStringLiteral("italic"), convertBooleanToString(b));
 }
 
 void ComposerEditorWebEnginePrivate::_k_slotUnderline(bool b)
 {
-    execCommand(QStringLiteral("underline"), b ? QStringLiteral("true") : QStringLiteral("false"));
+    execCommand(QStringLiteral("underline"), convertBooleanToString(b));
 }
 
 void ComposerEditorWebEnginePrivate::_k_slotStrikeout(bool b)
 {
-    execCommand(QStringLiteral("strikeThrough"), b ? QStringLiteral("true") : QStringLiteral("false"));
+    execCommand(QStringLiteral("strikeThrough"), convertBooleanToString(b));
 }
 
 void ComposerEditorWebEnginePrivate::_k_slotSuperscript(bool b)
 {
-    execCommand(QStringLiteral("superscript"), b ? QStringLiteral("true") : QStringLiteral("false"));
+    execCommand(QStringLiteral("superscript"), convertBooleanToString(b));
 }
 
 void ComposerEditorWebEnginePrivate::_k_slotJustifyLeft(bool b)
 {
-    execCommand(QStringLiteral("justifyLeft"), b ? QStringLiteral("true") : QStringLiteral("false"));
+    execCommand(QStringLiteral("justifyLeft"), convertBooleanToString(b));
 }
 
 void ComposerEditorWebEnginePrivate::_k_slotJustifyCenter(bool b)
 {
-    execCommand(QStringLiteral("justifyCenter"), b ? QStringLiteral("true") : QStringLiteral("false"));
+    execCommand(QStringLiteral("justifyCenter"), convertBooleanToString(b));
 }
 
 void ComposerEditorWebEnginePrivate::_k_slotJustifyRight(bool b)
 {
-    execCommand(QStringLiteral("justifyRight"), b ? QStringLiteral("true") : QStringLiteral("false"));
+    execCommand(QStringLiteral("justifyRight"), convertBooleanToString(b));
 }
 
 void ComposerEditorWebEnginePrivate::_k_slotJustifyFull(bool b)
 {
-    execCommand(QStringLiteral("justifyFull"), b ? QStringLiteral("true") : QStringLiteral("false"));
+    execCommand(QStringLiteral("justifyFull"), convertBooleanToString(b));
+}
+
+void ComposerEditorWebEnginePrivate::_k_slotSubscript(bool b)
+{
+    execCommand(QStringLiteral("subscript"), convertBooleanToString(b));
+}
+
+void ComposerEditorWebEnginePrivate::_k_slotListIndent()
+{
+    execCommand(QStringLiteral("indent"));
+}
+
+void ComposerEditorWebEnginePrivate::_k_slotListDedent()
+{
+    execCommand(QStringLiteral("outdent"));
 }
 
 void ComposerEditorWebEnginePrivate::_k_setFontSize(int fontSize)

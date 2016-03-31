@@ -100,6 +100,9 @@ public:
     void _k_slotJustifyCenter(bool b);
     void _k_slotJustifyRight(bool b);
     void _k_slotJustifyFull(bool b);
+    void _k_slotSubscript(bool b);
+    void _k_slotListIndent();
+    void _k_slotListDedent();
 
     QAction *getAction(QWebEnginePage::WebAction action) const;
     QVariant evaluateJavascript(const QString &command);
