@@ -265,8 +265,6 @@ void ComposerEditorWebEnginePrivate::createAction(ComposerWebEngine::ComposerWeb
             action_unordered_list = new KToggleAction(QIcon::fromTheme(QStringLiteral("format-list-unordered")), i18n("Unordered List"), q);
             htmlEditorActionList.append(action_unordered_list);
             q->connect(action_unordered_list, SIGNAL(triggered(bool)), SLOT(_k_slotUnOrderedList(bool)));
-
-            //FORWARD_ACTION(action_unordered_list, QWebPage::InsertUnorderedList);
         }
         break;
     }
@@ -383,7 +381,7 @@ void ComposerEditorWebEnginePrivate::createAction(ComposerWebEngine::ComposerWeb
     case ComposerWebEngine::FormatReset: {
         if (!action_format_reset) {
             action_format_reset = new QAction(QIcon::fromTheme(QStringLiteral("draw-eraser")), i18n("Reset Font Settings"), q);
-            //FORWARD_ACTION(action_format_reset, QWebPage::RemoveFormat);
+            q->connect(action_format_reset, SIGNAL(triggered()), q, SLOT(_k_slotResetFormat()));
         }
         break;
     }
@@ -777,6 +775,11 @@ void ComposerEditorWebEnginePrivate::_k_slotOrderedList(bool b)
 void ComposerEditorWebEnginePrivate::_k_slotUnOrderedList(bool b)
 {
     execCommand(QStringLiteral("insertUnorderedList"), convertBooleanToString(b));
+}
+
+void ComposerEditorWebEnginePrivate::_k_slotResetFormat()
+{
+    execCommand(QStringLiteral("removeFormat"));
 }
 
 void ComposerEditorWebEnginePrivate::_k_setFontSize(int fontSize)

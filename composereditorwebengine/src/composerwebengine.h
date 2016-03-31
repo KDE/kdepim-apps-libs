@@ -171,6 +171,7 @@ private:
     Q_PRIVATE_SLOT(d, void _k_slotListDedent())
     Q_PRIVATE_SLOT(d, void _k_slotOrderedList(bool b))
     Q_PRIVATE_SLOT(d, void _k_slotUnOrderedList(bool b))
+    Q_PRIVATE_SLOT(d, void _k_slotResetFormat())
 };
 }
 #endif // COMPOSERWEBENGINE_H

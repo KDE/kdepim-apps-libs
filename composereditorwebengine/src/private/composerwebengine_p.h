@@ -105,6 +105,7 @@ public:
     void _k_slotListDedent();
     void _k_slotOrderedList(bool b);
     void _k_slotUnOrderedList(bool b);
+    void _k_slotResetFormat();
 
     QAction *getAction(QWebEnginePage::WebAction action) const;
     QVariant evaluateJavascript(const QString &command);
