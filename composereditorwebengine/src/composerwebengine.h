@@ -163,6 +163,9 @@ private:
     Q_PRIVATE_SLOT(d, void _k_slotStrikeout(bool))
     Q_PRIVATE_SLOT(d, void _k_slotSuperscript(bool b))
     Q_PRIVATE_SLOT(d, void _k_slotJustifyLeft(bool b))
+    Q_PRIVATE_SLOT(d, void _k_slotJustifyCenter(bool b))
+    Q_PRIVATE_SLOT(d, void _k_slotJustifyRight(bool b))
+    Q_PRIVATE_SLOT(d, void _k_slotJustifyFull(bool b))
 };
 }
 #endif // COMPOSERWEBENGINE_H

@@ -171,7 +171,7 @@ void ComposerEditorWebEnginePrivate::createAction(ComposerWebEngine::ComposerWeb
             action_align_center = new KToggleAction(QIcon::fromTheme(QStringLiteral("format-justify-center")), i18nc("@action", "Align &Center"), q);
             action_align_center->setIconText(i18nc("@label center justify", "Center"));
             htmlEditorActionList.append((action_align_center));
-            //FORWARD_ACTION(action_align_center, QWebPage::AlignCenter);
+            q->connect(action_align_center, SIGNAL(triggered(bool)), SLOT(_k_slotJustifyCenter(bool)));
         }
         break;
     }
@@ -180,7 +180,7 @@ void ComposerEditorWebEnginePrivate::createAction(ComposerWebEngine::ComposerWeb
             action_align_right = new KToggleAction(QIcon::fromTheme(QStringLiteral("format-justify-right")), i18nc("@action", "Align &Right"), q);
             action_align_right->setIconText(i18nc("@label right justify", "Right"));
             htmlEditorActionList.append((action_align_right));
-            //FORWARD_ACTION(action_align_right, QWebPage::AlignRight);
+            q->connect(action_align_right, SIGNAL(triggered(bool)), SLOT(_k_slotJustifyRight(bool)));
         }
         break;
     }
@@ -189,6 +189,7 @@ void ComposerEditorWebEnginePrivate::createAction(ComposerWebEngine::ComposerWeb
             action_align_justify = new KToggleAction(QIcon::fromTheme(QStringLiteral("format-justify-fill")), i18nc("@action", "&Justify"), q);
             action_align_justify->setIconText(i18nc("@label justify fill", "Justify"));
             htmlEditorActionList.append((action_align_justify));
+            q->connect(action_align_justify, SIGNAL(triggered(bool)), SLOT(_k_slotJustifyFull(bool)));
             //FORWARD_ACTION(action_align_justify, QWebPage::AlignJustified);
         }
         break;
@@ -731,6 +732,21 @@ void ComposerEditorWebEnginePrivate::_k_slotSuperscript(bool b)
 void ComposerEditorWebEnginePrivate::_k_slotJustifyLeft(bool b)
 {
     execCommand(QStringLiteral("justifyLeft"), b ? QStringLiteral("true") : QStringLiteral("false"));
+}
+
+void ComposerEditorWebEnginePrivate::_k_slotJustifyCenter(bool b)
+{
+    execCommand(QStringLiteral("justifyCenter"), b ? QStringLiteral("true") : QStringLiteral("false"));
+}
+
+void ComposerEditorWebEnginePrivate::_k_slotJustifyRight(bool b)
+{
+    execCommand(QStringLiteral("justifyRight"), b ? QStringLiteral("true") : QStringLiteral("false"));
+}
+
+void ComposerEditorWebEnginePrivate::_k_slotJustifyFull(bool b)
+{
+    execCommand(QStringLiteral("justifyFull"), b ? QStringLiteral("true") : QStringLiteral("false"));
 }
 
 void ComposerEditorWebEnginePrivate::_k_setFontSize(int fontSize)

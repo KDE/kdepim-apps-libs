@@ -97,6 +97,9 @@ public:
     void _k_slotStrikeout(bool);
     void _k_slotSuperscript(bool b);
     void _k_slotJustifyLeft(bool b);
+    void _k_slotJustifyCenter(bool b);
+    void _k_slotJustifyRight(bool b);
+    void _k_slotJustifyFull(bool b);
 
     QAction *getAction(QWebEnginePage::WebAction action) const;
     QVariant evaluateJavascript(const QString &command);
