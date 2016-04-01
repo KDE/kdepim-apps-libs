@@ -21,13 +21,15 @@
 #define COMPOSERWEBENGINE_H
 
 #include <QWebEngineView>
+#include <MessageViewer/WebEngineView>
+
 #include "composereditorwebengine_export.h"
 class KActionCollection;
 class KToolBar;
 namespace ComposerEditorWebEngine
 {
 class ComposerEditorWebEnginePrivate;
-class COMPOSEREDITORWEBENGINE_EXPORT ComposerWebEngine : public QWebEngineView
+class COMPOSEREDITORWEBENGINE_EXPORT ComposerWebEngine : public MessageViewer::WebEngineView
 {
     Q_OBJECT
 public:

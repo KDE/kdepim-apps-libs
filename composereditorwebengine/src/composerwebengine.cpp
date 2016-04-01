@@ -44,7 +44,7 @@
 using namespace ComposerEditorWebEngine;
 
 ComposerWebEngine::ComposerWebEngine(QWidget *parent)
-    : QWebEngineView(parent),
+    : MessageViewer::WebEngineView(parent),
       d(new ComposerEditorWebEngine::ComposerEditorWebEnginePrivate(this))
 {
     QFile file(initialHtml());
