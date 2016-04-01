@@ -53,13 +53,13 @@ find_package(KF5PimCommon ${PIMCOMMON_LIB_VERSION} CONFIG REQUIRED)
 find_package(KF5CoreAddons ${KF5_VERSION} CONFIG REQUIRED)
 find_package(KF5DBusAddons ${KF5_VERSION} CONFIG REQUIRED)
 find_package(KF5WidgetsAddons ${KF5_VERSION} CONFIG REQUIRED)
-find_package(KF5MessageViewer ${KDEPIM_APPS_LIB_VERSION} CONFIG REQUIRED)
 
 option(QTWEBENGINE_SUPPORT_OPTION "Enable support for qtwebengine. False by default." FALSE)
 
 if (QTWEBENGINE_SUPPORT_OPTION)
     set(QT_REQUIRED_MINIMUM_WEBENGINE_VERSION "5.6")
     find_package(Qt5 ${QT_REQUIRED_MINIMUM_WEBENGINE_VERSION} CONFIG REQUIRED WebEngine WebEngineWidgets)
+    find_package(KF5MessageViewer ${KDEPIM_APPS_LIB_VERSION} CONFIG REQUIRED)
 endif()
 
 add_subdirectory(composereditor-ng)
