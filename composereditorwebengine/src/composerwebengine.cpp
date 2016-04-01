@@ -43,6 +43,7 @@
 #include <MessageViewer/WebHitTest>
 #include <MessageViewer/MailWebEnginePage>
 #include <QWebEngineSettings>
+#include <WebHitTestResult>
 using namespace ComposerEditorWebEngine;
 
 ComposerWebEngine::ComposerWebEngine(QWidget *parent)
@@ -223,6 +224,13 @@ void ComposerWebEngine::contextMenuEvent(QContextMenuEvent *e)
 
 void ComposerWebEngine::slotWebHitFinished(const MessageViewer::WebHitTestResult &result)
 {
+    QMenu *menu = new QMenu;
+
+    const bool linkSelected = !result.linkUrl().isValid();
+    addExtraAction(menu);
+    menu->exec(mapToGlobal(result.pos()));
+    delete menu;
+
 #if 0
     d->hideImageResizeWidget();
     d->contextMenuResult = page()->mainFrame()->hitTestContent(event->pos());
