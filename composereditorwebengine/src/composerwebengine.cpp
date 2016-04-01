@@ -85,7 +85,7 @@ void ComposerWebEngine::createActions(const QList<ComposerWebEngineAction> &lstA
 
     d->connectActionGroup();
 }
-
+//TODO fixme add to kactioncollection
 void ComposerWebEngine::createAllActions()
 {
     for (uint i = 0; i < LastType; ++i) {
