@@ -227,7 +227,17 @@ void ComposerWebEngine::slotWebHitFinished(const MessageViewer::WebHitTestResult
 {
     QMenu *menu = new QMenu;
 
-    const bool linkSelected = !result.linkUrl().isValid();
+    const bool linkSelected = result.linkUrl().isValid();
+    const bool imageSelected = result.imageUrl().isValid();
+    if (imageSelected) {
+        QAction *editImageAction = menu->addAction(i18n("Edit Image..."));
+        connect(editImageAction, SIGNAL(triggered(bool)), this, SLOT(_k_slotEditImage()));
+    } else if (linkSelected) {
+        QAction *editLinkAction = menu->addAction(i18n("Edit Link..."));
+        connect(editLinkAction, SIGNAL(triggered(bool)), this, SLOT(_k_slotEditLink()));
+        QAction *openLinkAction = menu->addAction(i18n("Open Link"));
+        connect(openLinkAction, SIGNAL(triggered(bool)), this, SLOT(_k_slotOpenLink()));
+    }
     addExtraAction(menu);
     menu->exec(mapToGlobal(result.pos()));
     delete menu;
