@@ -50,6 +50,7 @@ ComposerWebEngine::ComposerWebEngine(QWidget *parent)
     : MessageViewer::WebEngineView(parent),
       d(new ComposerEditorWebEngine::ComposerEditorWebEnginePrivate(this))
 {
+    settings()->setAttribute(QWebEngineSettings::JavascriptEnabled, true);
     d->mPageEngine = new MessageViewer::MailWebEnginePage(this);
     setPage(d->mPageEngine);
 
@@ -61,8 +62,8 @@ ComposerWebEngine::ComposerWebEngine(QWidget *parent)
     } else {
         setHtmlContent(QString::fromUtf8(file.readAll()));    //, "application/xhtml+xml" );
     }
-    settings()->setAttribute(QWebEngineSettings::JavascriptEnabled, true);
-    d->mPageEngine->runJavaScript(QStringLiteral("document.documentElement.contentEditable = true"));
+    d->execCommand(QStringLiteral("contentReadOnly"), QStringLiteral("false"));
+    page()->runJavaScript(QStringLiteral("document.documentElement.contentEditable = true"));
     setFocusPolicy(Qt::WheelFocus);
 }
 
