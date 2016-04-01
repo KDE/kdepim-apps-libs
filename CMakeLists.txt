@@ -59,6 +59,7 @@ option(QTWEBENGINE_SUPPORT_OPTION "Enable support for qtwebengine. False by defa
 if (QTWEBENGINE_SUPPORT_OPTION)
     set(QT_REQUIRED_MINIMUM_WEBENGINE_VERSION "5.6")
     find_package(Qt5 ${QT_REQUIRED_MINIMUM_WEBENGINE_VERSION} CONFIG REQUIRED WebEngine WebEngineWidgets)
+    #Laurent Need to remove cyclic dependancy ? Copy files ?
     find_package(KF5MessageViewer ${KDEPIM_APPS_LIB_VERSION} CONFIG REQUIRED)
 endif()
 
