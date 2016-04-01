@@ -105,7 +105,8 @@ ComposerEditorWebEnginePrivate::ComposerEditorWebEnginePrivate(ComposerEditorWeb
       action_insert_specialchar(Q_NULLPTR),
       action_insert_anchor(Q_NULLPTR),
       q(qq),
-      imageResizeWidget(Q_NULLPTR)
+      imageResizeWidget(Q_NULLPTR),
+      mPageEngine(Q_NULLPTR)
 {
 }
 #define FOLLOW_CHECK(a1, a2) a1->setChecked(getAction(a2)->isChecked())

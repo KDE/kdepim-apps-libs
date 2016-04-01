@@ -40,13 +40,18 @@
 #include <KSelectAction>
 #include <QMenu>
 #include <QIcon>
-
+#include <MessageViewer/WebHitTest>
+#include <MessageViewer/MailWebEnginePage>
+#include <QWebEngineSettings>
 using namespace ComposerEditorWebEngine;
 
 ComposerWebEngine::ComposerWebEngine(QWidget *parent)
     : MessageViewer::WebEngineView(parent),
       d(new ComposerEditorWebEngine::ComposerEditorWebEnginePrivate(this))
 {
+    d->mPageEngine = new MessageViewer::MailWebEnginePage(this);
+    setPage(d->mPageEngine);
+
     QFile file(initialHtml());
     qCDebug(COMPOSEREDITORWEBENGINE_LOG) << file.fileName();
 
@@ -55,8 +60,9 @@ ComposerWebEngine::ComposerWebEngine(QWidget *parent)
     } else {
         setHtmlContent(QString::fromUtf8(file.readAll()));    //, "application/xhtml+xml" );
     }
-
-    page()->runJavaScript(QStringLiteral("document.documentElement.contentEditable = true"));
+    settings()->setAttribute(QWebEngineSettings::JavascriptEnabled, true);
+    d->mPageEngine->runJavaScript(QStringLiteral("document.documentElement.contentEditable = true"));
+    setFocusPolicy(Qt::WheelFocus);
 }
 
 ComposerWebEngine::~ComposerWebEngine()
@@ -209,7 +215,13 @@ void ComposerWebEngine::addCreatedActionsToActionCollection(KActionCollection *a
     }
 }
 
-void ComposerWebEngine::contextMenuEvent(QContextMenuEvent *event)
+void ComposerWebEngine::contextMenuEvent(QContextMenuEvent *e)
+{
+    MessageViewer::WebHitTest *webHit = d->mPageEngine->hitTestContent(e->pos());
+    connect(webHit, &MessageViewer::WebHitTest::finished, this, &ComposerWebEngine::slotWebHitFinished);
+}
+
+void ComposerWebEngine::slotWebHitFinished(const MessageViewer::WebHitTestResult &result)
 {
 #if 0
     d->hideImageResizeWidget();
