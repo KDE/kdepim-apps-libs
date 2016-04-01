@@ -110,7 +110,8 @@ public:
     void _k_slotOrderedList(bool b);
     void _k_slotUnOrderedList(bool b);
     void _k_slotResetFormat();
-
+    void _k_slotDirectionLtr();
+    void _k_slotDirectionRtl();
     QAction *getAction(QWebEnginePage::WebAction action) const;
     QVariant evaluateJavascript(const QString &command);
     void execCommand(const QString &cmd);

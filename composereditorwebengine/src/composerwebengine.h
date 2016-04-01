@@ -180,6 +180,8 @@ private:
     Q_PRIVATE_SLOT(d, void _k_slotOrderedList(bool b))
     Q_PRIVATE_SLOT(d, void _k_slotUnOrderedList(bool b))
     Q_PRIVATE_SLOT(d, void _k_slotResetFormat())
+    Q_PRIVATE_SLOT(d, void _k_slotDirectionLtr())
+    Q_PRIVATE_SLOT(d, void _k_slotDirectionRtl())
 };
 }
 #endif // COMPOSERWEBENGINE_H

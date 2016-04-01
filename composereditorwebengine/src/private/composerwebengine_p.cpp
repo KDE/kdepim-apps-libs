@@ -200,6 +200,7 @@ void ComposerEditorWebEnginePrivate::createAction(ComposerWebEngine::ComposerWeb
             action_direction_ltr = new KToggleAction(QIcon::fromTheme(QStringLiteral("format-text-direction-ltr")), i18nc("@action", "Left-to-Right"), q);
             action_direction_ltr->setIconText(i18nc("@label left-to-right", "Left-to-Right"));
             htmlEditorActionList.append(action_direction_ltr);
+            q->connect(action_direction_ltr, SIGNAL(triggered(bool)), SLOT(_k_slotDirectionLtr()));
             //FORWARD_ACTION(action_direction_ltr, QWebPage::SetTextDirectionLeftToRight);
         }
         break;
@@ -209,7 +210,7 @@ void ComposerEditorWebEnginePrivate::createAction(ComposerWebEngine::ComposerWeb
             action_direction_rtl = new KToggleAction(QIcon::fromTheme(QStringLiteral("format-text-direction-rtl")), i18nc("@action", "Right-to-Left"), q);
             action_direction_rtl->setIconText(i18nc("@label right-to-left", "Right-to-Left"));
             htmlEditorActionList.append(action_direction_rtl);
-            //FORWARD_ACTION(action_direction_rtl, QWebPage::SetTextDirectionRightToLeft);
+            q->connect(action_direction_rtl, SIGNAL(triggered(bool)), SLOT(_k_slotDirectionRtl()));
         }
         break;
     }
@@ -781,6 +782,16 @@ void ComposerEditorWebEnginePrivate::_k_slotUnOrderedList(bool b)
 void ComposerEditorWebEnginePrivate::_k_slotResetFormat()
 {
     execCommand(QStringLiteral("removeFormat"));
+}
+
+void ComposerEditorWebEnginePrivate::_k_slotDirectionLtr()
+{
+    qDebug() << "void ComposerEditorWebEnginePrivate::_k_slotDirectionLtr() not implemented";
+}
+
+void ComposerEditorWebEnginePrivate::_k_slotDirectionRtl()
+{
+    qDebug() << "void ComposerEditorWebEnginePrivate::_k_slotDirectionRtl() not implemented";
 }
 
 void ComposerEditorWebEnginePrivate::_k_setFontSize(int fontSize)
