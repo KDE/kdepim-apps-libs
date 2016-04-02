@@ -1,5 +1,4 @@
 # kdepim-apps-lib
 log_composereditorng kdepim-apps-lib (composereditorng)
-log_composereditorwebengine kdepim-apps-lib (composereditorwebengine)
 log_libsendlater kdepim-apps-lib (libsendlater)
 log_kdepimdbusinterface kdepim-apps-lib (kdepimdbusinterface)
