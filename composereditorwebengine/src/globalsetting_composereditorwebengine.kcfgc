@@ -1,9 +1,0 @@
-File=composereditorwebengine.kcfg
-ClassName=GlobalSettingsBase
-NameSpace=ComposerEditorWebEngine
-Visibility=COMPOSEREDITORWEBENGINE_EXPORT
-Mutators=true
-Singleton=true
-ItemAccessors=true
-IncludeFiles=qapplication.h,composereditorwebengine_export.h
-
