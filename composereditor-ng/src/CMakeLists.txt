@@ -52,7 +52,7 @@ add_library(KF5::ComposerEditorNG ALIAS KF5ComposerEditorNG)
 
 target_link_libraries(KF5ComposerEditorNG
  PRIVATE
-   KF5::WebKit Qt5::WebKitWidgets KF5::PimTextEdit KF5::SonnetCore KF5::PimCommon KF5::KIOWidgets KF5::XmlGui KF5::Completion Qt5::PrintSupport
+   KF5::WebKit Qt5::WebKitWidgets KF5::PimTextEdit KF5::SonnetCore KF5::PimCommon KF5::KIOWidgets KF5::XmlGui KF5::Completion Qt5::PrintSupport KF5::I18n KF5::SonnetUi
 )
 
 target_include_directories(KF5ComposerEditorNG INTERFACE "$<INSTALL_INTERFACE:${KDE_INSTALL_INCLUDEDIR_KF5}/ComposerEditorNG/;${KDE_INSTALL_INCLUDEDIR_KF5}/composereditorng>")
