@@ -23,8 +23,6 @@ add_library(KF5KdepimDBusInterfaces ${kdepimdbusinterfaces_LIB_SRCS})
 generate_export_header(KF5KdepimDBusInterfaces BASE_NAME kdepimdbusinterfaces)
 add_library(KF5::KdepimDBusInterfaces ALIAS KF5KdepimDBusInterfaces)
 
-add_dependencies(KF5KdepimDBusInterfaces kmail_xml)
-
 target_link_libraries(KF5KdepimDBusInterfaces
 PUBLIC
     KF5::AkonadiCore
