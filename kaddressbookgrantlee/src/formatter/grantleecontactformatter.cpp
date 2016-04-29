@@ -65,6 +65,7 @@ public:
     ~Private()
     {
         delete mEngine;
+        mTemplateLoader.clear();
     }
 
     void changeGrantleePath(const QString &path)
