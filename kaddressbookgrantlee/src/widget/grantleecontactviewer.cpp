@@ -33,6 +33,7 @@ GrantleeContactViewer::GrantleeContactViewer(QWidget *parent)
 
 GrantleeContactViewer::~GrantleeContactViewer()
 {
+    delete mFormatter;
 }
 
 QString GrantleeContactViewer::kaddressBookAbsoluteThemePath()
