@@ -1,7 +1,8 @@
 project(kdepim-apps-lib)
 cmake_minimum_required(VERSION 2.8.12)
 
-find_package(ECM 5.20.0 CONFIG REQUIRED)
+set(KF5_VERSION "5.22.0")
+find_package(ECM ${KF5_VERSION} CONFIG REQUIRED)
 set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH})
 set(LIBRARY_NAMELINK)
 include(GenerateExportHeader)
@@ -19,7 +20,6 @@ include(ECMAddTests)
 
 set(PIM_VERSION "5.2.42")
 
-set(KF5_VERSION "5.20.0")
 set(KDEPIM_APPS_LIB_VERSION ${PIM_VERSION})
 set(KDEPIMLIBS_LIB_VERSION "5.2.40")
 set(QT_REQUIRED_VERSION "5.6.0")
