@@ -144,7 +144,7 @@ QString ContactGrantleePrintObject::languages() const
         langList.append(lang.language());
     }
     if (!langList.isEmpty()) {
-        result = langList.join(QStringLiteral(","));
+        result = langList.join(QLatin1Char(','));
     }
     return result;
 }
