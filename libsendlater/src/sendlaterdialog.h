@@ -51,13 +51,12 @@ public:
 
     SendLaterAction action() const;
 
-private Q_SLOTS:
+private:
     void slotRecurrenceClicked(bool);
     void slotOkClicked();
     void slotDelay(bool delayEnabled);
 
     void slotDateChanged(const QString &date);
-private:
     void load(SendLater::SendLaterInfo *info);
 
 private:

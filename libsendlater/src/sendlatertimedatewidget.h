@@ -41,11 +41,8 @@ public:
 Q_SIGNALS:
     void dateTimeChanged(const QDateTime &);
     void dateChanged(const QString &);
-
-private Q_SLOTS:
-    void slotDateTimeChanged();
-
 private:
+    void slotDateTimeChanged();
     KTimeComboBox *mTimeComboBox;
     KDateComboBox *mDateComboBox;
 };
