@@ -24,6 +24,7 @@
 */
 
 #include "urihandler.h"
+#include "kdepimdbusinterface_debug.h"
 #include <kmailinterface.h>
 #include <korganizerinterface.h>
 #include <Akonadi/Contact/ContactEditorDialog>
@@ -41,17 +42,22 @@ bool UriHandler::process(const QString &uri, const Akonadi::Item &item)
 
     if (uri.startsWith(QStringLiteral("kmail:"))) {
         // make sure kmail is running or the part is shown
-        KToolInvocation::startServiceByDesktopPath(QStringLiteral("kmail"));
+        const QString desktopFile = QStandardPaths::locate(QStandardPaths::ApplicationsLocation, QStringLiteral("org.kde.kmail.desktop"));
+        QString error;
+        if (KToolInvocation::startServiceByDesktopPath(desktopFile, QStringList(), &error) == 0) {
+            // parse string, show
+            int colon = uri.indexOf(QLatin1Char(':'));
+            // extract 'number' from 'kmail:<number>/<id>'
+            QString serialNumberStr = uri.mid(colon + 1);
+            serialNumberStr = serialNumberStr.left(serialNumberStr.indexOf(QLatin1Char('/')));
 
-        // parse string, show
-        int colon = uri.indexOf(QLatin1Char(':'));
-        // extract 'number' from 'kmail:<number>/<id>'
-        QString serialNumberStr = uri.mid(colon + 1);
-        serialNumberStr = serialNumberStr.left(serialNumberStr.indexOf(QLatin1Char('/')));
-
-        OrgKdeKmailKmailInterface kmailInterface(QStringLiteral("org.kde.kmail"), QStringLiteral("/KMail"), QDBusConnection::sessionBus());
-        kmailInterface.showMail(serialNumberStr.toLongLong());
-        return true;
+            OrgKdeKmailKmailInterface kmailInterface(QStringLiteral("org.kde.kmail"), QStringLiteral("/KMail"), QDBusConnection::sessionBus());
+            kmailInterface.showMail(serialNumberStr.toLongLong());
+            return true;
+        } else {
+            qCWarning(KDEPIMDBUSINTERFACE_LOG) << "Failure starting kmail:" << error;
+            return false;
+        }
     } else if (uri.startsWith(QStringLiteral("mailto:"))) {
         QDesktopServices::openUrl(QUrl(uri));
         return true;
@@ -68,23 +74,34 @@ bool UriHandler::process(const QString &uri, const Akonadi::Item &item)
         }
     } else if (uri.startsWith(QStringLiteral("urn:x-ical"))) {
         // make sure korganizer is running or the part is shown
-        KToolInvocation::startServiceByDesktopPath(QStringLiteral("korganizer"));
+        const QString desktopFile = QStandardPaths::locate(QStandardPaths::ApplicationsLocation, QStringLiteral("org.kde.korganizer.desktop"));
+        QString error;
+        if (KToolInvocation::startServiceByDesktopPath(desktopFile, QStringList(), &error) == 0) {
+            // we must work around QUrl breakage (it doesn't know about URNs)
+            const QString uid = QUrl::fromPercentEncoding(uri.toLatin1()).mid(11);
+            OrgKdeKorganizerKorganizerInterface korganizerIface(
+                        QStringLiteral("org.kde.korganizer"), QStringLiteral("/Korganizer"), QDBusConnection::sessionBus());
 
-        // we must work around QUrl breakage (it doesn't know about URNs)
-        const QString uid = QUrl::fromPercentEncoding(uri.toLatin1()).mid(11);
-        OrgKdeKorganizerKorganizerInterface korganizerIface(
-            QStringLiteral("org.kde.korganizer"), QStringLiteral("/Korganizer"), QDBusConnection::sessionBus());
-
-        return korganizerIface.showIncidence(uid);
+            return korganizerIface.showIncidence(uid);
+        } else {
+            qCWarning(KDEPIMDBUSINTERFACE_LOG) << "Failure starting korganizer:" << error;
+            return false;
+        }
     } else if (uri.startsWith(QStringLiteral("akonadi:"))) {
         const QUrl url(uri);
         const QString mimeType = QUrlQuery(url).queryItemValue(QStringLiteral("type"));
         if (mimeType.toLower() == QLatin1String("message/rfc822")) {
             // make sure kmail is running or the part is shown
-            KToolInvocation::startServiceByDesktopPath(QStringLiteral("kmail"));
-            OrgKdeKmailKmailInterface kmailInterface(QStringLiteral("org.kde.kmail"), QStringLiteral("/KMail"), QDBusConnection::sessionBus());
-            kmailInterface.viewMessage(uri);
-            return true;
+            const QString desktopFile = QStandardPaths::locate(QStandardPaths::ApplicationsLocation, QStringLiteral("org.kde.kmail.desktop"));
+            QString error;
+            if (KToolInvocation::startServiceByDesktopPath(desktopFile, QStringList(), &error) == 0) {
+                OrgKdeKmailKmailInterface kmailInterface(QStringLiteral("org.kde.kmail"), QStringLiteral("/KMail"), QDBusConnection::sessionBus());
+                kmailInterface.viewMessage(uri);
+                return true;
+            } else {
+                qCWarning(KDEPIMDBUSINTERFACE_LOG) << "Failure starting kmail:" << error;
+                return false;
+            }
         }
     } else {  // no special URI, let KDE handle it
         new KRun(QUrl(uri), 0);
