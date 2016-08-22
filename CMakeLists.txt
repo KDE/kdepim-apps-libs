@@ -49,8 +49,7 @@ find_package(KF5PimCommon ${PIMCOMMON_LIB_VERSION} CONFIG REQUIRED)
 
 find_package(Grantlee5 "5.1" CONFIG REQUIRED)
 
-set(Prison_MIN_VERSION "1.2.2")
-find_package(KF5Prison ${Prison_MIN_VERSION})
+find_package(KF5Prison ${KF5_VERSION})
 set_package_properties(Prison PROPERTIES
     DESCRIPTION "Prison"
     URL "http://projects.kde.org/prison"
