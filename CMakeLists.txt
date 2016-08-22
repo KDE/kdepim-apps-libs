@@ -49,6 +49,15 @@ find_package(KF5PimCommon ${PIMCOMMON_LIB_VERSION} CONFIG REQUIRED)
 
 find_package(Grantlee5 "5.1" CONFIG REQUIRED)
 
+set(Prison_MIN_VERSION "1.2.2")
+find_package(KF5Prison ${Prison_MIN_VERSION})
+set_package_properties(Prison PROPERTIES
+    DESCRIPTION "Prison"
+    URL "http://projects.kde.org/prison"
+    TYPE OPTIONAL
+    PURPOSE "Needed to show mobile barcodes of your contacts")
+
+
 add_subdirectory(libfollowupreminder)
 add_subdirectory(libkdepimdbusinterfaces)
 add_subdirectory(libsendlater)
