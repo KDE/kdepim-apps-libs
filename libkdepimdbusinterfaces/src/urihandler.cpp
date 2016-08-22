@@ -80,7 +80,7 @@ bool UriHandler::process(const QString &uri, const Akonadi::Item &item)
             // we must work around QUrl breakage (it doesn't know about URNs)
             const QString uid = QUrl::fromPercentEncoding(uri.toLatin1()).mid(11);
             OrgKdeKorganizerKorganizerInterface korganizerIface(
-                        QStringLiteral("org.kde.korganizer"), QStringLiteral("/Korganizer"), QDBusConnection::sessionBus());
+                QStringLiteral("org.kde.korganizer"), QStringLiteral("/Korganizer"), QDBusConnection::sessionBus());
 
             return korganizerIface.showIncidence(uid);
         } else {

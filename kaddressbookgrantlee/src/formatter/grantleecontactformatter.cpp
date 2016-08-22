@@ -37,7 +37,6 @@
 
 #include <AkonadiCore/Item>
 
-
 #include <KColorScheme>
 
 #include <KIconLoader>

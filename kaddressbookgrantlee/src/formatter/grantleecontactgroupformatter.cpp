@@ -30,7 +30,6 @@
 #include <AkonadiCore/Item>
 #include <Akonadi/Contact/ContactGroupExpandJob>
 
-
 #include <KColorScheme>
 
 using namespace KAddressBookGrantlee;

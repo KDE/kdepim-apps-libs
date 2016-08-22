@@ -63,7 +63,6 @@ ContactGrantleePrintObject::ContactGrantleePrintObject(const KContacts::Addresse
         mListEmails << new ContactGrantleeEmail(mAddress, email);
     }
 
-
     const QStringList customs = mAddress.customs();
     if (!customs.empty()) {
         Q_FOREACH (const QString &custom, customs) {

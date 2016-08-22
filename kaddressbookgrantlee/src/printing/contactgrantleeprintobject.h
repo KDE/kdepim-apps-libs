@@ -17,7 +17,6 @@
    Boston, MA 02110-1301, USA.
 */
 
-
 #ifndef CONTACTGRANTLEEPRINTOBJECT_H
 #define CONTACTGRANTLEEPRINTOBJECT_H
 #include <QObject>
