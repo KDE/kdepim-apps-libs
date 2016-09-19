@@ -2,7 +2,7 @@
 add_definitions(-DTRANSLATION_DOMAIN=\"libsendlater\")
 
 set(sendlater_common_SRCS)
-ecm_qt_declare_logging_category(sendlater_common_SRCS HEADER libsendlater_debug.h IDENTIFIER LIBSENDLATER_LOG CATEGORY_NAME log_libsendlater)
+ecm_qt_declare_logging_category(sendlater_common_SRCS HEADER libsendlater_debug.h IDENTIFIER LIBSENDLATER_LOG CATEGORY_NAME org.kde.pim.libsendlater)
 
 set(sendlaterlib_SRCS 
     ${sendlater_common_SRCS}

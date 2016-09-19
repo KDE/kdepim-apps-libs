@@ -63,4 +63,4 @@ add_subdirectory(libsendlater)
 add_subdirectory(kaddressbookgrantlee)
 feature_summary(WHAT ALL FATAL_ON_MISSING_REQUIRED_PACKAGES)
 
-install( FILES kdepim-apps-lib.categories DESTINATION ${KDE_INSTALL_CONFDIR} )
+install( FILES kdepim-apps-lib.renamecategories kdepim-apps-lib.categories DESTINATION ${KDE_INSTALL_CONFDIR} )

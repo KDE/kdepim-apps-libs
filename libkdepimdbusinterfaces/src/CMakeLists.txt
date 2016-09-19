@@ -11,7 +11,7 @@ set(kdepimdbusinterfaces_LIB_SRCS
     kdepimdbusinterface_debug.cpp
 )
 
-ecm_qt_declare_logging_category(kdepimdbusinterfaces_LIB_SRCS HEADER kdepimdbusinterface_debug.h IDENTIFIER KDEPIMDBUSINTERFACE_LOG CATEGORY_NAME log_kdepimdbusinterface)
+ecm_qt_declare_logging_category(kdepimdbusinterfaces_LIB_SRCS HEADER kdepimdbusinterface_debug.h IDENTIFIER KDEPIMDBUSINTERFACE_LOG CATEGORY_NAME org.kde.pim.kdepimdbusinterface)
 
 
 qt5_generate_dbus_interface(dbusinterfaces/kmkernel.h org.kde.kmail.kmail.xml OPTIONS -a)
