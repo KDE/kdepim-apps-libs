@@ -61,6 +61,7 @@ add_subdirectory(libfollowupreminder)
 add_subdirectory(libkdepimdbusinterfaces)
 add_subdirectory(libsendlater)
 add_subdirectory(kaddressbookgrantlee)
+add_subdirectory(kaddressbookimportexport)
 feature_summary(WHAT ALL FATAL_ON_MISSING_REQUIRED_PACKAGES)
 
 install( FILES kdepim-apps-lib.renamecategories kdepim-apps-lib.categories DESTINATION ${KDE_INSTALL_CONFDIR} )

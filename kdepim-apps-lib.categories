@@ -1,3 +1,4 @@
 # kdepim-apps-lib
 org.kde.pim.libsendlater kdepim-apps-lib (libsendlater)
 org.kde.pim.kdepimdbusinterface kdepim-apps-lib (kdepimdbusinterface)
+org.kde.pim.kaddressbookimportexport kdepim-apps-lib (kaddressbookimportexport)
