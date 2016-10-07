@@ -4,6 +4,7 @@ add_definitions(-DTRANSLATION_DOMAIN=\"libkaddressbookimportexport\")
 
 set(kaddressbook_importexport_LIB_SRCS
     kaddressbookimportexportplugin.cpp
+    kaddressbookimportexportplugininterface.cpp
     )
 
 add_library(KF5KaddressbookImportExport ${kaddressbook_importexport_LIB_SRCS})
@@ -39,6 +40,7 @@ install(TARGETS
 
 ecm_generate_headers(KaddressbookImportExport_CamelCase_HEADERS
     HEADER_NAMES
+    KAddressBookImportExportPluginInterface
     KAddressBookImportExportPlugin
     REQUIRED_HEADERS KaddressbookImportExport_HEADERS
     PREFIX KaddressbookImportExport

@@ -19,7 +19,15 @@
 
 #include "kaddressbookimportexportplugin.h"
 
-KAddressBookImportExportPlugin::KAddressBookImportExportPlugin()
+using namespace KAddressBookImportExport;
+
+KAddressBookImportExportPlugin::KAddressBookImportExportPlugin(QObject *parent)
+    : PimCommon::AbstractGenericPlugin(parent)
+{
+
+}
+
+KAddressBookImportExportPlugin::~KAddressBookImportExportPlugin()
 {
 
 }

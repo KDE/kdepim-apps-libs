@@ -17,21 +17,17 @@
    Boston, MA 02110-1301, USA.
 */
 
+#include "kaddressbookimportexportplugininterface.h"
 
-#ifndef KADDRESSBOOKIMPORTEXPORTPLUGIN_H
-#define KADDRESSBOOKIMPORTEXPORTPLUGIN_H
+using namespace KAddressBookImportExport;
 
-#include <PimCommon/AbstractGenericPlugin>
-#include "kaddressbook_importexport_export.h"
-
-namespace KAddressBookImportExport
+KAddressBookImportExportPluginInterface::KAddressBookImportExportPluginInterface(QObject *parent)
+    : PimCommon::AbstractGenericPluginInterface(parent)
 {
-class KADDRESSBOOK_IMPORTEXPORT_EXPORT KAddressBookImportExportPlugin : public PimCommon::AbstractGenericPlugin
-{
-    Q_OBJECT
-public:
-    explicit KAddressBookImportExportPlugin(QObject *parent = Q_NULLPTR);
-    ~KAddressBookImportExportPlugin();
-};
+
 }
-#endif // KADDRESSBOOKIMPORTEXPORTPLUGIN_H
+
+KAddressBookImportExportPluginInterface::~KAddressBookImportExportPluginInterface()
+{
+
+}
