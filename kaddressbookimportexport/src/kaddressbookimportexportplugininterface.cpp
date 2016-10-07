@@ -31,3 +31,23 @@ KAddressBookImportExportPluginInterface::~KAddressBookImportExportPluginInterfac
 {
 
 }
+
+QList<QAction *> KAddressBookImportExportPluginInterface::importActions() const
+{
+    return mImportActions;
+}
+
+void KAddressBookImportExportPluginInterface::setImportActions(const QList<QAction *> &importAction)
+{
+    mImportActions = importAction;
+}
+
+QList<QAction *> KAddressBookImportExportPluginInterface::exportActions() const
+{
+    return mExportActions;
+}
+
+void KAddressBookImportExportPluginInterface::setExportActions(const QList<QAction *> &exportAction)
+{
+    mExportActions = exportAction;
+}

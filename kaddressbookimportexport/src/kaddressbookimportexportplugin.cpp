@@ -32,22 +32,3 @@ KAddressBookImportExportPlugin::~KAddressBookImportExportPlugin()
 
 }
 
-QList<QAction *> KAddressBookImportExportPlugin::importActions() const
-{
-    return mImportActions;
-}
-
-void KAddressBookImportExportPlugin::setImportActions(const QList<QAction *> &importAction)
-{
-    mImportActions = importAction;
-}
-
-QList<QAction *> KAddressBookImportExportPlugin::exportActions() const
-{
-    return mExportActions;
-}
-
-void KAddressBookImportExportPlugin::setExportActions(const QList<QAction *> &exportAction)
-{
-    mExportActions = exportAction;
-}

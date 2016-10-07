@@ -33,15 +33,6 @@ class KADDRESSBOOK_IMPORTEXPORT_EXPORT KAddressBookImportExportPlugin : public P
 public:
     explicit KAddressBookImportExportPlugin(QObject *parent = Q_NULLPTR);
     ~KAddressBookImportExportPlugin();
-    QList<QAction *> importActions() const;
-    void setImportActions(const QList<QAction *> &importAction);
-
-    QList<QAction *> exportActions() const;
-    void setExportActions(const QList<QAction *> &exportAction);
-
-protected:
-    QList<QAction *> mImportActions;
-    QList<QAction *> mExportActions;
 };
 }
 #endif // KADDRESSBOOKIMPORTEXPORTPLUGIN_H
