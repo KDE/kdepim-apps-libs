@@ -16,7 +16,7 @@ generate_export_header(KF5KaddressbookImportExport BASE_NAME kaddressbook_import
 
 add_library(KF5::KaddressbookImportExport ALIAS KF5KaddressbookImportExport)
 
-target_include_directories(KF5KaddressbookImportExport INTERFACE "$<INSTALL_INTERFACE:${KDE_INSTALL_INCLUDEDIR_KF5}/KaddressbookImportExport/;${KDE_INSTALL_INCLUDEDIR_KF5}/kaddressbookimportexport>")
+target_include_directories(KF5KaddressbookImportExport INTERFACE "$<INSTALL_INTERFACE:${KDE_INSTALL_INCLUDEDIR_KF5}/KAddressBookImportExport/;${KDE_INSTALL_INCLUDEDIR_KF5}/kaddressbookimportexport>")
 target_include_directories(KF5KaddressbookImportExport PUBLIC "$<BUILD_INTERFACE:${kaddressbookimportexport_SOURCE_DIR}/src;${kaddressbookimportexport_BINARY_DIR}/src;${Grantlee_INCLUDE_DIRS}>")
 
 
@@ -48,7 +48,7 @@ ecm_generate_headers(KaddressbookImportExport_CamelCase_HEADERS
     KAddressBookImportExportPlugin
     KAddressBookImportExportPluginManager
     REQUIRED_HEADERS KaddressbookImportExport_HEADERS
-    PREFIX KaddressbookImportExport
+    PREFIX KAddressBookImportExport
     )
 
 ecm_generate_pri_file(BASE_NAME KaddressbookImportExport
@@ -59,7 +59,7 @@ ecm_generate_pri_file(BASE_NAME KaddressbookImportExport
 
 install(FILES
     ${KaddressbookImportExport_CamelCase_HEADERS}
-    DESTINATION ${KDE_INSTALL_INCLUDEDIR_KF5}/KaddressbookImportExport
+    DESTINATION ${KDE_INSTALL_INCLUDEDIR_KF5}/KAddressBookImportExport
     COMPONENT Devel
     )
 
