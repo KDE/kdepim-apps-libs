@@ -96,8 +96,8 @@ private:
 
 bool KAddressBookImportExportPrivate::initializePlugins()
 {
-    const QVector<KPluginMetaData> plugins = KPluginLoader::findPlugins(QStringLiteral("kmail"), [](const KPluginMetaData & md) {
-        return md.serviceTypes().contains(QStringLiteral("KMailEditor/Plugin"));
+    const QVector<KPluginMetaData> plugins = KPluginLoader::findPlugins(QStringLiteral("kaddressbook"), [](const KPluginMetaData & md) {
+        return md.serviceTypes().contains(QStringLiteral("KAddressBook/ImportExportPlugin"));
     });
 
     const QPair<QStringList, QStringList> pair = PimCommon::PluginUtil::loadPluginSetting(configGroupName(), configPrefixSettingKey());
@@ -116,7 +116,6 @@ bool KAddressBookImportExportPrivate::initializePlugins()
         info.isEnabled = isPluginActivated;
         info.metaDataFileNameBaseName = QFileInfo(data.fileName()).baseName();
         info.metaDataFileName = data.fileName();
-        const QVariant p = data.rawData().value(QStringLiteral("X-KDE-KMailEditor-Order")).toVariant();
         if (pluginVersion() == data.version()) {
             // only load plugins once, even if found multiple times!
             if (unique.contains(info.metaDataFileNameBaseName)) {
@@ -166,12 +165,12 @@ QVector<PimCommon::PluginUtilData> KAddressBookImportExportPrivate::pluginDataLi
 
 QString KAddressBookImportExportPrivate::configGroupName() const
 {
-    return QStringLiteral("KMailPluginEditor");
+    return QStringLiteral("KAddressBookPluginImportExport");
 }
 
 QString KAddressBookImportExportPrivate::configPrefixSettingKey() const
 {
-    return QStringLiteral("KMailEditorPlugin");
+    return QStringLiteral("KAddressBookImportExportPlugin");
 }
 
 KAddressBookImportExportPlugin *KAddressBookImportExportPrivate::pluginFromIdentifier(const QString &id)
