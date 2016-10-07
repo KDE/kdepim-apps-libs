@@ -8,6 +8,9 @@ set(kaddressbook_importexport_LIB_SRCS
     kaddressbookimportexportpluginmanager.cpp
     )
 
+ecm_qt_declare_logging_category(kaddressbook_importexport_LIB_SRCS HEADER libkaddressbookexportimport_debug.h IDENTIFIER LIBKADDRESSBOOKIMPORTEXPORT_LOG CATEGORY_NAME org.kde.pim.kaddressbookimportexport)
+
+
 add_library(KF5KaddressbookImportExport ${kaddressbook_importexport_LIB_SRCS})
 generate_export_header(KF5KaddressbookImportExport BASE_NAME kaddressbook_importexport)
 

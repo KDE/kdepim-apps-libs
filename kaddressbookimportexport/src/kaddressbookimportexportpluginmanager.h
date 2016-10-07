@@ -22,16 +22,30 @@
 #define KADDRESSBOOKIMPORTEXPORTPLUGINMANAGER_H
 
 #include <QObject>
+#include <PimCommon/PluginUtil>
 #include "kaddressbook_importexport_export.h"
 
 namespace KAddressBookImportExport
 {
+class KAddressBookImportExportPlugin;
+class KAddressBookImportExportPrivate;
 class KADDRESSBOOK_IMPORTEXPORT_EXPORT KAddressBookImportExportPluginManager : public QObject
 {
     Q_OBJECT
 public:
     explicit KAddressBookImportExportPluginManager(QObject *parent = Q_NULLPTR);
     ~KAddressBookImportExportPluginManager();
+    static KAddressBookImportExportPluginManager *self();
+
+    QVector<KAddressBookImportExportPlugin *> pluginsList() const;
+
+    QVector<PimCommon::PluginUtilData> pluginsDataList() const;
+
+    QString configGroupName() const;
+    QString configPrefixSettingKey() const;
+    KAddressBookImportExportPlugin *pluginFromIdentifier(const QString &id);
+private:
+    KAddressBookImportExportPrivate *const d;
 };
 }
 

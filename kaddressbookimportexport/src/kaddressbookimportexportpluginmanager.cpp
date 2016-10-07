@@ -19,16 +19,210 @@
 
 
 #include "kaddressbookimportexportpluginmanager.h"
+#include "kaddressbookimportexportplugin.h"
+#include "libkaddressbookexportimport_debug.h"
+#include <PimCommon/PluginUtil>
+
+#include <QFileInfo>
+#include <QSet>
+#include <KPluginLoader>
+#include <kpluginmetadata.h>
+#include <KPluginFactory>
 
 using namespace KAddressBookImportExport;
 
-KAddressBookImportExportPluginManager::KAddressBookImportExportPluginManager(QObject *parent)
-    : QObject(parent)
+class KAddressBookImportExportPluginManagerPrivate
 {
+public:
+    KAddressBookImportExportPluginManagerPrivate()
+        : pluginManager(new KAddressBookImportExportPluginManager)
+    {
+    }
 
+    ~KAddressBookImportExportPluginManagerPrivate()
+    {
+        delete pluginManager;
+    }
+    KAddressBookImportExportPluginManager *pluginManager;
+};
+
+class KAddressBookImportExportInfo
+{
+public:
+    KAddressBookImportExportInfo()
+        : plugin(Q_NULLPTR),
+          isEnabled(true)
+    {
+
+    }
+    QString metaDataFileNameBaseName;
+    QString metaDataFileName;
+    PimCommon::PluginUtilData pluginData;
+    KAddressBookImportExportPlugin *plugin;
+    bool isEnabled;
+};
+
+Q_GLOBAL_STATIC(KAddressBookImportExportPluginManagerPrivate, sInstance)
+
+namespace
+{
+QString pluginVersion()
+{
+    return QStringLiteral("1.0");
+}
+}
+
+class KAddressBookImportExport::KAddressBookImportExportPrivate
+{
+public:
+    KAddressBookImportExportPrivate(KAddressBookImportExportPluginManager *qq)
+        : q(qq)
+    {
+        initializePlugins();
+    }
+    void loadPlugin(KAddressBookImportExportInfo *item);
+    QVector<KAddressBookImportExportPlugin *> pluginsList() const;
+    QVector<PimCommon::PluginUtilData> pluginDataList() const;
+    bool initializePlugins();
+
+    QString configGroupName() const;
+    QString configPrefixSettingKey() const;
+    KAddressBookImportExportPlugin *pluginFromIdentifier(const QString &id);
+private:
+    QVector<KAddressBookImportExportInfo> mPluginList;
+    QVector<PimCommon::PluginUtilData> mPluginDataList;
+    KAddressBookImportExportPluginManager *q;
+};
+
+bool KAddressBookImportExportPrivate::initializePlugins()
+{
+    const QVector<KPluginMetaData> plugins = KPluginLoader::findPlugins(QStringLiteral("kmail"), [](const KPluginMetaData & md) {
+        return md.serviceTypes().contains(QStringLiteral("KMailEditor/Plugin"));
+    });
+
+    const QPair<QStringList, QStringList> pair = PimCommon::PluginUtil::loadPluginSetting(configGroupName(), configPrefixSettingKey());
+
+    QVectorIterator<KPluginMetaData> i(plugins);
+    i.toBack();
+    QSet<QString> unique;
+    while (i.hasPrevious()) {
+        KAddressBookImportExportInfo info;
+        const KPluginMetaData data = i.previous();
+
+        //1) get plugin data => name/description etc.
+        info.pluginData = PimCommon::PluginUtil::createPluginMetaData(data);
+        //2) look at if plugin is activated
+        const bool isPluginActivated = PimCommon::PluginUtil::isPluginActivated(pair.first, pair.second, info.pluginData.mEnableByDefault, info.pluginData.mIdentifier);
+        info.isEnabled = isPluginActivated;
+        info.metaDataFileNameBaseName = QFileInfo(data.fileName()).baseName();
+        info.metaDataFileName = data.fileName();
+        const QVariant p = data.rawData().value(QStringLiteral("X-KDE-KMailEditor-Order")).toVariant();
+        if (pluginVersion() == data.version()) {
+            // only load plugins once, even if found multiple times!
+            if (unique.contains(info.metaDataFileNameBaseName)) {
+                continue;
+            }
+            info.plugin = Q_NULLPTR;
+            mPluginList.push_back(info);
+            unique.insert(info.metaDataFileNameBaseName);
+        } else {
+            qCWarning(LIBKADDRESSBOOKIMPORTEXPORT_LOG) << "Plugin " << data.name() << " doesn't have correction plugin version. It will not be loaded.";
+        }
+    }
+    QVector<KAddressBookImportExportInfo>::iterator end(mPluginList.end());
+    for (QVector<KAddressBookImportExportInfo>::iterator it = mPluginList.begin(); it != end; ++it) {
+        loadPlugin(&(*it));
+    }
+    return true;
+}
+
+void KAddressBookImportExportPrivate::loadPlugin(KAddressBookImportExportInfo *item)
+{
+    KPluginLoader pluginLoader(item->metaDataFileName);
+    if (pluginLoader.factory()) {
+        item->plugin = pluginLoader.factory()->create<KAddressBookImportExportPlugin>(q, QVariantList() << item->metaDataFileNameBaseName);
+        item->plugin->setIsEnabled(item->isEnabled);
+        item->pluginData.mHasConfigureDialog = item->plugin->hasConfigureDialog();
+        mPluginDataList.append(item->pluginData);
+    }
+}
+
+QVector<KAddressBookImportExportPlugin *> KAddressBookImportExportPrivate::pluginsList() const
+{
+    QVector<KAddressBookImportExportPlugin *> lst;
+    QVector<KAddressBookImportExportInfo>::ConstIterator end(mPluginList.constEnd());
+    for (QVector<KAddressBookImportExportInfo>::ConstIterator it = mPluginList.constBegin(); it != end; ++it) {
+        if ((*it).plugin) {
+            lst << (*it).plugin;
+        }
+    }
+    return lst;
+}
+
+QVector<PimCommon::PluginUtilData> KAddressBookImportExportPrivate::pluginDataList() const
+{
+    return mPluginDataList;
+}
+
+QString KAddressBookImportExportPrivate::configGroupName() const
+{
+    return QStringLiteral("KMailPluginEditor");
+}
+
+QString KAddressBookImportExportPrivate::configPrefixSettingKey() const
+{
+    return QStringLiteral("KMailEditorPlugin");
+}
+
+KAddressBookImportExportPlugin *KAddressBookImportExportPrivate::pluginFromIdentifier(const QString &id)
+{
+    QVector<KAddressBookImportExportInfo>::ConstIterator end(mPluginList.constEnd());
+    for (QVector<KAddressBookImportExportInfo>::ConstIterator it = mPluginList.constBegin(); it != end; ++it) {
+        if ((*it).pluginData.mIdentifier == id) {
+            return (*it).plugin;
+        }
+    }
+    return {};
+}
+
+KAddressBookImportExportPluginManager::KAddressBookImportExportPluginManager(QObject *parent)
+    : QObject(parent),
+      d(new KAddressBookImportExportPrivate(this))
+{
 }
 
 KAddressBookImportExportPluginManager::~KAddressBookImportExportPluginManager()
 {
-
+    delete d;
 }
+
+KAddressBookImportExportPluginManager *KAddressBookImportExportPluginManager::self()
+{
+    return sInstance->pluginManager;
+}
+
+QVector<KAddressBookImportExportPlugin *> KAddressBookImportExportPluginManager::pluginsList() const
+{
+    return d->pluginsList();
+}
+
+QVector<PimCommon::PluginUtilData> KAddressBookImportExportPluginManager::pluginsDataList() const
+{
+    return d->pluginDataList();
+}
+
+QString KAddressBookImportExportPluginManager::configGroupName() const
+{
+    return d->configGroupName();
+}
+
+QString KAddressBookImportExportPluginManager::configPrefixSettingKey() const
+{
+    return d->configPrefixSettingKey();
+}
+
+KAddressBookImportExportPlugin *KAddressBookImportExportPluginManager::pluginFromIdentifier(const QString &id)
+{
+    return d->pluginFromIdentifier(id);
+}
+
