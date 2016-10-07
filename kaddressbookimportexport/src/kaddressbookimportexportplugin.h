@@ -23,7 +23,7 @@
 
 #include <PimCommon/AbstractGenericPlugin>
 #include "kaddressbook_importexport_export.h"
-
+class QAction;
 namespace KAddressBookImportExport
 {
 class KADDRESSBOOK_IMPORTEXPORT_EXPORT KAddressBookImportExportPlugin : public PimCommon::AbstractGenericPlugin
@@ -32,6 +32,15 @@ class KADDRESSBOOK_IMPORTEXPORT_EXPORT KAddressBookImportExportPlugin : public P
 public:
     explicit KAddressBookImportExportPlugin(QObject *parent = Q_NULLPTR);
     ~KAddressBookImportExportPlugin();
+    QAction *importAction() const;
+    void setImportAction(QAction *importAction);
+
+    QAction *exportAction() const;
+    void setExportAction(QAction *exportAction);
+
+private:
+    QAction *mImportAction;
+    QAction *mExportAction;
 };
 }
 #endif // KADDRESSBOOKIMPORTEXPORTPLUGIN_H
