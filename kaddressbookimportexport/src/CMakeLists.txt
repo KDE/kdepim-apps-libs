@@ -6,6 +6,7 @@ set(kaddressbook_importexport_LIB_SRCS
     kaddressbookimportexportplugin.cpp
     kaddressbookimportexportplugininterface.cpp
     kaddressbookimportexportpluginmanager.cpp
+    kaddressbookimportexportcontactlist.cpp
     )
 
 ecm_qt_declare_logging_category(kaddressbook_importexport_LIB_SRCS HEADER libkaddressbookexportimport_debug.h IDENTIFIER LIBKADDRESSBOOKIMPORTEXPORT_LOG CATEGORY_NAME org.kde.pim.kaddressbookimportexport)
@@ -22,10 +23,8 @@ target_include_directories(KF5KaddressbookImportExport PUBLIC "$<BUILD_INTERFACE
 
 target_link_libraries(KF5KaddressbookImportExport
     PRIVATE
-    KF5::ConfigWidgets
+    KF5::Contacts
     KF5::Service
-    KF5::IconThemes
-    KF5::I18n
     KF5::PimCommon
     )
 
@@ -47,6 +46,7 @@ ecm_generate_headers(KaddressbookImportExport_CamelCase_HEADERS
     KAddressBookImportExportPluginInterface
     KAddressBookImportExportPlugin
     KAddressBookImportExportPluginManager
+    KAddressBookImportExportContactList
     REQUIRED_HEADERS KaddressbookImportExport_HEADERS
     PREFIX KAddressBookImportExport
     )
