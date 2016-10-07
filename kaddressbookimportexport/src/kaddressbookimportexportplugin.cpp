@@ -22,9 +22,7 @@
 using namespace KAddressBookImportExport;
 
 KAddressBookImportExportPlugin::KAddressBookImportExportPlugin(QObject *parent)
-    : PimCommon::AbstractGenericPlugin(parent),
-      mImportAction(Q_NULLPTR),
-      mExportAction(Q_NULLPTR)
+    : PimCommon::AbstractGenericPlugin(parent)
 {
 
 }
@@ -34,22 +32,22 @@ KAddressBookImportExportPlugin::~KAddressBookImportExportPlugin()
 
 }
 
-QAction *KAddressBookImportExportPlugin::importAction() const
+QList<QAction *> KAddressBookImportExportPlugin::importActions() const
 {
-    return mImportAction;
+    return mImportActions;
 }
 
-void KAddressBookImportExportPlugin::setImportAction(QAction *importAction)
+void KAddressBookImportExportPlugin::setImportActions(const QList<QAction *> &importAction)
 {
-    mImportAction = importAction;
+    mImportActions = importAction;
 }
 
-QAction *KAddressBookImportExportPlugin::exportAction() const
+QList<QAction *> KAddressBookImportExportPlugin::exportActions() const
 {
-    return mExportAction;
+    return mExportActions;
 }
 
-void KAddressBookImportExportPlugin::setExportAction(QAction *exportAction)
+void KAddressBookImportExportPlugin::setExportActions(const QList<QAction *> &exportAction)
 {
-    mExportAction = exportAction;
+    mExportActions = exportAction;
 }
