@@ -33,15 +33,24 @@ public:
     explicit KAddressBookImportExportPluginInterface(QObject *parent = Q_NULLPTR);
     ~KAddressBookImportExportPluginInterface();
 
+    enum ImportExportAction {
+        Import = 0,
+        Export = 1
+    };
+
     QList<QAction *> importActions() const;
     void setImportActions(const QList<QAction *> &importAction);
 
     QList<QAction *> exportActions() const;
     void setExportActions(const QList<QAction *> &exportAction);
 
+    ImportExportAction importExportAction() const;
+    void setImportExportAction(const ImportExportAction &importExportAction);
+
 protected:
     QList<QAction *> mImportActions;
     QList<QAction *> mExportActions;
+    ImportExportAction mImportExportAction;
 };
 }
 #endif // KADDRESSBOOKIMPORTEXPORTPLUGININTERFACE_H
