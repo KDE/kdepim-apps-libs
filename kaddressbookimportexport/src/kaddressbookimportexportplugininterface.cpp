@@ -62,3 +62,13 @@ void KAddressBookImportExportPluginInterface::setImportExportAction(const Import
 {
     mImportExportAction = importExportAction;
 }
+
+Akonadi::Collection KAddressBookImportExportPluginInterface::defaultCollection() const
+{
+    return mDefaultCollection;
+}
+
+void KAddressBookImportExportPluginInterface::setDefaultCollection(const Akonadi::Collection &defaultCollection)
+{
+    mDefaultCollection = defaultCollection;
+}

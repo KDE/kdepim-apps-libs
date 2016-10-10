@@ -23,6 +23,7 @@
 #include "kaddressbook_importexport_export.h"
 #include <PimCommon/AbstractGenericPluginInterface>
 #include <QList>
+#include <AkonadiCore/Collection>
 
 namespace KAddressBookImportExport
 {
@@ -47,10 +48,14 @@ public:
     ImportExportAction importExportAction() const;
     void setImportExportAction(const ImportExportAction &importExportAction);
 
+    Akonadi::Collection defaultCollection() const;
+    void setDefaultCollection(const Akonadi::Collection &defaultCollection);
+
 protected:
     QList<QAction *> mImportActions;
     QList<QAction *> mExportActions;
     ImportExportAction mImportExportAction;
+    Akonadi::Collection mDefaultCollection;
 };
 }
 #endif // KADDRESSBOOKIMPORTEXPORTPLUGININTERFACE_H

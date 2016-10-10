@@ -31,4 +31,3 @@ KAddressBookImportExportPlugin::~KAddressBookImportExportPlugin()
 {
 
 }
-
