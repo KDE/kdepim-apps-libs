@@ -9,6 +9,7 @@ set(kaddressbook_importexport_LIB_SRCS
     kaddressbookimportexportcontactlist.cpp
     kaddressbookcontactselectionwidget.cpp
     kaddressbookcontactselectiondialog.cpp
+    kaddressbookexportselectionwidget.cpp
     )
 
 ecm_qt_declare_logging_category(kaddressbook_importexport_LIB_SRCS HEADER libkaddressbookexportimport_debug.h IDENTIFIER LIBKADDRESSBOOKIMPORTEXPORT_LOG CATEGORY_NAME org.kde.pim.kaddressbookimportexport)
@@ -51,6 +52,7 @@ ecm_generate_headers(KaddressbookImportExport_CamelCase_HEADERS
     KAddressBookImportExportPluginManager
     KAddressBookImportExportContactList
     KAddressBookContactSelectionDialog
+    KAddressBookExportSelectionWidget
     REQUIRED_HEADERS KaddressbookImportExport_HEADERS
     PREFIX KAddressBookImportExport
     )

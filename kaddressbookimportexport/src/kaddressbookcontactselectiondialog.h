@@ -21,7 +21,7 @@
 #ifndef CONTACTEXPORTSELECTIONDIALOG_H
 #define CONTACTEXPORTSELECTIONDIALOG_H
 
-#include "kaddressbookimportexportplugin.h"
+#include "kaddressbook_importexport_export.h"
 #include <KContacts/Addressee>
 #include <QDialog>
 #include <KAddressBookImportExport/KAddressBookImportExportContactList>
