@@ -29,8 +29,8 @@ using namespace KAddressBookImportExport;
 
 KAddressBookContactSelectionDialog::KAddressBookContactSelectionDialog(QItemSelectionModel *selectionModel, bool allowToSelectTypeToExport,
         QWidget *parent)
-    : QDialog(parent)//,
-      //mVCardExport(Q_NULLPTR)
+    : QDialog(parent),
+      mVCardExport(Q_NULLPTR)
 {
 
     setWindowTitle(i18n("Select Contacts"));
@@ -39,10 +39,8 @@ KAddressBookContactSelectionDialog::KAddressBookContactSelectionDialog(QItemSele
     mSelectionWidget = new KAddressBookContactSelectionWidget(selectionModel, this);
     if (allowToSelectTypeToExport) {
         mainLayout->addWidget(mSelectionWidget);
-#if 0
-        mVCardExport = new VCardExportSelectionWidget(this);
+        mVCardExport = new KAddressBookExportSelectionWidget(this);
         mainLayout->addWidget(mVCardExport);
-#endif
     } else {
         mainLayout->addWidget(mSelectionWidget);
     }
@@ -75,16 +73,16 @@ KAddressBookImportExport::KAddressBookImportExportContactList KAddressBookContac
 {
     return mSelectionWidget->selectedContacts();
 }
-#if 0
-VCardExportSelectionWidget::ExportFields KAddressBookContactSelectionDialog::exportType() const
+
+
+KAddressBookExportSelectionWidget::ExportFields KAddressBookContactSelectionDialog::exportType() const
 {
     if (mVCardExport) {
         return mVCardExport->exportType();
     } else {
-        return VCardExportSelectionWidget::None;
+        return KAddressBookExportSelectionWidget::None;
     }
 }
-#endif
 
 void KAddressBookContactSelectionDialog::setAddGroupContact(bool addGroupContact)
 {

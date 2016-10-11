@@ -25,7 +25,7 @@
 #include <KContacts/Addressee>
 #include <QDialog>
 #include <KAddressBookImportExport/KAddressBookImportExportContactList>
-//#include <xxport/vcard/vcardexportselectionwidget.h>
+#include <KAddressBookImportExport/KAddressBookExportSelectionWidget>
 #include <AkonadiCore/Item>
 class QItemSelectionModel;
 class KAddressBookContactSelectionWidget;
@@ -41,6 +41,7 @@ class Collection;
  */
 namespace KAddressBookImportExport
 {
+class KAddressBookExportSelectionWidget;
 class KAddressBookContactSelectionWidget;
 class KADDRESSBOOK_IMPORTEXPORT_EXPORT KAddressBookContactSelectionDialog : public QDialog
 {
@@ -70,13 +71,13 @@ public:
      */
     KAddressBookImportExport::KAddressBookImportExportContactList selectedContacts() const;
 
-    //VCardExportSelectionWidget::ExportFields exportType() const;
+    KAddressBookExportSelectionWidget::ExportFields exportType() const;
     void setAddGroupContact(bool addGroupContact);
 
     Akonadi::Item::List selectedItems() const;
 private:
     KAddressBookContactSelectionWidget *mSelectionWidget;
-    //VCardExportSelectionWidget *mVCardExport;
+    KAddressBookExportSelectionWidget *mVCardExport;
 };
 }
 #endif
