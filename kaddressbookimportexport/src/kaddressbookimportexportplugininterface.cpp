@@ -74,16 +74,6 @@ void KAddressBookImportExportPluginInterface::setDefaultCollection(const Akonadi
     mDefaultCollection = defaultCollection;
 }
 
-KAddressBookImportExport::KAddressBookImportExportContactList KAddressBookImportExportPluginInterface::addressBookImportExportList() const
-{
-    return mAddressBookImportExportList;
-}
-
-void KAddressBookImportExportPluginInterface::setAddressBookImportExportList(const KAddressBookImportExport::KAddressBookImportExportContactList &addressBookImportExportList)
-{
-    mAddressBookImportExportList = addressBookImportExportList;
-}
-
 QItemSelectionModel *KAddressBookImportExportPluginInterface::itemSelectionModel() const
 {
     return mItemSelectionModel;
@@ -92,4 +82,10 @@ QItemSelectionModel *KAddressBookImportExportPluginInterface::itemSelectionModel
 void KAddressBookImportExportPluginInterface::setItemSelectionModel(QItemSelectionModel *itemSelectionModel)
 {
     mItemSelectionModel = itemSelectionModel;
+}
+
+bool KAddressBookImportExportPluginInterface::canImportFileType(const QUrl &url)
+{
+    Q_UNUSED(url);
+    return false;
 }

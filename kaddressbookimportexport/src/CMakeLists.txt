@@ -54,6 +54,7 @@ ecm_generate_headers(KaddressbookImportExport_CamelCase_HEADERS
     KAddressBookImportExportContactList
     KAddressBookContactSelectionDialog
     KAddressBookExportSelectionWidget
+    KAddressBookContactSelectionWidget
     REQUIRED_HEADERS KaddressbookImportExport_HEADERS
     PREFIX KAddressBookImportExport
     )

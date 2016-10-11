@@ -23,6 +23,7 @@
 
 #include <KContacts/Addressee>
 #include <AkonadiCore/Item>
+#include "kaddressbook_importexport_export.h"
 #include "KAddressBookImportExport/KAddressBookImportExportContactList"
 
 #include <QWidget>
@@ -45,7 +46,7 @@ class CollectionComboBox;
  */
 namespace KAddressBookImportExport
 {
-class KAddressBookContactSelectionWidget : public QWidget
+class KADDRESSBOOK_IMPORTEXPORT_EXPORT KAddressBookContactSelectionWidget : public QWidget
 {
     Q_OBJECT
 
