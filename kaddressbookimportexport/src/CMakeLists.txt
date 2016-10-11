@@ -10,6 +10,7 @@ set(kaddressbook_importexport_LIB_SRCS
     kaddressbookcontactselectionwidget.cpp
     kaddressbookcontactselectiondialog.cpp
     kaddressbookexportselectionwidget.cpp
+    kaddressbookimportexportcontactfields.cpp
     )
 
 ecm_qt_declare_logging_category(kaddressbook_importexport_LIB_SRCS HEADER libkaddressbookexportimport_debug.h IDENTIFIER LIBKADDRESSBOOKIMPORTEXPORT_LOG CATEGORY_NAME org.kde.pim.kaddressbookimportexport)
@@ -72,6 +73,7 @@ install(FILES
 install(FILES
     ${KaddressbookImportExport_HEADERS}
     ${CMAKE_CURRENT_BINARY_DIR}/kaddressbook_importexport_export.h
+    kaddressbookimportexportcontactfields.h
     DESTINATION ${KDE_INSTALL_INCLUDEDIR_KF5}/kaddressbookimportexport
     COMPONENT Devel
     )
