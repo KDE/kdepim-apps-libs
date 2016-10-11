@@ -24,6 +24,7 @@
 #include <PimCommon/AbstractGenericPluginInterface>
 #include <QList>
 #include <AkonadiCore/Collection>
+#include <KAddressBookImportExport/KAddressBookImportExportContactList>
 
 namespace KAddressBookImportExport
 {
@@ -51,7 +52,11 @@ public:
     Akonadi::Collection defaultCollection() const;
     void setDefaultCollection(const Akonadi::Collection &defaultCollection);
 
+    KAddressBookImportExport::KAddressBookImportExportContactList addressBookImportExportList() const;
+    void setAddressBookImportExportList(const KAddressBookImportExport::KAddressBookImportExportContactList &addressBookImportExportList);
+
 protected:
+    KAddressBookImportExport::KAddressBookImportExportContactList mAddressBookImportExportList;
     QList<QAction *> mImportActions;
     QList<QAction *> mExportActions;
     ImportExportAction mImportExportAction;
