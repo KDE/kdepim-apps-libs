@@ -23,7 +23,8 @@ using namespace KAddressBookImportExport;
 
 KAddressBookImportExportPluginInterface::KAddressBookImportExportPluginInterface(QObject *parent)
     : PimCommon::AbstractGenericPluginInterface(parent),
-      mImportExportAction(Import)
+      mImportExportAction(Import),
+      mItemSelectionModel(Q_NULLPTR)
 {
 
 }
@@ -81,4 +82,14 @@ KAddressBookImportExport::KAddressBookImportExportContactList KAddressBookImport
 void KAddressBookImportExportPluginInterface::setAddressBookImportExportList(const KAddressBookImportExport::KAddressBookImportExportContactList &addressBookImportExportList)
 {
     mAddressBookImportExportList = addressBookImportExportList;
+}
+
+QItemSelectionModel *KAddressBookImportExportPluginInterface::itemSelectionModel() const
+{
+    return mItemSelectionModel;
+}
+
+void KAddressBookImportExportPluginInterface::setItemSelectionModel(QItemSelectionModel *itemSelectionModel)
+{
+    mItemSelectionModel = itemSelectionModel;
 }
