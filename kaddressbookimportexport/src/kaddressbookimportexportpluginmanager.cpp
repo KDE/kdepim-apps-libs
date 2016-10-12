@@ -17,7 +17,6 @@
    Boston, MA 02110-1301, USA.
 */
 
-
 #include "kaddressbookimportexportpluginmanager.h"
 #include "kaddressbookimportexportplugin.h"
 #include "libkaddressbookexportimport_debug.h"

@@ -74,7 +74,6 @@ KAddressBookImportExport::KAddressBookImportExportContactList KAddressBookContac
     return mSelectionWidget->selectedContacts();
 }
 
-
 KAddressBookExportSelectionWidget::ExportFields KAddressBookContactSelectionDialog::exportType() const
 {
     if (mVCardExport) {
