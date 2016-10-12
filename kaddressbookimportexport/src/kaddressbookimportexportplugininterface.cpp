@@ -89,3 +89,8 @@ bool KAddressBookImportExportPluginInterface::canImportFileType(const QUrl &url)
     Q_UNUSED(url);
     return false;
 }
+
+void KAddressBookImportExportPluginInterface::importFile(const QUrl &url)
+{
+    Q_UNUSED(url);
+}

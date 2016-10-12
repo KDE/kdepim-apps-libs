@@ -57,6 +57,7 @@ public:
     void setItemSelectionModel(QItemSelectionModel *itemSelectionModel);
 
     virtual bool canImportFileType(const QUrl &url);
+    virtual void importFile(const QUrl &url);
 
 protected:
     QList<QAction *> mImportActions;
