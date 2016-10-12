@@ -94,3 +94,13 @@ void KAddressBookImportExportPluginInterface::importFile(const QUrl &url)
 {
     Q_UNUSED(url);
 }
+
+bool KAddressBookImportExportPluginInterface::canImportData() const
+{
+    return false;
+}
+
+void KAddressBookImportExportPluginInterface::importData(const QByteArray &data)
+{
+    Q_UNUSED(data);
+}
