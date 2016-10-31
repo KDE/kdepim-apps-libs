@@ -39,7 +39,6 @@ KAddressBookExportSelectionWidget::KAddressBookExportSelectionWidget(QWidget *pa
     QGridLayout *layout = new QGridLayout;
     gbox->setLayout(layout);
     gbox->setFlat(true);
-    layout->addWidget(gbox, 0, 0, 1, 2);
 
     mPrivateBox = new QCheckBox(i18nc("@option:check", "Private fields"), this);
     mPrivateBox->setToolTip(
