@@ -16,6 +16,8 @@ include(KDECMakeSettings)
 include(KDEFrameworkCompilerSettings NO_POLICY_SCOPE)
 include(ECMQtDeclareLoggingCategory)
 include(ECMAddTests)
+include(ECMCoverageOption)
+
 
 set(PIM_VERSION "5.4.40")
 set(KDEPIM_APPS_LIB_VERSION ${PIM_VERSION})
