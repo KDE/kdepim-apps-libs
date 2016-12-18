@@ -86,7 +86,7 @@ void SendLater::SendLaterUtil::writeSendLaterInfo(KSharedConfig::Ptr config, Sen
     const QString groupName = SendLater::SendLaterUtil::sendLaterPattern().arg(info->itemId());
     // first, delete all filter groups:
     const QStringList filterGroups = config->groupList();
-    foreach (const QString &group, filterGroups) {
+    for (const QString &group : filterGroups) {
         if (group == groupName) {
             config->deleteGroup(group);
         }

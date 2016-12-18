@@ -41,38 +41,36 @@ ContactGrantleePrintObject::ContactGrantleePrintObject(const KContacts::Addresse
 {
     const auto addresses = address.addresses();
     mListAddress.reserve(addresses.size());
-    Q_FOREACH (const KContacts::Address &addr, addresses) {
+    for (const KContacts::Address &addr : addresses) {
         mListAddress << new ContactGrantleeAddressObject(addr);
     }
 
     const auto webSites = address.extraUrlList();
     mListWebSite.reserve(webSites.size());
-    Q_FOREACH (const KContacts::ResourceLocatorUrl &webSite, webSites) {
+    for (const KContacts::ResourceLocatorUrl &webSite : webSites) {
         mListWebSite << new ContactGrantleeWebSite(webSite);
     }
 
     const auto phoneNumbers = address.phoneNumbers();
     mListPhones.reserve(phoneNumbers.size());
-    Q_FOREACH (const KContacts::PhoneNumber &phone, phoneNumbers) {
+    for (const KContacts::PhoneNumber &phone : phoneNumbers) {
         mListPhones << new ContactGrantleePhoneObject(phone);
     }
 
     const auto emails = address.emailList();
     mListEmails.reserve(emails.size());
-    Q_FOREACH (const KContacts::Email &email, emails) {
+    for (const KContacts::Email &email : emails) {
         mListEmails << new ContactGrantleeEmail(mAddress, email);
     }
 
     const QStringList customs = mAddress.customs();
-    if (!customs.empty()) {
-        Q_FOREACH (const QString &custom, customs) {
-            if (custom.startsWith(QStringLiteral("messaging/"))) {
-                const int pos = custom.indexOf(QLatin1Char(':'));
-                QString key = custom.left(pos);
-                key.remove(QStringLiteral("-All"));
-                const QString value = custom.mid(pos + 1);
-                mListIm << new ContactGrantleeImObject(key, value);
-            }
+    for (const QString &custom : customs) {
+        if (custom.startsWith(QStringLiteral("messaging/"))) {
+            const int pos = custom.indexOf(QLatin1Char(':'));
+            QString key = custom.left(pos);
+            key.remove(QStringLiteral("-All"));
+            const QString value = custom.mid(pos + 1);
+            mListIm << new ContactGrantleeImObject(key, value);
         }
     }
     mGeoObject = new ContactGrantleeGeoObject(address.geo());

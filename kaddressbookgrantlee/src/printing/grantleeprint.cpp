@@ -56,7 +56,7 @@ QString GrantleePrint::contactsToHtml(const KContacts::Addressee::List &contacts
     const int numberContacts(contacts.count());
     lst.reserve(numberContacts);
     contactsList.reserve(numberContacts);
-    Q_FOREACH (const KContacts::Addressee &address, contacts) {
+    for (const KContacts::Addressee &address : contacts) {
         ContactGrantleePrintObject *contactPrintObject = new ContactGrantleePrintObject(address);
         lst.append(contactPrintObject);
         contactsList << QVariant::fromValue(static_cast<QObject *>(contactPrintObject));

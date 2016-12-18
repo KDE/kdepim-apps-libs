@@ -322,16 +322,14 @@ QString GrantleeContactFormatter::toHtml(HtmlForm form) const
     // IM
     QVariantList imAddresses;
     const QStringList customs = rawContact.customs();
-    if (!customs.empty()) {
-        foreach (const QString &custom, customs) {
-            if (custom.startsWith(QStringLiteral("messaging/"))) {
-                int pos = custom.indexOf(QLatin1Char(':'));
-                QString key = custom.left(pos);
-                key.remove(QStringLiteral("-All"));
-                const QString value = custom.mid(pos + 1);
+    for (const QString &custom : customs) {
+        if (custom.startsWith(QStringLiteral("messaging/"))) {
+            int pos = custom.indexOf(QLatin1Char(':'));
+            QString key = custom.left(pos);
+            key.remove(QStringLiteral("-All"));
+            const QString value = custom.mid(pos + 1);
 
-                imAddresses.append(imAddressHash(key, value));
-            }
+            imAddresses.append(imAddressHash(key, value));
         }
     }
 
