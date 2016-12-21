@@ -1,4 +1,3 @@
-project(kaddressbookimportexport)
 ecm_setup_version(${KDEPIM_APPS_LIB_VERSION} VARIABLE_PREFIX KADDRESSBOOKIMPORTEXPORT
     VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/kaddressbookimportexport_version.h"
     PACKAGE_VERSION_FILE "${CMAKE_CURRENT_BINARY_DIR}/KF5KaddressbookImportExportConfigVersion.cmake"
