@@ -137,7 +137,9 @@ QString ContactGrantleePrintObject::languages() const
 {
     QString result;
     QStringList langList;
-    Q_FOREACH (const KContacts::Lang &lang, mAddress.langs()) {
+    const KContacts::Lang::List lstLangs = mAddress.langs();
+    langList.reserve(lstLangs.count());
+    for (const KContacts::Lang &lang : lstLangs) {
         langList.append(lang.language());
     }
     if (!langList.isEmpty()) {
@@ -149,7 +151,8 @@ QString ContactGrantleePrintObject::languages() const
 QStringList ContactGrantleePrintObject::emails() const
 {
     QStringList emails;
-    Q_FOREACH (const QString &email, mAddress.emails()) {
+    const QStringList lstEmails(mAddress.emails());
+    for (const QString &email : lstEmails) {
         const QString fullEmail = QString::fromLatin1(QUrl::toPercentEncoding(mAddress.fullEmail(email)));
 
         const QString url = QStringLiteral("<a href=\"mailto:%1\">%2</a>")

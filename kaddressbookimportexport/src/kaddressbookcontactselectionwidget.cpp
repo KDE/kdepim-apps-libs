@@ -202,8 +202,8 @@ KAddressBookImportExport::KAddressBookImportExportContactList KAddressBookContac
     if (!job->exec()) {
         return contacts;
     }
-
-    foreach (const Akonadi::Item &item, job->items()) {
+    const Akonadi::Item::List lstItems = job->items();
+    for (const Akonadi::Item &item : lstItems) {
         if (item.isValid()) {
             if (item.hasPayload<KContacts::Addressee>()) {
                 contacts.append(item.payload<KContacts::Addressee>());
@@ -307,7 +307,8 @@ KAddressBookImportExport::KAddressBookImportExportContactList KAddressBookContac
             return contacts;
         }
 
-        foreach (const Akonadi::Item &item, job->items()) {
+        const Akonadi::Item::List lstItems = job->items();
+        for (const Akonadi::Item &item : lstItems) {
             if (item.hasPayload<KContacts::Addressee>()) {
                 contacts.append(item.payload<KContacts::Addressee>());
             }
@@ -319,8 +320,8 @@ KAddressBookImportExport::KAddressBookImportExportContactList KAddressBookContac
         if (!job->exec()) {
             return contacts;
         }
-
-        foreach (const Akonadi::Item &item, job->items()) {
+        const Akonadi::Item::List lstItems = job->items();
+        for (const Akonadi::Item &item : lstItems) {
             if (item.hasPayload<KContacts::Addressee>()) {
                 contacts.append(item.payload<KContacts::Addressee>());
             }

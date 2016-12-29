@@ -146,7 +146,8 @@ QString GrantleeContactGroupFormatter::toHtml(HtmlForm form) const
         Akonadi::ContactGroupExpandJob *job = new Akonadi::ContactGroupExpandJob(group);
         if (job->exec()) {
             group.removeAllContactData();
-            foreach (const KContacts::Addressee &contact, job->contacts()) {
+            const KContacts::Addressee::List lstContacts = job->contacts();
+            for (const KContacts::Addressee &contact : lstContacts) {
                 group.append(KContacts::ContactGroup::Data(contact.realName(), contact.preferredEmail()));
             }
         }
