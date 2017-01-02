@@ -40,7 +40,7 @@ public:
         Picture = 16,
         DiplayName = 32
     };
-    Q_ENUMS(ExportField)
+    Q_ENUM(ExportField)
     Q_DECLARE_FLAGS(ExportFields, ExportField)
 
     ExportFields exportType() const;
