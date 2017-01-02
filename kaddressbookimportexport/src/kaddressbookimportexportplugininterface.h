@@ -31,7 +31,7 @@ class KADDRESSBOOK_IMPORTEXPORT_EXPORT KAddressBookImportExportPluginInterface :
 {
     Q_OBJECT
 public:
-    explicit KAddressBookImportExportPluginInterface(QObject *parent = Q_NULLPTR);
+    explicit KAddressBookImportExportPluginInterface(QObject *parent = nullptr);
     ~KAddressBookImportExportPluginInterface();
 
     enum ImportExportAction {

@@ -32,7 +32,7 @@ class KADDRESSBOOK_IMPORTEXPORT_EXPORT KAddressBookImportExportPluginManager : p
 {
     Q_OBJECT
 public:
-    explicit KAddressBookImportExportPluginManager(QObject *parent = Q_NULLPTR);
+    explicit KAddressBookImportExportPluginManager(QObject *parent = nullptr);
     ~KAddressBookImportExportPluginManager();
     static KAddressBookImportExportPluginManager *self();
 

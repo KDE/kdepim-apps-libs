@@ -32,7 +32,7 @@ class SendLaterTimeDateWidget : public QWidget
 {
     Q_OBJECT
 public:
-    explicit SendLaterTimeDateWidget(QWidget *parent = Q_NULLPTR);
+    explicit SendLaterTimeDateWidget(QWidget *parent = nullptr);
     ~SendLaterTimeDateWidget();
 
     void setDateTime(const QDateTime &);

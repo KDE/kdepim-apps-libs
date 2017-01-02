@@ -30,7 +30,7 @@ using namespace KAddressBookImportExport;
 KAddressBookContactSelectionDialog::KAddressBookContactSelectionDialog(QItemSelectionModel *selectionModel, bool allowToSelectTypeToExport,
         QWidget *parent)
     : QDialog(parent),
-      mVCardExport(Q_NULLPTR)
+      mVCardExport(nullptr)
 {
 
     setWindowTitle(i18n("Select Contacts"));

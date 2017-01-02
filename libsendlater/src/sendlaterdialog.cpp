@@ -36,7 +36,7 @@ using namespace SendLater;
 SendLaterDialog::SendLaterDialog(SendLater::SendLaterInfo *info, QWidget *parent)
     : QDialog(parent),
       mAction(Unknown),
-      mDelay(Q_NULLPTR),
+      mDelay(nullptr),
       mInfo(info)
 {
     setWindowTitle(i18nc("@title:window", "Send Later"));

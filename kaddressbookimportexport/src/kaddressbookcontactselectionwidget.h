@@ -57,7 +57,7 @@ public:
      * @param selectionModel The model that contains the currently selected contacts.
      * @param parent The parent widget.
      */
-    explicit KAddressBookContactSelectionWidget(QItemSelectionModel *selectionModel, QWidget *parent = Q_NULLPTR);
+    explicit KAddressBookContactSelectionWidget(QItemSelectionModel *selectionModel, QWidget *parent = nullptr);
 
     /**
      * Sets the @p message text.

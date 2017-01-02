@@ -37,7 +37,7 @@ void GrantleePrintTest::shouldHaveDefaultValue()
     KAddressBookGrantlee::GrantleePrint *grantleePrint = new KAddressBookGrantlee::GrantleePrint;
     QVERIFY(grantleePrint);
     grantleePrint->deleteLater();
-    grantleePrint = Q_NULLPTR;
+    grantleePrint = nullptr;
 }
 
 void GrantleePrintTest::shouldReturnEmptyStringWhenNotContentAndNoContacts()
@@ -46,7 +46,7 @@ void GrantleePrintTest::shouldReturnEmptyStringWhenNotContentAndNoContacts()
     KContacts::Addressee::List lst;
     QVERIFY(grantleePrint->contactsToHtml(lst).isEmpty());
     grantleePrint->deleteLater();
-    grantleePrint = Q_NULLPTR;
+    grantleePrint = nullptr;
 }
 
 void GrantleePrintTest::shouldReturnEmptyStringWhenAddContentWithoutContacts()
@@ -57,7 +57,7 @@ void GrantleePrintTest::shouldReturnEmptyStringWhenAddContentWithoutContacts()
 
     QVERIFY(grantleePrint->contactsToHtml(lst).isEmpty());
     grantleePrint->deleteLater();
-    grantleePrint = Q_NULLPTR;
+    grantleePrint = nullptr;
 }
 
 void GrantleePrintTest::shouldReturnStringWhenAddContentAndContacts()
@@ -72,7 +72,7 @@ void GrantleePrintTest::shouldReturnStringWhenAddContentAndContacts()
 
     QCOMPARE(grantleePrint->contactsToHtml(lst), QStringLiteral("foo"));
     grantleePrint->deleteLater();
-    grantleePrint = Q_NULLPTR;
+    grantleePrint = nullptr;
 }
 
 void GrantleePrintTest::shouldReturnEmails()
@@ -87,7 +87,7 @@ void GrantleePrintTest::shouldReturnEmails()
 
     QCOMPARE(grantleePrint->contactsToHtml(lst), QStringLiteral("foo1"));
     grantleePrint->deleteLater();
-    grantleePrint = Q_NULLPTR;
+    grantleePrint = nullptr;
 }
 
 void GrantleePrintTest::shouldDisplayContactInfo_data()
@@ -148,7 +148,7 @@ void GrantleePrintTest::shouldDisplayContactInfo()
 
     QCOMPARE(grantleePrint->contactsToHtml(lst), result);
     grantleePrint->deleteLater();
-    grantleePrint = Q_NULLPTR;
+    grantleePrint = nullptr;
 }
 
 QTEST_MAIN(GrantleePrintTest)

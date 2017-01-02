@@ -29,7 +29,7 @@ class KADDRESSBOOK_IMPORTEXPORT_EXPORT KAddressBookExportSelectionWidget : publi
 {
     Q_OBJECT
 public:
-    explicit KAddressBookExportSelectionWidget(QWidget *parent = Q_NULLPTR);
+    explicit KAddressBookExportSelectionWidget(QWidget *parent = nullptr);
     ~KAddressBookExportSelectionWidget();
     enum ExportField {
         None = 0,
