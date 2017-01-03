@@ -1,4 +1,4 @@
-ecm_setup_version(${KDEPIM_APPS_LIB_VERSION} VARIABLE_PREFIX FOLLOWUPREMINDER
+ecm_setup_version(PROJECT VARIABLE_PREFIX FOLLOWUPREMINDER
                         VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/followupreminder_version.h"
                         PACKAGE_VERSION_FILE "${CMAKE_CURRENT_BINARY_DIR}/KF5FollowupReminderConfigVersion.cmake"
                         SOVERSION 5
