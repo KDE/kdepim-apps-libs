@@ -63,7 +63,7 @@ bool UriHandler::process(const QString &uri, const Akonadi::Item &item)
         return true;
     } else if (uri.startsWith(QStringLiteral("uid:"))) {
 
-        Akonadi::ContactEditorDialog *dlg = new Akonadi::ContactEditorDialog(Akonadi::ContactEditorDialog::EditMode, (QWidget *)0);
+        Akonadi::ContactEditorDialog *dlg = new Akonadi::ContactEditorDialog(Akonadi::ContactEditorDialog::EditMode, (QWidget *)nullptr);
         if (item.isValid()) {
             dlg->setContact(item);
             dlg->show();
@@ -104,7 +104,7 @@ bool UriHandler::process(const QString &uri, const Akonadi::Item &item)
             }
         }
     } else {  // no special URI, let KDE handle it
-        new KRun(QUrl(uri), 0);
+        new KRun(QUrl(uri), nullptr);
     }
 
     return false;
