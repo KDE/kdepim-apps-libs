@@ -36,8 +36,8 @@ class KADDRESSBOOK_GRANTLEE_EXPORT GrantleePrint : public PimCommon::GenericGran
 {
     Q_OBJECT
 public:
-    explicit GrantleePrint(QObject *parent = Q_NULLPTR);
-    explicit GrantleePrint(const QString &themePath, QObject *parent = Q_NULLPTR);
+    explicit GrantleePrint(QObject *parent = nullptr);
+    explicit GrantleePrint(const QString &themePath, QObject *parent = nullptr);
     ~GrantleePrint();
 
     QString contactsToHtml(const KContacts::Addressee::List &contacts);

@@ -31,7 +31,7 @@ class ContactGrantleePhoneObject : public QObject
     Q_PROPERTY(bool preferred READ preferred)
 
 public:
-    explicit ContactGrantleePhoneObject(const KContacts::PhoneNumber &phone, QObject *parent = Q_NULLPTR);
+    explicit ContactGrantleePhoneObject(const KContacts::PhoneNumber &phone, QObject *parent = nullptr);
     ~ContactGrantleePhoneObject();
 
     QString type() const;

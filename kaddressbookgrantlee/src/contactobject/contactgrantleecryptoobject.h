@@ -29,7 +29,7 @@ class ContactGrantleeCryptoObject : public QObject
     Q_PROPERTY(QString signaturePreference READ signaturePreference)
     Q_PROPERTY(QString cryptoPreference READ cryptoPreference)
 public:
-    explicit ContactGrantleeCryptoObject(const KContacts::Addressee &address, QObject *parent = Q_NULLPTR);
+    explicit ContactGrantleeCryptoObject(const KContacts::Addressee &address, QObject *parent = nullptr);
     ~ContactGrantleeCryptoObject();
 
     QString signaturePreference() const;

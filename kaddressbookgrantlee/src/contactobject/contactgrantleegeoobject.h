@@ -35,7 +35,7 @@ class ContactGrantleeGeoObject : public QObject
     Q_PROPERTY(bool isValid READ isValid)
 
 public:
-    explicit ContactGrantleeGeoObject(const KContacts::Geo &geo, QObject *parent = Q_NULLPTR);
+    explicit ContactGrantleeGeoObject(const KContacts::Geo &geo, QObject *parent = nullptr);
     ~ContactGrantleeGeoObject();
 
     float latitude() const;

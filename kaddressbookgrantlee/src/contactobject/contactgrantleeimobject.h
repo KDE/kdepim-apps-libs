@@ -29,7 +29,7 @@ class ContactGrantleeImObject : public QObject
     Q_PROPERTY(QString address READ address)
 
 public:
-    explicit ContactGrantleeImObject(const QString &type, const QString &address, QObject *parent = Q_NULLPTR);
+    explicit ContactGrantleeImObject(const QString &type, const QString &address, QObject *parent = nullptr);
     ~ContactGrantleeImObject();
 
     QString type() const;

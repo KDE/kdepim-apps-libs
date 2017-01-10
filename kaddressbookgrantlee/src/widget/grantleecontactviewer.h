@@ -30,7 +30,7 @@ class KADDRESSBOOK_GRANTLEE_EXPORT GrantleeContactViewer : public Akonadi::Conta
 {
     Q_OBJECT
 public:
-    explicit GrantleeContactViewer(QWidget *parent = Q_NULLPTR);
+    explicit GrantleeContactViewer(QWidget *parent = nullptr);
     ~GrantleeContactViewer();
 
     void setForceDisableQRCode(bool b);

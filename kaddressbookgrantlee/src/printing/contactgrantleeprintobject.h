@@ -71,7 +71,7 @@ class ContactGrantleePrintObject : public QObject
 
     //Add more functions
 public:
-    explicit ContactGrantleePrintObject(const KContacts::Addressee &address, QObject *parent = Q_NULLPTR);
+    explicit ContactGrantleePrintObject(const KContacts::Addressee &address, QObject *parent = nullptr);
     ~ContactGrantleePrintObject();
 
     QString name() const;

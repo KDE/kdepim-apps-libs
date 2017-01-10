@@ -30,7 +30,7 @@ class ContactGrantleeWebSite : public QObject
     Q_PROPERTY(QString url READ url)
     Q_PROPERTY(bool preferred READ preferred)
 public:
-    explicit ContactGrantleeWebSite(const KContacts::ResourceLocatorUrl &resourceLocator, QObject *parent = Q_NULLPTR);
+    explicit ContactGrantleeWebSite(const KContacts::ResourceLocatorUrl &resourceLocator, QObject *parent = nullptr);
     ~ContactGrantleeWebSite();
     QString url() const;
     bool preferred() const;

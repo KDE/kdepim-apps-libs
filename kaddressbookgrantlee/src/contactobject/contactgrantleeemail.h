@@ -34,7 +34,7 @@ class ContactGrantleeEmail : public QObject
     Q_PROPERTY(QString email READ email)
     Q_PROPERTY(bool preferred READ preferred)
 public:
-    explicit ContactGrantleeEmail(const KContacts::Addressee &addressee, const KContacts::Email &email, QObject *parent = Q_NULLPTR);
+    explicit ContactGrantleeEmail(const KContacts::Addressee &addressee, const KContacts::Email &email, QObject *parent = nullptr);
     ~ContactGrantleeEmail();
     QString emailFormatted() const;
 
