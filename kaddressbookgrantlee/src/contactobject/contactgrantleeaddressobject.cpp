@@ -72,5 +72,5 @@ QString ContactGrantleeAddressObject::label() const
 
 QString ContactGrantleeAddressObject::formattedAddress() const
 {
-    return mAddress.formattedAddress().replace(QStringLiteral("\n"), QStringLiteral("<br>"));
+    return mAddress.formattedAddress().replace(QLatin1Char('\n'), QStringLiteral("<br>"));
 }

@@ -53,7 +53,7 @@ SendLaterDialog::SendLaterDialog(SendLater::SendLaterInfo *info, QWidget *parent
     lay->setMargin(0);
     w->setLayout(lay);
 
-    QDialogButtonBox *buttonBox = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
+    QDialogButtonBox *buttonBox = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel, this);
     mOkButton = buttonBox->button(QDialogButtonBox::Ok);
     mOkButton->setObjectName(QStringLiteral("okbutton"));
     mOkButton->setDefault(true);
@@ -78,11 +78,7 @@ SendLaterDialog::SendLaterDialog(SendLater::SendLaterInfo *info, QWidget *parent
 
     mSendLaterWidget->mDateTime->setDateTime(t);
     connect(mSendLaterWidget->mRecurrence, &QCheckBox::clicked, this, &SendLaterDialog::slotRecurrenceClicked);
-    QStringList unitsList;
-    unitsList << i18n("Days");
-    unitsList << i18n("Weeks");
-    unitsList << i18n("Months");
-    unitsList << i18n("Years");
+    const QStringList unitsList = {i18n("Days"), i18n("Weeks"), i18n("Months"), i18n("Years")};
     mSendLaterWidget->mRecurrenceComboBox->addItems(unitsList);
     connect(mSendLaterWidget->mDateTime, &SendLaterTimeDateWidget::dateChanged, this, &SendLaterDialog::slotDateChanged);
 

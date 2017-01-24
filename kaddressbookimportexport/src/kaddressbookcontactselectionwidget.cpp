@@ -19,6 +19,7 @@
 */
 
 #include "kaddressbookcontactselectionwidget.h"
+#include <QDebug>
 
 #include <AkonadiWidgets/CollectionComboBox>
 #include <AkonadiCore/EntityTreeModel>
@@ -80,6 +81,8 @@ Akonadi::Item::List KAddressBookContactSelectionWidget::selectedItems() const
         return collectSelectedItems();
     } else if (mAddressBookContactsButton->isChecked()) {
         return collectAddressBookItems();
+    } else {
+        qWarning() << " It's a bug here.";
     }
 
     return Akonadi::Item::List();

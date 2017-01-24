@@ -299,7 +299,8 @@ QString GrantleeContactFormatter::toHtml(HtmlForm form) const
 
     // Emails
     QStringList emails;
-    foreach (const QString &email, rawContact.emails()) {
+    const QStringList emailsList = rawContact.emails();
+    for (const QString &email : emailsList) {
         const QString fullEmail = QString::fromLatin1(QUrl::toPercentEncoding(rawContact.fullEmail(email)));
 
         const QString url = QStringLiteral("<a href=\"mailto:%1\">%2</a>")
@@ -312,7 +313,8 @@ QString GrantleeContactFormatter::toHtml(HtmlForm form) const
     // Phone numbers
     QVariantList phoneNumbers;
     int counter = 0;
-    foreach (const KContacts::PhoneNumber &phoneNumber, rawContact.phoneNumbers()) {
+    const KContacts::PhoneNumber::List lstPhone = rawContact.phoneNumbers();
+    for (const KContacts::PhoneNumber &phoneNumber : lstPhone) {
         phoneNumbers.append(phoneNumberHash(phoneNumber, counter));
         counter++;
     }
@@ -337,7 +339,8 @@ QString GrantleeContactFormatter::toHtml(HtmlForm form) const
 
     // Homepage
     QVariantList websites;
-    Q_FOREACH (const KContacts::ResourceLocatorUrl &resourceLocator, rawContact.extraUrlList()) {
+    const KContacts::ResourceLocatorUrl::List extraUrlList = rawContact.extraUrlList();
+    for (const KContacts::ResourceLocatorUrl &resourceLocator : extraUrlList) {
         QString url = resourceLocator.url().url();
         if (!url.startsWith(QStringLiteral("http://")) &&
                 !url.startsWith(QStringLiteral("https://"))) {
@@ -369,7 +372,8 @@ QString GrantleeContactFormatter::toHtml(HtmlForm form) const
     // Addresses
     QVariantList addresses;
     counter = 0;
-    foreach (const KContacts::Address &address, rawContact.addresses()) {
+    const KContacts::Address::List lstAddresses = rawContact.addresses();
+    for (const KContacts::Address &address : lstAddresses) {
         addresses.append(addressHash(address, counter));
         counter++;
     }
