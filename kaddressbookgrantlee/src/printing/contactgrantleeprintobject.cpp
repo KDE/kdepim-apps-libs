@@ -32,6 +32,7 @@
 #include <QVariant>
 #include <grantlee/metatype.h>
 #include <QLocale>
+#include <QImage>
 
 using namespace KAddressBookGrantlee;
 
