@@ -142,7 +142,7 @@ SendLaterDialog::SendLaterAction SendLaterDialog::action() const
 
 void SendLaterDialog::slotOkClicked()
 {
-    if (!mDelay || (mDelay && mDelay->isChecked())) {
+    if (!mDelay || mDelay->isChecked()) {
         mSendDateTime = mSendLaterWidget->mDateTime->dateTime();
         mAction = SendDeliveryAtTime;
     } else {
