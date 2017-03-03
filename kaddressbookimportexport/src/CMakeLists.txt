@@ -29,7 +29,7 @@ target_link_libraries(KF5KaddressbookImportExport
     PRIVATE
     KF5::Contacts
     KF5::Service
-    KF5::PimCommon
+    KF5::PimCommonAkonadi
     KF5::I18n
     )
 

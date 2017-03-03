@@ -21,7 +21,7 @@
 #define KADDRESSBOOKIMPORTEXPORTPLUGINMANAGER_H
 
 #include <QObject>
-#include <PimCommon/PluginUtil>
+#include <PimCommonAkonadi/PluginUtil>
 #include "kaddressbook_importexport_export.h"
 
 namespace KAddressBookImportExport

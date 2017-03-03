@@ -20,7 +20,7 @@
 #ifndef KADDRESSBOOKIMPORTEXPORTPLUGIN_H
 #define KADDRESSBOOKIMPORTEXPORTPLUGIN_H
 
-#include <PimCommon/AbstractGenericPlugin>
+#include <PimCommonAkonadi/AbstractGenericPlugin>
 #include "kaddressbook_importexport_export.h"
 #include <QList>
 class QAction;

@@ -20,7 +20,7 @@
 #include "kaddressbookimportexportpluginmanager.h"
 #include "kaddressbookimportexportplugin.h"
 #include "libkaddressbookexportimport_debug.h"
-#include <PimCommon/PluginUtil>
+#include <PimCommonAkonadi/PluginUtil>
 
 #include <QFileInfo>
 #include <QSet>

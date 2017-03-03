@@ -21,7 +21,7 @@
 #define KADDRESSBOOKIMPORTEXPORTPLUGININTERFACE_H
 
 #include "kaddressbook_importexport_export.h"
-#include <PimCommon/AbstractGenericPluginInterface>
+#include <PimCommonAkonadi/AbstractGenericPluginInterface>
 #include <QList>
 #include <AkonadiCore/Collection>
 class QItemSelectionModel;
