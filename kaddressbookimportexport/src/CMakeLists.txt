@@ -28,9 +28,9 @@ target_include_directories(KF5KaddressbookImportExport PUBLIC "$<BUILD_INTERFACE
 target_link_libraries(KF5KaddressbookImportExport
     PRIVATE
     KF5::Contacts
-    KF5::Service
-    KF5::PimCommonAkonadi
+    KF5::PimCommon
     KF5::I18n
+    KF5::AkonadiWidgets
     )
 
 set_target_properties(KF5KaddressbookImportExport PROPERTIES
