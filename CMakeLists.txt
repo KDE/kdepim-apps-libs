@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.0)
 set(PIM_VERSION "5.4.41")
 project(kdepim-apps-lib VERSION ${PIM_VERSION})
 
-set(KF5_VERSION "5.31.0")
+set(KF5_VERSION "5.32.0")
 find_package(ECM ${KF5_VERSION} CONFIG REQUIRED)
 set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH})
 set(LIBRARY_NAMELINK)
