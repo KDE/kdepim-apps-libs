@@ -18,6 +18,7 @@
 */
 
 #include "sendlaterutil.h"
+#include "sendlaterutil_p.h"
 #include "sendlaterinfo.h"
 #include "sendlateragentsettings.h"
 #include "libsendlater_debug.h"
