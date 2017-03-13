@@ -58,6 +58,9 @@ set_package_properties(Prison PROPERTIES
     TYPE OPTIONAL
     PURPOSE "Needed to show mobile barcodes of your contacts")
 
+if(BUILD_TESTING)
+   add_definitions(-DBUILD_TESTING)
+endif(BUILD_TESTING)
 
 add_subdirectory(libfollowupreminder)
 add_subdirectory(libkdepimdbusinterfaces)
