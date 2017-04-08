@@ -42,7 +42,7 @@ bool UriHandler::process(const QString &uri, const Akonadi::Item &item)
 
     if (uri.startsWith(QStringLiteral("kmail:"))) {
         // make sure kmail is running or the part is shown
-        const QString desktopFile = QStandardPaths::locate(QStandardPaths::ApplicationsLocation, QStringLiteral("org.kde.kmail.desktop"));
+        const QString desktopFile = QStandardPaths::locate(QStandardPaths::ApplicationsLocation, QStringLiteral("org.kde.kmail2.desktop"));
         QString error;
         if (KToolInvocation::startServiceByDesktopPath(desktopFile, QStringList(), &error) == 0) {
             // parse string, show
@@ -92,7 +92,7 @@ bool UriHandler::process(const QString &uri, const Akonadi::Item &item)
         const QString mimeType = QUrlQuery(url).queryItemValue(QStringLiteral("type"));
         if (mimeType.toLower() == QLatin1String("message/rfc822")) {
             // make sure kmail is running or the part is shown
-            const QString desktopFile = QStandardPaths::locate(QStandardPaths::ApplicationsLocation, QStringLiteral("org.kde.kmail.desktop"));
+            const QString desktopFile = QStandardPaths::locate(QStandardPaths::ApplicationsLocation, QStringLiteral("org.kde.kmail2.desktop"));
             QString error;
             if (KToolInvocation::startServiceByDesktopPath(desktopFile, QStringList(), &error) == 0) {
                 OrgKdeKmailKmailInterface kmailInterface(QStringLiteral("org.kde.kmail"), QStringLiteral("/KMail"), QDBusConnection::sessionBus());
