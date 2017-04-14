@@ -90,4 +90,3 @@ QString GrantleePrint::contactsToHtml(const KContacts::Addressee::List &contacts
     qDeleteAll(lst);
     return content;
 }
-

@@ -21,8 +21,7 @@
 #define GRANTLEECONTACTUTILS_H
 
 #include <QVariantHash>
-namespace KAddressBookGrantlee
-{
+namespace KAddressBookGrantlee {
 class GrantleeContactUtils
 {
 public:

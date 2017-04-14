@@ -25,14 +25,11 @@
 #include <Akonadi/Contact/AbstractContactGroupFormatter>
 #include "kaddressbook_grantlee_export.h"
 
-namespace GrantleeTheme
-{
+namespace GrantleeTheme {
 class Theme;
 }
 
-namespace KAddressBookGrantlee
-{
-
+namespace KAddressBookGrantlee {
 /**
  * @short A class that formats a contact group as HTML code.
  *
@@ -65,7 +62,6 @@ private:
     Private *const d;
     //@endcond
 };
-
 }
 
 #endif

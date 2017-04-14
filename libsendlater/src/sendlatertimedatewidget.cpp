@@ -55,7 +55,6 @@ SendLaterTimeDateWidget::SendLaterTimeDateWidget(QWidget *parent)
 
 SendLaterTimeDateWidget::~SendLaterTimeDateWidget()
 {
-
 }
 
 void SendLaterTimeDateWidget::slotDateTimeChanged()
@@ -79,4 +78,3 @@ void SendLaterTimeDateWidget::setDateTime(const QDateTime &datetime)
     mTimeComboBox->setTime(datetime.time());
     mDateComboBox->setDate(datetime.date());
 }
-

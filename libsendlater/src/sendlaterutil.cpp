@@ -31,7 +31,7 @@ bool SendLater::SendLaterUtil::compareSendLaterInfo(SendLater::SendLaterInfo *le
 {
     if (left->dateTime() == right->dateTime()) {
         //Set no recursive first.
-        if (left->isRecurrence())  {
+        if (left->isRecurrence()) {
             return false;
         }
     }

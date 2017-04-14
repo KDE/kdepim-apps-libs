@@ -24,8 +24,7 @@
 #include <PimCommon/PluginUtil>
 #include "kaddressbook_importexport_export.h"
 
-namespace KAddressBookImportExport
-{
+namespace KAddressBookImportExport {
 class KAddressBookImportExportPlugin;
 class KAddressBookImportExportPrivate;
 class KADDRESSBOOK_IMPORTEXPORT_EXPORT KAddressBookImportExportPluginManager : public QObject

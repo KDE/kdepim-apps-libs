@@ -239,153 +239,176 @@ void KAddressBookImportExportContactFields::setValue(Field field, const QString 
     case KAddressBookImportExportContactFields::Mailer:
         contact.setMailer(value);
         break;
-    case KAddressBookImportExportContactFields::Homepage: {
+    case KAddressBookImportExportContactFields::Homepage:
+    {
         KContacts::ResourceLocatorUrl url;
         url.setUrl(QUrl(value));
         contact.setUrl(url);
+        break;
     }
-    break;
     case KAddressBookImportExportContactFields::Organization:
         contact.setOrganization(value);
         break;
     case KAddressBookImportExportContactFields::Note:
         contact.setNote(value);
         break;
-    case KAddressBookImportExportContactFields::HomePhone: {
+    case KAddressBookImportExportContactFields::HomePhone:
+    {
         KContacts::PhoneNumber number = contact.phoneNumber(KContacts::PhoneNumber::Home);
         number.setNumber(value);
         contact.insertPhoneNumber(number);
+        break;
     }
-    break;
-    case KAddressBookImportExportContactFields::BusinessPhone: {
+    case KAddressBookImportExportContactFields::BusinessPhone:
+    {
         KContacts::PhoneNumber number = contact.phoneNumber(KContacts::PhoneNumber::Work);
         number.setNumber(value);
         contact.insertPhoneNumber(number);
+        break;
     }
-    break;
-    case KAddressBookImportExportContactFields::MobilePhone: {
+    case KAddressBookImportExportContactFields::MobilePhone:
+    {
         KContacts::PhoneNumber number = contact.phoneNumber(KContacts::PhoneNumber::Cell);
         number.setNumber(value);
         contact.insertPhoneNumber(number);
+        break;
     }
-    break;
-    case KAddressBookImportExportContactFields::HomeFax: {
-        KContacts::PhoneNumber number = contact.phoneNumber(KContacts::PhoneNumber::Home |
-                                        KContacts::PhoneNumber::Fax);
+    case KAddressBookImportExportContactFields::HomeFax:
+    {
+        KContacts::PhoneNumber number = contact.phoneNumber(KContacts::PhoneNumber::Home
+                                                            |KContacts::PhoneNumber::Fax);
         number.setNumber(value);
         contact.insertPhoneNumber(number);
+        break;
     }
-    break;
-    case KAddressBookImportExportContactFields::BusinessFax: {
-        KContacts::PhoneNumber number = contact.phoneNumber(KContacts::PhoneNumber::Work |
-                                        KContacts::PhoneNumber::Fax);
+    case KAddressBookImportExportContactFields::BusinessFax:
+    {
+        KContacts::PhoneNumber number = contact.phoneNumber(KContacts::PhoneNumber::Work
+                                                            |KContacts::PhoneNumber::Fax);
         number.setNumber(value);
         contact.insertPhoneNumber(number);
+        break;
     }
-    break;
-    case KAddressBookImportExportContactFields::CarPhone: {
+    case KAddressBookImportExportContactFields::CarPhone:
+    {
         KContacts::PhoneNumber number = contact.phoneNumber(KContacts::PhoneNumber::Car);
         number.setNumber(value);
         contact.insertPhoneNumber(number);
+        break;
     }
-    break;
-    case KAddressBookImportExportContactFields::Isdn: {
+    case KAddressBookImportExportContactFields::Isdn:
+    {
         KContacts::PhoneNumber number = contact.phoneNumber(KContacts::PhoneNumber::Isdn);
         number.setNumber(value);
         contact.insertPhoneNumber(number);
+        break;
     }
-    break;
-    case KAddressBookImportExportContactFields::Pager: {
+    case KAddressBookImportExportContactFields::Pager:
+    {
         KContacts::PhoneNumber number = contact.phoneNumber(KContacts::PhoneNumber::Pager);
         number.setNumber(value);
         contact.insertPhoneNumber(number);
+        break;
     }
-    break;
 
-    case KAddressBookImportExportContactFields::HomeAddressStreet: {
+    case KAddressBookImportExportContactFields::HomeAddressStreet:
+    {
         KContacts::Address address = contact.address(KContacts::Address::Home);
         address.setStreet(value);
         contact.insertAddress(address);
+        break;
     }
-    break;
-    case KAddressBookImportExportContactFields::HomeAddressPostOfficeBox: {
+    case KAddressBookImportExportContactFields::HomeAddressPostOfficeBox:
+    {
         KContacts::Address address = contact.address(KContacts::Address::Home);
         address.setPostOfficeBox(value);
         contact.insertAddress(address);
+        break;
     }
-    break;
-    case KAddressBookImportExportContactFields::HomeAddressLocality: {
+    case KAddressBookImportExportContactFields::HomeAddressLocality:
+    {
         KContacts::Address address = contact.address(KContacts::Address::Home);
         address.setLocality(value);
         contact.insertAddress(address);
+        break;
     }
-    break;
-    case KAddressBookImportExportContactFields::HomeAddressRegion: {
+    case KAddressBookImportExportContactFields::HomeAddressRegion:
+    {
         KContacts::Address address = contact.address(KContacts::Address::Home);
         address.setRegion(value);
         contact.insertAddress(address);
+        break;
     }
-    break;
-    case KAddressBookImportExportContactFields::HomeAddressPostalCode: {
+    case KAddressBookImportExportContactFields::HomeAddressPostalCode:
+    {
         KContacts::Address address = contact.address(KContacts::Address::Home);
         address.setPostalCode(value);
         contact.insertAddress(address);
+        break;
     }
-    break;
-    case KAddressBookImportExportContactFields::HomeAddressCountry: {
+    case KAddressBookImportExportContactFields::HomeAddressCountry:
+    {
         KContacts::Address address = contact.address(KContacts::Address::Home);
         address.setCountry(value);
         contact.insertAddress(address);
+        break;
     }
-    break;
-    case KAddressBookImportExportContactFields::HomeAddressLabel: {
+    case KAddressBookImportExportContactFields::HomeAddressLabel:
+    {
         KContacts::Address address = contact.address(KContacts::Address::Home);
         address.setLabel(value);
         contact.insertAddress(address);
+        break;
     }
-    break;
-    case KAddressBookImportExportContactFields::BusinessAddressStreet: {
+    case KAddressBookImportExportContactFields::BusinessAddressStreet:
+    {
         KContacts::Address address = contact.address(KContacts::Address::Work);
         address.setStreet(value);
         contact.insertAddress(address);
+        break;
     }
-    break;
-    case KAddressBookImportExportContactFields::BusinessAddressPostOfficeBox: {
+    case KAddressBookImportExportContactFields::BusinessAddressPostOfficeBox:
+    {
         KContacts::Address address = contact.address(KContacts::Address::Work);
         address.setPostOfficeBox(value);
         contact.insertAddress(address);
+        break;
     }
-    break;
-    case KAddressBookImportExportContactFields::BusinessAddressLocality: {
+    case KAddressBookImportExportContactFields::BusinessAddressLocality:
+    {
         KContacts::Address address = contact.address(KContacts::Address::Work);
         address.setLocality(value);
         contact.insertAddress(address);
+        break;
     }
-    break;
-    case KAddressBookImportExportContactFields::BusinessAddressRegion: {
+    case KAddressBookImportExportContactFields::BusinessAddressRegion:
+    {
         KContacts::Address address = contact.address(KContacts::Address::Work);
         address.setRegion(value);
         contact.insertAddress(address);
+        break;
     }
-    break;
-    case KAddressBookImportExportContactFields::BusinessAddressPostalCode: {
+    case KAddressBookImportExportContactFields::BusinessAddressPostalCode:
+    {
         KContacts::Address address = contact.address(KContacts::Address::Work);
         address.setPostalCode(value);
         contact.insertAddress(address);
+        break;
     }
-    break;
-    case KAddressBookImportExportContactFields::BusinessAddressCountry: {
+    case KAddressBookImportExportContactFields::BusinessAddressCountry:
+    {
         KContacts::Address address = contact.address(KContacts::Address::Work);
         address.setCountry(value);
         contact.insertAddress(address);
+        break;
     }
-    break;
-    case KAddressBookImportExportContactFields::BusinessAddressLabel: {
+    case KAddressBookImportExportContactFields::BusinessAddressLabel:
+    {
         KContacts::Address address = contact.address(KContacts::Address::Work);
         address.setLabel(value);
         contact.insertAddress(address);
+        break;
     }
-    break;
     case BlogFeed:
         contact.insertCustom(QStringLiteral("KADDRESSBOOK"),
                              QStringLiteral("BlogFeed"), value);
@@ -440,88 +463,103 @@ QString KAddressBookImportExportContactFields::value(Field field, const KContact
     case NickName:
         return contact.nickName();
         break;
-    case Birthday: {
+    case Birthday:
+    {
         const QDateTime birthday = contact.birthday();
         if (birthday.date().isValid()) {
             return birthday.date().toString(Qt::ISODate);
         } else {
             return QString();
         }
+        break;
     }
-    break;
     case Anniversary:
         return contact.custom(QStringLiteral("KADDRESSBOOK"), QStringLiteral("X-Anniversary"));
         break;
-    case HomeAddressStreet: {
+    case HomeAddressStreet:
+    {
         const KContacts::Address address = contact.address(KContacts::Address::Home);
         return address.street();
+        break;
     }
-    break;
-    case HomeAddressPostOfficeBox: {
+    case HomeAddressPostOfficeBox:
+    {
         const KContacts::Address address = contact.address(KContacts::Address::Home);
         return address.postOfficeBox();
+        break;
     }
-    break;
-    case HomeAddressLocality: {
+    case HomeAddressLocality:
+    {
         const KContacts::Address address = contact.address(KContacts::Address::Home);
         return address.locality();
+        break;
     }
-    break;
-    case HomeAddressRegion: {
+    case HomeAddressRegion:
+    {
         const KContacts::Address address = contact.address(KContacts::Address::Home);
         return address.region();
+        break;
     }
-    break;
-    case HomeAddressPostalCode: {
+    case HomeAddressPostalCode:
+    {
         const KContacts::Address address = contact.address(KContacts::Address::Home);
         return address.postalCode();
+        break;
     }
-    break;
-    case HomeAddressCountry: {
+    case HomeAddressCountry:
+    {
         const KContacts::Address address = contact.address(KContacts::Address::Home);
         return address.country();
+        break;
     }
-    break;
-    case HomeAddressLabel: {
+    case HomeAddressLabel:
+    {
         const KContacts::Address address = contact.address(KContacts::Address::Home);
         return address.label();
+        break;
     }
-    break;
-    case BusinessAddressStreet: {
+    case BusinessAddressStreet:
+    {
         const KContacts::Address address = contact.address(KContacts::Address::Work);
         return address.street();
+        break;
     }
-    break;
-    case BusinessAddressPostOfficeBox: {
+    case BusinessAddressPostOfficeBox:
+    {
         const KContacts::Address address = contact.address(KContacts::Address::Work);
         return address.postOfficeBox();
+        break;
     }
-    break;
-    case BusinessAddressLocality: {
+    case BusinessAddressLocality:
+    {
         const KContacts::Address address = contact.address(KContacts::Address::Work);
         return address.locality();
+        break;
     }
-    break;
-    case BusinessAddressRegion: {
+    case BusinessAddressRegion:
+    {
         const KContacts::Address address = contact.address(KContacts::Address::Work);
         return address.region();
+        break;
     }
-    break;
-    case BusinessAddressPostalCode: {
+    case BusinessAddressPostalCode:
+    {
         const KContacts::Address address = contact.address(KContacts::Address::Work);
         return address.postalCode();
+        break;
     }
-    break;
-    case BusinessAddressCountry: {
+    case BusinessAddressCountry:
+    {
         const KContacts::Address address = contact.address(KContacts::Address::Work);
         return address.country();
+        break;
     }
-    break;
-    case BusinessAddressLabel: {
+    case BusinessAddressLabel:
+    {
         const KContacts::Address address = contact.address(KContacts::Address::Work);
         return address.label();
+        break;
     }
-    break;
     case HomePhone:
         return contact.phoneNumber(KContacts::PhoneNumber::Home).number();
         break;
@@ -546,42 +584,46 @@ QString KAddressBookImportExportContactFields::value(Field field, const KContact
     case Pager:
         return contact.phoneNumber(KContacts::PhoneNumber::Pager).number();
         break;
-    case PreferredEmail: {
+    case PreferredEmail:
+    {
         const QStringList emails = contact.emails();
         if (emails.count() > 0) {
             return emails.at(0);
         } else {
             return QString();
         }
+        break;
     }
-    break;
-    case Email2: {
+    case Email2:
+    {
         const QStringList emails = contact.emails();
         if (emails.count() > 1) {
             return emails.at(1);
         } else {
             return QString();
         }
+        break;
     }
-    break;
-    case Email3: {
+    case Email3:
+    {
         const QStringList emails = contact.emails();
         if (emails.count() > 2) {
             return emails.at(2);
         } else {
             return QString();
         }
+        break;
     }
-    break;
-    case Email4: {
+    case Email4:
+    {
         const QStringList emails = contact.emails();
         if (emails.count() > 3) {
             return emails.at(3);
         } else {
             return QString();
         }
+        break;
     }
-    break;
     case Mailer:
         return contact.mailer();
         break;

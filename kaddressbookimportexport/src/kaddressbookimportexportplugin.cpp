@@ -24,10 +24,8 @@ using namespace KAddressBookImportExport;
 KAddressBookImportExportPlugin::KAddressBookImportExportPlugin(QObject *parent)
     : PimCommon::AbstractGenericPlugin(parent)
 {
-
 }
 
 KAddressBookImportExportPlugin::~KAddressBookImportExportPlugin()
 {
-
 }

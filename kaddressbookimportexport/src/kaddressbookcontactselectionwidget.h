@@ -33,8 +33,7 @@ class QItemSelectionModel;
 class QLabel;
 class QRadioButton;
 
-namespace Akonadi
-{
+namespace Akonadi {
 class Collection;
 class CollectionComboBox;
 }
@@ -44,8 +43,7 @@ class CollectionComboBox;
  *
  * @author Tobias Koenig <tokoe@kde.org>
  */
-namespace KAddressBookImportExport
-{
+namespace KAddressBookImportExport {
 class KADDRESSBOOK_IMPORTEXPORT_EXPORT KAddressBookContactSelectionWidget : public QWidget
 {
     Q_OBJECT

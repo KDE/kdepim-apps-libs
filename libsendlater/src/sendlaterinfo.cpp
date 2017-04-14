@@ -24,18 +24,18 @@
 using namespace SendLater;
 
 SendLaterInfo::SendLaterInfo()
-    : mId(-1),
-      mRecurrenceEachValue(1),
-      mRecurrenceUnit(Days),
-      mRecurrence(false)
+    : mId(-1)
+    , mRecurrenceEachValue(1)
+    , mRecurrenceUnit(Days)
+    , mRecurrence(false)
 {
 }
 
 SendLaterInfo::SendLaterInfo(const KConfigGroup &config)
-    : mId(-1),
-      mRecurrenceEachValue(1),
-      mRecurrenceUnit(Days),
-      mRecurrence(false)
+    : mId(-1)
+    , mRecurrenceEachValue(1)
+    , mRecurrenceUnit(Days)
+    , mRecurrence(false)
 {
     readConfig(config);
 }
@@ -58,7 +58,7 @@ SendLaterInfo::~SendLaterInfo()
 
 bool SendLaterInfo::isValid() const
 {
-    return ((mId != -1) && mDateTime.isValid());
+    return (mId != -1) && mDateTime.isValid();
 }
 
 bool SendLaterInfo::isRecurrence() const
@@ -143,14 +143,14 @@ QString SendLaterInfo::to() const
 
 bool SendLaterInfo::operator ==(const SendLaterInfo &other) const
 {
-    return (itemId() == other.itemId()) &&
-           (recurrenceUnit() == other.recurrenceUnit()) &&
-           (recurrenceEachValue() == other.recurrenceEachValue()) &&
-           (isRecurrence() == other.isRecurrence()) &&
-           (dateTime() == other.dateTime()) &&
-           (lastDateTimeSend() == other.lastDateTimeSend()) &&
-           (subject() == other.subject()) &&
-           (to() == other.to());
+    return (itemId() == other.itemId())
+           && (recurrenceUnit() == other.recurrenceUnit())
+           && (recurrenceEachValue() == other.recurrenceEachValue())
+           && (isRecurrence() == other.isRecurrence())
+           && (dateTime() == other.dateTime())
+           && (lastDateTimeSend() == other.lastDateTimeSend())
+           && (subject() == other.subject())
+           && (to() == other.to());
 }
 
 void SendLaterInfo::readConfig(const KConfigGroup &config)

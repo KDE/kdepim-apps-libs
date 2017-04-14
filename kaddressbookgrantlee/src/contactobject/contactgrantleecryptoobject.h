@@ -21,8 +21,7 @@
 #define CONTACTGRANTLEEPRINTCRYPTOOBJECT_H
 #include <QObject>
 #include <KContacts/Addressee>
-namespace KAddressBookGrantlee
-{
+namespace KAddressBookGrantlee {
 class ContactGrantleeCryptoObject : public QObject
 {
     Q_OBJECT

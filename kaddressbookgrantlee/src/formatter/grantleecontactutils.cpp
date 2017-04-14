@@ -24,7 +24,6 @@ using namespace KAddressBookGrantlee;
 
 GrantleeContactUtils::GrantleeContactUtils()
 {
-
 }
 
 void GrantleeContactUtils::insertVariableToQVariantHash(QVariantHash &contactI18n, const QString &variable)

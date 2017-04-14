@@ -22,15 +22,14 @@
 
 using namespace KAddressBookGrantlee;
 ContactGrantleeImObject::ContactGrantleeImObject(const QString &type, const QString &address, QObject *parent)
-    : QObject(parent),
-      mType(type),
-      mAddress(address)
+    : QObject(parent)
+    , mType(type)
+    , mAddress(address)
 {
 }
 
 ContactGrantleeImObject::~ContactGrantleeImObject()
 {
-
 }
 
 QString ContactGrantleeImObject::type() const

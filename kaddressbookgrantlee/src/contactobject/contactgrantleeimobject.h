@@ -20,8 +20,7 @@
 #ifndef CONTACTGRANTLEEPRINTIMOBJECT_H
 #define CONTACTGRANTLEEPRINTIMOBJECT_H
 #include <QObject>
-namespace KAddressBookGrantlee
-{
+namespace KAddressBookGrantlee {
 class ContactGrantleeImObject : public QObject
 {
     Q_OBJECT

@@ -21,16 +21,14 @@
 using namespace KAddressBookGrantlee;
 
 ContactGrantleeEmail::ContactGrantleeEmail(const KContacts::Addressee &addressee, const KContacts::Email &email, QObject *parent)
-    : QObject(parent),
-      mEmail(email),
-      mAddressee(addressee)
+    : QObject(parent)
+    , mEmail(email)
+    , mAddressee(addressee)
 {
-
 }
 
 ContactGrantleeEmail::~ContactGrantleeEmail()
 {
-
 }
 
 QString ContactGrantleeEmail::email() const

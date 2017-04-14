@@ -27,14 +27,13 @@ inline QString loadCustom(const KContacts::Addressee &contact, const QString &ke
 }
 
 ContactGrantleeCryptoObject::ContactGrantleeCryptoObject(const KContacts::Addressee &address, QObject *parent)
-    : QObject(parent),
-      mAddress(address)
+    : QObject(parent)
+    , mAddress(address)
 {
 }
 
 ContactGrantleeCryptoObject::~ContactGrantleeCryptoObject()
 {
-
 }
 
 QString ContactGrantleeCryptoObject::signaturePreference() const

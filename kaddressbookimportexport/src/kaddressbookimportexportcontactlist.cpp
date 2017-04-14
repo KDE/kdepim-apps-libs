@@ -24,17 +24,16 @@ using namespace KAddressBookImportExport;
 
 KAddressBookImportExportContactList::KAddressBookImportExportContactList()
 {
-
 }
 
 bool KAddressBookImportExportContactList::isEmpty() const
 {
-    return (mAddressList.isEmpty() && mContactGroupList.isEmpty());
+    return mAddressList.isEmpty() && mContactGroupList.isEmpty();
 }
 
 int KAddressBookImportExportContactList::count() const
 {
-    return (mAddressList.count() + mContactGroupList.count());
+    return mAddressList.count() + mContactGroupList.count();
 }
 
 void KAddressBookImportExportContactList::clear()
@@ -72,4 +71,3 @@ void KAddressBookImportExportContactList::setAddressList(const KContacts::Addres
 {
     mAddressList = value;
 }
-

@@ -24,8 +24,7 @@
 #include <QDate>
 #include "followupreminder_export.h"
 class KConfigGroup;
-namespace FollowUpReminder
-{
+namespace FollowUpReminder {
 class FOLLOWUPREMINDER_EXPORT FollowUpReminderInfo
 {
 public:

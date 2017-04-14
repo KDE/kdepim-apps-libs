@@ -22,8 +22,7 @@
 #include <QObject>
 #include <KContacts/Addressee>
 #include <QVariant>
-namespace KAddressBookGrantlee
-{
+namespace KAddressBookGrantlee {
 class ContactGrantleeAddressObject;
 class ContactGrantleePhoneObject;
 class ContactGrantleeImObject;

@@ -27,12 +27,10 @@
 #include <QPushButton>
 using namespace KAddressBookImportExport;
 
-KAddressBookContactSelectionDialog::KAddressBookContactSelectionDialog(QItemSelectionModel *selectionModel, bool allowToSelectTypeToExport,
-        QWidget *parent)
-    : QDialog(parent),
-      mVCardExport(nullptr)
+KAddressBookContactSelectionDialog::KAddressBookContactSelectionDialog(QItemSelectionModel *selectionModel, bool allowToSelectTypeToExport, QWidget *parent)
+    : QDialog(parent)
+    , mVCardExport(nullptr)
 {
-
     setWindowTitle(i18n("Select Contacts"));
     QVBoxLayout *mainLayout = new QVBoxLayout(this);
 
@@ -87,4 +85,3 @@ void KAddressBookContactSelectionDialog::setAddGroupContact(bool addGroupContact
 {
     mSelectionWidget->setAddGroupContact(addGroupContact);
 }
-

@@ -21,12 +21,9 @@
 #define FOLLOWUPREMINDERUTIL_H
 #include "followupreminder_export.h"
 #include <KSharedConfig>
-namespace FollowUpReminder
-{
+namespace FollowUpReminder {
 class FollowUpReminderInfo;
-namespace FollowUpReminderUtil
-{
-
+namespace FollowUpReminderUtil {
 FOLLOWUPREMINDER_EXPORT bool followupReminderAgentWasRegistered();
 
 FOLLOWUPREMINDER_EXPORT bool followupReminderAgentEnabled();

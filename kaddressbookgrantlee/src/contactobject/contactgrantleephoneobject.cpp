@@ -21,8 +21,8 @@
 
 using namespace KAddressBookGrantlee;
 ContactGrantleePhoneObject::ContactGrantleePhoneObject(const KContacts::PhoneNumber &phone, QObject *parent)
-    : QObject(parent),
-      mPhoneNumber(phone)
+    : QObject(parent)
+    , mPhoneNumber(phone)
 {
 }
 
@@ -42,5 +42,5 @@ QString ContactGrantleePhoneObject::number() const
 
 bool ContactGrantleePhoneObject::preferred() const
 {
-    return (mPhoneNumber.type() & KContacts::PhoneNumber::Pref);
+    return mPhoneNumber.type() & KContacts::PhoneNumber::Pref;
 }

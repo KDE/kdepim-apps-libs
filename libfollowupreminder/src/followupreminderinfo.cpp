@@ -22,20 +22,20 @@
 using namespace FollowUpReminder;
 
 FollowUpReminderInfo::FollowUpReminderInfo()
-    : mOriginalMessageItemId(-1),
-      mAnswerMessageItemId(-1),
-      mTodoId(-1),
-      mUniqueIdentifier(-1),
-      mAnswerWasReceived(false)
+    : mOriginalMessageItemId(-1)
+    , mAnswerMessageItemId(-1)
+    , mTodoId(-1)
+    , mUniqueIdentifier(-1)
+    , mAnswerWasReceived(false)
 {
 }
 
 FollowUpReminderInfo::FollowUpReminderInfo(const KConfigGroup &config)
-    : mOriginalMessageItemId(-1),
-      mAnswerMessageItemId(-1),
-      mTodoId(-1),
-      mUniqueIdentifier(-1),
-      mAnswerWasReceived(false)
+    : mOriginalMessageItemId(-1)
+    , mAnswerMessageItemId(-1)
+    , mTodoId(-1)
+    , mUniqueIdentifier(-1)
+    , mAnswerWasReceived(false)
 {
     readConfig(config);
 }
@@ -147,9 +147,9 @@ void FollowUpReminderInfo::setTodoId(Akonadi::Item::Id value)
 
 bool FollowUpReminderInfo::isValid() const
 {
-    return (!mMessageId.isEmpty() &&
-            mFollowUpReminderDate.isValid() &&
-            !mTo.isEmpty());
+    return !mMessageId.isEmpty()
+           && mFollowUpReminderDate.isValid()
+           && !mTo.isEmpty();
 }
 
 QString FollowUpReminderInfo::messageId() const
@@ -194,4 +194,3 @@ bool FollowUpReminderInfo::operator==(const FollowUpReminderInfo &other) const
            && mUniqueIdentifier == other.uniqueIdentifier()
            && mTodoId == other.todoId();
 }
-

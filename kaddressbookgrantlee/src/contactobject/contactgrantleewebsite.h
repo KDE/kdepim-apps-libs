@@ -22,8 +22,7 @@
 
 #include <QObject>
 #include <KContacts/ResourceLocatorUrl>
-namespace KAddressBookGrantlee
-{
+namespace KAddressBookGrantlee {
 class ContactGrantleeWebSite : public QObject
 {
     Q_OBJECT

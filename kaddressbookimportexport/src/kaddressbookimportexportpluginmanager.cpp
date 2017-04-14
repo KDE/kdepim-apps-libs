@@ -42,6 +42,7 @@ public:
     {
         delete pluginManager;
     }
+
     KAddressBookImportExportPluginManager *pluginManager;
 };
 
@@ -49,11 +50,11 @@ class KAddressBookImportExportInfo
 {
 public:
     KAddressBookImportExportInfo()
-        : plugin(nullptr),
-          isEnabled(true)
+        : plugin(nullptr)
+        , isEnabled(true)
     {
-
     }
+
     QString metaDataFileNameBaseName;
     QString metaDataFileName;
     PimCommon::PluginUtilData pluginData;
@@ -63,8 +64,7 @@ public:
 
 Q_GLOBAL_STATIC(KAddressBookImportExportPluginManagerPrivate, sInstance)
 
-namespace
-{
+namespace {
 QString pluginVersion()
 {
     return QStringLiteral("1.0");
@@ -79,6 +79,7 @@ public:
     {
         initializePlugins();
     }
+
     void loadPlugin(KAddressBookImportExportInfo *item);
     QVector<KAddressBookImportExportPlugin *> pluginsList() const;
     QVector<PimCommon::PluginUtilData> pluginDataList() const;
@@ -95,7 +96,7 @@ private:
 
 bool KAddressBookImportExportPrivate::initializePlugins()
 {
-    const QVector<KPluginMetaData> plugins = KPluginLoader::findPlugins(QStringLiteral("kaddressbook"), [](const KPluginMetaData & md) {
+    const QVector<KPluginMetaData> plugins = KPluginLoader::findPlugins(QStringLiteral("kaddressbook"), [](const KPluginMetaData &md) {
         return md.serviceTypes().contains(QStringLiteral("KAddressBook/ImportExportPlugin"));
     });
 
@@ -184,8 +185,8 @@ KAddressBookImportExportPlugin *KAddressBookImportExportPrivate::pluginFromIdent
 }
 
 KAddressBookImportExportPluginManager::KAddressBookImportExportPluginManager(QObject *parent)
-    : QObject(parent),
-      d(new KAddressBookImportExportPrivate(this))
+    : QObject(parent)
+    , d(new KAddressBookImportExportPrivate(this))
 {
 }
 
@@ -223,4 +224,3 @@ KAddressBookImportExportPlugin *KAddressBookImportExportPluginManager::pluginFro
 {
     return d->pluginFromIdentifier(id);
 }
-

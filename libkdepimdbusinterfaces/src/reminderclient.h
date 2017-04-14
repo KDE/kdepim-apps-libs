@@ -23,14 +23,11 @@
 
 #include "kdepimdbusinterfaces_export.h"
 
-namespace KPIM
-{
-
+namespace KPIM {
 /**
   This namespace provides the interface for communicating with the reminder daemon.
 */
-namespace ReminderClient
-{
+namespace ReminderClient {
 /**
       Start reminder daemon.
     */
@@ -51,7 +48,6 @@ KDEPIMDBUSINTERFACES_EXPORT void hideDaemon();
     */
 KDEPIMDBUSINTERFACES_EXPORT void showDaemon();
 }
-
 }
 
 #endif

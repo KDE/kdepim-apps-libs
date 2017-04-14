@@ -22,15 +22,13 @@
 using namespace KAddressBookGrantlee;
 
 ContactGrantleeGeoObject::ContactGrantleeGeoObject(const KContacts::Geo &geo, QObject *parent)
-    : QObject(parent),
-      mGeo(geo)
+    : QObject(parent)
+    , mGeo(geo)
 {
-
 }
 
 ContactGrantleeGeoObject::~ContactGrantleeGeoObject()
 {
-
 }
 
 float ContactGrantleeGeoObject::latitude() const

@@ -23,9 +23,7 @@
 #include <QObject>
 #include <kcontacts/geo.h>
 
-namespace KAddressBookGrantlee
-{
-
+namespace KAddressBookGrantlee {
 class ContactGrantleeGeoObject : public QObject
 {
     Q_OBJECT

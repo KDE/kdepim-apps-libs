@@ -29,8 +29,7 @@
 #include <AkonadiCore/Item>
 class QItemSelectionModel;
 class KAddressBookContactSelectionWidget;
-namespace Akonadi
-{
+namespace Akonadi {
 class Collection;
 }
 
@@ -39,8 +38,7 @@ class Collection;
  *
  * @author Tobias Koenig <tokoe@kde.org>
  */
-namespace KAddressBookImportExport
-{
+namespace KAddressBookImportExport {
 class KAddressBookExportSelectionWidget;
 class KAddressBookContactSelectionWidget;
 class KADDRESSBOOK_IMPORTEXPORT_EXPORT KAddressBookContactSelectionDialog : public QDialog

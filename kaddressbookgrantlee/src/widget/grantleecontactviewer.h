@@ -23,8 +23,7 @@
 #include "kaddressbook_grantlee_export.h"
 #include <Akonadi/Contact/ContactViewer>
 
-namespace KAddressBookGrantlee
-{
+namespace KAddressBookGrantlee {
 class GrantleeContactFormatter;
 class KADDRESSBOOK_GRANTLEE_EXPORT GrantleeContactViewer : public Akonadi::ContactViewer
 {

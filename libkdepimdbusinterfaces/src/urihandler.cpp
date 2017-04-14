@@ -62,7 +62,6 @@ bool UriHandler::process(const QString &uri, const Akonadi::Item &item)
         QDesktopServices::openUrl(QUrl(uri));
         return true;
     } else if (uri.startsWith(QStringLiteral("uid:"))) {
-
         Akonadi::ContactEditorDialog *dlg = new Akonadi::ContactEditorDialog(Akonadi::ContactEditorDialog::EditMode, (QWidget *)nullptr);
         if (item.isValid()) {
             dlg->setContact(item);
@@ -109,4 +108,3 @@ bool UriHandler::process(const QString &uri, const Akonadi::Item &item)
 
     return false;
 }
-

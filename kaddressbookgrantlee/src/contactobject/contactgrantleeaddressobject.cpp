@@ -21,8 +21,8 @@
 
 using namespace KAddressBookGrantlee;
 ContactGrantleeAddressObject::ContactGrantleeAddressObject(const KContacts::Address &address, QObject *parent)
-    : QObject(parent),
-      mAddress(address)
+    : QObject(parent)
+    , mAddress(address)
 {
 }
 

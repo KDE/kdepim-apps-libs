@@ -25,13 +25,11 @@
 #include <QDateTime>
 class QCheckBox;
 class QPushButton;
-namespace Ui
-{
+namespace Ui {
 class SendLaterWidget;
 }
 
-namespace SendLater
-{
+namespace SendLater {
 class SendLaterInfo;
 class SENDLATER_EXPORT SendLaterDialog : public QDialog
 {

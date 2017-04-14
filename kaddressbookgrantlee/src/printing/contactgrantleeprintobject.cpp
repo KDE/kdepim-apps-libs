@@ -37,8 +37,8 @@
 using namespace KAddressBookGrantlee;
 
 ContactGrantleePrintObject::ContactGrantleePrintObject(const KContacts::Addressee &address, QObject *parent)
-    : QObject(parent),
-      mAddress(address)
+    : QObject(parent)
+    , mAddress(address)
 {
     const auto addresses = address.addresses();
     mListAddress.reserve(addresses.size());
@@ -283,9 +283,9 @@ QString ContactGrantleePrintObject::logo() const
 QString ContactGrantleePrintObject::anniversary() const
 {
     const QDate anniversary = QDate::fromString(mAddress.custom(QStringLiteral("KADDRESSBOOK"),
-                              QStringLiteral("X-Anniversary")), Qt::ISODate);
+                                                                QStringLiteral("X-Anniversary")), Qt::ISODate);
     if (anniversary.isValid()) {
-        return (QLocale().toString(anniversary));
+        return QLocale().toString(anniversary);
     }
     return QString();
 }

@@ -56,8 +56,8 @@ class Q_DECL_HIDDEN GrantleeContactFormatter::Private
 {
 public:
     Private()
-        : forceDisableQRCode(false),
-          showQRCode(true)
+        : forceDisableQRCode(false)
+        , showQRCode(true)
     {
         KConfig config(QStringLiteral("akonadi_contactrc"));
         KConfigGroup group(&config, QStringLiteral("View"));
@@ -152,15 +152,15 @@ static QVariantHash phoneNumberHash(const KContacts::PhoneNumber &phoneNumber, i
     setHashField(numberObject, QStringLiteral("number"), phoneNumber.number());
 
     if (!phoneNumber.isEmpty()) {
-        const QString url =
-            QStringLiteral("<a href=\"phone:?index=%1\">%2</a>").
-            arg(counter).
-            arg(phoneNumber.number());
+        const QString url
+            = QStringLiteral("<a href=\"phone:?index=%1\">%2</a>").
+              arg(counter).
+              arg(phoneNumber.number());
         numberObject.insert(QStringLiteral("numberLink"), url);
 
         if (phoneNumber.type() & KContacts::PhoneNumber::Cell) {
-            const QString url =
-                QStringLiteral("<a href=\"sms:?index=%1\"><img src=\"sms_icon\" align=\"top\"/></a>").arg(counter);
+            const QString url
+                = QStringLiteral("<a href=\"sms:?index=%1\"><img src=\"sms_icon\" align=\"top\"/></a>").arg(counter);
             numberObject.insert(QStringLiteral("smsLink"), url);
         }
     }
@@ -179,7 +179,7 @@ static QVariantHash imAddressHash(const QString &typeKey, const QString &imAddre
     setHashField(addressObject, QStringLiteral("imAddress"), imAddress);
 
     const QString iconUrl = QUrl::fromLocalFile(KIconLoader::global()->iconPath(IMProtocols::self()->icon(typeKey),
-                            -KIconLoader::SizeSmall)).url();
+                                                                                -KIconLoader::SizeSmall)).url();
     const QString url = QStringLiteral("<img src=\"%1\" align=\"top\" height=\"%2\" width=\"%2\"/>").arg(iconUrl, QString::number(KIconLoader::SizeSmall));
     addressObject.insert(QStringLiteral("imIcon"), url);
 
@@ -283,14 +283,14 @@ QString GrantleeContactFormatter::toHtml(HtmlForm form) const
 
         const int years = contactAge(birthday);
         contactObject.insert(QStringLiteral("age"), QString::number(years));
-        contactObject.insert(QStringLiteral("birthdayage"), QString(formattedBirthday +
-                             QStringLiteral("&nbsp;&nbsp;") +
-                             i18np("(One year old)", "(%1 years old)", years)));
+        contactObject.insert(QStringLiteral("birthdayage"), QString(formattedBirthday
+                                                                    +QStringLiteral("&nbsp;&nbsp;")
+                                                                    +i18np("(One year old)", "(%1 years old)", years)));
     }
 
-    const QDate anniversary =
-        QDate::fromString(rawContact.custom(QStringLiteral("KADDRESSBOOK"),
-                                            QStringLiteral("X-Anniversary")), Qt::ISODate);
+    const QDate anniversary
+        = QDate::fromString(rawContact.custom(QStringLiteral("KADDRESSBOOK"),
+                                              QStringLiteral("X-Anniversary")), Qt::ISODate);
     if (anniversary.isValid()) {
         contactObject.insert(QStringLiteral("anniversary"),
                              QLocale().toString(anniversary));
@@ -342,8 +342,8 @@ QString GrantleeContactFormatter::toHtml(HtmlForm form) const
     const KContacts::ResourceLocatorUrl::List extraUrlList = rawContact.extraUrlList();
     for (const KContacts::ResourceLocatorUrl &resourceLocator : extraUrlList) {
         QString url = resourceLocator.url().url();
-        if (!url.startsWith(QStringLiteral("http://")) &&
-                !url.startsWith(QStringLiteral("https://"))) {
+        if (!url.startsWith(QStringLiteral("http://"))
+            && !url.startsWith(QStringLiteral("https://"))) {
             url = QStringLiteral("http://") + url;
         }
         websites.append(KStringHandler::tagUrls(url));
@@ -354,16 +354,16 @@ QString GrantleeContactFormatter::toHtml(HtmlForm form) const
     }
 
     // Blog Feed
-    const QString blog =
-        rawContact.custom(QStringLiteral("KADDRESSBOOK"), QStringLiteral("BlogFeed"));
+    const QString blog
+        = rawContact.custom(QStringLiteral("KADDRESSBOOK"), QStringLiteral("BlogFeed"));
     if (!blog.isEmpty()) {
         contactObject.insert(QStringLiteral("blogUrl"), KStringHandler::tagUrls(blog));
         grantleeContactUtil.insertVariableToQVariantHash(contactObject, QStringLiteral("blogUrli18n"));
     }
 
     // Address Book
-    const QString addressBookName =
-        rawContact.custom(QStringLiteral("KADDRESSBOOK"), QStringLiteral("AddressBook"));
+    const QString addressBookName
+        = rawContact.custom(QStringLiteral("KADDRESSBOOK"), QStringLiteral("AddressBook"));
     if (!addressBookName.isEmpty()) {
         contactObject.insert(QStringLiteral("addressBookName"), addressBookName);
         grantleeContactUtil.insertVariableToQVariantHash(contactObject, QStringLiteral("addressBookNamei18n"));
@@ -487,15 +487,12 @@ QString GrantleeContactFormatter::toHtml(HtmlForm form) const
                             } else {
                                 value = i18nc("Boolean value", "no");
                             }
-
-                        } else if (descriptionType  == QLatin1String("date")) {
+                        } else if (descriptionType == QLatin1String("date")) {
                             const QDate date = QDate::fromString(value, Qt::ISODate);
                             value = QLocale().toString(date, QLocale::ShortFormat);
-
                         } else if (descriptionType == QLatin1String("time")) {
                             const QTime time = QTime::fromString(value, Qt::ISODate);
                             value = QLocale::system().toString(time, QLocale::ShortFormat);
-
                         } else if (descriptionType == QLatin1String("datetime")) {
                             const QDateTime dateTime = QDateTime::fromString(value, Qt::ISODate);
                             value = QLocale().toString(dateTime, QLocale::ShortFormat);

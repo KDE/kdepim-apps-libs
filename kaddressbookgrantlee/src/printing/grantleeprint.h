@@ -25,13 +25,11 @@
 #include <QObject>
 #include <KContacts/Addressee>
 
-namespace Grantlee
-{
+namespace Grantlee {
 class Engine;
 }
 
-namespace KAddressBookGrantlee
-{
+namespace KAddressBookGrantlee {
 class KADDRESSBOOK_GRANTLEE_EXPORT GrantleePrint : public PimCommon::GenericGrantleeFormatter
 {
     Q_OBJECT

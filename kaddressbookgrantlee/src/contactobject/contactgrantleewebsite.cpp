@@ -23,15 +23,13 @@
 using namespace KAddressBookGrantlee;
 
 ContactGrantleeWebSite::ContactGrantleeWebSite(const KContacts::ResourceLocatorUrl &resourceLocator, QObject *parent)
-    : QObject(parent),
-      mResourceLocator(resourceLocator)
+    : QObject(parent)
+    , mResourceLocator(resourceLocator)
 {
-
 }
 
 ContactGrantleeWebSite::~ContactGrantleeWebSite()
 {
-
 }
 
 QString ContactGrantleeWebSite::url() const

@@ -71,7 +71,7 @@ void FollowUpReminder::FollowUpReminderUtil::writeFollowupReminderInfo(KSharedCo
     // first, delete all filter groups:
     const QStringList filterGroups = config->groupList();
     for (const QString &group : filterGroups) {
-        if (group == groupName)  {
+        if (group == groupName) {
             config->deleteGroup(group);
         }
     }
@@ -101,8 +101,7 @@ bool FollowUpReminder::FollowUpReminderUtil::removeFollowupReminderInfo(KSharedC
         const QString groupName = FollowUpReminder::FollowUpReminderUtil::followUpReminderPattern().arg(identifier);
         const QStringList filterGroups = config->groupList();
         for (const QString &group : filterGroups) {
-
-            if (group == groupName)  {
+            if (group == groupName) {
                 config->deleteGroup(group);
                 --value;
                 needSaveConfig = true;

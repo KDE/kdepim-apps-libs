@@ -22,16 +22,14 @@
 using namespace KAddressBookImportExport;
 
 KAddressBookImportExportPluginInterface::KAddressBookImportExportPluginInterface(QObject *parent)
-    : PimCommon::AbstractGenericPluginInterface(parent),
-      mImportExportAction(Import),
-      mItemSelectionModel(nullptr)
+    : PimCommon::AbstractGenericPluginInterface(parent)
+    , mImportExportAction(Import)
+    , mItemSelectionModel(nullptr)
 {
-
 }
 
 KAddressBookImportExportPluginInterface::~KAddressBookImportExportPluginInterface()
 {
-
 }
 
 QList<QAction *> KAddressBookImportExportPluginInterface::importActions() const

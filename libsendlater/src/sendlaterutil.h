@@ -23,11 +23,9 @@
 #include "sendlater_export.h"
 #include <KSharedConfig>
 
-namespace SendLater
-{
+namespace SendLater {
 class SendLaterInfo;
-namespace SendLaterUtil
-{
+namespace SendLaterUtil {
 SENDLATER_EXPORT bool compareSendLaterInfo(SendLater::SendLaterInfo *left, SendLater::SendLaterInfo *right);
 
 SENDLATER_EXPORT KSharedConfig::Ptr defaultConfig();

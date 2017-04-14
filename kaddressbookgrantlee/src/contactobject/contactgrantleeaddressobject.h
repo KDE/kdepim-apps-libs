@@ -21,8 +21,7 @@
 #define CONTACTGRANTLEEPRINTADDRESSOBJECT_H
 #include <QObject>
 #include <KContacts/Addressee>
-namespace KAddressBookGrantlee
-{
+namespace KAddressBookGrantlee {
 class ContactGrantleeAddressObject : public QObject
 {
     Q_OBJECT

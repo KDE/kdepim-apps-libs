@@ -23,11 +23,9 @@
 #include "sendlater_export.h"
 #include <KSharedConfig>
 
-namespace SendLater
-{
+namespace SendLater {
 class SendLaterInfo;
-namespace SendLaterUtil
-{
+namespace SendLaterUtil {
 QDateTime updateRecurence(SendLater::SendLaterInfo *info, QDateTime dateTime);
 }
 }

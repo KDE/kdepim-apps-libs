@@ -23,8 +23,7 @@
 #include <QWidget>
 #include "kaddressbook_importexport_export.h"
 class QCheckBox;
-namespace KAddressBookImportExport
-{
+namespace KAddressBookImportExport {
 class KADDRESSBOOK_IMPORTEXPORT_EXPORT KAddressBookExportSelectionWidget : public QWidget
 {
     Q_OBJECT

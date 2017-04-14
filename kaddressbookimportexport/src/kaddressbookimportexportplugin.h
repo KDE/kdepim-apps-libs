@@ -24,8 +24,7 @@
 #include "kaddressbook_importexport_export.h"
 #include <QList>
 class QAction;
-namespace KAddressBookImportExport
-{
+namespace KAddressBookImportExport {
 class KADDRESSBOOK_IMPORTEXPORT_EXPORT KAddressBookImportExportPlugin : public PimCommon::AbstractGenericPlugin
 {
     Q_OBJECT

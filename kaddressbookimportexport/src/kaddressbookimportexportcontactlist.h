@@ -24,8 +24,7 @@
 #include <KContacts/ContactGroup>
 #include "kaddressbook_importexport_export.h"
 
-namespace KAddressBookImportExport
-{
+namespace KAddressBookImportExport {
 class KADDRESSBOOK_IMPORTEXPORT_EXPORT KAddressBookImportExportContactList
 {
 public:

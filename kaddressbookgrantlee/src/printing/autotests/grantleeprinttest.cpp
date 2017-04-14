@@ -24,12 +24,10 @@
 GrantleePrintTest::GrantleePrintTest(QObject *parent)
     : QObject(parent)
 {
-
 }
 
 GrantleePrintTest::~GrantleePrintTest()
 {
-
 }
 
 void GrantleePrintTest::shouldHaveDefaultValue()

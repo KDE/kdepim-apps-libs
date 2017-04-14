@@ -25,8 +25,7 @@
 #include <KContacts/Addressee>
 #include <KContacts/Email>
 
-namespace KAddressBookGrantlee
-{
+namespace KAddressBookGrantlee {
 class ContactGrantleeEmail : public QObject
 {
     Q_OBJECT
