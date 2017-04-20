@@ -22,7 +22,7 @@ generate_export_header(KF5KaddressbookImportExport BASE_NAME kaddressbook_import
 add_library(KF5::KaddressbookImportExport ALIAS KF5KaddressbookImportExport)
 
 target_include_directories(KF5KaddressbookImportExport INTERFACE "$<INSTALL_INTERFACE:${KDE_INSTALL_INCLUDEDIR_KF5}/KAddressBookImportExport/;${KDE_INSTALL_INCLUDEDIR_KF5}/kaddressbookimportexport>")
-target_include_directories(KF5KaddressbookImportExport PUBLIC "$<BUILD_INTERFACE:${kaddressbookimportexport_SOURCE_DIR}/src;${kaddressbookimportexport_BINARY_DIR}/src;${Grantlee_INCLUDE_DIRS}>")
+target_include_directories(KF5KaddressbookImportExport PUBLIC "$<BUILD_INTERFACE:${Grantlee_INCLUDE_DIRS}>")
 
 
 target_link_libraries(KF5KaddressbookImportExport

@@ -34,9 +34,6 @@ PRIVATE
 
 target_include_directories(KF5KdepimDBusInterfaces INTERFACE "$<INSTALL_INTERFACE:${KDE_INSTALL_INCLUDEDIR_KF5}/KdepimDBusInterfaces/;${KDE_INSTALL_INCLUDEDIR_KF5}/kdepimdbusinterfaces>")
 
-target_include_directories(KF5KdepimDBusInterfaces PUBLIC "$<BUILD_INTERFACE:${kdepimdbusinterfaces_SOURCE_DIR}/src;${kdepimdbusinterfaces_BINARY_DIR}/src>")
-
-
 set_target_properties(KF5KdepimDBusInterfaces PROPERTIES
     VERSION ${KDEPIMDBUSINTERFACES_VERSION_STRING}
     SOVERSION ${KDEPIMDBUSINTERFACES_SOVERSION}

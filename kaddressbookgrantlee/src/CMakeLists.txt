@@ -37,7 +37,7 @@ generate_export_header(KF5KaddressbookGrantlee BASE_NAME kaddressbook_grantlee)
 add_library(KF5::KaddressbookGrantlee ALIAS KF5KaddressbookGrantlee)
 
 target_include_directories(KF5KaddressbookGrantlee INTERFACE "$<INSTALL_INTERFACE:${KDE_INSTALL_INCLUDEDIR_KF5}/KaddressbookGrantlee/;${KDE_INSTALL_INCLUDEDIR_KF5}/kaddressbookgrantlee>")
-target_include_directories(KF5KaddressbookGrantlee PUBLIC "$<BUILD_INTERFACE:${kaddressbookgrantlee_SOURCE_DIR}/src;${kaddressbookgrantlee_BINARY_DIR}/src;${Grantlee_INCLUDE_DIRS}>")
+target_include_directories(KF5KaddressbookGrantlee PUBLIC "$<BUILD_INTERFACE:${Grantlee_INCLUDE_DIRS}>")
 
 
 target_link_libraries(KF5KaddressbookGrantlee
