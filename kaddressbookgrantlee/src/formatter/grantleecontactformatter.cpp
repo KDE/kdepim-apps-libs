@@ -462,7 +462,7 @@ QString GrantleeContactFormatter::toHtml(HtmlForm form) const
     }
 
     if (!customs.empty()) {
-        foreach (QString custom, customs) {   //krazy:exclude=foreach
+        for (QString custom : qAsConst(customs)) {   //krazy:exclude=foreach
             if (custom.startsWith(QStringLiteral("KADDRESSBOOK-"))) {
                 custom.remove(QStringLiteral("KADDRESSBOOK-X-"));
                 custom.remove(QStringLiteral("KADDRESSBOOK-"));
