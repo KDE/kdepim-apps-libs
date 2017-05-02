@@ -61,7 +61,7 @@ set_package_properties(Prison PROPERTIES
 if(BUILD_TESTING)
    add_definitions(-DBUILD_TESTING)
 endif(BUILD_TESTING)
-
+add_definitions( -DQT_DISABLE_DEPRECATED_BEFORE=0x060000 )
 add_subdirectory(libfollowupreminder)
 add_subdirectory(libkdepimdbusinterfaces)
 add_subdirectory(libsendlater)
