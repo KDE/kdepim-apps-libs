@@ -151,8 +151,8 @@ QVector<KAddressBookImportExportPlugin *> KAddressBookImportExportPrivate::plugi
     QVector<KAddressBookImportExportPlugin *> lst;
     QVector<KAddressBookImportExportInfo>::ConstIterator end(mPluginList.constEnd());
     for (QVector<KAddressBookImportExportInfo>::ConstIterator it = mPluginList.constBegin(); it != end; ++it) {
-        if ((*it).plugin) {
-            lst << (*it).plugin;
+        if (auto plugin = (*it).plugin) {
+            lst << plugin;
         }
     }
     return lst;
