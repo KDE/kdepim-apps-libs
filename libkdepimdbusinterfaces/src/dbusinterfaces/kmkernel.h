@@ -519,7 +519,7 @@ private:
     void verifyAccount();
     void resourceGoOnLine();
     void openReader(bool onlyCheck);
-    QSharedPointer<MailCommon::FolderCollection> currentFolderCollection();
+    QSharedPointer<MailCommon::FolderSettings> currentFolderCollection();
 
     UndoStack *the_undoStack;
     mutable KIdentityManagement::IdentityManager *mIdentityManager;
