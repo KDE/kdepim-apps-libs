@@ -459,6 +459,8 @@ QString GrantleeContactFormatter::toHtml(HtmlForm form) const
         blacklistedKeys.insert(QStringLiteral("AddressBook"));
         blacklistedKeys.insert(QStringLiteral("MailPreferedFormatting"));
         blacklistedKeys.insert(QStringLiteral("MailAllowToRemoteContent"));
+        blacklistedKeys.insert(QStringLiteral("MAILPREFEREDFORMATTING"));
+        blacklistedKeys.insert(QStringLiteral("MAILALLOWTOREMOTECONTENT"));
     }
 
     if (!customs.empty()) {
