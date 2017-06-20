@@ -18,7 +18,7 @@
 */
 
 #include "contactgrantleeimobject.h"
-#include "akonadi/contact/improtocols.h"
+#include "contacteditor/improtocols.h"
 
 using namespace KAddressBookGrantlee;
 ContactGrantleeImObject::ContactGrantleeImObject(const QString &type, const QString &address, QObject *parent)

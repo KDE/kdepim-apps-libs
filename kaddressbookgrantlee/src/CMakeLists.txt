@@ -46,6 +46,7 @@ PRIVATE
   KF5::Service
   KF5::GrantleeTheme
   KF5::AkonadiCore
+  KF5::ContactEditor
   KF5::Contacts
   KF5::AkonadiContact
   KF5::IconThemes

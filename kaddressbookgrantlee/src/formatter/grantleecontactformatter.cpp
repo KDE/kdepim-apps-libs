@@ -44,7 +44,7 @@
 #include <KConfigGroup>
 #include <KLocalizedString>
 
-#include <akonadi/contact/improtocols.h>
+#include <contacteditor/improtocols.h>
 
 #include <QSet>
 #include <QLocale>
