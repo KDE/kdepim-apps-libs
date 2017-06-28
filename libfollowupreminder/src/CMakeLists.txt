@@ -21,6 +21,7 @@ PRIVATE
    KF5::ConfigGui 
    KF5::CoreAddons
    Qt5::DBus 
+   KF5::AkonadiCore
 )
 
 target_include_directories(KF5FollowupReminder INTERFACE "$<INSTALL_INTERFACE:${KDE_INSTALL_INCLUDEDIR_KF5}/FollowupReminder/;${KDE_INSTALL_INCLUDEDIR_KF5}/followupreminder>")

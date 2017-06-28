@@ -19,13 +19,18 @@
 
 #include "followupreminderutil.h"
 #include "followupreminderinfo.h"
+#include <AkonadiCore/ServerManager>
 
 #include <QDBusInterface>
 #include "followupreminderagentsettings.h"
 
 bool FollowUpReminder::FollowUpReminderUtil::followupReminderAgentWasRegistered()
 {
-    QDBusInterface interface(QStringLiteral("org.freedesktop.Akonadi.Agent.akonadi_followupreminder_agent"), QStringLiteral("/FollowUpReminder"));
+    QString service = QStringLiteral("org.freedesktop.Akonadi.Agent.akonadi_followupreminder_agent");
+    if (Akonadi::ServerManager::hasInstanceIdentifier()) {
+        service += QLatin1Char('.') + Akonadi::ServerManager::instanceIdentifier();
+    }
+    QDBusInterface interface(service, QStringLiteral("/FollowUpReminder"));
     return interface.isValid();
 }
 
@@ -36,7 +41,12 @@ bool FollowUpReminder::FollowUpReminderUtil::followupReminderAgentEnabled()
 
 void FollowUpReminder::FollowUpReminderUtil::reload()
 {
-    QDBusInterface interface(QStringLiteral("org.freedesktop.Akonadi.Agent.akonadi_followupreminder_agent"), QStringLiteral("/FollowUpReminder"));
+    QString service = QStringLiteral("org.freedesktop.Akonadi.Agent.akonadi_followupreminder_agent");
+    if (Akonadi::ServerManager::hasInstanceIdentifier()) {
+        service += QLatin1Char('.') + Akonadi::ServerManager::instanceIdentifier();
+    }
+
+    QDBusInterface interface(service, QStringLiteral("/FollowUpReminder"));
     if (interface.isValid()) {
         interface.call(QStringLiteral("reload"));
     }
