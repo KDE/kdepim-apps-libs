@@ -23,6 +23,7 @@
 #include "sendlateragentsettings.h"
 #include "libsendlater_debug.h"
 #include <KConfigGroup>
+#include <AkonadiCore/ServerManager>
 
 #include <QDBusInterface>
 #include <QStringList>
@@ -104,7 +105,11 @@ void SendLater::SendLaterUtil::writeSendLaterInfo(KSharedConfig::Ptr config, Sen
 
 bool SendLater::SendLaterUtil::sentLaterAgentWasRegistered()
 {
-    QDBusInterface interface(QStringLiteral("org.freedesktop.Akonadi.Agent.akonadi_sendlater_agent"), QStringLiteral("/SendLaterAgent"));
+    QString service = QStringLiteral("org.freedesktop.Akonadi.Agent.akonadi_sendlater_agent");
+    if (Akonadi::ServerManager::hasInstanceIdentifier()) {
+        service += QLatin1Char('.') + Akonadi::ServerManager::instanceIdentifier();
+    }
+    QDBusInterface interface(service, QStringLiteral("/SendLaterAgent"));
     return interface.isValid();
 }
 
