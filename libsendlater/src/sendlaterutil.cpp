@@ -27,6 +27,23 @@
 #include <QDBusInterface>
 #include <QStringList>
 
+#include <AkonadiCore/ServerManager>
+
+namespace {
+
+QString serviceName()
+{
+    return Akonadi::ServerManager::agentServiceName(Akonadi::ServerManager::Agent,
+                                                    QStringLiteral("akonadi_sendlater_agent"));
+}
+
+QString dbusPath()
+{
+    return QStringLiteral("/SendLaterAgent");
+}
+
+}
+
 bool SendLater::SendLaterUtil::compareSendLaterInfo(SendLater::SendLaterInfo *left, SendLater::SendLaterInfo *right)
 {
     if (left->dateTime() == right->dateTime()) {
@@ -104,7 +121,7 @@ void SendLater::SendLaterUtil::writeSendLaterInfo(KSharedConfig::Ptr config, Sen
 
 bool SendLater::SendLaterUtil::sentLaterAgentWasRegistered()
 {
-    QDBusInterface interface(QStringLiteral("org.freedesktop.Akonadi.Agent.akonadi_sendlater_agent"), QStringLiteral("/SendLaterAgent"));
+    QDBusInterface interface(serviceName(), dbusPath());
     return interface.isValid();
 }
 
@@ -122,7 +139,7 @@ bool SendLater::SendLaterUtil::sentLaterAgentEnabled()
 void SendLater::SendLaterUtil::reload()
 {
     qCDebug(LIBSENDLATER_LOG) << " void SendLater::SendLaterUtil::reload()";
-    QDBusInterface interface(QStringLiteral("org.freedesktop.Akonadi.Agent.akonadi_sendlater_agent"), QStringLiteral("/SendLaterAgent"));
+    QDBusInterface interface(serviceName(), dbusPath());
     if (interface.isValid()) {
         interface.call(QStringLiteral("reload"));
     } else {
