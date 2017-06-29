@@ -20,6 +20,7 @@ target_link_libraries(KF5FollowupReminder
 PRIVATE
    KF5::ConfigGui 
    KF5::CoreAddons
+   KF5::AkonadiCore
    Qt5::DBus 
    KF5::AkonadiCore
 )
