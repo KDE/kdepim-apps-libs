@@ -31,7 +31,7 @@ set(AKONADICONTACT_LIB_VERSION "5.6.40")
 set(LIBKLEO_LIB_VERSION "5.6.40")
 set(PIMCOMMON_LIB_VERSION "5.6.40")
 
-find_package(Qt5 ${QT_REQUIRED_VERSION} CONFIG REQUIRED Widgets Test DBus Gui)
+find_package(Qt5 ${QT_REQUIRED_VERSION} CONFIG REQUIRED Widgets DBus Gui)
 
 find_package(KF5Config ${KF5_VERSION} CONFIG REQUIRED)
 find_package(KF5ConfigWidgets ${KF5_VERSION} CONFIG REQUIRED)
@@ -59,6 +59,7 @@ set_package_properties(Prison PROPERTIES
     PURPOSE "Needed to show mobile barcodes of your contacts")
 
 if(BUILD_TESTING)
+    find_package(Qt5 ${QT_REQUIRED_VERSION} CONFIG REQUIRED Test)
    add_definitions(-DBUILD_TESTING)
 endif(BUILD_TESTING)
 add_definitions(-DQT_DISABLE_DEPRECATED_BEFORE=0x060000)
