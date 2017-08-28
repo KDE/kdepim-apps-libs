@@ -74,8 +74,8 @@ public:
 
     Akonadi::Item::List selectedItems() const;
 private:
-    KAddressBookContactSelectionWidget *mSelectionWidget;
-    KAddressBookExportSelectionWidget *mVCardExport;
+    KAddressBookContactSelectionWidget *mSelectionWidget = nullptr;
+    KAddressBookExportSelectionWidget *mVCardExport = nullptr;
 };
 }
 #endif

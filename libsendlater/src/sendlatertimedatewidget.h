@@ -42,8 +42,8 @@ Q_SIGNALS:
     void dateChanged(const QString &);
 private:
     void slotDateTimeChanged();
-    KTimeComboBox *mTimeComboBox;
-    KDateComboBox *mDateComboBox;
+    KTimeComboBox *mTimeComboBox = nullptr;
+    KDateComboBox *mDateComboBox = nullptr;
 };
 }
 

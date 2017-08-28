@@ -66,7 +66,7 @@ protected:
     QList<QAction *> mExportActions;
     ImportExportAction mImportExportAction;
     Akonadi::Collection mDefaultCollection;
-    QItemSelectionModel *mItemSelectionModel;
+    QItemSelectionModel *mItemSelectionModel = nullptr;
 };
 }
 #endif // KADDRESSBOOKIMPORTEXPORTPLUGININTERFACE_H

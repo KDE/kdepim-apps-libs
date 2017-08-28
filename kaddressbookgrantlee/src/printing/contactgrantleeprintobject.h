@@ -117,8 +117,8 @@ private:
     QList<QObject *> mListIm;
     QList<QObject *> mListWebSite;
     QList<QObject *> mListEmails;
-    ContactGrantleeGeoObject *mGeoObject;
-    ContactGrantleeCryptoObject *mCryptoObject;
+    ContactGrantleeGeoObject *mGeoObject = nullptr;
+    ContactGrantleeCryptoObject *mCryptoObject = nullptr;
     KContacts::Addressee mAddress;
 };
 }

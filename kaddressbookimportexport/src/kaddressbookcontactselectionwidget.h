@@ -85,15 +85,15 @@ private:
     Akonadi::Item::List collectSelectedItems() const;
     Akonadi::Item::List collectAddressBookItems() const;
 
-    QItemSelectionModel *mSelectionModel;
+    QItemSelectionModel *mSelectionModel = nullptr;
 
-    QLabel *mMessageLabel;
-    QRadioButton *mAllContactsButton;
-    QRadioButton *mSelectedContactsButton;
-    QRadioButton *mAddressBookContactsButton;
-    Akonadi::CollectionComboBox *mAddressBookSelection;
-    QCheckBox *mAddressBookSelectionRecursive;
-    bool mAddContactGroup;
+    QLabel *mMessageLabel = nullptr;
+    QRadioButton *mAllContactsButton = nullptr;
+    QRadioButton *mSelectedContactsButton = nullptr;
+    QRadioButton *mAddressBookContactsButton = nullptr;
+    Akonadi::CollectionComboBox *mAddressBookSelection = nullptr;
+    QCheckBox *mAddressBookSelectionRecursive = nullptr;
+    bool mAddContactGroup = false;
 };
 }
 #endif

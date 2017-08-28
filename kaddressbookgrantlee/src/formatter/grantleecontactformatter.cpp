@@ -91,13 +91,13 @@ public:
     }
 
     QVector<QObject *> mObjects;
-    Grantlee::Engine *mEngine;
+    Grantlee::Engine *mEngine = nullptr;
     QSharedPointer<Grantlee::FileSystemTemplateLoader> mTemplateLoader;
     Grantlee::Template mSelfcontainedTemplate;
     Grantlee::Template mEmbeddableTemplate;
     QString mErrorMessage;
-    bool forceDisableQRCode;
-    bool showQRCode;
+    bool forceDisableQRCode = false;
+    bool showQRCode = false;
 };
 
 GrantleeContactFormatter::GrantleeContactFormatter()

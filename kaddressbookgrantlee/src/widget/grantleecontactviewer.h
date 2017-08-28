@@ -36,7 +36,7 @@ public:
 
 private:
     QString kaddressBookAbsoluteThemePath();
-    KAddressBookGrantlee::GrantleeContactFormatter *mFormatter;
+    KAddressBookGrantlee::GrantleeContactFormatter *mFormatter = nullptr;
 };
 }
 

@@ -43,7 +43,7 @@ public:
         delete pluginManager;
     }
 
-    KAddressBookImportExportPluginManager *pluginManager;
+    KAddressBookImportExportPluginManager *pluginManager = nullptr;
 };
 
 class KAddressBookImportExportInfo
@@ -58,7 +58,7 @@ public:
     QString metaDataFileNameBaseName;
     QString metaDataFileName;
     PimCommon::PluginUtilData pluginData;
-    KAddressBookImportExportPlugin *plugin;
+    KAddressBookImportExportPlugin *plugin = nullptr;
     bool isEnabled;
 };
 
@@ -91,7 +91,7 @@ public:
 private:
     QVector<KAddressBookImportExportInfo> mPluginList;
     QVector<PimCommon::PluginUtilData> mPluginDataList;
-    KAddressBookImportExportPluginManager *q;
+    KAddressBookImportExportPluginManager *q = nullptr;
 };
 
 bool KAddressBookImportExportPrivate::initializePlugins()

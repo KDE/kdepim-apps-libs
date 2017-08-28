@@ -521,9 +521,9 @@ private:
     void openReader(bool onlyCheck);
     QSharedPointer<MailCommon::FolderSettings> currentFolderCollection();
 
-    UndoStack *the_undoStack;
-    mutable KIdentityManagement::IdentityManager *mIdentityManager;
-    MessageComposer::AkonadiSender *the_msgSender;
+    UndoStack *the_undoStack = nullptr;
+    mutable KIdentityManagement::IdentityManager *mIdentityManager = nullptr;
+    MessageComposer::AkonadiSender *the_msgSender = nullptr;
     /** previous KMail version. If different from current,
       the user has just updated. read from config */
     QString the_previousVersion;
@@ -535,31 +535,31 @@ private:
     bool the_firstInstance;
 
     KSharedConfig::Ptr mConfig;
-    QTextCodec *mNetCodec;
+    QTextCodec *mNetCodec = nullptr;
     QString mXmlGuiInstance;
-    ConfigureDialog *mConfigureDialog;
+    ConfigureDialog *mConfigureDialog = nullptr;
 
-    QTimer *mBackgroundTasksTimer;
-    MailCommon::JobScheduler *mJobScheduler;
+    QTimer *mBackgroundTasksTimer = nullptr;
+    MailCommon::JobScheduler *mJobScheduler = nullptr;
     // temporary mainwin
-    KMMainWin *mWin;
-    MailServiceImpl *mMailService;
+    KMMainWin *mWin = nullptr;
+    MailServiceImpl *mMailService = nullptr;
 
     bool mSystemNetworkStatus;
 
     KMail::KMSystemTray *mSystemTray;
     QHash<QString, KPIM::ProgressItem::CryptoStatus> mResourceCryptoSettingCache;
-    MailCommon::FolderCollectionMonitor *mFolderCollectionMonitor;
-    Akonadi::EntityTreeModel *mEntityTreeModel;
-    Akonadi::EntityMimeTypeFilterModel *mCollectionModel;
+    MailCommon::FolderCollectionMonitor *mFolderCollectionMonitor = nullptr;
+    Akonadi::EntityTreeModel *mEntityTreeModel = nullptr;
+    Akonadi::EntityMimeTypeFilterModel *mCollectionModel = nullptr;
 
     /// List of Akonadi resources that are currently being checked.
     QList<QString> mResourcesBeingChecked;
 
     QPointer<MailCommon::KMFilterDialog> mFilterEditDialog;
-    PimCommon::AutoCorrection *mAutoCorrection;
-    FolderArchiveManager *mFolderArchiveManager;
-    PimCommon::StorageServiceManager *mStorageManager;
+    PimCommon::AutoCorrection *mAutoCorrection = nullptr;
+    FolderArchiveManager *mFolderArchiveManager = nullptr;
+    PimCommon::StorageServiceManager *mStorageManager = nullptr;
     bool mDebugBaloo;
 };
 

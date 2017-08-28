@@ -60,10 +60,10 @@ private:
 private:
     QDateTime mSendDateTime;
     SendLaterAction mAction;
-    QCheckBox *mDelay;
-    Ui::SendLaterWidget *mSendLaterWidget;
-    SendLater::SendLaterInfo *mInfo;
-    QPushButton *mOkButton;
+    QCheckBox *mDelay = nullptr;
+    Ui::SendLaterWidget *mSendLaterWidget = nullptr;
+    SendLater::SendLaterInfo *mInfo = nullptr;
+    QPushButton *mOkButton = nullptr;
 };
 }
 #endif // SENDLATERDIALOG_H

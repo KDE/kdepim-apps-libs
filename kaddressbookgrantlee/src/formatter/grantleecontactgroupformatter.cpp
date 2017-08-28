@@ -67,7 +67,7 @@ public:
     }
 
     QVector<QObject *> mObjects;
-    Grantlee::Engine *mEngine;
+    Grantlee::Engine *mEngine = nullptr;
     QSharedPointer<Grantlee::FileSystemTemplateLoader> mTemplateLoader;
     Grantlee::Template mSelfcontainedTemplate;
     Grantlee::Template mEmbeddableTemplate;
