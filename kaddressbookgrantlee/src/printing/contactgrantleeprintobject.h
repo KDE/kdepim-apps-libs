@@ -23,12 +23,8 @@
 #include <KContacts/Addressee>
 #include <QVariant>
 namespace KAddressBookGrantlee {
-class ContactGrantleeAddressObject;
-class ContactGrantleePhoneObject;
-class ContactGrantleeImObject;
 class ContactGrantleeGeoObject;
 class ContactGrantleeCryptoObject;
-class ContactGrantleeWebSite;
 class ContactGrantleePrintObject : public QObject
 {
     Q_OBJECT
