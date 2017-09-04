@@ -25,7 +25,6 @@
 #include "followupreminderagentsettings.h"
 
 namespace {
-
 QString serviceName()
 {
     return Akonadi::ServerManager::agentServiceName(Akonadi::ServerManager::Agent,
@@ -36,9 +35,7 @@ QString dbusPath()
 {
     return QStringLiteral("/FollowUpReminder");
 }
-
 }
-
 
 bool FollowUpReminder::FollowUpReminderUtil::followupReminderAgentWasRegistered()
 {

@@ -31,7 +31,6 @@
 #include <AkonadiCore/ServerManager>
 
 namespace {
-
 QString serviceName()
 {
     return Akonadi::ServerManager::agentServiceName(Akonadi::ServerManager::Agent,
@@ -42,7 +41,6 @@ QString dbusPath()
 {
     return QStringLiteral("/SendLaterAgent");
 }
-
 }
 
 bool SendLater::SendLaterUtil::compareSendLaterInfo(SendLater::SendLaterInfo *left, SendLater::SendLaterInfo *right)
