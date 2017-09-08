@@ -31,7 +31,7 @@ using namespace SendLater;
 SendLaterTimeDateWidget::SendLaterTimeDateWidget(QWidget *parent)
     : QWidget(parent)
 {
-    QHBoxLayout *lay = new QHBoxLayout;
+    QHBoxLayout *lay = new QHBoxLayout(this);
     lay->setMargin(0);
 
     QDateTime t = QDateTime::currentDateTime();
@@ -49,8 +49,6 @@ SendLaterTimeDateWidget::SendLaterTimeDateWidget(QWidget *parent)
 
     lay->addWidget(mDateComboBox);
     lay->addWidget(mTimeComboBox);
-
-    setLayout(lay);
 }
 
 SendLaterTimeDateWidget::~SendLaterTimeDateWidget()
