@@ -56,12 +56,7 @@ find_package(KF5PimCommonAkonadi ${PIMCOMMON_LIB_VERSION} CONFIG REQUIRED)
 
 find_package(Grantlee5 "5.1" CONFIG REQUIRED)
 
-find_package(KF5Prison ${KF5_VERSION})
-set_package_properties(Prison PROPERTIES
-    DESCRIPTION "Prison"
-    URL "http://projects.kde.org/prison"
-    TYPE OPTIONAL
-    PURPOSE "Needed to show mobile barcodes of your contacts")
+find_package(KF5Prison ${KF5_VERSION} CONFIG REQUIRED)
 
 if(BUILD_TESTING)
     find_package(Qt5 ${QT_REQUIRED_VERSION} CONFIG REQUIRED Test)
