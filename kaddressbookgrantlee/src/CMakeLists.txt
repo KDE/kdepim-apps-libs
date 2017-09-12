@@ -1,7 +1,5 @@
 add_definitions(-DTRANSLATION_DOMAIN=\"libkaddressbookgrantlee\")
 
-add_definitions(-DHAVE_PRISON)
-
 set(kaddressbook_grantlee_LIB_SRCS
   widget/grantleecontactviewer.cpp
   formatter/grantleecontactformatter.cpp

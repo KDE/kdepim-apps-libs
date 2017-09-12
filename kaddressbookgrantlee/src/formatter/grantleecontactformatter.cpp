@@ -521,13 +521,11 @@ QString GrantleeContactFormatter::toHtml(HtmlForm form) const
     contactObject.insert(QStringLiteral("customFields"), customFields);
     contactObject.insert(QStringLiteral("customFieldsUrl"), customFieldsUrl);
 
-#if defined(HAVE_PRISON)
     if (!d->forceDisableQRCode) {
         if (d->showQRCode) {
             contactObject.insert(QStringLiteral("hasqrcode"), QStringLiteral("true"));
         }
     }
-#endif
 
     QVariantHash colorsObject;
 
