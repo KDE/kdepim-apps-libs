@@ -59,7 +59,7 @@ private:
 
 private:
     QDateTime mSendDateTime;
-    SendLaterAction mAction;
+    SendLaterAction mAction = Unknown;
     QCheckBox *mDelay = nullptr;
     Ui::SendLaterWidget *mSendLaterWidget = nullptr;
     SendLater::SendLaterInfo *mInfo = nullptr;

@@ -24,18 +24,10 @@
 using namespace SendLater;
 
 SendLaterInfo::SendLaterInfo()
-    : mId(-1)
-    , mRecurrenceEachValue(1)
-    , mRecurrenceUnit(Days)
-    , mRecurrence(false)
 {
 }
 
 SendLaterInfo::SendLaterInfo(const KConfigGroup &config)
-    : mId(-1)
-    , mRecurrenceEachValue(1)
-    , mRecurrenceUnit(Days)
-    , mRecurrence(false)
 {
     readConfig(config);
 }

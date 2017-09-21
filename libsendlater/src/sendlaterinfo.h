@@ -78,10 +78,10 @@ private:
     QString mSubject;
     QDateTime mDateTime;
     QDateTime mLastDateTimeSend;
-    Akonadi::Item::Id mId;
-    int mRecurrenceEachValue;
-    RecurrenceUnit mRecurrenceUnit;
-    bool mRecurrence;
+    Akonadi::Item::Id mId = -1;
+    int mRecurrenceEachValue = 1;
+    RecurrenceUnit mRecurrenceUnit = Days;
+    bool mRecurrence = false;
 };
 }
 
