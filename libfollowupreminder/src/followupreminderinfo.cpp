@@ -22,20 +22,10 @@
 using namespace FollowUpReminder;
 
 FollowUpReminderInfo::FollowUpReminderInfo()
-    : mOriginalMessageItemId(-1)
-    , mAnswerMessageItemId(-1)
-    , mTodoId(-1)
-    , mUniqueIdentifier(-1)
-    , mAnswerWasReceived(false)
 {
 }
 
 FollowUpReminderInfo::FollowUpReminderInfo(const KConfigGroup &config)
-    : mOriginalMessageItemId(-1)
-    , mAnswerMessageItemId(-1)
-    , mTodoId(-1)
-    , mUniqueIdentifier(-1)
-    , mAnswerWasReceived(false)
 {
     readConfig(config);
 }

@@ -68,15 +68,15 @@ public:
 
 private:
     void readConfig(const KConfigGroup &config);
-    Akonadi::Item::Id mOriginalMessageItemId;
-    Akonadi::Item::Id mAnswerMessageItemId;
-    Akonadi::Item::Id mTodoId;
+    Akonadi::Item::Id mOriginalMessageItemId = -1;
+    Akonadi::Item::Id mAnswerMessageItemId = -1;
+    Akonadi::Item::Id mTodoId = -1;
     QString mMessageId;
     QDate mFollowUpReminderDate;
     QString mTo;
     QString mSubject;
-    qint32 mUniqueIdentifier;
-    bool mAnswerWasReceived;
+    qint32 mUniqueIdentifier = -1;
+    bool mAnswerWasReceived = false;
 };
 }
 #endif // FOLLOWUPREMINDERINFO_H
