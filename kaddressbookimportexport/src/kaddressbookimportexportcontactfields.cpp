@@ -441,28 +441,20 @@ QString KAddressBookImportExportContactFields::value(Field field, const KContact
     switch (field) {
     case Undefined:
         return QString();
-        break;
     case FormattedName:
         return contact.formattedName();
-        break;
     case Prefix:
         return contact.prefix();
-        break;
     case GivenName:
         return contact.givenName();
-        break;
     case AdditionalName:
         return contact.additionalName();
-        break;
     case FamilyName:
         return contact.familyName();
-        break;
     case Suffix:
         return contact.suffix();
-        break;
     case NickName:
         return contact.nickName();
-        break;
     case Birthday:
     {
         const QDateTime birthday = contact.birthday();
@@ -471,119 +463,95 @@ QString KAddressBookImportExportContactFields::value(Field field, const KContact
         } else {
             return QString();
         }
-        break;
     }
     case Anniversary:
         return contact.custom(QStringLiteral("KADDRESSBOOK"), QStringLiteral("X-Anniversary"));
-        break;
     case HomeAddressStreet:
     {
         const KContacts::Address address = contact.address(KContacts::Address::Home);
         return address.street();
-        break;
     }
     case HomeAddressPostOfficeBox:
     {
         const KContacts::Address address = contact.address(KContacts::Address::Home);
         return address.postOfficeBox();
-        break;
     }
     case HomeAddressLocality:
     {
         const KContacts::Address address = contact.address(KContacts::Address::Home);
         return address.locality();
-        break;
     }
     case HomeAddressRegion:
     {
         const KContacts::Address address = contact.address(KContacts::Address::Home);
         return address.region();
-        break;
     }
     case HomeAddressPostalCode:
     {
         const KContacts::Address address = contact.address(KContacts::Address::Home);
         return address.postalCode();
-        break;
     }
     case HomeAddressCountry:
     {
         const KContacts::Address address = contact.address(KContacts::Address::Home);
         return address.country();
-        break;
     }
     case HomeAddressLabel:
     {
         const KContacts::Address address = contact.address(KContacts::Address::Home);
         return address.label();
-        break;
     }
     case BusinessAddressStreet:
     {
         const KContacts::Address address = contact.address(KContacts::Address::Work);
         return address.street();
-        break;
     }
     case BusinessAddressPostOfficeBox:
     {
         const KContacts::Address address = contact.address(KContacts::Address::Work);
         return address.postOfficeBox();
-        break;
     }
     case BusinessAddressLocality:
     {
         const KContacts::Address address = contact.address(KContacts::Address::Work);
         return address.locality();
-        break;
     }
     case BusinessAddressRegion:
     {
         const KContacts::Address address = contact.address(KContacts::Address::Work);
         return address.region();
-        break;
     }
     case BusinessAddressPostalCode:
     {
         const KContacts::Address address = contact.address(KContacts::Address::Work);
         return address.postalCode();
-        break;
     }
     case BusinessAddressCountry:
     {
         const KContacts::Address address = contact.address(KContacts::Address::Work);
         return address.country();
-        break;
     }
     case BusinessAddressLabel:
     {
         const KContacts::Address address = contact.address(KContacts::Address::Work);
         return address.label();
-        break;
     }
     case HomePhone:
         return contact.phoneNumber(KContacts::PhoneNumber::Home).number();
-        break;
     case BusinessPhone:
         return contact.phoneNumber(KContacts::PhoneNumber::Work).number();
-        break;
     case MobilePhone:
         return contact.phoneNumber(KContacts::PhoneNumber::Cell).number();
-        break;
     case HomeFax:
         return contact.phoneNumber(KContacts::PhoneNumber::Home | KContacts::PhoneNumber::Fax).number();
-        break;
     case BusinessFax:
         return contact.phoneNumber(KContacts::PhoneNumber::Work | KContacts::PhoneNumber::Fax).number();
-        break;
     case CarPhone:
         return contact.phoneNumber(KContacts::PhoneNumber::Car).number();
-        break;
     case Isdn:
         return contact.phoneNumber(KContacts::PhoneNumber::Isdn).number();
-        break;
     case Pager:
         return contact.phoneNumber(KContacts::PhoneNumber::Pager).number();
-        break;
     case PreferredEmail:
     {
         const QStringList emails = contact.emails();
@@ -592,7 +560,6 @@ QString KAddressBookImportExportContactFields::value(Field field, const KContact
         } else {
             return QString();
         }
-        break;
     }
     case Email2:
     {
@@ -602,7 +569,6 @@ QString KAddressBookImportExportContactFields::value(Field field, const KContact
         } else {
             return QString();
         }
-        break;
     }
     case Email3:
     {
@@ -612,7 +578,6 @@ QString KAddressBookImportExportContactFields::value(Field field, const KContact
         } else {
             return QString();
         }
-        break;
     }
     case Email4:
     {
@@ -622,44 +587,31 @@ QString KAddressBookImportExportContactFields::value(Field field, const KContact
         } else {
             return QString();
         }
-        break;
     }
     case Mailer:
         return contact.mailer();
-        break;
     case Title:
         return contact.title();
-        break;
     case Role:
         return contact.role();
-        break;
     case Organization:
         return contact.organization();
-        break;
     case Note:
         return contact.note();
-        break;
     case Homepage:
         return contact.url().url().url();
-        break;
     case BlogFeed:
         return contact.custom(QStringLiteral("KADDRESSBOOK"), QStringLiteral("BlogFeed"));
-        break;
     case Profession:
         return contact.custom(QStringLiteral("KADDRESSBOOK"), QStringLiteral("X-Profession"));
-        break;
     case Office:
         return contact.custom(QStringLiteral("KADDRESSBOOK"), QStringLiteral("X-Office"));
-        break;
     case Manager:
         return contact.custom(QStringLiteral("KADDRESSBOOK"), QStringLiteral("X-ManagersName"));
-        break;
     case Assistant:
         return contact.custom(QStringLiteral("KADDRESSBOOK"), QStringLiteral("X-AssistantsName"));
-        break;
     case Spouse:
         return contact.custom(QStringLiteral("KADDRESSBOOK"), QStringLiteral("X-SpousesName"));
-        break;
     }
 
     return QString();
