@@ -223,7 +223,7 @@ Akonadi::Item::List KAddressBookContactSelectionWidget::collectSelectedItems() c
     Akonadi::Item::List items;
 
     const QModelIndexList indexes = mSelectionModel->selectedRows(0);
-    for (int i = 0; i < indexes.count(); ++i) {
+    for (int i = 0, total = indexes.count(); i < total; ++i) {
         const QModelIndex index = indexes.at(i);
         if (index.isValid()) {
             const Akonadi::Item item
@@ -242,7 +242,7 @@ KAddressBookImportExport::KAddressBookImportExportContactList KAddressBookContac
     KAddressBookImportExport::KAddressBookImportExportContactList contacts;
 
     const QModelIndexList indexes = mSelectionModel->selectedRows(0);
-    for (int i = 0; i < indexes.count(); ++i) {
+    for (int i = 0, total = indexes.count(); i < total; ++i) {
         const QModelIndex index = indexes.at(i);
         if (index.isValid()) {
             const Akonadi::Item item

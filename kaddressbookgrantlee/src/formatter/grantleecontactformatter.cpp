@@ -314,6 +314,7 @@ QString GrantleeContactFormatter::toHtml(HtmlForm form) const
     QVariantList phoneNumbers;
     int counter = 0;
     const KContacts::PhoneNumber::List lstPhone = rawContact.phoneNumbers();
+    phoneNumbers.reserve(lstPhone.count());
     for (const KContacts::PhoneNumber &phoneNumber : lstPhone) {
         phoneNumbers.append(phoneNumberHash(phoneNumber, counter));
         counter++;
@@ -373,6 +374,7 @@ QString GrantleeContactFormatter::toHtml(HtmlForm form) const
     QVariantList addresses;
     counter = 0;
     const KContacts::Address::List lstAddresses = rawContact.addresses();
+    addresses.reserve(lstAddresses.count());
     for (const KContacts::Address &address : lstAddresses) {
         addresses.append(addressHash(address, counter));
         counter++;
