@@ -555,7 +555,7 @@ QString KAddressBookImportExportContactFields::value(Field field, const KContact
     case PreferredEmail:
     {
         const QStringList emails = contact.emails();
-        if (emails.count() > 0) {
+        if (!emails.isEmpty()) {
             return emails.at(0);
         } else {
             return QString();
