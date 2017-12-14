@@ -35,8 +35,10 @@
 #include <QGroupBox>
 #include <QItemSelectionModel>
 #include <QLabel>
+#include <QProgressDialog>
 #include <QRadioButton>
 #include <QVBoxLayout>
+#include <QApplication>
 
 using namespace KAddressBookImportExport;
 KAddressBookContactSelectionWidget::KAddressBookContactSelectionWidget(QItemSelectionModel *selectionModel, QWidget *parent)
@@ -187,6 +189,14 @@ Akonadi::Item::List KAddressBookContactSelectionWidget::collectAllItems() const
         = new Akonadi::RecursiveItemFetchJob(Akonadi::Collection::root(),
                                              QStringList() << KContacts::Addressee::mimeType());
     job->fetchScope().fetchFullPayload();
+    QProgressDialog progressDialog(nullptr);
+    progressDialog.setWindowTitle(i18n("Collect Contacts"));
+    progressDialog.setAutoClose(true);
+    progressDialog.setMinimumDuration(1000);
+    progressDialog.setLabelText(i18n("Fetch Contacts"));
+    progressDialog.show();
+
+    qApp->processEvents();
 
     if (!job->exec()) {
         return Akonadi::Item::List();
