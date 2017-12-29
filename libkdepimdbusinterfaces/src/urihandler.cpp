@@ -40,7 +40,7 @@ bool UriHandler::process(const QString &uri, const Akonadi::Item &item)
 {
     qCDebug(KDEPIMDBUSINTERFACE_LOG) << uri;
 
-    if (uri.startsWith(QStringLiteral("kmail:"))) {
+    if (uri.startsWith(QLatin1String("kmail:"))) {
         // make sure kmail is running or the part is shown
         const QString desktopFile = QStandardPaths::locate(QStandardPaths::ApplicationsLocation, QStringLiteral("org.kde.kmail2.desktop"));
         QString error;
@@ -58,10 +58,10 @@ bool UriHandler::process(const QString &uri, const Akonadi::Item &item)
             qCWarning(KDEPIMDBUSINTERFACE_LOG) << "Failure starting kmail:" << error;
             return false;
         }
-    } else if (uri.startsWith(QStringLiteral("mailto:"))) {
+    } else if (uri.startsWith(QLatin1String("mailto:"))) {
         QDesktopServices::openUrl(QUrl(uri));
         return true;
-    } else if (uri.startsWith(QStringLiteral("uid:"))) {
+    } else if (uri.startsWith(QLatin1String("uid:"))) {
         if (item.isValid()) {
             Akonadi::ContactEditorDialog *dlg = new Akonadi::ContactEditorDialog(Akonadi::ContactEditorDialog::EditMode, (QWidget *)nullptr);
             dlg->setContact(item);
@@ -72,7 +72,7 @@ bool UriHandler::process(const QString &uri, const Akonadi::Item &item)
             qCDebug(KDEPIMDBUSINTERFACE_LOG) << "Item is not valid.";
             return false;
         }
-    } else if (uri.startsWith(QStringLiteral("urn:x-ical"))) {
+    } else if (uri.startsWith(QLatin1String("urn:x-ical"))) {
         // make sure korganizer is running or the part is shown
         const QString desktopFile = QStandardPaths::locate(QStandardPaths::ApplicationsLocation, QStringLiteral("org.kde.korganizer.desktop"));
         QString error;
@@ -87,7 +87,7 @@ bool UriHandler::process(const QString &uri, const Akonadi::Item &item)
             qCWarning(KDEPIMDBUSINTERFACE_LOG) << "Failure starting korganizer:" << error;
             return false;
         }
-    } else if (uri.startsWith(QStringLiteral("akonadi:"))) {
+    } else if (uri.startsWith(QLatin1String("akonadi:"))) {
         const QUrl url(uri);
         const QString mimeType = QUrlQuery(url).queryItemValue(QStringLiteral("type"));
         if (mimeType.toLower() == QLatin1String("message/rfc822")) {

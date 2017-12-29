@@ -66,7 +66,7 @@ ContactGrantleePrintObject::ContactGrantleePrintObject(const KContacts::Addresse
 
     const QStringList customs = mAddress.customs();
     for (const QString &custom : customs) {
-        if (custom.startsWith(QStringLiteral("messaging/"))) {
+        if (custom.startsWith(QLatin1String("messaging/"))) {
             const int pos = custom.indexOf(QLatin1Char(':'));
             QString key = custom.left(pos);
             key.remove(QStringLiteral("-All"));

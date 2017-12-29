@@ -326,7 +326,7 @@ QString GrantleeContactFormatter::toHtml(HtmlForm form) const
     QVariantList imAddresses;
     const QStringList customs = rawContact.customs();
     for (const QString &custom : customs) {
-        if (custom.startsWith(QStringLiteral("messaging/"))) {
+        if (custom.startsWith(QLatin1String("messaging/"))) {
             int pos = custom.indexOf(QLatin1Char(':'));
             QString key = custom.left(pos);
             key.remove(QStringLiteral("-All"));
@@ -343,8 +343,8 @@ QString GrantleeContactFormatter::toHtml(HtmlForm form) const
     const KContacts::ResourceLocatorUrl::List extraUrlList = rawContact.extraUrlList();
     for (const KContacts::ResourceLocatorUrl &resourceLocator : extraUrlList) {
         QString url = resourceLocator.url().url();
-        if (!url.startsWith(QStringLiteral("http://"))
-            && !url.startsWith(QStringLiteral("https://"))) {
+        if (!url.startsWith(QLatin1String("http://"))
+            && !url.startsWith(QLatin1String("https://"))) {
             url = QStringLiteral("http://") + url;
         }
         websites.append(KStringHandler::tagUrls(url));
@@ -467,7 +467,7 @@ QString GrantleeContactFormatter::toHtml(HtmlForm form) const
 
     if (!customs.empty()) {
         for (QString custom : qAsConst(customs)) {   //krazy:exclude=foreach
-            if (custom.startsWith(QStringLiteral("KADDRESSBOOK-"))) {
+            if (custom.startsWith(QLatin1String("KADDRESSBOOK-"))) {
                 custom.remove(QStringLiteral("KADDRESSBOOK-X-"));
                 custom.remove(QStringLiteral("KADDRESSBOOK-"));
 
