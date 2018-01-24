@@ -41,7 +41,7 @@ bool ContactGrantleeEmail::preferred() const
 {
     const QStringList value = mEmail.parameters().value(QStringLiteral("type"));
     //Validate PREF and pref
-    return value.contains(QStringLiteral("pref"), Qt::CaseInsensitive);
+    return value.contains(QLatin1String("pref"), Qt::CaseInsensitive);
 }
 
 QString ContactGrantleeEmail::emailFormatted() const

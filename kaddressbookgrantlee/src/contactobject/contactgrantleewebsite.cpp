@@ -41,5 +41,5 @@ bool ContactGrantleeWebSite::preferred() const
 {
     const QStringList value = mResourceLocator.parameters().value(QStringLiteral("type"));
     //Validate PREF and pref
-    return value.contains(QStringLiteral("pref"), Qt::CaseInsensitive);
+    return value.contains(QLatin1String("pref"), Qt::CaseInsensitive);
 }
