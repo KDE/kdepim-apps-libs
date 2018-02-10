@@ -153,7 +153,7 @@ void SendLaterInfo::readConfig(const KConfigGroup &config)
     mDateTime = config.readEntry("date", QDateTime::currentDateTime());
     mRecurrence = config.readEntry("recurrence", false);
     mRecurrenceEachValue = config.readEntry("recurrenceValue", 1);
-    mRecurrenceUnit = static_cast<RecurrenceUnit>(config.readEntry("recurrenceUnit", (int)Days));
+    mRecurrenceUnit = static_cast<RecurrenceUnit>(config.readEntry("recurrenceUnit", static_cast<int>(Days)));
     mId = config.readEntry("itemId", -1);
     mSubject = config.readEntry("subject");
     mTo = config.readEntry("to");
@@ -167,7 +167,7 @@ void SendLaterInfo::writeConfig(KConfigGroup &config)
     config.writeEntry("date", mDateTime);
     config.writeEntry("recurrence", mRecurrence);
     config.writeEntry("recurrenceValue", mRecurrenceEachValue);
-    config.writeEntry("recurrenceUnit", (int)mRecurrenceUnit);
+    config.writeEntry("recurrenceUnit", static_cast<int>(mRecurrenceUnit));
     config.writeEntry("itemId", mId);
     config.writeEntry("subject", mSubject);
     config.writeEntry("to", mTo);

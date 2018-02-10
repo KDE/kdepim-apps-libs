@@ -114,7 +114,7 @@ void SendLaterDialog::load(SendLater::SendLaterInfo *info)
     mSendLaterWidget->mRecurrence->setChecked(recurrence);
     slotRecurrenceClicked(recurrence);
     mSendLaterWidget->mRecurrenceValue->setValue(info->recurrenceEachValue());
-    mSendLaterWidget->mRecurrenceComboBox->setCurrentIndex((int)info->recurrenceUnit());
+    mSendLaterWidget->mRecurrenceComboBox->setCurrentIndex(static_cast<int>(info->recurrenceUnit()));
 }
 
 SendLater::SendLaterInfo *SendLaterDialog::info()
@@ -124,7 +124,7 @@ SendLater::SendLaterInfo *SendLaterDialog::info()
     }
     mInfo->setRecurrence(mSendLaterWidget->mRecurrence->isChecked());
     mInfo->setRecurrenceEachValue(mSendLaterWidget->mRecurrenceValue->value());
-    mInfo->setRecurrenceUnit((SendLater::SendLaterInfo::RecurrenceUnit)mSendLaterWidget->mRecurrenceComboBox->currentIndex());
+    mInfo->setRecurrenceUnit(static_cast<SendLater::SendLaterInfo::RecurrenceUnit>(mSendLaterWidget->mRecurrenceComboBox->currentIndex()));
     if (mSendDateTime.isValid()) {
         mInfo->setDateTime(mSendDateTime);
     } else {
