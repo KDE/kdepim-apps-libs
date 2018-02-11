@@ -46,7 +46,7 @@ public:
     /**
      * Destroys the grantlee contact formatter.
      */
-    virtual ~GrantleeContactFormatter();
+    ~GrantleeContactFormatter() override;
 
     void setAbsoluteThemePath(const QString &path);
 

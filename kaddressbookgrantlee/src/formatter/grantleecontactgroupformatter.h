@@ -49,7 +49,7 @@ public:
     /**
      * Destroys the grantlee contact group formatter.
      */
-    virtual ~GrantleeContactGroupFormatter();
+    ~GrantleeContactGroupFormatter() override;
 
     /**
      * Returns the contact group formatted as HTML
