@@ -60,7 +60,7 @@ find_package(KF5Prison ${KF5_VERSION} CONFIG REQUIRED)
 
 if(BUILD_TESTING)
     find_package(Qt5 ${QT_REQUIRED_VERSION} CONFIG REQUIRED Test)
-   add_definitions(-DBUILD_TESTING)
+    add_definitions(-DBUILD_TESTING)
 endif()
 add_definitions(-DQT_DISABLE_DEPRECATED_BEFORE=0x060000)
 add_definitions("-DQT_NO_CAST_FROM_ASCII -DQT_NO_CAST_TO_ASCII")
