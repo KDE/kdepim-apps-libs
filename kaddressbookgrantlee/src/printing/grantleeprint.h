@@ -34,7 +34,7 @@ public:
     explicit GrantleePrint(const QString &themePath, QObject *parent = nullptr);
     ~GrantleePrint();
 
-    QString contactsToHtml(const KContacts::Addressee::List &contacts);
+    Q_REQUIRED_RESULT QString contactsToHtml(const KContacts::Addressee::List &contacts);
 };
 }
 #endif // GRANTLEEPRINT_H

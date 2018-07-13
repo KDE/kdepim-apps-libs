@@ -36,10 +36,10 @@ public:
     explicit ContactGrantleeGeoObject(const KContacts::Geo &geo, QObject *parent = nullptr);
     ~ContactGrantleeGeoObject();
 
-    float latitude() const;
-    float longitude() const;
-    QString toString() const;
-    bool isValid() const;
+    Q_REQUIRED_RESULT float latitude() const;
+    Q_REQUIRED_RESULT float longitude() const;
+    Q_REQUIRED_RESULT QString toString() const;
+    Q_REQUIRED_RESULT bool isValid() const;
 
 private:
     KContacts::Geo mGeo;

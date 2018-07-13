@@ -39,15 +39,15 @@ public:
     explicit ContactGrantleeAddressObject(const KContacts::Address &address, QObject *parent = nullptr);
     ~ContactGrantleeAddressObject();
 
-    QString type() const;
-    QString street() const;
-    QString postOfficeBox() const;
-    QString locality() const;
-    QString region() const;
-    QString postalCode() const;
-    QString country() const;
-    QString label() const;
-    QString formattedAddress() const;
+    Q_REQUIRED_RESULT QString type() const;
+    Q_REQUIRED_RESULT QString street() const;
+    Q_REQUIRED_RESULT QString postOfficeBox() const;
+    Q_REQUIRED_RESULT QString locality() const;
+    Q_REQUIRED_RESULT QString region() const;
+    Q_REQUIRED_RESULT QString postalCode() const;
+    Q_REQUIRED_RESULT QString country() const;
+    Q_REQUIRED_RESULT QString label() const;
+    Q_REQUIRED_RESULT QString formattedAddress() const;
 
 private:
     KContacts::Address mAddress;

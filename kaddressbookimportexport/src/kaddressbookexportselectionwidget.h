@@ -42,7 +42,7 @@ public:
     Q_ENUM(ExportField)
     Q_DECLARE_FLAGS(ExportFields, ExportField)
 
-    ExportFields exportType() const;
+    Q_REQUIRED_RESULT ExportFields exportType() const;
 private:
     void readSettings();
     void writeSettings();

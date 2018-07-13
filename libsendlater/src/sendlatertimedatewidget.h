@@ -35,7 +35,7 @@ public:
     ~SendLaterTimeDateWidget();
 
     void setDateTime(const QDateTime &);
-    QDateTime dateTime() const;
+    Q_REQUIRED_RESULT QDateTime dateTime() const;
 
 Q_SIGNALS:
     void dateTimeChanged(const QDateTime &);

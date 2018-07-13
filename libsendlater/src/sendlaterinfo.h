@@ -42,34 +42,34 @@ public:
         Years
     };
 
-    bool isValid() const;
+    Q_REQUIRED_RESULT bool isValid() const;
 
     void setItemId(Akonadi::Item::Id id);
-    Akonadi::Item::Id itemId() const;
+    Q_REQUIRED_RESULT Akonadi::Item::Id itemId() const;
 
     void setRecurrenceUnit(RecurrenceUnit unit);
-    RecurrenceUnit recurrenceUnit() const;
+    Q_REQUIRED_RESULT RecurrenceUnit recurrenceUnit() const;
 
     void setRecurrenceEachValue(int value);
-    int recurrenceEachValue() const;
+    Q_REQUIRED_RESULT int recurrenceEachValue() const;
 
-    bool isRecurrence() const;
+    Q_REQUIRED_RESULT bool isRecurrence() const;
     void setRecurrence(bool b);
 
     void setDateTime(const QDateTime &time);
-    QDateTime dateTime() const;
+    Q_REQUIRED_RESULT QDateTime dateTime() const;
 
     void readConfig(const KConfigGroup &config);
     void writeConfig(KConfigGroup &config);
 
     void setLastDateTimeSend(const QDateTime &date);
-    QDateTime lastDateTimeSend() const;
+    Q_REQUIRED_RESULT QDateTime lastDateTimeSend() const;
 
     void setSubject(const QString &subject);
-    QString subject() const;
+    Q_REQUIRED_RESULT QString subject() const;
 
     void setTo(const QString &to);
-    QString to() const;
+    Q_REQUIRED_RESULT QString to() const;
 
     bool operator ==(const SendLaterInfo &other) const;
 

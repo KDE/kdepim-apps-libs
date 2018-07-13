@@ -26,7 +26,7 @@ class GrantleeContactUtils
 {
 public:
     GrantleeContactUtils();
-    QString variableI18n(const QString &variable);
+    Q_REQUIRED_RESULT QString variableI18n(const QString &variable);
     void insertVariableToQVariantHash(QVariantHash &contactI18n, const QString &variable);
 };
 }

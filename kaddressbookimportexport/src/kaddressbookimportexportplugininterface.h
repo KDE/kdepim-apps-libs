@@ -38,27 +38,27 @@ public:
         Export = 1
     };
 
-    QList<QAction *> importActions() const;
+    Q_REQUIRED_RESULT QList<QAction *> importActions() const;
     void setImportActions(const QList<QAction *> &importAction);
 
-    QList<QAction *> exportActions() const;
+    Q_REQUIRED_RESULT QList<QAction *> exportActions() const;
     void setExportActions(const QList<QAction *> &exportAction);
 
-    ImportExportAction importExportAction() const;
+    Q_REQUIRED_RESULT ImportExportAction importExportAction() const;
     void setImportExportAction(const ImportExportAction &importExportAction);
 
-    Akonadi::Collection defaultCollection() const;
+    Q_REQUIRED_RESULT Akonadi::Collection defaultCollection() const;
     void setDefaultCollection(const Akonadi::Collection &defaultCollection);
 
     void setSelectionModel(QItemSelectionModel *model);
 
-    QItemSelectionModel *itemSelectionModel() const;
+    Q_REQUIRED_RESULT QItemSelectionModel *itemSelectionModel() const;
     void setItemSelectionModel(QItemSelectionModel *itemSelectionModel);
 
-    virtual bool canImportFileType(const QUrl &url);
+    Q_REQUIRED_RESULT virtual bool canImportFileType(const QUrl &url);
     virtual void importFile(const QUrl &url);
 
-    virtual bool canImportData() const;
+    Q_REQUIRED_RESULT virtual bool canImportData() const;
     virtual void importData(const QByteArray &data);
 
 protected:

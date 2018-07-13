@@ -24,9 +24,9 @@
 namespace FollowUpReminder {
 class FollowUpReminderInfo;
 namespace FollowUpReminderUtil {
-FOLLOWUPREMINDER_EXPORT bool followupReminderAgentWasRegistered();
+Q_REQUIRED_RESULT FOLLOWUPREMINDER_EXPORT bool followupReminderAgentWasRegistered();
 
-FOLLOWUPREMINDER_EXPORT bool followupReminderAgentEnabled();
+Q_REQUIRED_RESULT FOLLOWUPREMINDER_EXPORT bool followupReminderAgentEnabled();
 
 FOLLOWUPREMINDER_EXPORT void reload();
 
@@ -36,9 +36,9 @@ FOLLOWUPREMINDER_EXPORT KSharedConfig::Ptr defaultConfig();
 
 FOLLOWUPREMINDER_EXPORT void writeFollowupReminderInfo(KSharedConfig::Ptr config, FollowUpReminder::FollowUpReminderInfo *info, bool forceReload);
 
-FOLLOWUPREMINDER_EXPORT bool removeFollowupReminderInfo(KSharedConfig::Ptr config, const QList<qint32> &listRemove, bool forceReload = false);
+Q_REQUIRED_RESULT FOLLOWUPREMINDER_EXPORT bool removeFollowupReminderInfo(KSharedConfig::Ptr config, const QList<qint32> &listRemove, bool forceReload = false);
 
-FOLLOWUPREMINDER_EXPORT QString followUpReminderPattern();
+Q_REQUIRED_RESULT FOLLOWUPREMINDER_EXPORT QString followUpReminderPattern();
 }
 }
 

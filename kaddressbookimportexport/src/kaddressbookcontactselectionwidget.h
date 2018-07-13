@@ -70,10 +70,10 @@ public:
     /**
      * Returns the list of selected contacts.
      */
-    KAddressBookImportExport::KAddressBookImportExportContactList selectedContacts() const;
+    Q_REQUIRED_RESULT KAddressBookImportExport::KAddressBookImportExportContactList selectedContacts() const;
 
     void setAddGroupContact(bool addGroupContact);
-    Akonadi::Item::List selectedItems() const;
+    Q_REQUIRED_RESULT Akonadi::Item::List selectedItems() const;
 private:
     void initGui();
 

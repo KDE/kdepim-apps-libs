@@ -31,8 +31,8 @@ public:
     explicit ContactGrantleeCryptoObject(const KContacts::Addressee &address, QObject *parent = nullptr);
     ~ContactGrantleeCryptoObject();
 
-    QString signaturePreference() const;
-    QString cryptoPreference() const;
+    Q_REQUIRED_RESULT QString signaturePreference() const;
+    Q_REQUIRED_RESULT QString cryptoPreference() const;
 
 private:
     KContacts::Addressee mAddress;

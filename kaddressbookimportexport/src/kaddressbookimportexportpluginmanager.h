@@ -35,12 +35,12 @@ public:
     ~KAddressBookImportExportPluginManager();
     static KAddressBookImportExportPluginManager *self();
 
-    QVector<KAddressBookImportExportPlugin *> pluginsList() const;
+    Q_REQUIRED_RESULT QVector<KAddressBookImportExportPlugin *> pluginsList() const;
 
-    QVector<PimCommon::PluginUtilData> pluginsDataList() const;
+    Q_REQUIRED_RESULT QVector<PimCommon::PluginUtilData> pluginsDataList() const;
 
-    QString configGroupName() const;
-    QString configPrefixSettingKey() const;
+    Q_REQUIRED_RESULT QString configGroupName() const;
+    Q_REQUIRED_RESULT QString configPrefixSettingKey() const;
     KAddressBookImportExportPlugin *pluginFromIdentifier(const QString &id);
 private:
     KAddressBookImportExportPrivate *const d;

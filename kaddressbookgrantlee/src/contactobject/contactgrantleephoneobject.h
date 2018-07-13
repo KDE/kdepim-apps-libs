@@ -33,9 +33,9 @@ public:
     explicit ContactGrantleePhoneObject(const KContacts::PhoneNumber &phone, QObject *parent = nullptr);
     ~ContactGrantleePhoneObject();
 
-    QString type() const;
-    QString number() const;
-    bool preferred() const;
+    Q_REQUIRED_RESULT QString type() const;
+    Q_REQUIRED_RESULT QString number() const;
+    Q_REQUIRED_RESULT bool preferred() const;
 private:
     KContacts::PhoneNumber mPhoneNumber;
 };

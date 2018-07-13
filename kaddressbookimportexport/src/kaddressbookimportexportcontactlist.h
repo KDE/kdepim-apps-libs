@@ -30,16 +30,16 @@ class KADDRESSBOOK_IMPORTEXPORT_EXPORT KAddressBookImportExportContactList
 public:
     KAddressBookImportExportContactList();
 
-    bool isEmpty() const;
-    int count() const;
+    Q_REQUIRED_RESULT bool isEmpty() const;
+    Q_REQUIRED_RESULT int count() const;
     void clear();
 
     void append(const KContacts::Addressee &addr);
     void append(const KContacts::ContactGroup &group);
 
-    KContacts::Addressee::List addressList() const;
+    Q_REQUIRED_RESULT KContacts::Addressee::List addressList() const;
     void setAddressList(const KContacts::Addressee::List &value);
-    KContacts::ContactGroup::List contactGroupList() const;
+    Q_REQUIRED_RESULT KContacts::ContactGroup::List contactGroupList() const;
     void setContactGroupList(const KContacts::ContactGroup::List &value);
 
 private:

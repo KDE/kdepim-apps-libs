@@ -35,10 +35,10 @@ class ContactGrantleeEmail : public QObject
 public:
     explicit ContactGrantleeEmail(const KContacts::Addressee &addressee, const KContacts::Email &email, QObject *parent = nullptr);
     ~ContactGrantleeEmail();
-    QString emailFormatted() const;
+    Q_REQUIRED_RESULT QString emailFormatted() const;
 
-    QString email() const;
-    bool preferred() const;
+    Q_REQUIRED_RESULT QString email() const;
+    Q_REQUIRED_RESULT bool preferred() const;
 private:
     KContacts::Email mEmail;
     KContacts::Addressee mAddressee;

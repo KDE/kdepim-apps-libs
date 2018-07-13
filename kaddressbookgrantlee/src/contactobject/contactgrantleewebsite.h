@@ -31,8 +31,8 @@ class ContactGrantleeWebSite : public QObject
 public:
     explicit ContactGrantleeWebSite(const KContacts::ResourceLocatorUrl &resourceLocator, QObject *parent = nullptr);
     ~ContactGrantleeWebSite();
-    QString url() const;
-    bool preferred() const;
+    Q_REQUIRED_RESULT QString url() const;
+    Q_REQUIRED_RESULT bool preferred() const;
 private:
     KContacts::ResourceLocatorUrl mResourceLocator;
 };

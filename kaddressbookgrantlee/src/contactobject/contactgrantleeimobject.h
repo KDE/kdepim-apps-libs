@@ -31,8 +31,8 @@ public:
     explicit ContactGrantleeImObject(const QString &type, const QString &address, QObject *parent = nullptr);
     ~ContactGrantleeImObject();
 
-    QString type() const;
-    QString address() const;
+    Q_REQUIRED_RESULT QString type() const;
+    Q_REQUIRED_RESULT QString address() const;
 
 private:
     QString mType;

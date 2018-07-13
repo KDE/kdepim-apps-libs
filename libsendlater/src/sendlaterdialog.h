@@ -47,7 +47,7 @@ public:
 
     SendLater::SendLaterInfo *info();
 
-    SendLaterAction action() const;
+    Q_REQUIRED_RESULT SendLaterAction action() const;
 
 private:
     void slotRecurrenceClicked(bool);

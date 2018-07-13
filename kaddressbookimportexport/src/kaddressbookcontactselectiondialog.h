@@ -67,12 +67,12 @@ public:
     /**
      * Returns the list of selected contacts.
      */
-    KAddressBookImportExport::KAddressBookImportExportContactList selectedContacts() const;
+    Q_REQUIRED_RESULT KAddressBookImportExport::KAddressBookImportExportContactList selectedContacts() const;
 
-    KAddressBookExportSelectionWidget::ExportFields exportType() const;
+    Q_REQUIRED_RESULT KAddressBookExportSelectionWidget::ExportFields exportType() const;
     void setAddGroupContact(bool addGroupContact);
 
-    Akonadi::Item::List selectedItems() const;
+    Q_REQUIRED_RESULT Akonadi::Item::List selectedItems() const;
 private:
     KAddressBookContactSelectionWidget *mSelectionWidget = nullptr;
     KAddressBookExportSelectionWidget *mVCardExport = nullptr;

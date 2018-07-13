@@ -53,12 +53,12 @@ public:
     void setGrantleeTheme(const GrantleeTheme::Theme &theme);
 
     void setForceDisableQRCode(bool b);
-    bool forceDisableQRCode() const;
+    Q_REQUIRED_RESULT bool forceDisableQRCode() const;
 
     /**
      * Returns the contact formatted as HTML
      */
-    QString toHtml(HtmlForm form = SelfcontainedForm) const override;
+    Q_REQUIRED_RESULT QString toHtml(HtmlForm form = SelfcontainedForm) const override;
 
     void setShowQRCode(bool b);
 private:

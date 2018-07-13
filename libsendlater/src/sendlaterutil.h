@@ -26,22 +26,22 @@
 namespace SendLater {
 class SendLaterInfo;
 namespace SendLaterUtil {
-SENDLATER_EXPORT bool compareSendLaterInfo(SendLater::SendLaterInfo *left, SendLater::SendLaterInfo *right);
+Q_REQUIRED_RESULT SENDLATER_EXPORT bool compareSendLaterInfo(SendLater::SendLaterInfo *left, SendLater::SendLaterInfo *right);
 
 SENDLATER_EXPORT KSharedConfig::Ptr defaultConfig();
 
 SENDLATER_EXPORT void writeSendLaterInfo(KSharedConfig::Ptr config, SendLater::SendLaterInfo *info, bool forceReload = true);
 
-SENDLATER_EXPORT bool sentLaterAgentWasRegistered();
+Q_REQUIRED_RESULT SENDLATER_EXPORT bool sentLaterAgentWasRegistered();
 
-SENDLATER_EXPORT bool sentLaterAgentEnabled();
+Q_REQUIRED_RESULT SENDLATER_EXPORT bool sentLaterAgentEnabled();
 
 SENDLATER_EXPORT void reload();
 
 SENDLATER_EXPORT void changeRecurrentDate(SendLater::SendLaterInfo *info);
 SENDLATER_EXPORT void forceReparseConfiguration();
 
-SENDLATER_EXPORT QString sendLaterPattern();
+Q_REQUIRED_RESULT SENDLATER_EXPORT QString sendLaterPattern();
 }
 }
 #endif // SENDLATERUTIL_H
