@@ -1,4 +1,4 @@
 # kdepim-apps-lib
-org.kde.pim.libsendlater kdepim-apps-lib (libsendlater)
-org.kde.pim.kdepimdbusinterface kdepim-apps-lib (kdepimdbusinterface)
-org.kde.pim.kaddressbookimportexport kdepim-apps-lib (kaddressbookimportexport)
+org.kde.pim.libsendlater kdepim-apps-lib (libsendlater) IDENTIFIER [LIBSENDLATER_LOG]
+org.kde.pim.kdepimdbusinterface kdepim-apps-lib (kdepimdbusinterface) IDENTIFIER [KDEPIMDBUSINTERFACE_LOG]
+org.kde.pim.kaddressbookimportexport kdepim-apps-lib (kaddressbookimportexport) IDENTIFIER [LIBKADDRESSBOOKIMPORTEXPORT_LOG]
