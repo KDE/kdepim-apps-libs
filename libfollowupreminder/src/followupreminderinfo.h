@@ -79,4 +79,5 @@ private:
     bool mAnswerWasReceived = false;
 };
 }
+FOLLOWUPREMINDER_EXPORT QDebug operator<<(QDebug debug, const FollowUpReminder::FollowUpReminderInfo &info);
 #endif // FOLLOWUPREMINDERINFO_H
