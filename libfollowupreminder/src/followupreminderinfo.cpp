@@ -184,3 +184,18 @@ bool FollowUpReminderInfo::operator==(const FollowUpReminderInfo &other) const
            && mUniqueIdentifier == other.uniqueIdentifier()
            && mTodoId == other.todoId();
 }
+
+QDebug operator<<(QDebug d, const FollowUpReminderInfo &other)
+{
+    d << "mOriginalMessageItemId: " << other.originalMessageItemId();
+    d << "mMessageId: " << other.messageId();
+    d << "mTo: " << other.to();
+    d << "mFollowUpReminderDate: " << other.followUpReminderDate();
+    d << "mSubject: " << other.subject();
+    d << "mAnswerWasReceived: " << other.answerWasReceived();
+    d << "mAnswerMessageItemId: " << other.answerMessageItemId();
+    d << "mUniqueIdentifier: " << other.uniqueIdentifier();
+    d << "mTodoId: " << other.todoId();
+
+    return d;
+}
