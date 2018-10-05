@@ -14,7 +14,7 @@ endif()
 include(GenerateExportHeader)
 include(ECMGenerateHeaders)
 include(ECMGeneratePriFile)
-include(CMakePackageConfigHelpers)
+
 include(ECMSetupVersion)
 include(FeatureSummary)
 include(KDEInstallDirs)
