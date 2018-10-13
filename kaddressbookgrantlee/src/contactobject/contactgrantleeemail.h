@@ -17,8 +17,8 @@
    Boston, MA 02110-1301, USA.
 */
 
-#ifndef CONTACTGRANTLEEPRINTEMAIL_H
-#define CONTACTGRANTLEEPRINTEMAIL_H
+#ifndef PRINT_CONTACTGRANTLEEEMAIL_H
+#define PRINT_CONTACTGRANTLEEEMAIL_H
 
 #include <QObject>
 
@@ -44,4 +44,4 @@ private:
     KContacts::Addressee mAddressee;
 };
 }
-#endif // CONTACTGRANTLEEPRINTEMAIL_H
+#endif // PRINT_CONTACTGRANTLEEEMAIL_H

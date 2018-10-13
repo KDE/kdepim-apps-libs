@@ -31,7 +31,6 @@
 
 #include <krun.h>
 #include <kshell.h>
-#include "kdepimdbusinterface_debug.h"
 #include <ktoolinvocation.h>
 #include <QUrl>
 #include <QDesktopServices>

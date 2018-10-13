@@ -27,8 +27,8 @@
 
 #include <KToolInvocation>
 
-#include <QtDBus/QDBusConnection>
-#include <QtDBus/QDBusInterface>
+#include <QDBusConnection>
+#include <QDBusInterface>
 #include <QStandardPaths>
 
 using namespace KPIM;

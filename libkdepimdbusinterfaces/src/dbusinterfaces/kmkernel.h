@@ -459,7 +459,7 @@ public Q_SLOTS:
       to regenerate their menus */
     void updatedTemplates();
 
-    /// Save contents of all open composer widnows to ~/dead.letter
+    /// Save contents of all open composer windows to ~/dead.letter
     void dumpDeadLetters();
 
     /** Call this slot instead of directly KConfig::sync() to
@@ -470,7 +470,7 @@ public Q_SLOTS:
     void slotRequestConfigSync();
 
     /**
-    * Sync the config immediatley
+    * Sync the config immediately
     */
     void slotSyncConfig();
 
@@ -531,7 +531,7 @@ private:
     bool the_firstStart;
     /** are we going down? set from here */
     bool the_shuttingDown;
-    /** true unles kmail is closed by session management */
+    /** true unless kmail is closed by session management */
     bool the_firstInstance;
 
     KSharedConfig::Ptr mConfig;

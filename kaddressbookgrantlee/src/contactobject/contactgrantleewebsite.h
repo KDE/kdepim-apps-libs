@@ -17,8 +17,8 @@
    Boston, MA 02110-1301, USA.
 */
 
-#ifndef CONTACTGRANTLEEPRINTWEBSITE_H
-#define CONTACTGRANTLEEPRINTWEBSITE_H
+#ifndef PRINT_CONTACTGRANTLEEWEBSITE_H
+#define PRINT_CONTACTGRANTLEEWEBSITE_H
 
 #include <QObject>
 #include <KContacts/ResourceLocatorUrl>
@@ -37,4 +37,4 @@ private:
     KContacts::ResourceLocatorUrl mResourceLocator;
 };
 }
-#endif // CONTACTGRANTLEEPRINTWEBSITE_H
+#endif // PRINT_CONTACTGRANTLEEWEBSITE_H

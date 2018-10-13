@@ -17,8 +17,8 @@
    Boston, MA 02110-1301, USA.
 */
 
-#ifndef CONTACTGRANTLEEPRINTIMOBJECT_H
-#define CONTACTGRANTLEEPRINTIMOBJECT_H
+#ifndef PRINT_CONTACTGRANTLEEIMOBJECT_H
+#define PRINT_CONTACTGRANTLEEIMOBJECT_H
 #include <QObject>
 namespace KAddressBookGrantlee {
 class ContactGrantleeImObject : public QObject
@@ -39,4 +39,4 @@ private:
     QString mAddress;
 };
 }
-#endif // CONTACTGRANTLEEPRINTIMOBJECT_H
+#endif // PRINT_CONTACTGRANTLEEIMOBJECT_H

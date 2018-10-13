@@ -28,8 +28,6 @@
 #include <QDBusInterface>
 #include <QStringList>
 
-#include <AkonadiCore/ServerManager>
-
 namespace {
 QString serviceName()
 {
