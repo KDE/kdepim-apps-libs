@@ -63,7 +63,7 @@ if(BUILD_TESTING)
     add_definitions(-DBUILD_TESTING)
 endif()
 add_definitions(-DQT_DISABLE_DEPRECATED_BEFORE=0x060000)
-add_definitions(-DQT_NO_NARROWING_CONVERSIONS_IN_CONNECT)
+
 add_subdirectory(libfollowupreminder)
 add_subdirectory(libkdepimdbusinterfaces)
 add_subdirectory(libsendlater)
