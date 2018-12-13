@@ -20,15 +20,11 @@ target_link_libraries(KF5FollowupReminder
 PRIVATE
    KF5::ConfigGui 
    KF5::CoreAddons
-   KF5::AkonadiCore
    Qt5::DBus 
    KF5::AkonadiCore
 )
 
 target_include_directories(KF5FollowupReminder INTERFACE "$<INSTALL_INTERFACE:${KDE_INSTALL_INCLUDEDIR_KF5}/FollowupReminder/;${KDE_INSTALL_INCLUDEDIR_KF5}/followupreminder>")
-
-target_include_directories(KF5FollowupReminder PUBLIC $<TARGET_PROPERTY:KF5::AkonadiCore,INTERFACE_INCLUDE_DIRECTORIES>)
-
 
 set_target_properties(KF5FollowupReminder PROPERTIES
     VERSION ${FOLLOWUPREMINDER_VERSION_STRING}
