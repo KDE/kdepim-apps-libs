@@ -23,9 +23,9 @@
 
 #include <kconfig.h>
 #include <KConfigGroup>
-#include <qcheckbox.h>
-#include <qgridlayout.h>
-#include <qgroupbox.h>
+#include <QCheckBox>
+#include <QGridLayout>
+#include <QGroupBox>
 
 using namespace KAddressBookImportExport;
 KAddressBookExportSelectionWidget::KAddressBookExportSelectionWidget(QWidget *parent)

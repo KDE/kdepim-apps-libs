@@ -19,7 +19,7 @@
 
 #include "grantleeprinttest.h"
 #include "printing/grantleeprint.h"
-#include <qtest.h>
+#include <QTest>
 
 GrantleePrintTest::GrantleePrintTest(QObject *parent)
     : QObject(parent)
