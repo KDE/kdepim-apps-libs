@@ -481,7 +481,8 @@ QString GrantleeContactFormatter::toHtml(HtmlForm form) const
 
                 bool addUrl = false;
                 // check whether it is a custom local field
-                foreach (const QVariantMap &description, customFieldDescriptions()) {
+                for (int i = 0; i < customFieldDescriptions().size(); ++i) {
+                    const QVariantMap description = customFieldDescriptions().at(i);
                     if (description.value(QStringLiteral("key")).toString() == key) {
                         key = description.value(QStringLiteral("title")).toString();
                         const QString descriptionType = description.value(QStringLiteral("type")).toString();
