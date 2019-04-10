@@ -1,0 +1,16 @@
+description: KDE PIM application libraries
+tier: 3
+type: solution
+platforms:
+    - name: Linux
+portingAid: false
+deprecated: false
+libraries:
+    - cmake: "KF5::KaddressbookGrantlee"
+    - cmake: "KF5::KaddressbookImportExport"
+    - cmake: "KF5::FollowupReminder"
+    - cmake: "KF5::KdepimDBusInterfaces"
+    - cmake: "KF5::SendLater"
+
+public_lib: true
+group: kdepim
