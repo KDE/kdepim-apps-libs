@@ -25,7 +25,6 @@
 #include "../contactobject/contactgrantleeaddressobject.h"
 #include "../contactobject/contactgrantleephoneobject.h"
 #include "../contactobject/contactgrantleeimobject.h"
-#include "../contactobject/contactgrantleegeoobject.h"
 #include "../contactobject/contactgrantleecryptoobject.h"
 #include "../contactobject/contactgrantleewebsite.h"
 #include "../contactobject/contactgrantleeemail.h"

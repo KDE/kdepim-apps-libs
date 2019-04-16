@@ -35,6 +35,9 @@ public:
     ~GrantleePrint();
 
     Q_REQUIRED_RESULT QString contactsToHtml(const KContacts::Addressee::List &contacts);
+
+private:
+    void init();
 };
 }
 #endif // GRANTLEEPRINT_H

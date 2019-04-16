@@ -21,7 +21,6 @@
 #include "../contactobject/contactgrantleeaddressobject.h"
 #include "../contactobject/contactgrantleephoneobject.h"
 #include "../contactobject/contactgrantleeimobject.h"
-#include "../contactobject/contactgrantleegeoobject.h"
 #include "../contactobject/contactgrantleecryptoobject.h"
 #include "../contactobject/contactgrantleewebsite.h"
 #include "../contactobject/contactgrantleeemail.h"
@@ -74,13 +73,11 @@ ContactGrantleePrintObject::ContactGrantleePrintObject(const KContacts::Addresse
             mListIm << new ContactGrantleeImObject(key, value);
         }
     }
-    mGeoObject = new ContactGrantleeGeoObject(address.geo());
     mCryptoObject = new ContactGrantleeCryptoObject(address);
 }
 
 ContactGrantleePrintObject::~ContactGrantleePrintObject()
 {
-    delete mGeoObject;
     qDeleteAll(mListAddress);
     qDeleteAll(mListPhones);
     qDeleteAll(mListIm);
@@ -235,7 +232,7 @@ QVariant ContactGrantleePrintObject::instantManging() const
 
 QVariant ContactGrantleePrintObject::geo() const
 {
-    return QVariant::fromValue(mGeoObject);
+    return QVariant::fromValue(mAddress.geo());
 }
 
 QVariant ContactGrantleePrintObject::crypto() const

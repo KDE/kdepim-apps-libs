@@ -23,7 +23,6 @@
 #include <KContacts/Addressee>
 #include <QVariant>
 namespace KAddressBookGrantlee {
-class ContactGrantleeGeoObject;
 class ContactGrantleeCryptoObject;
 class ContactGrantleePrintObject : public QObject
 {
@@ -113,7 +112,6 @@ private:
     QList<QObject *> mListIm;
     QList<QObject *> mListWebSite;
     QList<QObject *> mListEmails;
-    ContactGrantleeGeoObject *mGeoObject = nullptr;
     ContactGrantleeCryptoObject *mCryptoObject = nullptr;
     KContacts::Addressee mAddress;
 };
