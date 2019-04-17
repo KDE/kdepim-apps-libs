@@ -8,7 +8,6 @@ set(kaddressbook_grantlee_LIB_SRCS
 )
 
 set(kaddressbook_grantlee_object_LIB_SRCS
-   contactobject/contactgrantleeaddressobject.cpp
    contactobject/contactgrantleecryptoobject.cpp
    contactobject/contactgrantleeimobject.cpp
    contactobject/contactgrantleewebsite.cpp

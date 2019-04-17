@@ -22,7 +22,6 @@
 #include "grantleecontactformatter.h"
 #include "grantleetheme/grantleetheme.h"
 #include "grantleecontactutils.h"
-#include "../contactobject/contactgrantleeaddressobject.h"
 #include "../contactobject/contactgrantleeimobject.h"
 #include "../contactobject/contactgrantleecryptoobject.h"
 #include "../contactobject/contactgrantleewebsite.h"
@@ -61,6 +60,7 @@ using namespace KAddressBookGrantlee;
     return mp.readOnGadget(&object); \
     GRANTLEE_END_LOOKUP
 
+GRANTLEE_MAKE_GADGET(KContacts::Address)
 GRANTLEE_MAKE_GADGET(KContacts::Email)
 GRANTLEE_MAKE_GADGET(KContacts::PhoneNumber)
 
@@ -115,6 +115,7 @@ public:
 GrantleeContactFormatter::GrantleeContactFormatter()
     : d(new Private)
 {
+    Grantlee::registerMetaType<KContacts::Address>();
     Grantlee::registerMetaType<KContacts::Email>();
     Grantlee::registerMetaType<KContacts::PhoneNumber>();
 }
@@ -172,53 +173,6 @@ static QVariantHash imAddressHash(const QString &typeKey, const QString &imAddre
                                                                                 -KIconLoader::SizeSmall)).url();
     const QString url = QStringLiteral("<img src=\"%1\" align=\"top\" height=\"%2\" width=\"%2\"/>").arg(iconUrl, QString::number(KIconLoader::SizeSmall));
     addressObject.insert(QStringLiteral("imIcon"), url);
-
-    return addressObject;
-}
-
-static QVariantHash addressHash(const KContacts::Address &address, int counter)
-{
-    QVariantHash addressObject;
-
-    setHashField(addressObject, QStringLiteral("type"),
-                 KContacts::Address::typeLabel(address.type()));
-
-    setHashField(addressObject, QStringLiteral("street"), address.street());
-
-    setHashField(addressObject, QStringLiteral("postOfficeBox"), address.postOfficeBox());
-
-    setHashField(addressObject, QStringLiteral("locality"), address.locality());
-
-    setHashField(addressObject, QStringLiteral("region"), address.region());
-
-    setHashField(addressObject, QStringLiteral("postalCode"), address.postalCode());
-
-    setHashField(addressObject, QStringLiteral("country"), address.country());
-
-    setHashField(addressObject, QStringLiteral("label"), address.label());
-
-    setHashField(addressObject, QStringLiteral("formattedAddress"), address.formattedAddress());
-
-    QString formattedAddress;
-
-    if (address.label().isEmpty()) {
-        formattedAddress = address.formattedAddress().trimmed();
-    } else {
-        formattedAddress = address.label();
-    }
-
-    if (!formattedAddress.isEmpty()) {
-        //Replace all \n by only one <br/>
-        formattedAddress = formattedAddress.replace(QRegularExpression(QStringLiteral("\n+")), QStringLiteral("<br/>"));
-
-        const QString link = QStringLiteral("<a href=\"address:?index=%1\">%2</a>").
-                             arg(counter);
-        QString url = link.arg(formattedAddress);
-        addressObject.insert(QStringLiteral("formattedAddressLink"), url);
-
-        url = link.arg(QStringLiteral("<img src=\"map_icon\" align=\"top\"/>"));
-        addressObject.insert(QStringLiteral("formattedAddressIcon"), url);
-    }
 
     return addressObject;
 }
@@ -343,14 +297,8 @@ QString GrantleeContactFormatter::toHtml(HtmlForm form) const
     }
 
     // Addresses
-    QVariantList addresses;
-    int counter = 0;
-    const KContacts::Address::List lstAddresses = rawContact.addresses();
-    addresses.reserve(lstAddresses.count());
-    for (const KContacts::Address &address : lstAddresses) {
-        addresses.append(addressHash(address, counter));
-        counter++;
-    }
+    contactObject.insert(QStringLiteral("addresses"), QVariant::fromValue(rawContact.addresses()));
+
     // Note
     if (!rawContact.note().isEmpty()) {
         const QString notes = QStringLiteral("<a>%1</a>").arg(rawContact.note().replace(QLatin1Char('\n'), QStringLiteral("<br>")));
@@ -358,7 +306,6 @@ QString GrantleeContactFormatter::toHtml(HtmlForm form) const
         grantleeContactUtil.insertVariableToQVariantHash(contactObject, QStringLiteral("notei18n"));
     }
 
-    contactObject.insert(QStringLiteral("addresses"), addresses);
 
     setHashField(contactObject, QStringLiteral("mailer"), rawContact.mailer());
 

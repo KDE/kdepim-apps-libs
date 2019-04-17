@@ -39,6 +39,7 @@
     return mp.readOnGadget(&object); \
     GRANTLEE_END_LOOKUP
 
+GRANTLEE_MAKE_GADGET(KContacts::Address)
 GRANTLEE_MAKE_GADGET(KContacts::Email)
 GRANTLEE_MAKE_GADGET(KContacts::Geo)
 GRANTLEE_MAKE_GADGET(KContacts::PhoneNumber)
@@ -63,6 +64,7 @@ GrantleePrint::~GrantleePrint()
 
 void GrantleePrint::init()
 {
+    Grantlee::registerMetaType<KContacts::Address>();
     Grantlee::registerMetaType<KContacts::Email>();
     Grantlee::registerMetaType<KContacts::Geo>();
     Grantlee::registerMetaType<KContacts::PhoneNumber>();
