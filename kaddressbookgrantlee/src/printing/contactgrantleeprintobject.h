@@ -36,7 +36,6 @@ class ContactGrantleePrintObject : public QObject
     Q_PROPERTY(QString familyName READ familyName)
     Q_PROPERTY(QString suffix READ suffix)
     Q_PROPERTY(QString nickName READ nickName)
-    Q_PROPERTY(QStringList emails READ emails)
     Q_PROPERTY(QString organization READ organization)
     Q_PROPERTY(QString note READ note)
     Q_PROPERTY(QString webPage READ webPage)
@@ -61,7 +60,7 @@ class ContactGrantleePrintObject : public QObject
     Q_PROPERTY(QString spouse READ spouse)
     Q_PROPERTY(QString languages READ languages)
     Q_PROPERTY(QVariant webSites READ webSites)
-    Q_PROPERTY(QVariant emailsList READ emailsList)
+    Q_PROPERTY(QVariantList emails READ emails)
 
     //Add more functions
 public:
@@ -77,7 +76,7 @@ public:
     Q_REQUIRED_RESULT QString familyName() const;
     Q_REQUIRED_RESULT QString suffix() const;
     Q_REQUIRED_RESULT QString nickName() const;
-    Q_REQUIRED_RESULT QStringList emails() const;
+    Q_REQUIRED_RESULT QVariantList emails() const;
     Q_REQUIRED_RESULT QString organization() const;
     Q_REQUIRED_RESULT QString note() const;
     //webPage deprecated.
@@ -104,14 +103,12 @@ public:
     Q_REQUIRED_RESULT QString spouse() const;
     Q_REQUIRED_RESULT QString languages() const;
     Q_REQUIRED_RESULT QVariant webSites() const;
-    Q_REQUIRED_RESULT QVariant emailsList() const;
 private:
     QString imgToDataUrl(const QImage &image) const;
     QList<QObject *> mListAddress;
     QList<QObject *> mListPhones;
     QList<QObject *> mListIm;
     QList<QObject *> mListWebSite;
-    QList<QObject *> mListEmails;
     ContactGrantleeCryptoObject *mCryptoObject = nullptr;
     KContacts::Addressee mAddress;
 };

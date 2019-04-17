@@ -23,7 +23,6 @@
 #include "../contactobject/contactgrantleeimobject.h"
 #include "../contactobject/contactgrantleecryptoobject.h"
 #include "../contactobject/contactgrantleewebsite.h"
-#include "../contactobject/contactgrantleeemail.h"
 
 #include <KContacts/PhoneNumber>
 
@@ -31,6 +30,7 @@
 #include <QVariant>
 #include <grantlee/metatype.h>
 #include <QLocale>
+#include <QMetaProperty>
 #include <QImage>
 
 using namespace KAddressBookGrantlee;
@@ -57,12 +57,6 @@ ContactGrantleePrintObject::ContactGrantleePrintObject(const KContacts::Addresse
         mListPhones << new ContactGrantleePhoneObject(phone);
     }
 
-    const auto emails = address.emailList();
-    mListEmails.reserve(emails.size());
-    for (const KContacts::Email &email : emails) {
-        mListEmails << new ContactGrantleeEmail(mAddress, email);
-    }
-
     const QStringList customs = mAddress.customs();
     for (const QString &custom : customs) {
         if (custom.startsWith(QLatin1String("messaging/"))) {
@@ -82,7 +76,6 @@ ContactGrantleePrintObject::~ContactGrantleePrintObject()
     qDeleteAll(mListPhones);
     qDeleteAll(mListIm);
     qDeleteAll(mListWebSite);
-    qDeleteAll(mListEmails);
     delete mCryptoObject;
 }
 
@@ -146,18 +139,13 @@ QString ContactGrantleePrintObject::languages() const
     return result;
 }
 
-QStringList ContactGrantleePrintObject::emails() const
+QVariantList ContactGrantleePrintObject::emails() const
 {
-    QStringList emails;
-    const QStringList lstEmails(mAddress.emails());
-    for (const QString &email : lstEmails) {
-        const QString fullEmail = QString::fromLatin1(QUrl::toPercentEncoding(mAddress.fullEmail(email)));
-
-        const QString url = QStringLiteral("<a href=\"mailto:%1\">%2</a>")
-                            .arg(fullEmail, email);
-        emails << url;
-    }
-    return emails;
+    // ### temporary hack until this becomes a KContact::Addressee gadget itself and we can remove this
+    const auto idx = KContacts::Addressee::staticMetaObject.indexOfProperty("emails");
+    Q_ASSERT(idx >= 0);
+    const auto prop = KContacts::Addressee::staticMetaObject.property(idx);
+    return prop.readOnGadget(&mAddress).toList();
 }
 
 QString ContactGrantleePrintObject::organization() const
@@ -213,11 +201,6 @@ QVariant ContactGrantleePrintObject::addresses() const
 QVariant ContactGrantleePrintObject::webSites() const
 {
     return QVariant::fromValue(mListWebSite);
-}
-
-QVariant ContactGrantleePrintObject::emailsList() const
-{
-    return QVariant::fromValue(mListEmails);
 }
 
 QVariant ContactGrantleePrintObject::phones() const

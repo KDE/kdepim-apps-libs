@@ -13,7 +13,6 @@ set(kaddressbook_grantlee_object_LIB_SRCS
    contactobject/contactgrantleeimobject.cpp
    contactobject/contactgrantleephoneobject.cpp
    contactobject/contactgrantleewebsite.cpp
-   contactobject/contactgrantleeemail.cpp
 )
 
 set(kaddressbook_grantlee_printing_LIB_SRCS

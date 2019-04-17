@@ -39,6 +39,7 @@
     return mp.readOnGadget(&object); \
     GRANTLEE_END_LOOKUP
 
+GRANTLEE_MAKE_GADGET(KContacts::Email)
 GRANTLEE_MAKE_GADGET(KContacts::Geo)
 
 using namespace KAddressBookGrantlee;
@@ -61,6 +62,7 @@ GrantleePrint::~GrantleePrint()
 
 void GrantleePrint::init()
 {
+    Grantlee::registerMetaType<KContacts::Email>();
     Grantlee::registerMetaType<KContacts::Geo>();
 }
 

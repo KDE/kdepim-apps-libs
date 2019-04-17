@@ -27,7 +27,6 @@
 #include "../contactobject/contactgrantleeimobject.h"
 #include "../contactobject/contactgrantleecryptoobject.h"
 #include "../contactobject/contactgrantleewebsite.h"
-#include "../contactobject/contactgrantleeemail.h"
 
 #include <KContacts/Addressee>
 #include <grantlee/context.h>
