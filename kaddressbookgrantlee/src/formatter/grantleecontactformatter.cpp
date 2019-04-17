@@ -31,6 +31,7 @@
 #include <KContacts/Addressee>
 #include <grantlee/context.h>
 #include <grantlee/engine.h>
+#include <grantlee/metatype.h>
 #include <grantlee/templateloader.h>
 
 #include <AkonadiCore/Item>
@@ -44,11 +45,24 @@
 
 #include <contacteditor/improtocols.h>
 
-#include <QSet>
 #include <QLocale>
+#include <QMetaProperty>
 #include <QRegularExpression>
+#include <QSet>
 
 using namespace KAddressBookGrantlee;
+
+// Grantlee has no Q_GADGET support yet
+#define GRANTLEE_MAKE_GADGET(Class) \
+    GRANTLEE_BEGIN_LOOKUP(Class) \
+    const auto idx = Class::staticMetaObject.indexOfProperty(property.toUtf8().constData()); \
+    if (idx < 0) { \
+        return {};} \
+    const auto mp = Class::staticMetaObject.property(idx); \
+    return mp.readOnGadget(&object); \
+    GRANTLEE_END_LOOKUP
+
+GRANTLEE_MAKE_GADGET(KContacts::Email)
 
 class Q_DECL_HIDDEN GrantleeContactFormatter::Private
 {
@@ -101,6 +115,7 @@ public:
 GrantleeContactFormatter::GrantleeContactFormatter()
     : d(new Private)
 {
+    Grantlee::registerMetaType<KContacts::Email>();
 }
 
 GrantleeContactFormatter::~GrantleeContactFormatter()
@@ -296,17 +311,8 @@ QString GrantleeContactFormatter::toHtml(HtmlForm form) const
     }
 
     // Emails
-    QStringList emails;
-    const QStringList emailsList = rawContact.emails();
-    for (const QString &email : emailsList) {
-        const QString fullEmail = QString::fromLatin1(QUrl::toPercentEncoding(rawContact.fullEmail(email)));
-
-        const QString url = QStringLiteral("<a href=\"mailto:%1\">%2</a>")
-                            .arg(fullEmail, email);
-        emails << url;
-    }
     grantleeContactUtil.insertVariableToQVariantHash(contactObject, QStringLiteral("emailsi18n"));
-    contactObject.insert(QStringLiteral("emails"), emails);
+    contactObject.insert(QStringLiteral("emails"), QVariant::fromValue(rawContact.emailList()));
 
     // Phone numbers
     QVariantList phoneNumbers;
