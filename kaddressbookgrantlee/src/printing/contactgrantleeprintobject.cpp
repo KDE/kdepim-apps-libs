@@ -19,7 +19,6 @@
 
 #include "contactgrantleeprintobject.h"
 #include "../contactobject/contactgrantleeaddressobject.h"
-#include "../contactobject/contactgrantleephoneobject.h"
 #include "../contactobject/contactgrantleeimobject.h"
 #include "../contactobject/contactgrantleecryptoobject.h"
 #include "../contactobject/contactgrantleewebsite.h"
@@ -51,12 +50,6 @@ ContactGrantleePrintObject::ContactGrantleePrintObject(const KContacts::Addresse
         mListWebSite << new ContactGrantleeWebSite(webSite);
     }
 
-    const auto phoneNumbers = address.phoneNumbers();
-    mListPhones.reserve(phoneNumbers.size());
-    for (const KContacts::PhoneNumber &phone : phoneNumbers) {
-        mListPhones << new ContactGrantleePhoneObject(phone);
-    }
-
     const QStringList customs = mAddress.customs();
     for (const QString &custom : customs) {
         if (custom.startsWith(QLatin1String("messaging/"))) {
@@ -73,7 +66,6 @@ ContactGrantleePrintObject::ContactGrantleePrintObject(const KContacts::Addresse
 ContactGrantleePrintObject::~ContactGrantleePrintObject()
 {
     qDeleteAll(mListAddress);
-    qDeleteAll(mListPhones);
     qDeleteAll(mListIm);
     qDeleteAll(mListWebSite);
     delete mCryptoObject;
@@ -203,9 +195,9 @@ QVariant ContactGrantleePrintObject::webSites() const
     return QVariant::fromValue(mListWebSite);
 }
 
-QVariant ContactGrantleePrintObject::phones() const
+QVector<KContacts::PhoneNumber> ContactGrantleePrintObject::phones() const
 {
-    return QVariant::fromValue(mListPhones);
+    return mAddress.phoneNumbers();
 }
 
 QVariant ContactGrantleePrintObject::instantManging() const

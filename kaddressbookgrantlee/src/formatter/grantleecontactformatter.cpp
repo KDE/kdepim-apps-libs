@@ -23,7 +23,6 @@
 #include "grantleetheme/grantleetheme.h"
 #include "grantleecontactutils.h"
 #include "../contactobject/contactgrantleeaddressobject.h"
-#include "../contactobject/contactgrantleephoneobject.h"
 #include "../contactobject/contactgrantleeimobject.h"
 #include "../contactobject/contactgrantleecryptoobject.h"
 #include "../contactobject/contactgrantleewebsite.h"
@@ -63,6 +62,7 @@ using namespace KAddressBookGrantlee;
     GRANTLEE_END_LOOKUP
 
 GRANTLEE_MAKE_GADGET(KContacts::Email)
+GRANTLEE_MAKE_GADGET(KContacts::PhoneNumber)
 
 class Q_DECL_HIDDEN GrantleeContactFormatter::Private
 {
@@ -116,6 +116,7 @@ GrantleeContactFormatter::GrantleeContactFormatter()
     : d(new Private)
 {
     Grantlee::registerMetaType<KContacts::Email>();
+    Grantlee::registerMetaType<KContacts::PhoneNumber>();
 }
 
 GrantleeContactFormatter::~GrantleeContactFormatter()
@@ -155,30 +156,6 @@ inline static void setHashField(QVariantHash &hash, const QString &name, const Q
     if (!value.isEmpty()) {
         hash.insert(name, value);
     }
-}
-
-static QVariantHash phoneNumberHash(const KContacts::PhoneNumber &phoneNumber, int counter)
-{
-    QVariantHash numberObject;
-
-    setHashField(numberObject, QStringLiteral("type"), phoneNumber.typeLabel());
-    setHashField(numberObject, QStringLiteral("number"), phoneNumber.number());
-
-    if (!phoneNumber.isEmpty()) {
-        const QString url
-            = QStringLiteral("<a href=\"phone:?index=%1\">%2</a>").
-              arg(counter).
-              arg(phoneNumber.number());
-        numberObject.insert(QStringLiteral("numberLink"), url);
-
-        if (phoneNumber.type() & KContacts::PhoneNumber::Cell) {
-            const QString url
-                = QStringLiteral("<a href=\"sms:?index=%1\"><img src=\"sms_icon\" align=\"top\"/></a>").arg(counter);
-            numberObject.insert(QStringLiteral("smsLink"), url);
-        }
-    }
-
-    return numberObject;
 }
 
 static QVariantHash imAddressHash(const QString &typeKey, const QString &imAddress)
@@ -315,16 +292,7 @@ QString GrantleeContactFormatter::toHtml(HtmlForm form) const
     contactObject.insert(QStringLiteral("emails"), QVariant::fromValue(rawContact.emailList()));
 
     // Phone numbers
-    QVariantList phoneNumbers;
-    int counter = 0;
-    const KContacts::PhoneNumber::List lstPhone = rawContact.phoneNumbers();
-    phoneNumbers.reserve(lstPhone.count());
-    for (const KContacts::PhoneNumber &phoneNumber : lstPhone) {
-        phoneNumbers.append(phoneNumberHash(phoneNumber, counter));
-        counter++;
-    }
-
-    contactObject.insert(QStringLiteral("phoneNumbers"), phoneNumbers);
+    contactObject.insert(QStringLiteral("phoneNumbers"), QVariant::fromValue(rawContact.phoneNumbers()));
 
     // IM
     QVariantList imAddresses;
@@ -376,7 +344,7 @@ QString GrantleeContactFormatter::toHtml(HtmlForm form) const
 
     // Addresses
     QVariantList addresses;
-    counter = 0;
+    int counter = 0;
     const KContacts::Address::List lstAddresses = rawContact.addresses();
     addresses.reserve(lstAddresses.count());
     for (const KContacts::Address &address : lstAddresses) {

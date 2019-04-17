@@ -11,7 +11,6 @@ set(kaddressbook_grantlee_object_LIB_SRCS
    contactobject/contactgrantleeaddressobject.cpp
    contactobject/contactgrantleecryptoobject.cpp
    contactobject/contactgrantleeimobject.cpp
-   contactobject/contactgrantleephoneobject.cpp
    contactobject/contactgrantleewebsite.cpp
 )
 

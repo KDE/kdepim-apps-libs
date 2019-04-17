@@ -41,6 +41,7 @@
 
 GRANTLEE_MAKE_GADGET(KContacts::Email)
 GRANTLEE_MAKE_GADGET(KContacts::Geo)
+GRANTLEE_MAKE_GADGET(KContacts::PhoneNumber)
 
 using namespace KAddressBookGrantlee;
 
@@ -64,6 +65,7 @@ void GrantleePrint::init()
 {
     Grantlee::registerMetaType<KContacts::Email>();
     Grantlee::registerMetaType<KContacts::Geo>();
+    Grantlee::registerMetaType<KContacts::PhoneNumber>();
 }
 
 QString GrantleePrint::contactsToHtml(const KContacts::Addressee::List &contacts)

@@ -46,7 +46,7 @@ class ContactGrantleePrintObject : public QObject
     Q_PROPERTY(QString birthday READ birthday)
     Q_PROPERTY(QString department READ department)
     Q_PROPERTY(QVariant addresses READ addresses)
-    Q_PROPERTY(QVariant phones READ phones)
+    Q_PROPERTY(QVector<KContacts::PhoneNumber>  phones READ phones)
     Q_PROPERTY(QVariant instantManging READ instantManging)
     Q_PROPERTY(QString addressBookName READ addressBookName)
     Q_PROPERTY(QString photo READ photo)
@@ -88,7 +88,7 @@ public:
     Q_REQUIRED_RESULT QString birthday() const;
     Q_REQUIRED_RESULT QString department() const;
     Q_REQUIRED_RESULT QVariant addresses() const;
-    Q_REQUIRED_RESULT QVariant phones() const;
+    Q_REQUIRED_RESULT QVector<KContacts::PhoneNumber> phones() const;
     Q_REQUIRED_RESULT QString addressBookName() const;
     Q_REQUIRED_RESULT QVariant instantManging() const;
     Q_REQUIRED_RESULT QVariant geo() const;
@@ -106,7 +106,6 @@ public:
 private:
     QString imgToDataUrl(const QImage &image) const;
     QList<QObject *> mListAddress;
-    QList<QObject *> mListPhones;
     QList<QObject *> mListIm;
     QList<QObject *> mListWebSite;
     ContactGrantleeCryptoObject *mCryptoObject = nullptr;
