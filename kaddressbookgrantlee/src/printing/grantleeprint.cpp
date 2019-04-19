@@ -43,6 +43,13 @@ GRANTLEE_MAKE_GADGET(KContacts::Address)
 GRANTLEE_MAKE_GADGET(KContacts::Email)
 GRANTLEE_MAKE_GADGET(KContacts::Geo)
 GRANTLEE_MAKE_GADGET(KContacts::PhoneNumber)
+GRANTLEE_MAKE_GADGET(KContacts::ResourceLocatorUrl)
+
+GRANTLEE_BEGIN_LOOKUP(QUrl)
+if (property == QLatin1String("scheme")) {
+    return object.scheme();
+}
+GRANTLEE_END_LOOKUP
 
 using namespace KAddressBookGrantlee;
 
@@ -68,6 +75,8 @@ void GrantleePrint::init()
     Grantlee::registerMetaType<KContacts::Email>();
     Grantlee::registerMetaType<KContacts::Geo>();
     Grantlee::registerMetaType<KContacts::PhoneNumber>();
+    Grantlee::registerMetaType<KContacts::ResourceLocatorUrl>();
+    Grantlee::registerMetaType<QUrl>();
 }
 
 QString GrantleePrint::contactsToHtml(const KContacts::Addressee::List &contacts)

@@ -24,7 +24,6 @@
 #include "grantleecontactutils.h"
 #include "../contactobject/contactgrantleeimobject.h"
 #include "../contactobject/contactgrantleecryptoobject.h"
-#include "../contactobject/contactgrantleewebsite.h"
 
 #include <KContacts/Addressee>
 #include <grantlee/context.h>
@@ -63,6 +62,13 @@ using namespace KAddressBookGrantlee;
 GRANTLEE_MAKE_GADGET(KContacts::Address)
 GRANTLEE_MAKE_GADGET(KContacts::Email)
 GRANTLEE_MAKE_GADGET(KContacts::PhoneNumber)
+GRANTLEE_MAKE_GADGET(KContacts::ResourceLocatorUrl)
+
+GRANTLEE_BEGIN_LOOKUP(QUrl)
+if (property == QLatin1String("scheme")) {
+    return object.scheme();
+}
+GRANTLEE_END_LOOKUP
 
 class Q_DECL_HIDDEN GrantleeContactFormatter::Private
 {
@@ -118,6 +124,8 @@ GrantleeContactFormatter::GrantleeContactFormatter()
     Grantlee::registerMetaType<KContacts::Address>();
     Grantlee::registerMetaType<KContacts::Email>();
     Grantlee::registerMetaType<KContacts::PhoneNumber>();
+    Grantlee::registerMetaType<KContacts::ResourceLocatorUrl>();
+    Grantlee::registerMetaType<QUrl>();
 }
 
 GrantleeContactFormatter::~GrantleeContactFormatter()
@@ -265,28 +273,12 @@ QString GrantleeContactFormatter::toHtml(HtmlForm form) const
     contactObject.insert(QStringLiteral("imAddresses"), imAddresses);
 
     // Homepage
-    QVariantList websites;
-    const KContacts::ResourceLocatorUrl::List extraUrlList = rawContact.extraUrlList();
-    for (const KContacts::ResourceLocatorUrl &resourceLocator : extraUrlList) {
-        QString url = resourceLocator.url().url();
-        if (!url.startsWith(QLatin1String("http://"))
-            && !url.startsWith(QLatin1String("https://"))) {
-            url = QStringLiteral("http://") + url;
-        }
-        websites.append(KStringHandler::tagUrls(url));
-    }
-    if (!websites.isEmpty()) {
-        contactObject.insert(QStringLiteral("websites"), websites);
-        grantleeContactUtil.insertVariableToQVariantHash(contactObject, QStringLiteral("websitei18n"));
-    }
+    grantleeContactUtil.insertVariableToQVariantHash(contactObject, QStringLiteral("websitei18n"));
+    contactObject.insert(QStringLiteral("urls"), QVariant::fromValue(rawContact.extraUrlList()));
 
     // Blog Feed
-    const QString blog
-        = rawContact.custom(QStringLiteral("KADDRESSBOOK"), QStringLiteral("BlogFeed"));
-    if (!blog.isEmpty()) {
-        contactObject.insert(QStringLiteral("blogUrl"), KStringHandler::tagUrls(blog));
-        grantleeContactUtil.insertVariableToQVariantHash(contactObject, QStringLiteral("blogUrli18n"));
-    }
+    contactObject.insert(QStringLiteral("blogFeed"), rawContact.blogFeed());
+    grantleeContactUtil.insertVariableToQVariantHash(contactObject, QStringLiteral("blogUrli18n"));
 
     // Address Book
     const QString addressBookName

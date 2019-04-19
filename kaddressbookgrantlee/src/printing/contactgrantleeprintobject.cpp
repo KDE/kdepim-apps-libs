@@ -20,7 +20,6 @@
 #include "contactgrantleeprintobject.h"
 #include "../contactobject/contactgrantleeimobject.h"
 #include "../contactobject/contactgrantleecryptoobject.h"
-#include "../contactobject/contactgrantleewebsite.h"
 
 #include <KContacts/PhoneNumber>
 
@@ -37,12 +36,6 @@ ContactGrantleePrintObject::ContactGrantleePrintObject(const KContacts::Addresse
     : QObject(parent)
     , mAddress(address)
 {
-    const auto webSites = address.extraUrlList();
-    mListWebSite.reserve(webSites.size());
-    for (const KContacts::ResourceLocatorUrl &webSite : webSites) {
-        mListWebSite << new ContactGrantleeWebSite(webSite);
-    }
-
     const QStringList customs = mAddress.customs();
     for (const QString &custom : customs) {
         if (custom.startsWith(QLatin1String("messaging/"))) {
@@ -59,7 +52,6 @@ ContactGrantleePrintObject::ContactGrantleePrintObject(const KContacts::Addresse
 ContactGrantleePrintObject::~ContactGrantleePrintObject()
 {
     qDeleteAll(mListIm);
-    qDeleteAll(mListWebSite);
     delete mCryptoObject;
 }
 
@@ -142,14 +134,9 @@ QString ContactGrantleePrintObject::note() const
     return mAddress.note().replace(QLatin1Char('\n'), QStringLiteral("<br>"));
 }
 
-QString ContactGrantleePrintObject::webPage() const
+KContacts::ResourceLocatorUrl ContactGrantleePrintObject::url() const
 {
-    return mAddress.url().url().toDisplayString();
-}
-
-QString ContactGrantleePrintObject::webSite() const
-{
-    return webPage();
+    return mAddress.url();
 }
 
 QString ContactGrantleePrintObject::title() const
@@ -182,9 +169,9 @@ QVector<KContacts::Address> ContactGrantleePrintObject::addresses() const
     return mAddress.addresses();
 }
 
-QVariant ContactGrantleePrintObject::webSites() const
+QVector<KContacts::ResourceLocatorUrl> ContactGrantleePrintObject::urls() const
 {
-    return QVariant::fromValue(mListWebSite);
+    return mAddress.extraUrlList();
 }
 
 QVector<KContacts::PhoneNumber> ContactGrantleePrintObject::phones() const

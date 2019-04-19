@@ -38,8 +38,7 @@ class ContactGrantleePrintObject : public QObject
     Q_PROPERTY(QString nickName READ nickName)
     Q_PROPERTY(QString organization READ organization)
     Q_PROPERTY(QString note READ note)
-    Q_PROPERTY(QString webPage READ webPage)
-    Q_PROPERTY(QString webSite READ webSite)
+    Q_PROPERTY(KContacts::ResourceLocatorUrl url READ url)
     Q_PROPERTY(QString title READ title)
     Q_PROPERTY(QString preferredEmail READ preferredEmail)
     Q_PROPERTY(QString role READ role)
@@ -59,7 +58,7 @@ class ContactGrantleePrintObject : public QObject
     Q_PROPERTY(QString assistant READ assistant)
     Q_PROPERTY(QString spouse READ spouse)
     Q_PROPERTY(QString languages READ languages)
-    Q_PROPERTY(QVariant webSites READ webSites)
+    Q_PROPERTY(QVector<KContacts::ResourceLocatorUrl> urls READ urls)
     Q_PROPERTY(QVariantList emails READ emails)
 
     //Add more functions
@@ -79,9 +78,7 @@ public:
     Q_REQUIRED_RESULT QVariantList emails() const;
     Q_REQUIRED_RESULT QString organization() const;
     Q_REQUIRED_RESULT QString note() const;
-    //webPage deprecated.
-    Q_REQUIRED_RESULT QString webPage() const;
-    Q_REQUIRED_RESULT QString webSite() const;
+    Q_REQUIRED_RESULT KContacts::ResourceLocatorUrl url() const;
     Q_REQUIRED_RESULT QString title() const;
     Q_REQUIRED_RESULT QString preferredEmail() const;
     Q_REQUIRED_RESULT QString role() const;
@@ -102,11 +99,10 @@ public:
     Q_REQUIRED_RESULT QString assistant() const;
     Q_REQUIRED_RESULT QString spouse() const;
     Q_REQUIRED_RESULT QString languages() const;
-    Q_REQUIRED_RESULT QVariant webSites() const;
+    Q_REQUIRED_RESULT QVector<KContacts::ResourceLocatorUrl> urls() const;
 private:
     QString imgToDataUrl(const QImage &image) const;
     QList<QObject *> mListIm;
-    QList<QObject *> mListWebSite;
     ContactGrantleeCryptoObject *mCryptoObject = nullptr;
     KContacts::Addressee mAddress;
 };
