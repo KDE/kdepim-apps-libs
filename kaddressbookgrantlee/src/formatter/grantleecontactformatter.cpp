@@ -26,8 +26,11 @@
 #include "../contactobject/contactgrantleecryptoobject.h"
 
 #include <KContacts/Addressee>
+
+#include <GrantleeTheme/GrantleeThemeEngine>
+#include <GrantleeTheme/GrantleeKi18nLocalizer>
+
 #include <grantlee/context.h>
-#include <grantlee/engine.h>
 #include <grantlee/metatype.h>
 #include <grantlee/templateloader.h>
 
@@ -81,14 +84,13 @@ public:
         KConfigGroup group(&config, QStringLiteral("View"));
         showQRCode = group.readEntry("QRCodes", true);
 
-        mEngine = new Grantlee::Engine;
+        mEngine.reset(new GrantleeTheme::Engine);
 
         mTemplateLoader = QSharedPointer<Grantlee::FileSystemTemplateLoader>(new Grantlee::FileSystemTemplateLoader());
     }
 
     ~Private()
     {
-        delete mEngine;
         mTemplateLoader.clear();
     }
 
@@ -109,7 +111,7 @@ public:
     }
 
     QVector<QObject *> mObjects;
-    Grantlee::Engine *mEngine = nullptr;
+    std::unique_ptr<GrantleeTheme::Engine> mEngine;
     QSharedPointer<Grantlee::FileSystemTemplateLoader> mTemplateLoader;
     Grantlee::Template mSelfcontainedTemplate;
     Grantlee::Template mEmbeddableTemplate;
@@ -460,6 +462,7 @@ QString GrantleeContactFormatter::toHtml(HtmlForm form) const
     mapping.insert(QStringLiteral("colors"), colorsObject);
 
     Grantlee::Context context(mapping);
+    context.setLocalizer(d->mEngine->localizer());
 
     if (form == SelfcontainedForm) {
         return d->mSelfcontainedTemplate->render(&context);
@@ -468,4 +471,9 @@ QString GrantleeContactFormatter::toHtml(HtmlForm form) const
     } else {
         return QString();
     }
+}
+
+void GrantleeContactFormatter::setApplicationDomain(const QByteArray &domain)
+{
+    d->mEngine->localizer()->setApplicationDomain(domain);
 }

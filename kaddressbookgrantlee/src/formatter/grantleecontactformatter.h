@@ -61,6 +61,10 @@ public:
     Q_REQUIRED_RESULT QString toHtml(HtmlForm form = SelfcontainedForm) const override;
 
     void setShowQRCode(bool b);
+
+    /** Translation domain for the Grantlee localizer. */
+    void setApplicationDomain(const QByteArray &domain);
+
 private:
     //@cond PRIVATE
     class Private;
