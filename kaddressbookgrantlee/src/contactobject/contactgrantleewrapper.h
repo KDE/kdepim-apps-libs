@@ -44,6 +44,12 @@ class ContactGrantleeWrapper : public KContacts::Addressee
 
     Q_PROPERTY(QString addressBookName READ addressBookName)
     Q_PROPERTY(int age READ age)
+    Q_PROPERTY(QString cryptoPreference READ cryptoPreference)
+    Q_PROPERTY(QString signaturePreference READ signaturePreference)
+
+    // ### this shouldn't be returning assembled HTML, that's a job for Grantlee
+    Q_PROPERTY(QString photo READ photoImgElement)
+    Q_PROPERTY(QString logo READ logoImgElement)
 
     // ### those two would be unneccessary if we had a proper way for formatting dates in Grantlee
     Q_PROPERTY(QString formattedBirthday READ formattedBirthday)
@@ -52,7 +58,12 @@ class ContactGrantleeWrapper : public KContacts::Addressee
     // ### this is temporary, until KContacts::Impp takes over this part
     Q_PROPERTY(QVariantList imAddresses READ imAddresses)
 
+public:
+    ContactGrantleeWrapper();
+    ContactGrantleeWrapper(const KContacts::Addressee &addr);
+
 private:
+
     QString addressBookLabel() const;
     QString anniversaryLabel() const;
     QString assistantLabel() const;
@@ -63,6 +74,11 @@ private:
 
     QString addressBookName() const;
     int age() const;
+    QString cryptoPreference() const;
+    QString signaturePreference() const;
+
+    QString photoImgElement() const;
+    QString logoImgElement() const;
 
     QString formattedBirthday() const;
     QString formattedAnniversary() const;

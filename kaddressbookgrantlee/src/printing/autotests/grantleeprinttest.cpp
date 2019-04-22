@@ -94,7 +94,6 @@ void GrantleePrintTest::shouldDisplayContactInfo_data()
     QTest::addColumn<QString>("result");
     QTest::newRow("name") << QStringLiteral("name") << QStringLiteral("foo1");
     QTest::newRow("organization") << QStringLiteral("organization") << QStringLiteral("kde");
-    QTest::newRow("languages") << QStringLiteral("languages") << QStringLiteral("fr");
     QTest::newRow("note") << QStringLiteral("note") << QStringLiteral("foo-note");
     QTest::newRow("title") << QStringLiteral("title") << QStringLiteral("foo-title");
     QTest::newRow("nickName") << QStringLiteral("nickName") << QStringLiteral("foo-nickname");
@@ -105,9 +104,9 @@ void GrantleePrintTest::shouldDisplayContactInfo_data()
     QTest::newRow("department") << QStringLiteral("department") << QStringLiteral("foo-department");
     QTest::newRow("office") << QStringLiteral("office") << QStringLiteral("foo-office");
     QTest::newRow("profesion") << QStringLiteral("profession") << QStringLiteral("foo-profession");
-    QTest::newRow("manager") << QStringLiteral("manager") << QStringLiteral("foo-managersname");
-    QTest::newRow("assistant") << QStringLiteral("assistant") << QStringLiteral("foo-assistantsname");
-    QTest::newRow("spouse") << QStringLiteral("spouse") << QStringLiteral("foo-spousesname");
+    QTest::newRow("manager") << QStringLiteral("managersName") << QStringLiteral("foo-managersname");
+    QTest::newRow("assistant") << QStringLiteral("assistantsName") << QStringLiteral("foo-assistantsname");
+    QTest::newRow("spouse") << QStringLiteral("spousesName") << QStringLiteral("foo-spousesname");
     QTest::newRow("givenname") << QStringLiteral("givenName") << QStringLiteral("foo-givenname");
     QTest::newRow("additionalname") << QStringLiteral("additionalName") << QStringLiteral("foo-additionalname");
 }

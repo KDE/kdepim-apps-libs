@@ -21,13 +21,24 @@
 
 #include <contacteditor/improtocols.h>
 
+#include <Libkleo/Enum>
+
 #include <KLocalizedString>
 
+#include <QBuffer>
+#include <QImage>
 #include <QLocale>
 
 using namespace KAddressBookGrantlee;
 
 static_assert(sizeof(KContacts::Addressee) == sizeof(KAddressBookGrantlee::ContactGrantleeWrapper), "Grantlee wrapper must not have member variables to prevent sliciing issues");
+
+ContactGrantleeWrapper::ContactGrantleeWrapper() = default;
+
+ContactGrantleeWrapper::ContactGrantleeWrapper(const KContacts::Addressee& addr)
+    : KContacts::Addressee(addr)
+{
+}
 
 QString ContactGrantleeWrapper::addressBookLabel() const
 {
@@ -77,6 +88,41 @@ int ContactGrantleeWrapper::age() const
         age--;
     }
     return age;
+}
+
+QString ContactGrantleeWrapper::cryptoPreference() const
+{
+    return Kleo::encryptionPreferenceToLabel(Kleo::stringToEncryptionPreference(custom(QStringLiteral("KADDRESSBOOK"), QStringLiteral("CRYPTOENCRYPTPREF"))));
+}
+
+QString ContactGrantleeWrapper::signaturePreference() const
+{
+    return Kleo::signingPreferenceToLabel(Kleo::stringToSigningPreference(custom(QStringLiteral("KADDRESSBOOK"), QStringLiteral("CRYPTOSIGNPREF"))));
+}
+
+static QString imgToDataUrl(const QImage &image)
+{
+    QByteArray ba;
+    QBuffer buffer(&ba);
+    buffer.open(QIODevice::WriteOnly);
+    image.save(&buffer, "PNG");
+    return QStringLiteral("data:image/%1;base64,%2").arg(QStringLiteral("PNG"), QString::fromLatin1(ba.toBase64()));
+}
+
+QString ContactGrantleeWrapper::logoImgElement() const
+{
+    if (logo().isEmpty()) {
+        return {};
+    }
+    return QStringLiteral("<img src=\"%1\" width=\"%2\" height=\"%3\"> &nbsp;").arg(imgToDataUrl(logo().data()), QString::number(60), QString::number(60));
+}
+
+QString ContactGrantleeWrapper::photoImgElement() const
+{
+    if (photo().isEmpty()) {
+        return {};
+    }
+    return QStringLiteral("<img src=\"%1\" width=\"%2\" height=\"%3\"> &nbsp;").arg(imgToDataUrl(photo().data()), QString::number(60), QString::number(60));
 }
 
 QString ContactGrantleeWrapper::formattedBirthday() const

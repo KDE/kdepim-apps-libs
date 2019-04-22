@@ -18,8 +18,7 @@
 */
 
 #include "grantleeprint.h"
-#include "contactgrantleeprintobject.h"
-
+#include "contactobject/contactgrantleewrapper.h"
 #include "formatter/grantleecontactutils.h"
 
 #include <grantlee/context.h>
@@ -44,6 +43,7 @@ GRANTLEE_MAKE_GADGET(KContacts::Email)
 GRANTLEE_MAKE_GADGET(KContacts::Geo)
 GRANTLEE_MAKE_GADGET(KContacts::PhoneNumber)
 GRANTLEE_MAKE_GADGET(KContacts::ResourceLocatorUrl)
+GRANTLEE_MAKE_GADGET(KAddressBookGrantlee::ContactGrantleeWrapper)
 
 GRANTLEE_BEGIN_LOOKUP(QUrl)
 if (property == QLatin1String("scheme")) {
@@ -77,6 +77,7 @@ void GrantleePrint::init()
     Grantlee::registerMetaType<KContacts::PhoneNumber>();
     Grantlee::registerMetaType<KContacts::ResourceLocatorUrl>();
     Grantlee::registerMetaType<QUrl>();
+    Grantlee::registerMetaType<ContactGrantleeWrapper>();
 }
 
 QString GrantleePrint::contactsToHtml(const KContacts::Addressee::List &contacts)
@@ -89,14 +90,9 @@ QString GrantleePrint::contactsToHtml(const KContacts::Addressee::List &contacts
         return QString();
     }
     QVariantList contactsList;
-    QList<ContactGrantleePrintObject *> lst;
-    const int numberContacts(contacts.count());
-    lst.reserve(numberContacts);
-    contactsList.reserve(numberContacts);
-    for (const KContacts::Addressee &address : contacts) {
-        ContactGrantleePrintObject *contactPrintObject = new ContactGrantleePrintObject(address);
-        lst.append(contactPrintObject);
-        contactsList << QVariant::fromValue(static_cast<QObject *>(contactPrintObject));
+    contactsList.reserve(contacts.count());
+    for (const KContacts::Addressee &contact : contacts) {
+        contactsList.push_back(QVariant::fromValue(ContactGrantleeWrapper(contact)));
     }
     QVariantHash mapping;
     QVariantHash contactI18n;
@@ -123,7 +119,5 @@ QString GrantleePrint::contactsToHtml(const KContacts::Addressee::List &contacts
     mapping.insert(QStringLiteral("contacti18n"), contactI18n);
     mapping.insert(QStringLiteral("contacts"), contactsList);
 
-    const QString content = render(mapping);
-    qDeleteAll(lst);
-    return content;
+    return render(mapping);
 }

@@ -21,7 +21,6 @@
 
 #include "grantleecontactformatter.h"
 #include "grantleetheme/grantleetheme.h"
-#include "grantleecontactutils.h"
 #include "../contactobject/contactgrantleewrapper.h"
 
 #include <KContacts/Addressee>
@@ -272,7 +271,7 @@ QString GrantleeContactFormatter::toHtml(HtmlForm form) const
         KColorScheme(QPalette::Active, KColorScheme::View).background().color().name());
 
     QVariantHash mapping;
-    mapping.insert(QStringLiteral("contact"), QVariant::fromValue(*reinterpret_cast<ContactGrantleeWrapper*>(&rawContact)));
+    mapping.insert(QStringLiteral("contact"), QVariant::fromValue(ContactGrantleeWrapper(rawContact)));
     mapping.insert(QStringLiteral("colors"), colorsObject);
     mapping.insert(QStringLiteral("customFields"), customFields);
     mapping.insert(QStringLiteral("customFieldsUrl"), customFieldsUrl);
