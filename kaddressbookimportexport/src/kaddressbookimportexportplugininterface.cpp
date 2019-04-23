@@ -57,7 +57,7 @@ KAddressBookImportExportPluginInterface::ImportExportAction KAddressBookImportEx
     return mImportExportAction;
 }
 
-void KAddressBookImportExportPluginInterface::setImportExportAction(const ImportExportAction &importExportAction)
+void KAddressBookImportExportPluginInterface::setImportExportAction(ImportExportAction importExportAction)
 {
     mImportExportAction = importExportAction;
 }

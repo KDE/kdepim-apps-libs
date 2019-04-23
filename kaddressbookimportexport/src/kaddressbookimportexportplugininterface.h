@@ -45,7 +45,7 @@ public:
     void setExportActions(const QList<QAction *> &exportAction);
 
     Q_REQUIRED_RESULT ImportExportAction importExportAction() const;
-    void setImportExportAction(const ImportExportAction &importExportAction);
+    void setImportExportAction(ImportExportAction importExportAction);
 
     Q_REQUIRED_RESULT Akonadi::Collection defaultCollection() const;
     void setDefaultCollection(const Akonadi::Collection &defaultCollection);
