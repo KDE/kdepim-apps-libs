@@ -21,17 +21,16 @@
 #define GRANTLEEPRINT_H
 
 #include "kaddressbook_grantlee_export.h"
-#include <PimCommon/GenericGrantleeFormatter>
-#include <QObject>
+
+#include <GrantleeTheme/GenericFormatter>
 #include <KContacts/Addressee>
 
 namespace KAddressBookGrantlee {
-class KADDRESSBOOK_GRANTLEE_EXPORT GrantleePrint : public PimCommon::GenericGrantleeFormatter
+class KADDRESSBOOK_GRANTLEE_EXPORT GrantleePrint : public GrantleeTheme::GenericFormatter
 {
-    Q_OBJECT
 public:
-    explicit GrantleePrint(QObject *parent = nullptr);
-    explicit GrantleePrint(const QString &themePath, QObject *parent = nullptr);
+    GrantleePrint();
+    explicit GrantleePrint(const QString &themePath);
     ~GrantleePrint();
 
     Q_REQUIRED_RESULT QString contactsToHtml(const KContacts::Addressee::List &contacts);

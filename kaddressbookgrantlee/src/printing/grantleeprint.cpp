@@ -27,6 +27,7 @@
 #include <grantlee/templateloader.h>
 
 #include <QMetaProperty>
+#include <QVariant>
 
 // Grantlee has no Q_GADGET support yet
 #define GRANTLEE_MAKE_GADGET(Class) \
@@ -53,21 +54,18 @@ GRANTLEE_END_LOOKUP
 
 using namespace KAddressBookGrantlee;
 
-GrantleePrint::GrantleePrint(QObject *parent)
-    : PimCommon::GenericGrantleeFormatter(parent)
+GrantleePrint::GrantleePrint()
 {
     init();
 }
 
-GrantleePrint::GrantleePrint(const QString &themePath, QObject *parent)
-    : PimCommon::GenericGrantleeFormatter(QStringLiteral("theme.html"), themePath, parent)
+GrantleePrint::GrantleePrint(const QString &themePath)
+    : GrantleeTheme::GenericFormatter(QStringLiteral("theme.html"), themePath)
 {
     init();
 }
 
-GrantleePrint::~GrantleePrint()
-{
-}
+GrantleePrint::~GrantleePrint() = default;
 
 void GrantleePrint::init()
 {

@@ -160,3 +160,5 @@ QVariantList ContactGrantleeWrapper::imAddresses() const
 
     return imAddrs;
 }
+
+#include "moc_contactgrantleewrapper.cpp"

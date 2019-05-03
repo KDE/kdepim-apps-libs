@@ -20,11 +20,11 @@ target_include_directories(KF5KaddressbookGrantlee PUBLIC "$<BUILD_INTERFACE:${G
 
 target_link_libraries(KF5KaddressbookGrantlee
 PUBLIC
-  Grantlee5::Templates
+  KF5::GrantleeTheme
 PRIVATE
+  Grantlee5::Templates
   KF5::ConfigWidgets
   KF5::Service
-  KF5::GrantleeTheme
   KF5::AkonadiCore
   KF5::ContactEditor
   KF5::Contacts
@@ -32,7 +32,6 @@ PRIVATE
   KF5::IconThemes
   KF5::Libkleo
   KF5::I18n
-  KF5::PimCommon
 )
 
 set_target_properties(KF5KaddressbookGrantlee PROPERTIES

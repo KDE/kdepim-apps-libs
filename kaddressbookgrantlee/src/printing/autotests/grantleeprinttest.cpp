@@ -30,62 +30,45 @@ GrantleePrintTest::~GrantleePrintTest()
 {
 }
 
-void GrantleePrintTest::shouldHaveDefaultValue()
-{
-    KAddressBookGrantlee::GrantleePrint *grantleePrint = new KAddressBookGrantlee::GrantleePrint;
-    QVERIFY(grantleePrint);
-    grantleePrint->deleteLater();
-    grantleePrint = nullptr;
-}
-
 void GrantleePrintTest::shouldReturnEmptyStringWhenNotContentAndNoContacts()
 {
-    KAddressBookGrantlee::GrantleePrint *grantleePrint = new KAddressBookGrantlee::GrantleePrint;
+    KAddressBookGrantlee::GrantleePrint grantleePrint;
     KContacts::Addressee::List lst;
-    QVERIFY(grantleePrint->contactsToHtml(lst).isEmpty());
-    grantleePrint->deleteLater();
-    grantleePrint = nullptr;
+    QVERIFY(grantleePrint.contactsToHtml(lst).isEmpty());
 }
 
 void GrantleePrintTest::shouldReturnEmptyStringWhenAddContentWithoutContacts()
 {
-    KAddressBookGrantlee::GrantleePrint *grantleePrint = new KAddressBookGrantlee::GrantleePrint;
-    grantleePrint->setContent(QStringLiteral("foo"));
+    KAddressBookGrantlee::GrantleePrint grantleePrint;
+    grantleePrint.setTemplateContent(QStringLiteral("foo"));
     KContacts::Addressee::List lst;
-
-    QVERIFY(grantleePrint->contactsToHtml(lst).isEmpty());
-    grantleePrint->deleteLater();
-    grantleePrint = nullptr;
+    QVERIFY(grantleePrint.contactsToHtml(lst).isEmpty());
 }
 
 void GrantleePrintTest::shouldReturnStringWhenAddContentAndContacts()
 {
-    KAddressBookGrantlee::GrantleePrint *grantleePrint = new KAddressBookGrantlee::GrantleePrint;
-    grantleePrint->setContent(QStringLiteral("foo"));
+    KAddressBookGrantlee::GrantleePrint grantleePrint;
+    grantleePrint.setTemplateContent(QStringLiteral("foo"));
     KContacts::Addressee::List lst;
     KContacts::Addressee address;
     address.setName(QStringLiteral("foo1"));
     address.insertEmail(QStringLiteral("foo@kde.org"), true);
     lst << address;
 
-    QCOMPARE(grantleePrint->contactsToHtml(lst), QStringLiteral("foo"));
-    grantleePrint->deleteLater();
-    grantleePrint = nullptr;
+    QCOMPARE(grantleePrint.contactsToHtml(lst), QStringLiteral("foo"));
 }
 
 void GrantleePrintTest::shouldReturnEmails()
 {
-    KAddressBookGrantlee::GrantleePrint *grantleePrint = new KAddressBookGrantlee::GrantleePrint;
+    KAddressBookGrantlee::GrantleePrint grantleePrint;
     KContacts::Addressee::List lst;
     KContacts::Addressee address;
     address.setName(QStringLiteral("foo1"));
     address.insertEmail(QStringLiteral("foo@kde.org"), true);
     lst << address;
-    grantleePrint->setContent(QStringLiteral("{% if contacts %}{% for contact in contacts %}{% if contact.name %}{{ contact.name }}{% endif %}{% endfor %}{% endif %}"));
+    grantleePrint.setTemplateContent(QStringLiteral("{% if contacts %}{% for contact in contacts %}{% if contact.name %}{{ contact.name }}{% endif %}{% endfor %}{% endif %}"));
 
-    QCOMPARE(grantleePrint->contactsToHtml(lst), QStringLiteral("foo1"));
-    grantleePrint->deleteLater();
-    grantleePrint = nullptr;
+    QCOMPARE(grantleePrint.contactsToHtml(lst), QStringLiteral("foo1"));
 }
 
 void GrantleePrintTest::shouldDisplayContactInfo_data()
@@ -116,7 +99,7 @@ void GrantleePrintTest::shouldDisplayContactInfo()
     QFETCH(QString, variable);
     QFETCH(QString, result);
 
-    KAddressBookGrantlee::GrantleePrint *grantleePrint = new KAddressBookGrantlee::GrantleePrint;
+    KAddressBookGrantlee::GrantleePrint grantleePrint;
     KContacts::Addressee::List lst;
     KContacts::Addressee address;
     address.setGivenName(QStringLiteral("foo-givenname"));
@@ -141,11 +124,9 @@ void GrantleePrintTest::shouldDisplayContactInfo()
     address.insertCustom(QStringLiteral("KADDRESSBOOK"), QStringLiteral("X-SpousesName"), QStringLiteral("foo-spousesname"));
 
     lst << address;
-    grantleePrint->setContent(QStringLiteral("{% if contacts %}{% for contact in contacts %}{% if contact.%1 %}{{ contact.%1 }}{% endif %}{% endfor %}{% endif %}").arg(variable));
+    grantleePrint.setTemplateContent(QStringLiteral("{% if contacts %}{% for contact in contacts %}{% if contact.%1 %}{{ contact.%1 }}{% endif %}{% endfor %}{% endif %}").arg(variable));
 
-    QCOMPARE(grantleePrint->contactsToHtml(lst), result);
-    grantleePrint->deleteLater();
-    grantleePrint = nullptr;
+    QCOMPARE(grantleePrint.contactsToHtml(lst), result);
 }
 
 QTEST_MAIN(GrantleePrintTest)

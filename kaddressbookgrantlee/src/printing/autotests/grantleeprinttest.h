@@ -29,7 +29,6 @@ public:
     explicit GrantleePrintTest(QObject *parent = nullptr);
     ~GrantleePrintTest();
 private Q_SLOTS:
-    void shouldHaveDefaultValue();
     void shouldReturnEmptyStringWhenNotContentAndNoContacts();
     void shouldReturnEmptyStringWhenAddContentWithoutContacts();
     void shouldReturnStringWhenAddContentAndContacts();
