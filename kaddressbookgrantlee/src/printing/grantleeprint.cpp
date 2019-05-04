@@ -19,7 +19,6 @@
 
 #include "grantleeprint.h"
 #include "contactobject/contactgrantleewrapper.h"
-#include "formatter/grantleecontactutils.h"
 
 #include <grantlee/context.h>
 #include <grantlee/engine.h>
@@ -93,28 +92,6 @@ QString GrantleePrint::contactsToHtml(const KContacts::Addressee::List &contacts
         contactsList.push_back(QVariant::fromValue(ContactGrantleeWrapper(contact)));
     }
     QVariantHash mapping;
-    QVariantHash contactI18n;
-    GrantleeContactUtils grantleeContactUtil;
-    grantleeContactUtil.insertVariableToQVariantHash(contactI18n, QStringLiteral("birthdayi18n"));
-    grantleeContactUtil.insertVariableToQVariantHash(contactI18n, QStringLiteral("anniversaryi18n"));
-    grantleeContactUtil.insertVariableToQVariantHash(contactI18n, QStringLiteral("emailsi18n"));
-    grantleeContactUtil.insertVariableToQVariantHash(contactI18n, QStringLiteral("websitei18n"));
-    grantleeContactUtil.insertVariableToQVariantHash(contactI18n, QStringLiteral("blogUrli18n"));
-    grantleeContactUtil.insertVariableToQVariantHash(contactI18n, QStringLiteral("addressBookNamei18n"));
-    grantleeContactUtil.insertVariableToQVariantHash(contactI18n, QStringLiteral("notei18n"));
-    grantleeContactUtil.insertVariableToQVariantHash(contactI18n, QStringLiteral("departmenti18n"));
-    grantleeContactUtil.insertVariableToQVariantHash(contactI18n, QStringLiteral("Professioni18n"));
-    grantleeContactUtil.insertVariableToQVariantHash(contactI18n, QStringLiteral("officei18n"));
-    grantleeContactUtil.insertVariableToQVariantHash(contactI18n, QStringLiteral("manageri18n"));
-    grantleeContactUtil.insertVariableToQVariantHash(contactI18n, QStringLiteral("assistanti18n"));
-    grantleeContactUtil.insertVariableToQVariantHash(contactI18n, QStringLiteral("spousei18n"));
-    grantleeContactUtil.insertVariableToQVariantHash(contactI18n, QStringLiteral("imAddressi18n"));
-    grantleeContactUtil.insertVariableToQVariantHash(contactI18n, QStringLiteral("latitudei18n"));
-    grantleeContactUtil.insertVariableToQVariantHash(contactI18n, QStringLiteral("longitudei18n"));
-    grantleeContactUtil.insertVariableToQVariantHash(contactI18n, QStringLiteral("organizationi18n"));
-    grantleeContactUtil.insertVariableToQVariantHash(contactI18n, QStringLiteral("titlei18n"));
-    grantleeContactUtil.insertVariableToQVariantHash(contactI18n, QStringLiteral("nextcontacti18n"));
-    mapping.insert(QStringLiteral("contacti18n"), contactI18n);
     mapping.insert(QStringLiteral("contacts"), contactsList);
 
     return render(mapping);
