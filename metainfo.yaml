@@ -14,3 +14,4 @@ libraries:
 
 public_lib: true
 group: kdepim
+irc: akonadi
