@@ -59,6 +59,7 @@ using namespace KAddressBookGrantlee;
 
 GRANTLEE_MAKE_GADGET(KContacts::Address)
 GRANTLEE_MAKE_GADGET(KContacts::Email)
+GRANTLEE_MAKE_GADGET(KContacts::Impp)
 GRANTLEE_MAKE_GADGET(KContacts::PhoneNumber)
 GRANTLEE_MAKE_GADGET(KContacts::ResourceLocatorUrl)
 GRANTLEE_MAKE_GADGET(KAddressBookGrantlee::ContactGrantleeWrapper)
@@ -66,6 +67,8 @@ GRANTLEE_MAKE_GADGET(KAddressBookGrantlee::ContactGrantleeWrapper)
 GRANTLEE_BEGIN_LOOKUP(QUrl)
 if (property == QLatin1String("scheme")) {
     return object.scheme();
+} else if (property == QLatin1String("path")) {
+    return object.path();
 }
 GRANTLEE_END_LOOKUP
 
@@ -121,6 +124,7 @@ GrantleeContactFormatter::GrantleeContactFormatter()
 {
     Grantlee::registerMetaType<KContacts::Address>();
     Grantlee::registerMetaType<KContacts::Email>();
+    Grantlee::registerMetaType<KContacts::Impp>();
     Grantlee::registerMetaType<KContacts::PhoneNumber>();
     Grantlee::registerMetaType<KContacts::ResourceLocatorUrl>();
     Grantlee::registerMetaType<ContactGrantleeWrapper>();

@@ -55,9 +55,6 @@ class ContactGrantleeWrapper : public KContacts::Addressee
     Q_PROPERTY(QString formattedBirthday READ formattedBirthday)
     Q_PROPERTY(QString formattedAnniversary READ formattedAnniversary)
 
-    // ### this is temporary, until KContacts::Impp takes over this part
-    Q_PROPERTY(QVariantList imAddresses READ imAddresses)
-
 public:
     ContactGrantleeWrapper();
     ContactGrantleeWrapper(const KContacts::Addressee &addr);

@@ -19,8 +19,6 @@
 
 #include "contactgrantleewrapper.h"
 
-#include <contacteditor/improtocols.h>
-
 #include <Libkleo/Enum>
 
 #include <KLocalizedString>
@@ -133,32 +131,6 @@ QString ContactGrantleeWrapper::formattedBirthday() const
 QString ContactGrantleeWrapper::formattedAnniversary() const
 {
     return QLocale().toString(anniversary());
-}
-
-static QVariantHash imAddressHash(const QString &typeKey, const QString &imAddress)
-{
-    QVariantHash addressObject;
-    addressObject.insert(QStringLiteral("serviceLabel"), IMProtocols::self()->name(typeKey));
-    addressObject.insert(QStringLiteral("address"), imAddress);
-    addressObject.insert(QStringLiteral("serviceIcon"), IMProtocols::self()->icon(typeKey));
-    return addressObject;
-}
-
-QVariantList ContactGrantleeWrapper::imAddresses() const
-{
-    QVariantList imAddrs;
-    const QStringList customs = this->customs();
-    for (const QString &custom : customs) {
-        if (custom.startsWith(QLatin1String("messaging/"))) {
-            const int pos = custom.indexOf(QLatin1Char(':'));
-            QString key = custom.left(pos);
-            key.remove(QStringLiteral("-All"));
-            const QString value = custom.mid(pos + 1);
-            imAddrs.append(imAddressHash(key, value));
-        }
-    }
-
-    return imAddrs;
 }
 
 #include "moc_contactgrantleewrapper.cpp"
