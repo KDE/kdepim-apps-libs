@@ -31,6 +31,8 @@ class SendLaterWidget;
 
 namespace SendLater {
 class SendLaterInfo;
+
+/** Send later dialog. */
 class SENDLATER_EXPORT SendLaterDialog : public QDialog
 {
     Q_OBJECT

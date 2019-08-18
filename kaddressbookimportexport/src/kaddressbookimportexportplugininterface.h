@@ -26,6 +26,8 @@
 #include <AkonadiCore/Collection>
 class QItemSelectionModel;
 namespace KAddressBookImportExport {
+
+/** Import/export plugin interface. */
 class KADDRESSBOOK_IMPORTEXPORT_EXPORT KAddressBookImportExportPluginInterface : public PimCommon::AbstractGenericPluginInterface
 {
     Q_OBJECT

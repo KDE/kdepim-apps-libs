@@ -25,6 +25,8 @@
 #include "followupreminder_export.h"
 class KConfigGroup;
 namespace FollowUpReminder {
+
+/** Follow up reminder information. */
 class FOLLOWUPREMINDER_EXPORT FollowUpReminderInfo
 {
 public:

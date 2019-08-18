@@ -23,6 +23,8 @@
 #include <KSharedConfig>
 namespace FollowUpReminder {
 class FollowUpReminderInfo;
+
+/** Follow up reminder utilities. */
 namespace FollowUpReminderUtil {
 Q_REQUIRED_RESULT FOLLOWUPREMINDER_EXPORT bool followupReminderAgentWasRegistered();
 

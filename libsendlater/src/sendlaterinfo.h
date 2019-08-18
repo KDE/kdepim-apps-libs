@@ -27,6 +27,8 @@
 class KConfigGroup;
 
 namespace SendLater {
+
+/** Send later information. */
 class SENDLATER_EXPORT SendLaterInfo
 {
 public:

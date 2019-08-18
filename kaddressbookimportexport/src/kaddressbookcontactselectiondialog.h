@@ -33,14 +33,15 @@ namespace Akonadi {
 class Collection;
 }
 
+namespace KAddressBookImportExport {
+class KAddressBookExportSelectionWidget;
+class KAddressBookContactSelectionWidget;
+
 /**
  * @short A dialog to select a group of contacts.
  *
  * @author Tobias Koenig <tokoe@kde.org>
  */
-namespace KAddressBookImportExport {
-class KAddressBookExportSelectionWidget;
-class KAddressBookContactSelectionWidget;
 class KADDRESSBOOK_IMPORTEXPORT_EXPORT KAddressBookContactSelectionDialog : public QDialog
 {
     Q_OBJECT

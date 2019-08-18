@@ -23,6 +23,8 @@
 #include <PimCommon/AbstractGenericPlugin>
 #include "kaddressbook_importexport_export.h"
 namespace KAddressBookImportExport {
+
+/** Import/export plugin. */
 class KADDRESSBOOK_IMPORTEXPORT_EXPORT KAddressBookImportExportPlugin : public PimCommon::AbstractGenericPlugin
 {
     Q_OBJECT

@@ -26,6 +26,8 @@
 #include <KContacts/Addressee>
 
 namespace KAddressBookGrantlee {
+
+/** Grantlee-based contact printing. */
 class KADDRESSBOOK_GRANTLEE_EXPORT GrantleePrint : public GrantleeTheme::GenericFormatter
 {
 public:

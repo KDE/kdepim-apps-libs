@@ -24,6 +24,8 @@
 #include "kaddressbook_importexport_export.h"
 class QCheckBox;
 namespace KAddressBookImportExport {
+
+/** Addressbool export selection widget. */
 class KADDRESSBOOK_IMPORTEXPORT_EXPORT KAddressBookExportSelectionWidget : public QWidget
 {
     Q_OBJECT

@@ -27,6 +27,8 @@
 namespace KAddressBookImportExport {
 class KAddressBookImportExportPlugin;
 class KAddressBookImportExportPrivate;
+
+/** Contact import/export plugin manager. */
 class KADDRESSBOOK_IMPORTEXPORT_EXPORT KAddressBookImportExportPluginManager : public QObject
 {
     Q_OBJECT

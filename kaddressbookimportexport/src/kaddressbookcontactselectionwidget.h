@@ -38,12 +38,12 @@ class Collection;
 class CollectionComboBox;
 }
 
+namespace KAddressBookImportExport {
 /**
  * @short A widget to select a group of contacts.
  *
  * @author Tobias Koenig <tokoe@kde.org>
  */
-namespace KAddressBookImportExport {
 class KADDRESSBOOK_IMPORTEXPORT_EXPORT KAddressBookContactSelectionWidget : public QWidget
 {
     Q_OBJECT

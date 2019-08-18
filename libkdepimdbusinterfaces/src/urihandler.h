@@ -30,6 +30,7 @@
 
 class QString;
 
+/** URI handler. */
 class KDEPIMDBUSINTERFACES_EXPORT UriHandler
 {
 public:

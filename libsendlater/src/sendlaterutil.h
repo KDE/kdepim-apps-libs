@@ -25,6 +25,8 @@
 
 namespace SendLater {
 class SendLaterInfo;
+
+/** Send later utilities. */
 namespace SendLaterUtil {
 Q_REQUIRED_RESULT SENDLATER_EXPORT bool compareSendLaterInfo(SendLater::SendLaterInfo *left, SendLater::SendLaterInfo *right);
 

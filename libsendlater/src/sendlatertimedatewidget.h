@@ -27,6 +27,8 @@ class KTimeComboBox;
 class KDateComboBox;
 
 namespace SendLater {
+
+/** Send later date/time widget. */
 class SendLaterTimeDateWidget : public QWidget
 {
     Q_OBJECT
