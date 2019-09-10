@@ -64,7 +64,10 @@ if(BUILD_TESTING)
     find_package(Qt5 ${QT_REQUIRED_VERSION} CONFIG REQUIRED Test)
     add_definitions(-DBUILD_TESTING)
 endif()
-add_definitions(-DQT_DISABLE_DEPRECATED_BEFORE=0x060000)
+if (EXISTS "${CMAKE_SOURCE_DIR}/.git")
+   add_definitions(-DQT_DISABLE_DEPRECATED_BEFORE=0x060000)
+endif()
+
 add_definitions(-DQT_NO_FOREACH)
 
 add_subdirectory(libfollowupreminder)
