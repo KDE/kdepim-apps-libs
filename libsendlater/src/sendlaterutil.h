@@ -44,6 +44,7 @@ SENDLATER_EXPORT void changeRecurrentDate(SendLater::SendLaterInfo *info);
 SENDLATER_EXPORT void forceReparseConfiguration();
 
 Q_REQUIRED_RESULT SENDLATER_EXPORT QString sendLaterPattern();
+Q_REQUIRED_RESULT SENDLATER_EXPORT void removeItem(qint64 item);
 }
 }
 #endif // SENDLATERUTIL_H

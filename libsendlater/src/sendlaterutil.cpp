@@ -145,6 +145,19 @@ void SendLater::SendLaterUtil::reload()
     }
 }
 
+void SendLater::SendLaterUtil::removeItem(qint64 item)
+{
+    qCDebug(LIBSENDLATER_LOG) << " void SendLater::SendLaterUtil::removeItem()" << item;
+
+    QDBusInterface interface(serviceName(), dbusPath());
+    if (interface.isValid()) {
+        interface.call(QStringLiteral("reload"), item);
+    } else {
+        qCDebug(LIBSENDLATER_LOG) << " Can not remove item";
+    }
+}
+
+
 QString SendLater::SendLaterUtil::sendLaterPattern()
 {
     return QStringLiteral("SendLaterItem %1");
