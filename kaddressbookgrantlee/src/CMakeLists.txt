@@ -28,7 +28,6 @@ PRIVATE
   KF5::ContactEditor
   KF5::Contacts
   KF5::AkonadiContact
-  KF5::IconThemes
   KF5::Libkleo
   KF5::I18n
 )
