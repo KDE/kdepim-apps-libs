@@ -151,7 +151,7 @@ void SendLater::SendLaterUtil::removeItem(qint64 item)
 
     QDBusInterface interface(serviceName(), dbusPath());
     if (interface.isValid()) {
-        interface.call(QStringLiteral("reload"), item);
+        interface.call(QStringLiteral("removeItem"), item);
     } else {
         qCDebug(LIBSENDLATER_LOG) << " Can not remove item";
     }

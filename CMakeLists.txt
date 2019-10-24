@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.5)
-set(PIM_VERSION "5.12.41")
+set(PIM_VERSION "5.12.42")
 project(kdepim-apps-lib VERSION ${PIM_VERSION})
 
 set(KF5_MIN_VERSION "5.63.0")
