@@ -173,3 +173,16 @@ void SendLaterInfo::writeConfig(KConfigGroup &config)
     config.writeEntry("to", mTo);
     config.sync();
 }
+
+QDebug operator<<(QDebug d, const SendLaterInfo &info)
+{
+    d << "mTo: " << info.to();
+    d << "mSubject: " << info.subject();
+    d << "mDateTime: " << info.dateTime().toString();
+    d << "mLastDateTimeSend: " << info.lastDateTimeSend().toString();
+    d << "mId: " << info.itemId();
+    d << "mRecurrenceEachValue: " << info.recurrenceEachValue();
+    d << "mRecurrenceUnit: " << info.recurrenceUnit();
+    d << "mRecurrence: " << info.isRecurrence();
+    return d;
+}

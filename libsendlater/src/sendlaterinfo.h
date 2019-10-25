@@ -86,5 +86,5 @@ private:
     bool mRecurrence = false;
 };
 }
-
+SENDLATER_EXPORT QDebug operator<<(QDebug debug, const SendLater::SendLaterInfo &info);
 #endif // SENDLATERINFO_H
