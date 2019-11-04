@@ -51,7 +51,7 @@ class ContactGrantleeWrapper : public KContacts::Addressee
     Q_PROPERTY(QString photo READ photoImgElement)
     Q_PROPERTY(QString logo READ logoImgElement)
 
-    // ### those two would be unneccessary if we had a proper way for formatting dates in Grantlee
+    // ### those two would be unnecessary if we had a proper way for formatting dates in Grantlee
     Q_PROPERTY(QString formattedBirthday READ formattedBirthday)
     Q_PROPERTY(QString formattedAnniversary READ formattedAnniversary)
 

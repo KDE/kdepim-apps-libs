@@ -29,7 +29,7 @@
 
 using namespace KAddressBookGrantlee;
 
-static_assert(sizeof(KContacts::Addressee) == sizeof(KAddressBookGrantlee::ContactGrantleeWrapper), "Grantlee wrapper must not have member variables to prevent sliciing issues");
+static_assert(sizeof(KContacts::Addressee) == sizeof(KAddressBookGrantlee::ContactGrantleeWrapper), "Grantlee wrapper must not have member variables to prevent slicing issues");
 
 ContactGrantleeWrapper::ContactGrantleeWrapper() = default;
 
