@@ -29,8 +29,8 @@
 #include <korganizerinterface.h>
 #include <Akonadi/Contact/ContactEditorDialog>
 
-#include <krun.h>
-#include <kshell.h>
+#include <KRun>
+#include <KShell>
 #include <ktoolinvocation.h>
 #include <QUrl>
 #include <QDesktopServices>
