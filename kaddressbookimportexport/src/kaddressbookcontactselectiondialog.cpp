@@ -31,7 +31,7 @@ KAddressBookContactSelectionDialog::KAddressBookContactSelectionDialog(QItemSele
     : QDialog(parent)
     , mVCardExport(nullptr)
 {
-    setWindowTitle(i18n("Select Contacts"));
+    setWindowTitle(i18nc("@title:window", "Select Contacts"));
     QVBoxLayout *mainLayout = new QVBoxLayout(this);
 
     mSelectionWidget = new KAddressBookContactSelectionWidget(selectionModel, this);

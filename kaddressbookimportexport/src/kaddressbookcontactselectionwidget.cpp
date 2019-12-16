@@ -190,7 +190,7 @@ Akonadi::Item::List KAddressBookContactSelectionWidget::collectAllItems() const
                                              QStringList() << KContacts::Addressee::mimeType());
     job->fetchScope().fetchFullPayload();
     QProgressDialog progressDialog(nullptr);
-    progressDialog.setWindowTitle(i18n("Collect Contacts"));
+    progressDialog.setWindowTitle(i18nc("@title:window", "Collect Contacts"));
     progressDialog.setAutoClose(true);
     progressDialog.setMinimumDuration(1000);
     progressDialog.setLabelText(i18n("Fetch Contacts"));
