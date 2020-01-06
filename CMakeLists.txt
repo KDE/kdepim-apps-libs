@@ -54,7 +54,7 @@ find_package(KF5GrantleeTheme ${GRANTLEETHEME_LIB_VERSION} CONFIG REQUIRED)
 find_package(KF5Libkleo ${LIBKLEO_LIB_VERSION} CONFIG REQUIRED)
 find_package(KF5PimCommonAkonadi ${PIMCOMMON_LIB_VERSION} CONFIG REQUIRED)
 
-find_package(Grantlee5 "5.1" CONFIG REQUIRED)
+find_package(Grantlee5 "5.2" CONFIG REQUIRED)
 
 find_package(KF5Prison ${KF5_MIN_VERSION} CONFIG REQUIRED)
 
