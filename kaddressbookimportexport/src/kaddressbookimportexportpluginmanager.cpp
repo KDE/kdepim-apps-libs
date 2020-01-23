@@ -96,9 +96,7 @@ private:
 
 bool KAddressBookImportExportPrivate::initializePlugins()
 {
-    const QVector<KPluginMetaData> plugins = KPluginLoader::findPlugins(QStringLiteral("kaddressbook"), [](const KPluginMetaData &md) {
-        return md.serviceTypes().contains(QLatin1String("KAddressBook/ImportExportPlugin"));
-    });
+    const QVector<KPluginMetaData> plugins = KPluginLoader::findPlugins(QStringLiteral("kaddressbook/importexportplugin"));
 
     const QPair<QStringList, QStringList> pair = PimCommon::PluginUtil::loadPluginSetting(configGroupName(), configPrefixSettingKey());
 
