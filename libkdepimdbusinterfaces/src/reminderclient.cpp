@@ -29,6 +29,7 @@
 
 #include <QDBusConnection>
 #include <QDBusInterface>
+#include <QProcess>
 #include <QStandardPaths>
 
 using namespace KPIM;
@@ -50,7 +51,7 @@ void ReminderClient::startDaemon()
             qCWarning(KDEPIMDBUSINTERFACE_LOG) << "Failure starting korgac:" << error;
             // try harder...
             const QString korgacExe = QStandardPaths::findExecutable(QStringLiteral("korgac"));
-            QProcess::startDetached(korgacExe);
+            QProcess::startDetached(korgacExe, QStringList());
         }
     }
 }
