@@ -7,15 +7,11 @@ set(kdepimdbusinterfaces_LIB_SRCS
     kdepimdbusinterface_debug.cpp
 )
 
-if (ECM_VERSION VERSION_LESS "5.68.0")
-    ecm_qt_declare_logging_category(kdepimdbusinterfaces_LIB_SRCS HEADER kdepimdbusinterface_debug.h IDENTIFIER KDEPIMDBUSINTERFACE_LOG CATEGORY_NAME org.kde.pim.kdepimdbusinterface)
-else()
-    ecm_qt_declare_logging_category(kdepimdbusinterfaces_LIB_SRCS HEADER kdepimdbusinterface_debug.h IDENTIFIER KDEPIMDBUSINTERFACE_LOG CATEGORY_NAME org.kde.pim.kdepimdbusinterface
+ecm_qt_declare_logging_category(kdepimdbusinterfaces_LIB_SRCS HEADER kdepimdbusinterface_debug.h IDENTIFIER KDEPIMDBUSINTERFACE_LOG CATEGORY_NAME org.kde.pim.kdepimdbusinterface
         DESCRIPTION "kdepim-apps-lib (kdepimdbusinterface)"
         OLD_CATEGORY_NAMES log_kdepimdbusinterface
         EXPORT KDEPIMAPPSLIB
     )
-endif()
 
 
 

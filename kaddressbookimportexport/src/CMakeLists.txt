@@ -11,14 +11,10 @@ set(kaddressbook_importexport_LIB_SRCS
     kaddressbookimportexportcontactfields.cpp
     )
 
-if (ECM_VERSION VERSION_LESS "5.68.0")
-    ecm_qt_declare_logging_category(kaddressbook_importexport_LIB_SRCS HEADER libkaddressbookexportimport_debug.h IDENTIFIER LIBKADDRESSBOOKIMPORTEXPORT_LOG CATEGORY_NAME org.kde.pim.kaddressbookimportexport)
-else()
-    ecm_qt_declare_logging_category(kaddressbook_importexport_LIB_SRCS HEADER libkaddressbookexportimport_debug.h IDENTIFIER LIBKADDRESSBOOKIMPORTEXPORT_LOG CATEGORY_NAME org.kde.pim.kaddressbookimportexport
+ecm_qt_declare_logging_category(kaddressbook_importexport_LIB_SRCS HEADER libkaddressbookexportimport_debug.h IDENTIFIER LIBKADDRESSBOOKIMPORTEXPORT_LOG CATEGORY_NAME org.kde.pim.kaddressbookimportexport
         DESCRIPTION "kdepim-apps-lib (kaddressbookimportexport)"
         EXPORT KDEPIMAPPSLIB
     )
-endif()
 
 
 

@@ -2,15 +2,11 @@
 add_definitions(-DTRANSLATION_DOMAIN=\"libsendlater\")
 
 set(sendlater_common_SRCS)
-if (ECM_VERSION VERSION_LESS "5.68.0")
-    ecm_qt_declare_logging_category(sendlater_common_SRCS HEADER libsendlater_debug.h IDENTIFIER LIBSENDLATER_LOG CATEGORY_NAME org.kde.pim.libsendlater)
-else()
-    ecm_qt_declare_logging_category(sendlater_common_SRCS HEADER libsendlater_debug.h IDENTIFIER LIBSENDLATER_LOG CATEGORY_NAME org.kde.pim.libsendlater
+ecm_qt_declare_logging_category(sendlater_common_SRCS HEADER libsendlater_debug.h IDENTIFIER LIBSENDLATER_LOG CATEGORY_NAME org.kde.pim.libsendlater
         DESCRIPTION "kdepim-apps-lib (libsendlater)"
         OLD_CATEGORY_NAMES log_libsendlater
         EXPORT KDEPIMAPPSLIB
     )
-endif()
 
 
 set(sendlaterlib_SRCS 
