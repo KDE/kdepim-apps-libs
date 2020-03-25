@@ -148,9 +148,7 @@ void GrantleeContactFormatter::setGrantleeTheme(const GrantleeTheme::Theme &them
 
 void GrantleeContactFormatter::setForceDisableQRCode(bool b)
 {
-    if (d->forceDisableQRCode != b) {
-        d->forceDisableQRCode = b;
-    }
+    d->forceDisableQRCode = b;
 }
 
 bool GrantleeContactFormatter::forceDisableQRCode() const
