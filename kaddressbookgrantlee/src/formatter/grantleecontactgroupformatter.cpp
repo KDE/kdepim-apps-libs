@@ -21,7 +21,7 @@
 
 #include "grantleecontactgroupformatter.h"
 
-#include "grantleetheme/grantleetheme.h"
+#include <GrantleeTheme/GrantleeTheme>
 
 #include <grantlee/context.h>
 #include <grantlee/engine.h>

@@ -20,7 +20,7 @@
 */
 
 #include "grantleecontactformatter.h"
-#include "grantleetheme/grantleetheme.h"
+#include <GrantleeTheme/GrantleeTheme>
 #include "../contactobject/contactgrantleewrapper.h"
 
 #include <KContacts/Addressee>
