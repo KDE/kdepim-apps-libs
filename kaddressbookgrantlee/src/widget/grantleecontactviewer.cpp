@@ -21,7 +21,7 @@
 #include "KaddressbookGrantlee/GrantleeContactFormatter"
 #include <KSharedConfig>
 
-#include <grantleetheme/grantleethememanager.h>
+#include <GrantleeTheme/GrantleeThemeManager>
 
 using namespace KAddressBookGrantlee;
 
