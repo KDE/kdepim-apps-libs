@@ -72,7 +72,6 @@ add_definitions(-DQT_NO_FOREACH)
 add_definitions(-DQT_NO_KEYWORDS)
 
 add_subdirectory(libfollowupreminder)
-add_subdirectory(libkdepimdbusinterfaces)
 add_subdirectory(libsendlater)
 add_subdirectory(kaddressbookgrantlee)
 add_subdirectory(kaddressbookimportexport)

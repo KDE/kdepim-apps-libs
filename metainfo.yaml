@@ -9,7 +9,6 @@ libraries:
     - cmake: "KF5::KaddressbookGrantlee"
     - cmake: "KF5::KaddressbookImportExport"
     - cmake: "KF5::FollowupReminder"
-    - cmake: "KF5::KdepimDBusInterfaces"
     - cmake: "KF5::SendLater"
 
 public_lib: true
@@ -20,5 +19,4 @@ public_source_dirs:
  - kaddressbookgrantlee
  - kaddressbookimportexport
  - libfollowupreminder
- - libkdepimdbusinterfaces
  - libsendlater
