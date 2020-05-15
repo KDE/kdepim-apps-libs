@@ -8,7 +8,6 @@ deprecated: false
 libraries:
     - cmake: "KF5::KaddressbookGrantlee"
     - cmake: "KF5::KaddressbookImportExport"
-    - cmake: "KF5::FollowupReminder"
     - cmake: "KF5::SendLater"
 
 public_lib: true
