@@ -71,7 +71,6 @@ endif()
 add_definitions(-DQT_NO_FOREACH)
 add_definitions(-DQT_NO_KEYWORDS)
 
-add_subdirectory(libsendlater)
 add_subdirectory(kaddressbookgrantlee)
 add_subdirectory(kaddressbookimportexport)
 feature_summary(WHAT ALL FATAL_ON_MISSING_REQUIRED_PACKAGES)
