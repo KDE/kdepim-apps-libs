@@ -23,7 +23,6 @@ PUBLIC
 PRIVATE
   Grantlee5::Templates
   KF5::ConfigWidgets
-  KF5::Service
   KF5::AkonadiCore
   KF5::ContactEditor
   KF5::Contacts
