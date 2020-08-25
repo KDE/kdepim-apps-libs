@@ -63,8 +63,6 @@ class Q_DECL_HIDDEN GrantleeContactFormatter::Private
 {
 public:
     Private()
-        : forceDisableQRCode(false)
-        , showQRCode(true)
     {
         KConfig config(QStringLiteral("akonadi_contactrc"));
         KConfigGroup group(&config, QStringLiteral("View"));
@@ -103,7 +101,7 @@ public:
     Grantlee::Template mEmbeddableTemplate;
     QString mErrorMessage;
     bool forceDisableQRCode = false;
-    bool showQRCode = false;
+    bool showQRCode = true;
 };
 
 GrantleeContactFormatter::GrantleeContactFormatter()
