@@ -39,7 +39,7 @@ set_target_properties(KF5KaddressbookGrantlee PROPERTIES
 
 install(TARGETS
     KF5KaddressbookGrantlee
-    EXPORT KF5KaddressbookGrantleeTargets ${KF5_INSTALL_TARGETS_DEFAULT_ARGS} ${LIBRARY_NAMELINK}
+    EXPORT KF5KaddressbookGrantleeTargets ${KF5_INSTALL_TARGETS_DEFAULT_ARGS}
 )
 
 

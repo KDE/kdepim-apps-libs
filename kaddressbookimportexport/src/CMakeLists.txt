@@ -44,7 +44,7 @@ set_target_properties(KF5KaddressbookImportExport PROPERTIES
 
 install(TARGETS
     KF5KaddressbookImportExport
-    EXPORT KF5KaddressbookImportExportTargets ${KF5_INSTALL_TARGETS_DEFAULT_ARGS} ${LIBRARY_NAMELINK}
+    EXPORT KF5KaddressbookImportExportTargets ${KF5_INSTALL_TARGETS_DEFAULT_ARGS}
     )
 
 
