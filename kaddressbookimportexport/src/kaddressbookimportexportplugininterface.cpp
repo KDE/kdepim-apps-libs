@@ -10,7 +10,6 @@ using namespace KAddressBookImportExport;
 
 KAddressBookImportExportPluginInterface::KAddressBookImportExportPluginInterface(QObject *parent)
     : PimCommon::AbstractGenericPluginInterface(parent)
-    , mImportExportAction(Import)
 {
 }
 

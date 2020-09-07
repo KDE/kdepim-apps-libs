@@ -64,15 +64,15 @@ public:
 private:
     void initGui();
 
-    KAddressBookImportExport::KAddressBookImportExportContactList collectAllContacts() const;
-    KAddressBookImportExport::KAddressBookImportExportContactList collectSelectedContacts() const;
-    KAddressBookImportExport::KAddressBookImportExportContactList collectAddressBookContacts() const;
+    Q_REQUIRED_RESULT KAddressBookImportExport::KAddressBookImportExportContactList collectAllContacts() const;
+    Q_REQUIRED_RESULT KAddressBookImportExport::KAddressBookImportExportContactList collectSelectedContacts() const;
+    Q_REQUIRED_RESULT KAddressBookImportExport::KAddressBookImportExportContactList collectAddressBookContacts() const;
 
-    Akonadi::Item::List collectAllItems() const;
-    Akonadi::Item::List collectSelectedItems() const;
-    Akonadi::Item::List collectAddressBookItems() const;
+    Q_REQUIRED_RESULT Akonadi::Item::List collectAllItems() const;
+    Q_REQUIRED_RESULT Akonadi::Item::List collectSelectedItems() const;
+    Q_REQUIRED_RESULT Akonadi::Item::List collectAddressBookItems() const;
 
-    QItemSelectionModel *mSelectionModel = nullptr;
+    QItemSelectionModel *const mSelectionModel;
 
     QLabel *mMessageLabel = nullptr;
     QRadioButton *mAllContactsButton = nullptr;

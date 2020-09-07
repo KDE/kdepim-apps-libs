@@ -16,7 +16,6 @@ using namespace KAddressBookImportExport;
 
 KAddressBookContactSelectionDialog::KAddressBookContactSelectionDialog(QItemSelectionModel *selectionModel, bool allowToSelectTypeToExport, QWidget *parent)
     : QDialog(parent)
-    , mVCardExport(nullptr)
 {
     setWindowTitle(i18nc("@title:window", "Select Contacts"));
     QVBoxLayout *mainLayout = new QVBoxLayout(this);

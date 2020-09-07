@@ -30,23 +30,17 @@ public:
         delete pluginManager;
     }
 
-    KAddressBookImportExportPluginManager *pluginManager = nullptr;
+    KAddressBookImportExportPluginManager *const pluginManager;
 };
 
 class KAddressBookImportExportInfo
 {
 public:
-    KAddressBookImportExportInfo()
-        : plugin(nullptr)
-        , isEnabled(true)
-    {
-    }
-
     QString metaDataFileNameBaseName;
     QString metaDataFileName;
     PimCommon::PluginUtilData pluginData;
     KAddressBookImportExportPlugin *plugin = nullptr;
-    bool isEnabled;
+    bool isEnabled = true;
 };
 
 Q_GLOBAL_STATIC(KAddressBookImportExportPluginManagerPrivate, sInstance)

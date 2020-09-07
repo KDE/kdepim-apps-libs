@@ -31,7 +31,6 @@ using namespace KAddressBookImportExport;
 KAddressBookContactSelectionWidget::KAddressBookContactSelectionWidget(QItemSelectionModel *selectionModel, QWidget *parent)
     : QWidget(parent)
     , mSelectionModel(selectionModel)
-    , mAddContactGroup(false)
 {
     initGui();
 

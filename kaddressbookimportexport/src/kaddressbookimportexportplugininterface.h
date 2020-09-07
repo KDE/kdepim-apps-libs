@@ -53,7 +53,7 @@ public:
 protected:
     QList<QAction *> mImportActions;
     QList<QAction *> mExportActions;
-    ImportExportAction mImportExportAction;
+    ImportExportAction mImportExportAction = Import;
     Akonadi::Collection mDefaultCollection;
     QItemSelectionModel *mItemSelectionModel = nullptr;
 };
