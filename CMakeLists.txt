@@ -67,7 +67,6 @@ set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 add_subdirectory(kaddressbookgrantlee)
-add_subdirectory(kaddressbookimportexport)
 feature_summary(WHAT ALL FATAL_ON_MISSING_REQUIRED_PACKAGES)
 
 ecm_qt_install_logging_categories(

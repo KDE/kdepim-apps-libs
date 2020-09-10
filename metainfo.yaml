@@ -7,7 +7,6 @@ portingAid: false
 deprecated: false
 libraries:
     - cmake: "KF5::KaddressbookGrantlee"
-    - cmake: "KF5::KaddressbookImportExport"
 
 public_lib: true
 group: kdepim
@@ -15,4 +14,3 @@ irc: akonadi
 
 public_source_dirs:
  - kaddressbookgrantlee
- - kaddressbookimportexport
