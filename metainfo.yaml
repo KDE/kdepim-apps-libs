@@ -4,13 +4,8 @@ type: solution
 platforms:
     - name: Linux
 portingAid: false
-deprecated: false
-libraries:
-    - cmake: "KF5::KaddressbookGrantlee"
-
+deprecated: true
 public_lib: true
 group: kdepim
 irc: akonadi
 
-public_source_dirs:
- - kaddressbookgrantlee
